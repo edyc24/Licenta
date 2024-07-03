@@ -1,0 +1,53 @@
+﻿.card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    padding: 1rem;
+    background-color: #004085;
+    color: white;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+    .form-group label {
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+
+.form-control {
+    border-radius: 5px;
+}
+
+.btn-lg {
+    width: 45%;
+}
+
+.distance-info {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-top: 0.5rem;
+}
+
+.form-group.text-center {
+    margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    .btn-lg {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}

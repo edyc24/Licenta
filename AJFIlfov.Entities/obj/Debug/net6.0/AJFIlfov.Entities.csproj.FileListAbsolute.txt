@@ -1,0 +1,15 @@
+C:\Users\Edy\Desktop\AJFIlfov.Entities\bin\Debug\net6.0\AJFIlfov.Entities.deps.json
+C:\Users\Edy\Desktop\AJFIlfov.Entities\bin\Debug\net6.0\AJFIlfov.Entities.dll
+C:\Users\Edy\Desktop\AJFIlfov.Entities\bin\Debug\net6.0\AJFIlfov.Entities.pdb
+C:\Users\Edy\Desktop\AJFIlfov.Entities\bin\Debug\net6.0\AJFIlfov.Common.dll
+C:\Users\Edy\Desktop\AJFIlfov.Entities\bin\Debug\net6.0\AJFIlfov.Common.pdb
+C:\Users\Edy\Desktop\AJFIlfov.Entities\obj\Debug\net6.0\AJFIlfov.Entities.csproj.AssemblyReference.cache
+C:\Users\Edy\Desktop\AJFIlfov.Entities\obj\Debug\net6.0\AJFIlfov.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Edy\Desktop\AJFIlfov.Entities\obj\Debug\net6.0\AJFIlfov.Entities.AssemblyInfoInputs.cache
+C:\Users\Edy\Desktop\AJFIlfov.Entities\obj\Debug\net6.0\AJFIlfov.Entities.AssemblyInfo.cs
+C:\Users\Edy\Desktop\AJFIlfov.Entities\obj\Debug\net6.0\AJFIlfov.Entities.csproj.CoreCompileInputs.cache
+C:\Users\Edy\Desktop\AJFIlfov.Entities\obj\Debug\net6.0\AJFIlfov.Entities.csproj.CopyComplete
+C:\Users\Edy\Desktop\AJFIlfov.Entities\obj\Debug\net6.0\AJFIlfov.Entities.dll
+C:\Users\Edy\Desktop\AJFIlfov.Entities\obj\Debug\net6.0\refint\AJFIlfov.Entities.dll
+C:\Users\Edy\Desktop\AJFIlfov.Entities\obj\Debug\net6.0\AJFIlfov.Entities.pdb
+C:\Users\Edy\Desktop\AJFIlfov.Entities\obj\Debug\net6.0\ref\AJFIlfov.Entities.dll

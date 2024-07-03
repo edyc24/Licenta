@@ -1,0 +1,12 @@
+C:\Users\Edy\Desktop\Common\bin\Debug\net6.0\AJFIlfov.Common.deps.json
+C:\Users\Edy\Desktop\Common\bin\Debug\net6.0\AJFIlfov.Common.dll
+C:\Users\Edy\Desktop\Common\bin\Debug\net6.0\AJFIlfov.Common.pdb
+C:\Users\Edy\Desktop\Common\obj\Debug\net6.0\AJFIlfov.Common.csproj.AssemblyReference.cache
+C:\Users\Edy\Desktop\Common\obj\Debug\net6.0\AJFIlfov.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Edy\Desktop\Common\obj\Debug\net6.0\AJFIlfov.Common.AssemblyInfoInputs.cache
+C:\Users\Edy\Desktop\Common\obj\Debug\net6.0\AJFIlfov.Common.AssemblyInfo.cs
+C:\Users\Edy\Desktop\Common\obj\Debug\net6.0\AJFIlfov.Common.csproj.CoreCompileInputs.cache
+C:\Users\Edy\Desktop\Common\obj\Debug\net6.0\AJFIlfov.Common.dll
+C:\Users\Edy\Desktop\Common\obj\Debug\net6.0\refint\AJFIlfov.Common.dll
+C:\Users\Edy\Desktop\Common\obj\Debug\net6.0\AJFIlfov.Common.pdb
+C:\Users\Edy\Desktop\Common\obj\Debug\net6.0\ref\AJFIlfov.Common.dll

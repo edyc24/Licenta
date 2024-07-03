@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="FluentValidation" Version="11.9.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Twilio" Version="7.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AJFIlfov.DataAccess\AJFIlfov.DataAccess.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Implementation\DisponibilitateAdmin\Validations\" />
+    <Folder Include="Implementation\Disponibilitate\Validations\" />
+    <Folder Include="Implementation\Echipe\Validations\" />
+    <Folder Include="Implementation\GrupeEchipe\Validations\" />
+    <Folder Include="Implementation\Grupe\Validations\" />
+    <Folder Include="Implementation\Localitati\Validations\" />
+    <Folder Include="Implementation\Meciuri\Validations\" />
+    <Folder Include="Implementation\StadionLocalitate\Validations\" />
+    <Folder Include="Implementation\Stadioane\Validations\" />
+  </ItemGroup>
+
+</Project>

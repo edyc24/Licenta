@@ -1,0 +1,81 @@
+﻿@model List<AJFIlfov.Entities.Entities.UserAddress>
+
+@{
+    ViewData["Title"] = "User Map";
+}
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+
+        .marker-label {
+            color: #000;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="text-center">@ViewData["Title"]</h1>
+
+    <div id="map"></div>
+
+    <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 44.4185503236876, lng: 26.002626786593783 },
+                zoom: 11
+            });
+
+        @foreach (var user in Model)
+        {
+            <text>
+                            var marker = new google.maps.Marker({
+                        position: { lat: @user.Latitude, lng: @user.Longitude },
+                        map: map,
+                        title: '@user.User.Nume @user.User.Prenume',
+                        icon: {
+                            url: 'https://maps.google.com/mapfiles/kml/shapes/man.png', // Link to custom marker
+                            scaledSize: new google.maps.Size(30, 30), // Size of the icon
+                            origin: new google.maps.Point(0, 0), // Origin point (top-left corner)
+                            anchor: new google.maps.Point(15, 30) // Anchor point (bottom-center)
+                        }
+                    });
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: '<div class="marker-label">@user.User.Nume @user.User.Prenume</div>'
+                });
+
+                // Show infowindow on marker click
+                marker.addListener('click', function () {
+                    infowindow.open(map, marker);
+                });
+
+                // Show infowindow on marker hover
+                marker.addListener('mouseover', function () {
+                    infowindow.open(map, marker);
+                });
+
+                // Hide infowindow on marker hover out
+                marker.addListener('mouseout', function () {
+                    infowindow.close();
+                });
+            </text>
+        }
+            }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwi0RifODDA2GolqECDoyzi5LG9d3eueg&callback=initMap" async defer></script>
+
+</body>
+</html>

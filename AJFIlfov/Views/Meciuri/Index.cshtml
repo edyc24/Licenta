@@ -1,0 +1,122 @@
+﻿@model IEnumerable<AJFIlfov.BusinessLogic.Implementation.MeciuriService.Models.MeciModel>
+
+@{
+    ViewData["Title"] = "Meciuri";
+    var groupedByDate = Model.GroupBy(m => m.DataJoc?.ToString("dd MMM yyyy")).OrderBy(g => g.Key);
+}
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="~/css/Meciuri/Index.css" />
+    <style>
+        .date-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .table th, .table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .actions-column {
+            width: 150px; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>@ViewData["Title"]</h2>
+        <p class="text-center">
+            <a asp-action="Create" class="btn btn-primary" asp-controller="Meciuri">Creează Nou</a>
+        </p>
+
+        @foreach (var group in groupedByDate)
+        {
+            <div>
+                <div class="date-title">@group.Key</div>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Echipe</th>
+                                <th>Locație</th>
+                                <th>Arbitru</th>
+                                <th>Asistent 1</th>
+                                <th>Asistent 2</th>
+                                <th>Rezervă</th>
+                                <th>Observator</th>
+                                <th>Rezultat</th>
+                                <th>Observații</th>
+                                <th class="text-center actions-column">Acțiuni</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in group)
+                            {
+                                <tr>
+                                    <td>@item.EchipaGazdaNume vs @item.EchipaOaspeteNume</td>
+                                    <td>@item.StadionNume, @item.LocalitateNume</td>
+                                    <td>@item.ArbitruNume</td>
+                                    <td>@item.ArbitruAsistent1Nume</td>
+                                    <td>@item.ArbitruAsistent2Nume</td>
+                                    <td>@item.ArbitruRezervaNume</td>
+                                    <td>@item.ObservatorNume</td>
+                                    <td>@item.Rezultat</td>
+                                    <td>@item.Observatii</td>
+                                    <td class="text-center actions-column">
+                                        <a asp-action="Details" asp-route-id="@item.IdMeci" class="btn btn-info btn-sm" title="Detalii">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a asp-action="EditareMeciAdmin" asp-route-id="@item.IdMeci" class="btn btn-warning btn-sm" title="Editează">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </a>
+                                        <button type="button" class="btn btn-danger btn-sm delete-button" data-id="@item.IdMeci" title="Șterge">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        }
+    </div>
+
+    @section Scripts {
+        <script>
+            $(document).ready(function () {
+                $('.delete-button').on('click', function (event) {
+                    let deleteButton = $(this);
+                    let listingId = deleteButton.data('id');
+
+                    let confirmation = confirm("Ești sigur că vrei să ștergi acest meci?");
+                    if (confirmation) {
+                        $.ajax({
+                            type: 'POST',
+                            url: '/Meciuri/DeleteConfirmed/' + listingId,
+                            success: function () {
+                                toastr.success('Meci șters cu succes!', 'Succes');
+                                $('button[data-id="' + listingId + '"]').closest('tr').remove();
+                            },
+                            error: function () {
+                                toastr.error('Ștergerea meciului a eșuat!', 'Eroare');
+                            }
+                        });
+                    }
+                });
+            });
+        </script>
+    }
+</body>
+</html>

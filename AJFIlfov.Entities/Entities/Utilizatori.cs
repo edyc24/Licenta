@@ -24,6 +24,7 @@ public partial class Utilizatori : IEntity
     public DateTime? DataNastere { get; set; }
 
     public int IdRol { get; set; }
+    public int IdCategorie { get; set; }
 
     public int? IdMarimeAdidasi { get; set; }
 
@@ -40,6 +41,7 @@ public partial class Utilizatori : IEntity
     public virtual Marimi? IdMarimeHaineNavigation { get; set; }
 
     public virtual Roluri IdRolNavigation { get; set; } = null!;
+    public virtual Categorii IdCategorieNavigation { get; set; } = null!;
 
     public virtual ICollection<Meciuri> MeciuriIdArbitruAsistent1Navigations { get; set; } = new List<Meciuri>();
 

@@ -14,8 +14,8 @@
 
     <div class="container">
         <h2>@ViewData["Title"]</h2>
-        
-        <form asp-action="Edit" method="post">
+
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
             @Html.AntiForgeryToken()
             <input type="hidden" asp-for="IdMeci" />
 
@@ -32,8 +32,8 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="Raport" class="control-label">Raport</label>
-                <input asp-for="Raport" class="form-control-file" type="file" />
+                <label asp-for="Raport" class="control-label">Raport (doar PDF)</label>
+                <input asp-for="Raport" class="form-control-file" type="file" accept="application/pdf" />
                 <span asp-validation-for="Raport" class="text-danger"></span>
             </div>
 

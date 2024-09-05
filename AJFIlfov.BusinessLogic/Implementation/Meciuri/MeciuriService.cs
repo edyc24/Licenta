@@ -23,6 +23,8 @@ namespace AJFIlfov.BusinessLogic.Implementation.MeciuriService
         {
             var result = UnitOfWork.Meciuri.Get()
                 .Include(m => m.IdEchipaGazdaNavigation)
+                    .ThenInclude(ge => ge.IdGrupaNavigation)
+                .Include(m => m.IdEchipaGazdaNavigation)
                     .ThenInclude(ge => ge.IdEchipaNavigation)
                 .Include(m => m.IdEchipaOaspeteNavigation)
                     .ThenInclude(oe => oe.IdEchipaNavigation)
@@ -55,12 +57,13 @@ namespace AJFIlfov.BusinessLogic.Implementation.MeciuriService
                     IdObservator = m.IdObservator,
                     IdStadionLocalitate = m.IdStadionLocalitate,
                     EchipaGazdaNume = m.IdEchipaGazdaNavigation?.IdEchipaNavigation?.Nume,
+                    GrupaNume = m.IdEchipaGazdaNavigation?.IdGrupaNavigation?.Nume,
                     EchipaOaspeteNume = m.IdEchipaOaspeteNavigation?.IdEchipaNavigation?.Nume,
-                    ArbitruNume = m.IdArbitruNavigation?.Nume,
-                    ArbitruAsistent1Nume = m.IdArbitruAsistent1Navigation?.Nume,
-                    ArbitruAsistent2Nume = m.IdArbitruAsistent2Navigation?.Nume,
-                    ArbitruRezervaNume = m.IdArbitruRezervaNavigation?.Nume,
-                    ObservatorNume = m.IdObservatorNavigation?.Nume,
+                    ArbitruNume = m.IdArbitruNavigation?.Nume + ' ' + m.IdArbitruNavigation?.Prenume,
+                    ArbitruAsistent1Nume = m.IdArbitruAsistent1Navigation?.Nume + ' ' + m.IdArbitruAsistent1Navigation?.Prenume,
+                    ArbitruAsistent2Nume = m.IdArbitruAsistent2Navigation?.Nume + ' ' + m.IdArbitruAsistent2Navigation?.Prenume,
+                    ArbitruRezervaNume = m.IdArbitruRezervaNavigation?.Nume + ' ' + m.IdArbitruRezervaNavigation?.Prenume,
+                    ObservatorNume = m.IdObservatorNavigation?.Nume + ' ' + m.IdObservatorNavigation?.Prenume,
                     StadionNume = m.IdStadionLocalitateNavigation?.IdStadionNavigation?.Nume,
                     LocalitateNume = m.IdStadionLocalitateNavigation?.IdLocalitateNavigation?.Nume
                 })
@@ -70,10 +73,36 @@ namespace AJFIlfov.BusinessLogic.Implementation.MeciuriService
         }
 
 
+        public List<MeciModel> GetAllCurrentUser()
+        {
+            var result = GetAll().Where(m => m.IdArbitru == CurrentUser.Id ||
+                            m.IdArbitruAsistent1 == CurrentUser.Id ||
+                            m.IdArbitruAsistent2 == CurrentUser.Id ||
+                            m.IdArbitruRezerva == CurrentUser.Id)
+                .ToList();
+
+            return result;
+        }
+
 
         public MeciModel GetById(Guid id)
         {
-            var meci = UnitOfWork.Meciuri.Find(id);
+            var meci = UnitOfWork.Meciuri
+                .Get().Where(m => m.IdMeci == id)
+                .Include(m => m.IdEchipaGazdaNavigation)
+                    .ThenInclude(ge => ge.IdEchipaNavigation)
+                .Include(m => m.IdEchipaOaspeteNavigation)
+                    .ThenInclude(oe => oe.IdEchipaNavigation)
+                .Include(m => m.IdArbitruNavigation)
+                .Include(m => m.IdArbitruAsistent1Navigation)
+                .Include(m => m.IdArbitruAsistent2Navigation)
+                .Include(m => m.IdArbitruRezervaNavigation)
+                .Include(m => m.IdObservatorNavigation)
+                .Include(m => m.IdStadionLocalitateNavigation)
+                    .ThenInclude(sl => sl.IdStadionNavigation)
+                .Include(m => m.IdStadionLocalitateNavigation)
+                    .ThenInclude(sl => sl.IdLocalitateNavigation)
+                 .FirstOrDefault();
             if (meci == null) return null;
 
             return new MeciModel
@@ -246,14 +275,14 @@ namespace AJFIlfov.BusinessLogic.Implementation.MeciuriService
             return fullAddress;
         }
 
-        public bool UpdateMeciByArbitru(MeciArbitruModel model)
+        public bool UpdateMeciByArbitru(MeciArbitruModel model, byte[] raport)
         {
             var meci = UnitOfWork.Meciuri.Find(model.IdMeci);
             if (meci == null) return false;
 
             meci.Rezultat = model.Rezultat;
             meci.Observatii = model.Observatii;
-            meci.Raport = model.Raport;
+            meci.Raport = raport;
 
             UnitOfWork.Meciuri.Update(meci);
             UnitOfWork.SaveChanges();
@@ -261,15 +290,14 @@ namespace AJFIlfov.BusinessLogic.Implementation.MeciuriService
         }
         public bool UpdateMeciByAdmin(MeciAdminModel model)
         {
-            var meci = UnitOfWork.Meciuri.Find(model.IdMeci);
+            var meci = UnitOfWork.Meciuri.Get().AsNoTracking().FirstOrDefault(m => m.IdMeci == model.IdMeci);
             if (meci == null) return false;
 
-            var idEchipaGazda = UnitOfWork.GrupeEchipa.Get().Where(e => e.IdGrupa == model.IdGrupa && e.IdEchipa == model.IdEchipaGazda).First().IdGrupaEchipa;
-            var idEchipaOaspete = UnitOfWork.GrupeEchipa.Get().Where(e => e.IdGrupa == model.IdGrupa && e.IdEchipa == model.IdEchipaOaspete).First().IdGrupaEchipa;
             var meciEditat = new Meciuri
             {
-                IdEchipaGazda = idEchipaGazda,
-                IdEchipaOaspete = idEchipaOaspete,
+                IdMeci = model.IdMeci,
+                IdEchipaGazda = model.IdEchipaGazda,
+                IdEchipaOaspete = model.IdEchipaOaspete,
                 DataJoc = model.DataJoc,
                 IdArbitru = model.IdArbitru,
                 IdArbitruAsistent1 = model.IdArbitruAsistent1,
@@ -279,7 +307,7 @@ namespace AJFIlfov.BusinessLogic.Implementation.MeciuriService
                 IdStadionLocalitate = model.IdStadionLocalitate
             };
 
-            UnitOfWork.Meciuri.Insert(meciEditat);
+            UnitOfWork.Meciuri.Update(meciEditat);
             UnitOfWork.SaveChanges();
 
             // Send SMS to all assigned referees
@@ -321,14 +349,44 @@ namespace AJFIlfov.BusinessLogic.Implementation.MeciuriService
                 }).ToList();
         }
 
-        public List<RefereeModel> GetAllArbitri()
+        public List<RefereeModel> GetAllArbitri(DateTime? data)
         {
+            if (data == null)
+            {
+                return new List<RefereeModel>();
+            }
+
+            // Calculate the required end time (match time + 2 hours)
+            var requiredEndTime = data.Value.AddHours(2);
+
             return UnitOfWork.Users.Get()
-                .Where(u => u.IdRol == 3)
+                .Where(u => (u.IdRol == 3 || u.IdRol == 5) &&
+                    (
+                        // Select referees who have no availability record for the given date
+                        !u.Disponibilitates.Any(d => d.Zi == data.Value.Date) ||
+
+                        // Select referees who are partially available on the given date
+                        u.Disponibilitates.Any(d => d.Zi == data.Value.Date && d.Status == "DisponibilPartial" && d.OraIncheiere >= requiredEndTime)
+                    ))
+                .Include(u => u.IdCategorieNavigation)
+                .Include(u => u.IdRolNavigation)
                 .Select(u => new RefereeModel
                 {
                     Id = u.IdUtilizator,
-                    Nume = u.Nume
+                    Nume = u.Nume + " " + u.Prenume + " - " + u.IdRolNavigation.Nume + " - " + u.IdCategorieNavigation.Categorie
+                }).ToList();
+        }
+
+        public List<RefereeModel> GetAllArbitriAll()
+        {
+            return UnitOfWork.Users.Get()
+                .Where(u => (u.IdRol == 3 || u.IdRol == 5))
+                .Include(u => u.IdCategorieNavigation)
+                .Include(u => u.IdRolNavigation)
+                .Select(u => new RefereeModel
+                {
+                    Id = u.IdUtilizator,
+                    Nume = u.Nume + " " + u.Prenume + " - " + u.IdRolNavigation.Nume + " - " + u.IdCategorieNavigation.Categorie
                 }).ToList();
         }
 
@@ -339,7 +397,7 @@ namespace AJFIlfov.BusinessLogic.Implementation.MeciuriService
                 .Select(u => new RefereeModel
                 {
                     Id = u.IdUtilizator,
-                    Nume = u.Nume
+                    Nume = u.Nume + ' ' + u.Prenume + '-' + u.IdRolNavigation.Nume + '-' + u.IdCategorieNavigation.Categorie
                 }).ToList();
         }
 

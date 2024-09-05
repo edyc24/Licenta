@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Edy\\Desktop\\Licenta\\AJFIlfov.DataAccess\\AJFIlfov.DataAccess.csproj": {}
+    "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\AJFIlfov.DataAccess\\AJFIlfov.DataAccess.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Edy\\Desktop\\Licenta\\AJFIlfov.DataAccess\\AJFIlfov.DataAccess.csproj": {
+    "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\AJFIlfov.DataAccess\\AJFIlfov.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Edy\\Desktop\\Licenta\\AJFIlfov.DataAccess\\AJFIlfov.DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\AJFIlfov.DataAccess\\AJFIlfov.DataAccess.csproj",
         "projectName": "AJFIlfov.DataAccess",
-        "projectPath": "C:\\Users\\Edy\\Desktop\\Licenta\\AJFIlfov.DataAccess\\AJFIlfov.DataAccess.csproj",
-        "packagesPath": "C:\\Users\\Edy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Edy\\Desktop\\Licenta\\AJFIlfov.DataAccess\\obj\\",
+        "projectPath": "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\AJFIlfov.DataAccess\\AJFIlfov.DataAccess.csproj",
+        "packagesPath": "C:\\Users\\eduard.cristea\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\AJFIlfov.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Edy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\eduard.cristea\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,17 +26,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Edy\\Desktop\\Licenta\\AJFIlfov.Entities\\AJFIlfov.Entities.csproj": {
-                "projectPath": "C:\\Users\\Edy\\Desktop\\Licenta\\AJFIlfov.Entities\\AJFIlfov.Entities.csproj"
+              "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\AJFIlfov.Entities\\AJFIlfov.Entities.csproj": {
+                "projectPath": "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\AJFIlfov.Entities\\AJFIlfov.Entities.csproj"
               },
-              "C:\\Users\\Edy\\Desktop\\Licenta\\Common\\AJFIlfov.Common.csproj": {
-                "projectPath": "C:\\Users\\Edy\\Desktop\\Licenta\\Common\\AJFIlfov.Common.csproj"
+              "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\Common\\AJFIlfov.Common.csproj": {
+                "projectPath": "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\Common\\AJFIlfov.Common.csproj"
               }
             }
           }
@@ -98,6 +99,14 @@
             "Twilio": {
               "target": "Package",
               "version": "[7.1.1, )"
+            },
+            "iTextSharp": {
+              "target": "Package",
+              "version": "[5.5.13.4, )"
+            },
+            "itext7": {
+              "target": "Package",
+              "version": "[8.0.5, )"
             }
           },
           "imports": [
@@ -116,24 +125,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Edy\\Desktop\\Licenta\\AJFIlfov.Entities\\AJFIlfov.Entities.csproj": {
+    "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\AJFIlfov.Entities\\AJFIlfov.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Edy\\Desktop\\Licenta\\AJFIlfov.Entities\\AJFIlfov.Entities.csproj",
+        "projectUniqueName": "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\AJFIlfov.Entities\\AJFIlfov.Entities.csproj",
         "projectName": "AJFIlfov.Entities",
-        "projectPath": "C:\\Users\\Edy\\Desktop\\Licenta\\AJFIlfov.Entities\\AJFIlfov.Entities.csproj",
-        "packagesPath": "C:\\Users\\Edy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Edy\\Desktop\\Licenta\\AJFIlfov.Entities\\obj\\",
+        "projectPath": "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\AJFIlfov.Entities\\AJFIlfov.Entities.csproj",
+        "packagesPath": "C:\\Users\\eduard.cristea\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\AJFIlfov.Entities\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Edy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\eduard.cristea\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -142,14 +151,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Edy\\Desktop\\Licenta\\Common\\AJFIlfov.Common.csproj": {
-                "projectPath": "C:\\Users\\Edy\\Desktop\\Licenta\\Common\\AJFIlfov.Common.csproj"
+              "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\Common\\AJFIlfov.Common.csproj": {
+                "projectPath": "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\Common\\AJFIlfov.Common.csproj"
               }
             }
           }
@@ -167,6 +177,14 @@
             "Twilio": {
               "target": "Package",
               "version": "[7.1.1, )"
+            },
+            "iTextSharp": {
+              "target": "Package",
+              "version": "[5.5.13.4, )"
+            },
+            "itext7": {
+              "target": "Package",
+              "version": "[8.0.5, )"
             }
           },
           "imports": [
@@ -185,24 +203,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Edy\\Desktop\\Licenta\\Common\\AJFIlfov.Common.csproj": {
+    "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\Common\\AJFIlfov.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Edy\\Desktop\\Licenta\\Common\\AJFIlfov.Common.csproj",
+        "projectUniqueName": "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\Common\\AJFIlfov.Common.csproj",
         "projectName": "AJFIlfov.Common",
-        "projectPath": "C:\\Users\\Edy\\Desktop\\Licenta\\Common\\AJFIlfov.Common.csproj",
-        "packagesPath": "C:\\Users\\Edy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Edy\\Desktop\\Licenta\\Common\\obj\\",
+        "projectPath": "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\Common\\AJFIlfov.Common.csproj",
+        "packagesPath": "C:\\Users\\eduard.cristea\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Edy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\eduard.cristea\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -211,6 +229,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -233,9 +252,25 @@
               "target": "Package",
               "version": "[11.9.0, )"
             },
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[3.1.32, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.15, )"
+            },
             "Twilio": {
               "target": "Package",
               "version": "[7.1.1, )"
+            },
+            "iTextSharp": {
+              "target": "Package",
+              "version": "[5.5.13.4, )"
+            },
+            "itext7": {
+              "target": "Package",
+              "version": "[8.0.5, )"
             }
           },
           "imports": [
@@ -254,7 +289,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

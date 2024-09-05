@@ -19,6 +19,7 @@
 
         public string? EchipaGazdaNume { get; set; }
         public string? EchipaOaspeteNume { get; set; }
+        public string? GrupaNume { get; set; }
         public string? ArbitruNume { get; set; }
         public string? ArbitruAsistent1Nume { get; set; }
         public string? ArbitruAsistent2Nume { get; set; }

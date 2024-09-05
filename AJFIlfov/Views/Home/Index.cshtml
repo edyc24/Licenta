@@ -1,23 +1,38 @@
-﻿@{
+﻿@inject AJFIlfov.Common.DTOs.CurrentUserDto CurrentUser
+@{
     ViewData["Title"] = "Acasă";
 }
 
 <div class="container mt-5">
     <div class="jumbotron text-center">
-        <h1 class="display-4">Bine ai venit la AJF Ilfov!</h1>
-        <p class="lead">Administrează-ți meciurile și echipele cu ușurință.</p>
-        <hr class="my-4">
-        <p>Alege o acțiune mai jos pentru a începe:</p>
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <a class="btn btn-primary btn-lg btn-block" href="/Meciuri/Create">Creează un Meci</a>
-            </div>
-            <div class="col-md-4 mb-4">
-                <a class="btn btn-secondary btn-lg btn-block" href="/Meciuri">Vizualizează Meciuri</a>
-            </div>
-            <div class="col-md-4 mb-4">
-                <a class="btn btn-info btn-lg btn-block" href="/Echipe">Administrează Echipe</a>
-            </div>
-        </div>
+        <h1 class="display-4">Bine ai venit la CJA Ilfov!</h1>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            @if (User.Identity.IsAuthenticated && CurrentUser.Role != "Administrator")
+            {
+                <p class="lead">Meciurile tale:</p>
+                <hr class="my-4">
+                if (ViewBag.Meciuri != null)
+                {
+                    <ul class="list-group">
+                        @foreach (var meci in ViewBag.Meciuri)
+                        {
+                            <li class="list-group-item">
+                                @meci.EchipaGazdaNume vs @meci.EchipaOaspeteNume - @meci.DataJoc.ToString("dd/MM/yyyy hh:mm") <a href="/Meciuri/Edit/@meci.IdMeci" class="btn btn-sm btn-warning float-right">Editează</a>
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p>Nu ai meciuri programate.</p>
+                }
+            }
+        }
+        else
+        {
+            <a class="btn btn-primary btn-lg" href="/Account/Login">Loghează-te pentru a vedea meciurile tale</a>
+        }
     </div>
 </div>

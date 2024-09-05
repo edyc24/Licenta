@@ -1,6 +1,10 @@
-﻿using AJFIlfov.Models;
+﻿using AJFIlfov.BusinessLogic.Implementation.GrupeEchipaService;
+using AJFIlfov.BusinessLogic.Implementation.MeciuriService;
+using AJFIlfov.DataAccess;
+using AJFIlfov.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace AJFIlfov.Controllers
 {
@@ -8,13 +12,20 @@ namespace AJFIlfov.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly MeciuriService _service;
+
+        public HomeController(ILogger<HomeController> logger, MeciuriService service)
         {
             _logger = logger;
+            _service = service;
         }
 
         public IActionResult Index()
         {
+            var meciuri = _service.GetAllCurrentUser();
+
+            ViewBag.Meciuri = meciuri.Where(m => m.DataJoc >= DateTime.Now);
+
             return View();
         }
 

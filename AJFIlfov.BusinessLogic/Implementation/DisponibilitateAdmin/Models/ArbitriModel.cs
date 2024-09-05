@@ -3,6 +3,8 @@
     public class RefereeAvailabilityModel
     {
         public string RefereeName { get; set; }
+        public string Rol { get; set; }
+        public string Categorie { get; set; }
         public List<AvailabilityStatus> Availability { get; set; }
     }
 

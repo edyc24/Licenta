@@ -1,4 +1,5 @@
 ﻿using AJFIlfov.BusinessLogic.Base;
+using AJFIlfov.BusinessLogic.Implementation.Account.Models;
 using AJFIlfov.BusinessLogic.Implementation.User.Models;
 using AJFIlfov.BusinessLogic.Implementation.User.Validations;
 using AJFIlfov.Common.Extensions;
@@ -18,6 +19,7 @@ namespace AJFIlfov.BusinessLogic.Implementation.User
 
         private readonly UsersValidator UsersValidator;
         private Dictionary<int, string> userRoles { get; set; }
+        private Dictionary<int, string> userCategories { get; set; }
 
 
         public UsersService(ServiceDependencies dependencies) 
@@ -25,6 +27,8 @@ namespace AJFIlfov.BusinessLogic.Implementation.User
         {
             UserRoles usersList = new UserRoles();
             this.userRoles = usersList.CreateUserRolesDictionary();
+            UserCategories usersListCategories = new UserCategories();
+            this.userCategories = usersListCategories.CreateUserCategoriesDictionary();
             this.UsersValidator = new UsersValidator(dependencies.UnitOfWork);
         }
 
@@ -50,6 +54,7 @@ namespace AJFIlfov.BusinessLogic.Implementation.User
             var user = UnitOfWork.Users.Find(id);
             var userModel = Mapper.Map<Utilizatori, UserManagmentModel>(user);
             userModel.Roles = userRoles;
+            userModel.Categorii = userCategories;
             return userModel;
         }
 
@@ -63,6 +68,7 @@ namespace AJFIlfov.BusinessLogic.Implementation.User
             if (!ok.IsValid)
             {
                 model.Roles = userRoles;
+                model.Categorii = userCategories;
                 ok.ThenThrow(model);
             }
             var user = UnitOfWork.Users.Find(model.Id);
@@ -70,6 +76,7 @@ namespace AJFIlfov.BusinessLogic.Implementation.User
             user.Prenume = model.LastName;
             user.DataNastere = model.BirthDay;
             user.IdRol = userRoles.FirstOrDefault(role => role.Value == model.Role).Key;
+            user.IdCategorie = userCategories.FirstOrDefault(role => role.Value == model.Category).Key;
             UnitOfWork.Users.Update(user);
             UnitOfWork.SaveChanges();
         }

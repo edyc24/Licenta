@@ -77,7 +77,7 @@
                     var distance = results[0].distance.text;
                     var duration = results[0].duration.text;
 
-                    $('#' + distanceInfoId).text(`Distanță: ${distance}, Durată: ${duration}`);
+                    $('#' + distanceInfoId).css('color', 'red').text(`Distanță: ${distance}, Durată: ${duration}`);
                 } else {
                     console.error('Eroare la calcularea distanței: ' + status);
                 }

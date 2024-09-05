@@ -225,7 +225,7 @@ namespace AJFIlfov.BusinessLogic.Implementation.Account
         public async Task<Coordinates> GeocodeAddressAsync(string address)
         {
             var httpClient = new HttpClient();
-            var apiKey = "AIzaSyAwi0RifODDA2GolqECDoyzi5LG9d3eueg";
+            var apiKey = "AIzaSyC7tfBD6u3cMcf1frPtqHq1K4X95tLtdbk";
             var response = await httpClient.GetStringAsync($"https://maps.googleapis.com/maps/api/geocode/json?address={Uri.EscapeDataString(address)}&key={apiKey}");
             var jsonResponse = JsonDocument.Parse(response);
             var location = jsonResponse.RootElement.GetProperty("results")[0].GetProperty("geometry").GetProperty("location");

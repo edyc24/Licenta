@@ -39,6 +39,7 @@ namespace AJFIlfov.WebApp.Code.ExtensionMethods
             services.AddScoped<DisponibilitateAdminService>();
             services.AddScoped<MeciuriService>();
             services.AddScoped<EchipeService>();
+            services.AddScoped<MatchReportService>();
             services.AddScoped<GrupeService>();
             services.AddScoped<GrupeEchipaService>();
             services.AddScoped<StadioaneService>();

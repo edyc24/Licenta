@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using AJFIlfov.Entities.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AJFIlfov.DataAccess.EntityFramework;
 
@@ -46,12 +47,19 @@ public partial class AjfilfovContext : DbContext
 
     public virtual DbSet<Utilizatori> Utilizatoris { get; set; }
 
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=tcp:ajfilfov.database.windows.net,1433;Initial Catalog=AJFIlfov;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication=\"Active Directory Default\";");
+        => optionsBuilder.UseSqlServer("Server=tcp:cjailfov.database.windows.net,1433;Initial Catalog=AJFIlfov;Persist Security Info=False;User ID=edyc;Password=Eduard123?;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+
+        var dateOnlyConverter = new ValueConverter<DateOnly?, DateTime?>(
+    d => d.HasValue ? new DateTime(d.Value.Year, d.Value.Month, d.Value.Day) : (DateTime?)null,
+    d => d.HasValue ? DateOnly.FromDateTime(d.Value) : (DateOnly?)null
+);
+
         modelBuilder.Entity<Disponibilitate>(entity =>
         {
             entity.HasKey(e => e.IdDisponibilitate).HasName("PK__Disponib__A79EDADBA5F65FC0");
@@ -167,7 +175,7 @@ public partial class AjfilfovContext : DbContext
             entity.HasIndex(e => e.IdStadionLocalitate, "IX_Meciuri_IdStadionLocalitate");
 
             entity.Property(e => e.IdMeci).ValueGeneratedNever();
-            entity.Property(e => e.DataJoc).HasColumnType("date");
+            entity.Property(e => e.DataJoc).HasColumnType("datetime");
             entity.Property(e => e.IdDeleted).HasColumnName("idDeleted");
             entity.Property(e => e.Observatii).HasMaxLength(500);
             entity.Property(e => e.Rezultat).HasMaxLength(50);
@@ -300,6 +308,8 @@ public partial class AjfilfovContext : DbContext
 
             entity.HasIndex(e => e.IdRol, "IX_Utilizatori_IdRol");
 
+            entity.HasIndex(e => e.IdRol, "IX_Utilizatori_IdCategorie");
+
             entity.Property(e => e.IdUtilizator).ValueGeneratedNever();
             entity.Property(e => e.Adresa).HasMaxLength(150);
             entity.Property(e => e.DataIncepere).HasColumnType("date");
@@ -323,6 +333,10 @@ public partial class AjfilfovContext : DbContext
             entity.HasOne(d => d.IdRolNavigation).WithMany(p => p.Utilizatoris)
                 .HasForeignKey(d => d.IdRol)
                 .HasConstraintName("FK__Utilizato__IdRol__33D4B598");
+
+            entity.HasOne(d => d.IdCategorieNavigation).WithMany(p => p.Utilizatories)
+                .HasForeignKey(d => d.IdCategorie)
+                .HasConstraintName("FK_Utilizatori_Categorii");
         });
 
         OnModelCreatingPartial(modelBuilder);

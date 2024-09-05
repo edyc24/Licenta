@@ -9,6 +9,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/DisponibilitateAdmin/VeziRezultate.css" />
+    <style>
+        .disponibil td {
+            background-color: #d4edda; /* Light green */
+            color: #155724; /* Dark green */
+        }
+
+        .indisponibil td {
+            background-color: #f8d7da; /* Light red */
+            color: #721c24; /* Dark red */
+            text-align: center;
+        }
+
+        .disponibil-partial td {
+            background-color: #fff3cd; /* Light yellow */
+            color: #856404; /* Dark yellow */
+        }
+    </style>
 </head>
 <body>
 
@@ -25,27 +42,46 @@
                         <th>Disponibilitate</th>
                         <th>Ora Începere</th>
                         <th>Ora Încheiere</th>
+                        <th>Rol</th>
+                        <th>Categorie</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var referee in Model)
                     {
-                        @if (!referee.Availability.Any())
+                        if (!referee.Availability.Any())
                         {
-                            <tr>
+                            <tr class="disponibil">
                                 <td>@referee.RefereeName</td>
-                                <td colspan="3">Indisponibil</td>
+                                <td>Disponibil</td>
+                                <td>08:00</td>
+                                <td>20:00</td>
+                                <td>@referee.Rol</td>
+                                <td>@referee.Categorie</td>
                             </tr>
                         }
                         else
                         {
-                            @foreach (var availability in referee.Availability)
+                            foreach (var availability in referee.Availability)
                             {
-                                <tr>
+                                string rowClass = availability.Status == "Disponibil" ? "disponibil"
+                                : availability.Status == "Indisponibil" ? "indisponibil"
+                                : "disponibil-partial";
+
+                                <tr class="@rowClass">
                                     <td>@referee.RefereeName</td>
                                     <td>@availability.Status</td>
-                                    <td>@(availability.Status == "Disponibil" || availability.Status == "DisponibilPartial" ? availability.OraIncepere ?? "N/A" : "N/A")</td>
-                                    <td>@(availability.Status == "Disponibil" || availability.Status == "DisponibilPartial" ? availability.OraIncheiere ?? "N/A" : "N/A")</td>
+                                    @if (availability.Status == "Indisponibil")
+                                    {
+                                        <td colspan="2">Indisponibil</td>
+                                    }
+                                    else
+                                    {
+                                        <td>@(availability.OraIncepere ?? "08:00")</td>
+                                        <td>@(availability.OraIncheiere ?? "20:00")</td>
+                                        <td>@referee.Rol</td>
+                                        <td>@referee.Categorie</td>
+                                    }
                                 </tr>
                             }
                         }

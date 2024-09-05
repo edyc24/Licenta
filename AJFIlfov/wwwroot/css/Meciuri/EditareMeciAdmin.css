@@ -2,11 +2,14 @@
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f9;
     color: #333;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
 }
 
-.container {
-    max-width: 700px;
-    margin: 50px auto;
+.container-fluid {
+    width: 100%;
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;
@@ -33,6 +36,7 @@ h2 {
     border-radius: 5px;
     border: 1px solid #ccc;
     padding: 10px;
+    width: 100%;
 }
 
 .btn-primary, .btn-secondary {
@@ -41,6 +45,9 @@ h2 {
     font-size: 1em;
     cursor: pointer;
     transition: background-color 0.3s;
+    display: inline-block;
+    width: 100%;
+    margin-top: 10px;
 }
 
 .btn-primary {
@@ -71,6 +78,7 @@ h2 {
 
 .form-group {
     margin-bottom: 1.5rem;
+    width: 100%;
 }
 
 .row {
@@ -78,13 +86,11 @@ h2 {
 }
 
 @media (max-width: 768px) {
-    .container {
-        width: 90%;
+    .container-fluid {
         padding: 15px;
     }
 
     .btn-primary, .btn-secondary {
         width: 100%;
-        margin-top: 10px;
     }
 }

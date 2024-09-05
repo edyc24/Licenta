@@ -2,6 +2,7 @@
 using AJFIlfov.BusinessLogic.Implementation.DisponibilitateAdminService.Models;
 using AJFIlfov.DataAccess;
 using AJFIlfov.Entities.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,7 +41,11 @@ namespace AJFIlfov.BusinessLogic.Implementation.DisponibilitateAdminService
         public IEnumerable<RefereeAvailabilityModel> GetRefereesAvailabilityByDay(DateTime zi)
         {
             // Fetch all referees
-            var referees = UnitOfWork.Users.Get().Where(u => u.IdRol == 3).ToList();
+            var referees = UnitOfWork.Users.Get()
+                .Where(u => u.IdRol == 3 || u.IdRol == 5)
+                .Include(m => m.IdRolNavigation)
+                .Include(m => m.IdCategorieNavigation)
+                .ToList();
 
             // Fetch all availability records for the specific day
             var availabilities = UnitOfWork.Disponibilitate.Get()
@@ -51,6 +56,8 @@ namespace AJFIlfov.BusinessLogic.Implementation.DisponibilitateAdminService
             var refereeAvailabilityList = referees.Select(referee => new RefereeAvailabilityModel
             {
                 RefereeName = referee.Nume,
+                Rol = referee.IdRolNavigation.Nume,
+                Categorie = referee.IdCategorieNavigation.Categorie,
                 Availability = availabilities.Where(a => a.IdUtilizator == referee.IdUtilizator)
                                              .Select(a => new AvailabilityStatus
                                              {

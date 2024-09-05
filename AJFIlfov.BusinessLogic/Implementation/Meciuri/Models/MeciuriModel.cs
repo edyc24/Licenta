@@ -7,6 +7,7 @@
         public Guid? IdEchipaGazda { get; set; }
         public Guid? IdEchipaOaspete { get; set; }
         public DateTime? DataJoc { get; set; }
+        public DateTime? OraJoc { get; set; }
         public Guid? IdArbitru { get; set; }
         public Guid? IdArbitruAsistent1 { get; set; }
         public Guid? IdArbitruAsistent2 { get; set; }

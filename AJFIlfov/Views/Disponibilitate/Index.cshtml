@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/Disponibilitate/Index.css" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
 <body>
 
@@ -33,22 +36,22 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@item.Zi</td>
+                            <td>@item.Zi.ToString("dd/MM/yyyy")</td>
                             <td>@item.CreatedOn.ToString("dd/MM/yyyy")</td>
                             <td>@item.Status</td>
-                            <td>@(item.Status == "Indisponibil" ? "N/A" : item.OraIncepere?.ToString("HH:mm") ?? "N/A")</td>
-                            <td>@(item.Status == "Indisponibil" ? "N/A" : item.OraIncheiere?.ToString("HH:mm") ?? "N/A")</td>
+                            <td>@(item.Status == "Indisponibil" ? "N/A" : item.Status == "Disponibil" ? "08:00" : item.OraIncepere?.ToString("HH:mm") ?? "N/A")</td>
+                            <td>@(item.Status == "Indisponibil" ? "N/A" : item.Status == "Disponibil" ? "22:00" : item.OraIncheiere?.ToString("HH:mm") ?? "N/A")</td>
                             <td>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-@item.IdCerere" data-id="@item.IdCerere" data-zi="@item.Zi" data-status="@item.Status" data-oraIncepere="@item.OraIncepere?.ToString("HH:mm")" data-oraIncheiere="@item.OraIncheiere?.ToString("HH:mm")">
+                                <button type="button" class="btn btn-primary modificaDisponibilitatea" data-toggle="modal" data-target="#exampleModal-@item.IdCerere" data-id="@item.IdCerere" data-zi="@item.Zi" data-status="@item.Status" data-oraIncepere="@item.OraIncepere?.ToString("HH:mm")" data-oraIncheiere="@item.OraIncheiere?.ToString("HH:mm")">
                                     Modifică
                                 </button>
 
                                 <!-- Modal for adding or modifying Disponibilitate -->
-                                <div class="modal fade" id="exampleModal-@item.IdCerere" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
+                                <div class="modal fade" id="exampleModal-@item.IdCerere" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-@item.IdCerere" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Adaugă/Modifică Disponibilitate</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel-@item.IdCerere">Adaugă/Modifică Disponibilitate</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -65,17 +68,19 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="oraIncepere-@item.IdCerere">Ora Începere:</label>
-                                                        <input type="time" class="form-control oraIncepere" id="oraIncepere-@item.IdCerere" name="oraIncepere" min="00:00" max="23:59">
+                                                        <input type="text" class="form-control oraIncepere" id="oraIncepere-@item.IdCerere" name="oraIncepere">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="oraIncheiere-@item.IdCerere">Ora Încheiere:</label>
-                                                        <input type="time" class="form-control oraIncheiere" id="oraIncheiere-@item.IdCerere" name="oraIncheiere" min="00:00" max="23:59">
+                                                        <input type="text" class="form-control oraIncheiere" id="oraIncheiere-@item.IdCerere" name="oraIncheiere">
                                                     </div>
+
                                                     <div class="form-group">
                                                         <label for="zi-@item.IdCerere">Zi:</label>
-                                                        <input type="text" class="form-control" id="zi-@item.IdCerere" name="zi" readonly>
+                                                        <input type="text" class="form-control zi" id="zi-@item.IdCerere" name="zi" readonly>
                                                     </div>
-                                                    <input type="text" class="form-control" id="idCerere-@item.IdCerere" name="idCerere" hidden>
+
+                                                    <input type="hidden" class="form-control" id="idCerere-@item.IdCerere" name="idCerere" value="@item.IdCerere">
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
@@ -97,7 +102,34 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script>
         $(document).ready(function () {
-            // Populate modal with existing data when modifying Disponibilitate
+
+            // Initialize flatpickr for time inputs
+            flatpickr(".oraIncepere", {
+                enableTime: true,
+                noCalendar: true,
+                dateFormat: "H:i", // Format 24 de ore
+                time_24hr: true    // Asigură afișarea în format de 24 de ore
+            });
+
+            flatpickr(".oraIncheiere", {
+                enableTime: true,
+                noCalendar: true,
+                dateFormat: "H:i",
+                time_24hr: true
+            });
+
+            $('.zi').each(function () {
+                var rawDate = $(this).data('raw-date'); // presupunem că datele brute sunt stocate într-un atribut de date
+                if (rawDate) {
+                    var dateObj = new Date(rawDate);
+                    var formattedDate = dateObj.getDate().toString().padStart(2, '0') + '/' +
+                        (dateObj.getMonth() + 1).toString().padStart(2, '0') + '/' +
+                        dateObj.getFullYear();
+                    $(this).val(formattedDate);
+                }
+            });
+
+            // Handle modal show event to populate fields
             $('.modificaDisponibilitatea').click(function () {
                 var idCerere = $(this).data('id');
                 var status = $(this).data('status');
@@ -138,10 +170,10 @@
                     oraIncheiereInput.prop('readonly', false);
 
                     // Set default values if empty
-                    if (!oraIncepereInput.val()) {
+                    if (!oraIncepereInput.val() || oraIncepereInput.val() === 'N/A') {
                         oraIncepereInput.val('08:00');
                     }
-                    if (!oraIncheiereInput.val()) {
+                    if (!oraIncheiereInput.val() || oraIncheiereInput.val() === 'N/A') {
                         oraIncheiereInput.val('22:00');
                     }
                 }

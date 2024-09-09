@@ -83,7 +83,8 @@ namespace AJFIlfov.BusinessLogic.Implementation.Account
             user.Mail = model.Email;
 
             user.Parola = HashPassword(user.Parola);
-            user.IdRol = 3;
+            user.IdRol = model.Role;
+            user.IdCategorie = model.Categorie;
             user.IsDeleted= false;
 
             UnitOfWork.Users.Insert(user);

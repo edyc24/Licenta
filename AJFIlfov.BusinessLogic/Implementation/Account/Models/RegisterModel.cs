@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iText.Kernel.Pdf.Canvas.Parser.ClipperLib;
+using System;
 
 namespace AJFIlfov.BusinessLogic.Implementation.Account
 {
@@ -8,5 +9,7 @@ namespace AJFIlfov.BusinessLogic.Implementation.Account
         public string Password { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public int Role { get; set; }
+        public int Categorie { get; set; }
     }
 }

@@ -8,7 +8,8 @@
             { 1, "Utilizator"},
             { 2 , "Administrator"},
             { 3 , "Arbitru"},
-            { 4 , "Observator"}
+            { 4 , "Observator"},
+            { 5 , "Arbitru asistent"}
         };
 
         return userRoles;

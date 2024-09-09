@@ -30,7 +30,7 @@ namespace AJFIlfov.BusinessLogic.Implementation.DisponibilitateService
             }).ToList();
             foreach(var cerere in cereri)
             {
-                var disponibilitate = UnitOfWork.Disponibilitate.Get().Where(d => d.Zi == cerere.Zi).FirstOrDefault();
+                var disponibilitate = UnitOfWork.Disponibilitate.Get().Where(d => d.Zi == cerere.Zi && d.IdUtilizator == CurrentUser.Id).FirstOrDefault();
                 if(disponibilitate!= null)
                 {
                     cerere.Status = disponibilitate.Status;

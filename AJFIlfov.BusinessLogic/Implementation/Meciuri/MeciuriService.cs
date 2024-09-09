@@ -270,10 +270,10 @@ namespace AJFIlfov.BusinessLogic.Implementation.MeciuriService
             {
                 if (referee != null && !string.IsNullOrWhiteSpace(referee.NumarTelefon))
                 {
-                    var message = $"You have been assigned to a match!\n" +
-                                  $"Date: {meci.DataJoc?.ToString("dd MMM yyyy")}\n" +
+                    var message = $"Ai fost delegat la un meci!\n" +
+                                  $"Data: {meci.DataJoc?.ToString("dd MMM yyyy")}\n" +
                                   $"Location: {localitateStadion.LocalitateNume} , {localitateStadion.StadionNume}\n" +
-                                  $"Teams: {echipaGazda} vs {echipaOaspete}";
+                                  $"Pentru mai multe detalii acceseaza site-ul!";
 
                     _smsService.SendSms(referee.NumarTelefon, message);
                 }

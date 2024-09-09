@@ -229,52 +229,88 @@ namespace AJFIlfov.Controllers
             string path = "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\AJFIlfov\\wwwroot\\raport.pdf";
 
 
-            if (System.IO.File.Exists(path))
-            {
-                var sourceFile = System.IO.File.OpenRead(path);
-                var output = new MemoryStream();
+            //if (System.IO.File.Exists(path))
+            //{
+            //    var sourceFile = System.IO.File.OpenRead(path);
+            //    var output = new MemoryStream();
 
 
-                try
-                {
-                    using var pdfDocument = new PdfDocument(new PdfReader(sourceFile));
+            //    try
+            //    {
+            //        using var pdfDocument = new PdfDocument(new PdfReader(sourceFile));
 
-                    PdfAChecker pdfAChecker = new PdfAChecker(PdfAConformanceLevel.PDF_A_1B);
-                    pdfAChecker.CheckPdfAConformance(pdfDocument);
+            //        PdfAChecker pdfAChecker = new PdfAChecker(PdfAConformanceLevel.PDF_A_1B);
+            //        pdfAChecker.CheckPdfAConformance(pdfDocument);
 
-                    Console.WriteLine("PDF-ul este conform standardului PDF/A.");
-                }
-                catch (PdfAConformanceException ex)
-                {
-                    Console.WriteLine("PDF-ul nu este conform standardului PDF/A: " + ex.Message);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("O eroare neașteptată a apărut: " + ex.Message);
-                }
+            //        Console.WriteLine("PDF-ul este conform standardului PDF/A.");
+            //    }
+            //    catch (PdfAConformanceException ex)
+            //    {
+            //        Console.WriteLine("PDF-ul nu este conform standardului PDF/A: " + ex.Message);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        Console.WriteLine("O eroare neașteptată a apărut: " + ex.Message);
+            //    }
 
-                //var pdf = new PdfDocument(new PdfReader(sourceFile), new PdfWriter(output));
-                //PdfAcroForm form = PdfAcroForm.GetAcroForm(pdf, false);
+            //    //var pdf = new PdfDocument(new PdfReader(sourceFile), new PdfWriter(output));
+            //    //PdfAcroForm form = PdfAcroForm.GetAcroForm(pdf, false);
 
-                //if(form != null)
-                //{
-                //    IDictionary<String, PdfFormField> fields = form.GetAllFormFields();
-                //    PdfFormField toset;
+            //    //if(form != null)
+            //    //{
+            //    //    IDictionary<String, PdfFormField> fields = form.GetAllFormFields();
+            //    //    PdfFormField toset;
 
-                //    fields.TryGetValue("Jocul", out toset);
-                //    toset.SetValue("test");
-                //    pdf.Close();
-                //    byte[] bytes = output.ToArray();
+            //    //    fields.TryGetValue("Jocul", out toset);
+            //    //    toset.SetValue("test");
+            //    //    pdf.Close();
+            //    //    byte[] bytes = output.ToArray();
 
 
 
-                //    return File(bytes, System.Net.Mime.MediaTypeNames.Application.Octet);
-                //}
-            }
+            //    //    return File(bytes, System.Net.Mime.MediaTypeNames.Application.Octet);
+            //    //}
+            //}
 
             return View("Index");
 
         }
+        public async Task<IActionResult> EditareMeciuriGrupa(Guid idGrupa)
+        {
+            idGrupa = Guid.Parse("e2d0e2f0-ff68-4108-9811-0ab4d4285155");
+            // Preia toate meciurile din grupa selectată
+            var meciuri = _service.GetMeciuriByGrupa(idGrupa);
+
+            // Populează ViewBag cu datele necesare pentru select lists
+            ViewBag.Arbitri = _service.GetAllArbitriAll();
+            ViewBag.Grupe = _service.GetAllGrupe();
+            ViewBag.Stadioane = _service.GetAllStadioane();
+
+            return View(meciuri); // Trimite lista de meciuri către view
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditareMeciuriGrupa([FromForm] List<MeciAdminModel> Meciuri)
+        {
+            if (ModelState.IsValid)
+            {
+                // Update the data based on the form submission
+                _service.UpdateMeciuriByAdmin(Meciuri);
+
+                // Redirect to a confirmation page or back to the list
+                return RedirectToAction("Index");
+            }
+
+            // If the model state is not valid, repopulate the ViewBag and return the view with the models
+            ViewBag.Arbitri = _service.GetAllArbitriAll();
+            ViewBag.Grupe = _service.GetAllGrupe();
+            ViewBag.Stadioane = _service.GetAllStadioane();
+
+            return View(Meciuri); // Return the view with the models to display validation errors
+        }
+
+
+
 
     }
 }

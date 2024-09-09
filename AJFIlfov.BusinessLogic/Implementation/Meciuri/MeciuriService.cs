@@ -125,6 +125,45 @@ namespace AJFIlfov.BusinessLogic.Implementation.MeciuriService
             };
         }
 
+        public List<MeciAdminModel> GetMeciuriByGrupa(Guid id)
+        {
+            var meciuri = UnitOfWork.Meciuri
+                .Get().Where(m => m.IdEchipaGazdaNavigation.IdGrupa == id && m.IdDeleted == false)
+                .Include(m => m.IdEchipaGazdaNavigation)
+                    .ThenInclude(ge => ge.IdEchipaNavigation)
+                .Include(m => m.IdEchipaOaspeteNavigation)
+                    .ThenInclude(oe => oe.IdEchipaNavigation)
+                .Include(m => m.IdArbitruNavigation)
+                .Include(m => m.IdArbitruAsistent1Navigation)
+                .Include(m => m.IdArbitruAsistent2Navigation)
+                .Include(m => m.IdArbitruRezervaNavigation)
+                .Include(m => m.IdObservatorNavigation)
+                .Include(m => m.IdStadionLocalitateNavigation)
+                    .ThenInclude(sl => sl.IdStadionNavigation)
+                .Include(m => m.IdStadionLocalitateNavigation)
+                    .ThenInclude(sl => sl.IdLocalitateNavigation)
+                .ToList();
+
+            if (meciuri == null || !meciuri.Any()) return null;
+
+            return meciuri.Select(meci => new MeciAdminModel
+            {
+                IdMeci = meci.IdMeci,
+                IdEchipaGazda = meci.IdEchipaGazda,
+                IdEchipaOaspete = meci.IdEchipaOaspete,
+                DataJoc = meci.DataJoc,
+                IdArbitru = meci.IdArbitru,
+                IdArbitruAsistent1 = meci.IdArbitruAsistent1,
+                IdArbitruAsistent2 = meci.IdArbitruAsistent2,
+                IdArbitruRezerva = meci.IdArbitruRezerva,
+                IdObservator = meci.IdObservator,
+                IdStadionLocalitate = meci.IdStadionLocalitate,
+                EchipaGazdaNume = meci.IdEchipaGazdaNavigation?.IdEchipaNavigation?.Nume,
+                EchipaOaspeteNume = meci.IdEchipaOaspeteNavigation?.IdEchipaNavigation?.Nume
+            }).ToList();
+        }
+
+
         public bool CreateMeci(MeciAdminModel model)
         {
             var idEchipaGazda = UnitOfWork.GrupeEchipa.Get().Where(e => e.IdGrupa == model.IdGrupa && e.IdEchipa == model.IdEchipaGazda).First().IdGrupaEchipa;
@@ -239,6 +278,58 @@ namespace AJFIlfov.BusinessLogic.Implementation.MeciuriService
                     _smsService.SendSms(referee.NumarTelefon, message);
                 }
             }
+        }
+
+        public bool UpdateMeciuriByAdmin(List<MeciAdminModel> models)
+        {
+            foreach (var model in models)
+            {
+                var meci = UnitOfWork.Meciuri.Get().AsNoTracking().FirstOrDefault(m => m.IdMeci == model.IdMeci);
+                if (meci == null) continue;
+
+                var meciEditat = new Meciuri
+                {
+                    IdMeci = meci.IdMeci,
+                    IdEchipaGazda = meci.IdEchipaGazda,
+                    IdEchipaOaspete = meci.IdEchipaOaspete,
+                    DataJoc = meci.DataJoc,
+                    IdArbitru = model.IdArbitru,
+                    IdArbitruAsistent1 = model.IdArbitruAsistent1,
+                    IdArbitruAsistent2 = model.IdArbitruAsistent2,
+                    IdArbitruRezerva = model.IdArbitruRezerva,
+                    IdObservator = model.IdObservator,
+                    IdStadionLocalitate = meci.IdStadionLocalitate
+                };
+
+                UnitOfWork.Meciuri.Update(meciEditat);
+            }
+
+            UnitOfWork.SaveChanges();
+
+            // Send SMS to all assigned referees for each updated match
+            foreach (var model in models)
+            {
+                var meci = UnitOfWork.Meciuri.Get().AsNoTracking().FirstOrDefault(m => m.IdMeci == model.IdMeci);
+                if (meci == null) continue;
+
+                var meciEditat = new Meciuri
+                {
+                    IdMeci = meci.IdMeci,
+                    IdEchipaGazda = meci.IdEchipaGazda,
+                    IdEchipaOaspete = meci.IdEchipaOaspete,
+                    DataJoc = meci.DataJoc,
+                    IdArbitru = model.IdArbitru,
+                    IdArbitruAsistent1 = model.IdArbitruAsistent1,
+                    IdArbitruAsistent2 = model.IdArbitruAsistent2,
+                    IdArbitruRezerva = model.IdArbitruRezerva,
+                    IdObservator = model.IdObservator,
+                    IdStadionLocalitate = meci.IdStadionLocalitate
+                };
+
+                NotifyReferees(meciEditat);
+            }
+
+            return true;
         }
 
         public string GetRefAddress(Guid id)

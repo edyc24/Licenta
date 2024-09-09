@@ -6,6 +6,9 @@
         public Guid? IdGrupa { get; set; }
         public Guid? IdEchipaGazda { get; set; }
         public Guid? IdEchipaOaspete { get; set; }
+
+        public string? EchipaGazdaNume { get; set; }
+        public string? EchipaOaspeteNume { get; set; }
         public DateTime? DataJoc { get; set; }
         public DateTime? OraJoc { get; set; }
         public Guid? IdArbitru { get; set; }

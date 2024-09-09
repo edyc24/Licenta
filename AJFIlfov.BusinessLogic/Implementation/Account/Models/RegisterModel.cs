@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iText.Kernel.Pdf.Canvas.Parser.ClipperLib;
+using System;
 
 namespace AJFIlfov.BusinessLogic.Implementation.Account
 {

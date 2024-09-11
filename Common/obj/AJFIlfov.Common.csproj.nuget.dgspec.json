@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\Common\\AJFIlfov.Common.csproj": {}
+    "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\Common\\AJFIlfov.Common.csproj": {}
   },
   "projects": {
-    "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\Common\\AJFIlfov.Common.csproj": {
+    "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\Common\\AJFIlfov.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\Common\\AJFIlfov.Common.csproj",
+        "projectUniqueName": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\Common\\AJFIlfov.Common.csproj",
         "projectName": "AJFIlfov.Common",
-        "projectPath": "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\Common\\AJFIlfov.Common.csproj",
-        "packagesPath": "C:\\Users\\eduard.cristea\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\Common\\obj\\",
+        "projectPath": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\Common\\AJFIlfov.Common.csproj",
+        "packagesPath": "C:\\Users\\eduardcr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\Common\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\eduard.cristea\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\eduardcr\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,6 +35,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -86,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

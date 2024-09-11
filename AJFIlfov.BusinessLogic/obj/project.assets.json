@@ -9197,24 +9197,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\eduard.cristea\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\eduardcr\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\AJFIlfov.BusinessLogic\\AJFIlfov.BusinessLogic.csproj",
+      "projectUniqueName": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfov.BusinessLogic\\AJFIlfov.BusinessLogic.csproj",
       "projectName": "AJFIlfov.BusinessLogic",
-      "projectPath": "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\AJFIlfov.BusinessLogic\\AJFIlfov.BusinessLogic.csproj",
-      "packagesPath": "C:\\Users\\eduard.cristea\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\AJFIlfov.BusinessLogic\\obj\\",
+      "projectPath": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfov.BusinessLogic\\AJFIlfov.BusinessLogic.csproj",
+      "packagesPath": "C:\\Users\\eduardcr\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfov.BusinessLogic\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\eduard.cristea\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\eduardcr\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9229,8 +9224,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\AJFIlfov.DataAccess\\AJFIlfov.DataAccess.csproj": {
-              "projectPath": "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\AJFIlfov.DataAccess\\AJFIlfov.DataAccess.csproj"
+            "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfov.DataAccess\\AJFIlfov.DataAccess.csproj": {
+              "projectPath": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfov.DataAccess\\AJFIlfov.DataAccess.csproj"
             }
           }
         }
@@ -9239,6 +9234,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -9286,7 +9286,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   },

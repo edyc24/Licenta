@@ -1864,10 +1864,7 @@
           "itext7": "8.0.5"
         },
         "runtime": {
-          "AJFIlfov.Common.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "AJFIlfov.Common.dll": {}
         }
       },
       "AJFIlfov.DataAccess/1.0.0": {
@@ -1887,10 +1884,7 @@
           "itext7": "8.0.5"
         },
         "runtime": {
-          "AJFIlfov.DataAccess.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "AJFIlfov.DataAccess.dll": {}
         }
       },
       "AJFIlfov.Entities/1.0.0": {
@@ -1901,10 +1895,7 @@
           "itext7": "8.0.5"
         },
         "runtime": {
-          "AJFIlfov.Entities.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "AJFIlfov.Entities.dll": {}
         }
       }
     }

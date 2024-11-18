@@ -1668,7 +1668,10 @@
           "itext7": "8.0.5"
         },
         "runtime": {
-          "AJFIlfov.Common.dll": {}
+          "AJFIlfov.Common.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "AJFIlfov.Entities/1.0.0": {
@@ -1679,7 +1682,10 @@
           "itext7": "8.0.5"
         },
         "runtime": {
-          "AJFIlfov.Entities.dll": {}
+          "AJFIlfov.Entities.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

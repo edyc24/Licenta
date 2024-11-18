@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AJFIlfov.Common")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f9ebd90785c34962df9755b55d7b5289ec260725")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9d2982f1be777d2dec23842ab515e8f1c476009f")]
 [assembly: System.Reflection.AssemblyProductAttribute("AJFIlfov.Common")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AJFIlfov.Common")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

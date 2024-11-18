@@ -1,0 +1,533 @@
+﻿/* Stiluri globale */
+:root {
+    --font-primary: "Montserrat", sans-serif;
+    --font-secondary: "Fira Sans", sans-serif;
+    --color-primary: #1d3557cc;
+    --color-primary-hover: #555555cc;
+    --color-on-primary: #fefefe;
+    --color-on-primary-hover: #ffffff;
+    --color-secondary: #1d3557;
+    --color-secondary-hover: #555555;
+    --color-on-secondary: #fefefe;
+    --color-on-secondary-hover: #ffffff;
+    --color-tertiary: #de4c3f;
+    --color-tertiary-hover: #d62828;
+    --color-on-tertiary: #fefefe;
+    --color-on-tertiary-hover: #ffffff;
+    --color-surface: #fefefe;
+    --color-surface-inverse: #0f0f0f;
+    --color-on-surface: #0f0f0f;
+    --color-on-surface-inverse: #fefefe;
+    --color-scrim-big: rgba(50, 50, 50, 0.5);
+    --color-scrim-medium: rgba(0, 0, 0, 0.85);
+    --color-scrim-small: rgba(0, 0, 0, 0.5);
+    --color-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* Resetare marginile și padding-urile */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-primary), sans-serif;
+    background-color: var(--color-surface);
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Secțiunea Hero */
+.hero {
+    position: relative;
+    height: 70vh;
+    background: var(--color-scrim-small);
+}
+
+    .hero .hero-text-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: var(--color-on-surface-inverse);
+        text-align: center;
+        z-index: 1;
+    }
+
+        .hero .hero-text-container h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .hero .hero-text-container p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+        }
+
+        .hero .hero-text-container a {
+            padding: 15px 30px;
+            background-color: var(--color-tertiary);
+            color: var(--color-on-tertiary);
+            border: none;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+            display: inline-block;
+        }
+
+            .hero .hero-text-container a:hover {
+                background-color: var(--color-tertiary-hover);
+            }
+
+    .hero .hero-images-container {
+        position: absolute;
+        z-index: -1;
+        display: flex;
+        height: 100%;
+        width: 100%;
+    }
+
+        .hero .hero-images-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-scrim-big);
+            z-index: 1;
+        }
+
+        .hero .hero-images-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            margin-left: -5vw;        }
+
+            .hero .hero-images-container img.first-image {
+                clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
+            }
+
+            .hero .hero-images-container img.middle-image {
+                clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+            }
+
+            .hero .hero-images-container img.last-image {
+                clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+                margin-right: -5vw;
+            }
+
+/* Header */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background: transparent; /* Header transparent */
+    z-index: 1000;
+    padding: 1em 10em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    position: relative;
+}
+
+.header-title {
+    display: flex;
+    align-items: center;
+}
+
+    .header-title h2 {
+        margin: 0;
+        letter-spacing: 2px;
+        margin-left: 1em;
+        color: var(--color-on-surface-inverse);
+    }
+
+    .header-title img {
+        width: 4em;
+        height: auto;
+        border-radius: 8px;
+    }
+
+.header-menu-toggle {
+    display: none; /* Ascundeți butonul pe desktop */
+    color: var(--color-on-surface-inverse);
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+/* Navigare */
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+    header nav a {
+        color: var(--color-on-surface-inverse);
+        text-decoration: none;
+        margin: 0 15px;
+        font-size: 1.1em;
+        transition: color 0.3s;
+    }
+
+        header nav a:hover {
+            color: var(--color-tertiary);
+        }
+
+/* Ajustare conținut pentru a evita suprapunerea cu header-ul */
+.content {
+    margin-top: 80px; /* Ajustați în funcție de înălțimea header-ului */
+}
+
+/* Responsivitate pentru dispozitive mobile */
+@media (max-width: 768px) {
+    header {
+        padding: 1em 2em;
+    }
+
+    .header-content {
+        position: relative;
+    }
+
+    .header-title h2 {
+        display: none; /* Ascundeți titlul pe mobil */
+    }
+
+    .header-menu-toggle {
+        display: block; /* Afișați butonul pe mobil */
+        z-index: 10 !important;
+        border: 10px solid red;
+    }
+
+    /* Ascundeți navigarea pe mobil */
+    header nav {
+        display: none;
+        flex-direction: column;
+        background-color: var(--color-secondary);
+        position: absolute;
+        top: 60px; /* Ajustați în funcție de înălțimea header-ului */
+        right: 0;
+        width: 200px;
+        padding: 10px 0;
+    }
+
+        header nav.show {
+            display: flex; /* Afișați navigarea când clasa 'show' este adăugată */
+        }
+
+        header nav a {
+            margin: 15px;
+            color: var(--color-on-secondary);
+        }
+}
+
+/* Ajustări suplimentare pentru mobil */
+@media (max-width: 576px) {
+    .hero-text-container h1 {
+        font-size: 2em;
+    }
+
+    .hero-text-container p {
+        font-size: 1em;
+    }
+
+    .hero-text-container a {
+        font-size: 0.9em;
+        padding: 12px 24px;
+        width: auto;
+    }
+}
+
+/* Secțiunea Servicii */
+.services {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+    .services h2 {
+        font-size: 2.5em;
+        margin-bottom: 50px;
+        color: var(--color-on-surface);
+    }
+
+    .services .service-cards-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 40px;
+    }
+
+    .services .service-card {
+        background-color: var(--color-surface);
+        width: 300px;
+        padding: 30px 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px var(--color-shadow);
+        transition: transform 0.3s;
+        background-size: cover;
+        background-position: center;
+        color: var(--color-on-surface-inverse);
+    }
+
+        .services .service-card.first-card {
+            background-image: url("/images/services3.jpg");
+        }
+
+        .services .service-card.second-card {
+            background-image: url("/images/services2.jpg");
+            background-position-x: 70%;
+        }
+
+        .services .service-card.third-card {
+            background-image: url("/images/services1.jpg");
+            background-position-x: 75%;
+        }
+
+        .services .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .services .service-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .services .service-card p {
+            font-size: 1em;
+        }
+
+/* Secțiunea Știri */
+.news {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+    .news h2 {
+        font-size: 2.5em;
+        margin-bottom: 50px;
+        color: var(--color-on-surface);
+    }
+
+    .news .news-cards-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 40px;
+    }
+
+    .news .news-card {
+        background-color: var(--color-surface);
+        width: 350px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px var(--color-shadow);
+        text-align: left;
+        transition: transform 0.3s;
+    }
+
+        .news .news-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .news .news-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .news .news-card .news-card-content {
+            padding: 20px;
+        }
+
+            .news .news-card .news-card-content h3 {
+                font-size: 1.5em;
+                margin-bottom: 10px;
+                color: var(--color-secondary);
+            }
+
+            .news .news-card .news-card-content p {
+                font-size: 1em;
+                color: var(--color-secondary-hover);
+                margin-bottom: 15px;
+            }
+
+            .news .news-card .news-card-content a {
+                color: var(--color-tertiary);
+                font-weight: bold;
+            }
+
+/* Secțiunea Statistici */
+.stats {
+    padding: 60px 20px 0 20px;
+    background-color: lightblue;
+    text-align: center;
+}
+
+    .stats h2 {
+        font-size: 2.5em;
+        margin-bottom: 50px;
+        color: var(--color-on-surface);
+    }
+
+    .stats .stats-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100%;
+        background-image: url("/images/stats-bg.png");
+        background-size: cover;
+        background-position: center;
+        background-color: var(--color-scrim-medium);
+        background-blend-mode: overlay;
+        padding: 40px 0;
+    }
+
+    .stats .stats-card {
+        margin: 20px;
+        width: 170px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+        .stats .stats-card img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .stats .stats-card h3 {
+            font-size: 2.5em;
+            margin-top: 20px;
+            color: var(--color-on-surface-inverse);
+        }
+
+        .stats .stats-card p {
+            font-size: 0.8em;
+            margin-top: 10px;
+            color: var(--color-on-surface-inverse);
+        }
+
+/* Secțiunea Contact */
+.contact {
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+    background: var(--color-primary);
+}
+
+    .contact .contact-content {
+        position: relative;
+        z-index: 1;
+        color: var(--color-on-primary);
+    }
+
+        .contact .contact-content h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        .contact .contact-content p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+
+        .contact .contact-content a {
+            padding: 15px 30px;
+            background-color: var(--color-tertiary);
+            color: var(--color-on-tertiary);
+            border: none;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+            .contact .contact-content a:hover {
+                background-color: var(--color-tertiary-hover);
+            }
+
+/* Footer */
+footer {
+    background-color: var(--color-secondary);
+    color: var(--color-on-secondary);
+    padding: 40px 20px;
+    text-align: center;
+}
+
+    footer p {
+        margin-bottom: 10px;
+    }
+
+    footer .social-icons a {
+        color: var(--color-on-secondary);
+        margin: 0 10px;
+        font-size: 1.5em;
+    }
+
+        footer .social-icons a:hover {
+            color: var(--color-tertiary-hover);
+        }
+
+/* Responsivitate suplimentară */
+@media (max-width: 992px) {
+    .services .service-cards-container,
+    .news .news-cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .services .service-card,
+    .news .news-card {
+        width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-text-container h1 {
+        font-size: 2.5em;
+    }
+
+    .hero-text-container p {
+        font-size: 1.2em;
+    }
+
+    .stats .stats-content {
+        flex-direction: column;
+        padding: 20px 0;
+    }
+
+    .stats .stats-card {
+        width: 80%;
+    }
+}
+
+@media (max-width: 576px) {
+    .services .service-card,
+    .news .news-card {
+        width: 100%;
+    }
+
+    .stats .stats-card {
+        width: 100%;
+    }
+}

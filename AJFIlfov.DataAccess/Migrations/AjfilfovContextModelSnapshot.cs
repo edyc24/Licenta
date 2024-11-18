@@ -22,7 +22,57 @@ namespace AJFIlfov.DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("AJFIlfov.DataAccess.Models.Disponibilitate", b =>
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Anunt", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Continut")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DataPublicarii")
+                        .HasColumnType("datetime");
+
+                    b.Property<byte[]>("Imagine")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("TipAnunt")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Titlu")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Anunturi");
+                });
+
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Categorii", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Categorie")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categorii");
+                });
+
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Disponibilitate", b =>
                 {
                     b.Property<Guid>("IdDisponibilitate")
                         .HasColumnType("uniqueidentifier");
@@ -30,13 +80,11 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.Property<Guid?>("IdUtilizator")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("OraIncepere")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                    b.Property<DateTime?>("OraIncepere")
+                        .HasColumnType("datetime");
 
-                    b.Property<string>("OraIncheiere")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<DateTime?>("OraIncheiere")
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Status")
                         .HasMaxLength(20)
@@ -48,12 +96,28 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.HasKey("IdDisponibilitate")
                         .HasName("PK__Disponib__A79EDADBA5F65FC0");
 
-                    b.HasIndex("IdUtilizator");
+                    b.HasIndex(new[] { "IdUtilizator" }, "IX_Disponibilitate_IdUtilizator");
 
                     b.ToTable("Disponibilitate", (string)null);
                 });
 
-            modelBuilder.Entity("AJFIlfov.DataAccess.Models.Echipe", b =>
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.DisponibilitateAdmin", b =>
+                {
+                    b.Property<Guid>("IdDisponibilitateAdmin")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime");
+
+                    b.Property<DateTime>("Zi")
+                        .HasColumnType("date");
+
+                    b.HasKey("IdDisponibilitateAdmin");
+
+                    b.ToTable("DisponibilitateAdmin", (string)null);
+                });
+
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Echipe", b =>
                 {
                     b.Property<Guid>("IdEchipa")
                         .HasColumnType("uniqueidentifier");
@@ -69,7 +133,7 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.ToTable("Echipe", (string)null);
                 });
 
-            modelBuilder.Entity("AJFIlfov.DataAccess.Models.Grupe", b =>
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Grupe", b =>
                 {
                     b.Property<Guid>("IdGrupa")
                         .HasColumnType("uniqueidentifier");
@@ -85,31 +149,36 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.ToTable("Grupe", (string)null);
                 });
 
-            modelBuilder.Entity("AJFIlfov.DataAccess.Models.GrupeEchipa", b =>
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.GrupeEchipa", b =>
                 {
                     b.Property<Guid>("IdGrupaEchipa")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("IdEchipa")
+                    b.Property<Guid>("IdEchipa")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("IdGrupa")
+                    b.Property<Guid>("IdGrupa")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("IdGrupaEchipa")
                         .HasName("PK__GrupeEch__F01D7F8F07F92D34");
 
-                    b.HasIndex("IdEchipa");
+                    b.HasIndex(new[] { "IdEchipa" }, "IX_GrupeEchipa_IdEchipa");
 
-                    b.HasIndex("IdGrupa");
+                    b.HasIndex(new[] { "IdGrupa" }, "IX_GrupeEchipa_IdGrupa");
 
                     b.ToTable("GrupeEchipa", (string)null);
                 });
 
-            modelBuilder.Entity("AJFIlfov.DataAccess.Models.Localitati", b =>
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Localitati", b =>
                 {
                     b.Property<Guid>("IdLocalitate")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("Nume")
                         .IsRequired()
@@ -122,7 +191,7 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.ToTable("Localitati", (string)null);
                 });
 
-            modelBuilder.Entity("AJFIlfov.DataAccess.Models.Marimi", b =>
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Marimi", b =>
                 {
                     b.Property<int>("IdMarime")
                         .HasColumnType("int");
@@ -140,13 +209,56 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.ToTable("Marimi", (string)null);
                 });
 
-            modelBuilder.Entity("AJFIlfov.DataAccess.Models.Meciuri", b =>
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.MeciLive", b =>
+                {
+                    b.Property<int>("IdMeciLive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdMeciLive"));
+
+                    b.Property<DateTime>("DataOra")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("EchipaGazda")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EchipaOaspete")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsSecondHalf")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("Minut")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ScorGazda")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ScorOaspete")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("StartTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IdMeciLive");
+
+                    b.ToTable("MeciuriLive");
+                });
+
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Meciuri", b =>
                 {
                     b.Property<Guid>("IdMeci")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("DataJoc")
-                        .HasColumnType("date");
+                        .HasColumnType("datetime");
 
                     b.Property<Guid?>("IdArbitru")
                         .HasColumnType("uniqueidentifier");
@@ -159,6 +271,10 @@ namespace AJFIlfov.DataAccess.Migrations
 
                     b.Property<Guid?>("IdArbitruRezerva")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool?>("IdDeleted")
+                        .HasColumnType("bit")
+                        .HasColumnName("idDeleted");
 
                     b.Property<Guid?>("IdEchipaGazda")
                         .HasColumnType("uniqueidentifier");
@@ -186,26 +302,54 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.HasKey("IdMeci")
                         .HasName("PK__Meciuri__4D7C0B75D32C1A8D");
 
-                    b.HasIndex("IdArbitru");
+                    b.HasIndex(new[] { "IdArbitru" }, "IX_Meciuri_IdArbitru");
 
-                    b.HasIndex("IdArbitruAsistent1");
+                    b.HasIndex(new[] { "IdArbitruAsistent1" }, "IX_Meciuri_IdArbitruAsistent1");
 
-                    b.HasIndex("IdArbitruAsistent2");
+                    b.HasIndex(new[] { "IdArbitruAsistent2" }, "IX_Meciuri_IdArbitruAsistent2");
 
-                    b.HasIndex("IdArbitruRezerva");
+                    b.HasIndex(new[] { "IdArbitruRezerva" }, "IX_Meciuri_IdArbitruRezerva");
 
-                    b.HasIndex("IdEchipaGazda");
+                    b.HasIndex(new[] { "IdEchipaGazda" }, "IX_Meciuri_IdEchipaGazda");
 
-                    b.HasIndex("IdEchipaOaspete");
+                    b.HasIndex(new[] { "IdEchipaOaspete" }, "IX_Meciuri_IdEchipaOaspete");
 
-                    b.HasIndex("IdObservator");
+                    b.HasIndex(new[] { "IdObservator" }, "IX_Meciuri_IdObservator");
 
-                    b.HasIndex("IdStadionLocalitate");
+                    b.HasIndex(new[] { "IdStadionLocalitate" }, "IX_Meciuri_IdStadionLocalitate");
 
                     b.ToTable("Meciuri", (string)null);
                 });
 
-            modelBuilder.Entity("AJFIlfov.DataAccess.Models.Refereestat", b =>
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.PasswordRecovery", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime");
+
+                    b.Property<bool>("IsAvailable")
+                        .HasColumnType("bit")
+                        .HasColumnName("isAvailable");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("UserID");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("PasswordRecovery", (string)null);
+                });
+
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Refereestat", b =>
                 {
                     b.Property<int?>("Total")
                         .HasColumnType("int")
@@ -218,7 +362,7 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.ToTable("refereestats", (string)null);
                 });
 
-            modelBuilder.Entity("AJFIlfov.DataAccess.Models.Roluri", b =>
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Roluri", b =>
                 {
                     b.Property<int>("IdRol")
                         .HasColumnType("int");
@@ -234,7 +378,7 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.ToTable("Roluri", (string)null);
                 });
 
-            modelBuilder.Entity("AJFIlfov.DataAccess.Models.Stadioane", b =>
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Stadioane", b =>
                 {
                     b.Property<Guid>("IdStadion")
                         .HasColumnType("uniqueidentifier");
@@ -250,7 +394,7 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.ToTable("Stadioane", (string)null);
                 });
 
-            modelBuilder.Entity("AJFIlfov.DataAccess.Models.StadionLocalitate", b =>
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.StadionLocalitate", b =>
                 {
                     b.Property<Guid>("IdStadionLocalitate")
                         .HasColumnType("uniqueidentifier");
@@ -264,14 +408,51 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.HasKey("IdStadionLocalitate")
                         .HasName("PK__StadionL__8D363E8182F8F13E");
 
-                    b.HasIndex("IdLocalitate");
+                    b.HasIndex(new[] { "IdLocalitate" }, "IX_StadionLocalitate_IdLocalitate");
 
-                    b.HasIndex("IdStadion");
+                    b.HasIndex(new[] { "IdStadion" }, "IX_StadionLocalitate_IdStadion");
 
                     b.ToTable("StadionLocalitate", (string)null);
                 });
 
-            modelBuilder.Entity("AJFIlfov.DataAccess.Models.Utilizatori", b =>
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.UserAddress", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("City")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Country")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<double?>("Latitude")
+                        .HasColumnType("float");
+
+                    b.Property<double?>("Longitude")
+                        .HasColumnType("float");
+
+                    b.Property<string>("State")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("StreetAddress")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("ZipCode")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.HasKey("UserId")
+                        .HasName("PK__UserAddr__1788CC4C0BBEEBDD");
+
+                    b.ToTable("UserAddresses");
+                });
+
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Utilizatori", b =>
                 {
                     b.Property<Guid>("IdUtilizator")
                         .HasColumnType("uniqueidentifier");
@@ -286,6 +467,9 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.Property<DateTime?>("DataNastere")
                         .HasColumnType("date");
 
+                    b.Property<int>("IdCategorie")
+                        .HasColumnType("int");
+
                     b.Property<int?>("IdMarimeAdidasi")
                         .HasColumnType("int");
 
@@ -295,7 +479,19 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.Property<int>("IdRol")
                         .HasColumnType("int");
 
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("bit")
+                        .HasColumnName("isDeleted");
+
+                    b.Property<bool?>("IsSuspended")
+                        .HasColumnType("bit")
+                        .HasColumnName("isSuspended");
+
                     b.Property<string>("Mail")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("NumarTelefon")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -313,21 +509,29 @@ namespace AJFIlfov.DataAccess.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<byte[]>("ProfilePicture")
+                        .HasColumnType("varbinary(max)");
+
                     b.HasKey("IdUtilizator")
                         .HasName("PK__Utilizat__99101D6D186B6C92");
 
-                    b.HasIndex("IdMarimeAdidasi");
+                    b.HasIndex("IdCategorie");
 
-                    b.HasIndex("IdMarimeHaine");
+                    b.HasIndex(new[] { "IdRol" }, "IX_Utilizatori_IdCategorie")
+                        .HasDatabaseName("IX_Utilizatori_IdCategorie1");
 
-                    b.HasIndex("IdRol");
+                    b.HasIndex(new[] { "IdMarimeAdidasi" }, "IX_Utilizatori_IdMarimeAdidasi");
+
+                    b.HasIndex(new[] { "IdMarimeHaine" }, "IX_Utilizatori_IdMarimeHaine");
+
+                    b.HasIndex(new[] { "IdRol" }, "IX_Utilizatori_IdRol");
 
                     b.ToTable("Utilizatori", (string)null);
                 });
 
-            modelBuilder.Entity("AJFIlfov.DataAccess.Models.Disponibilitate", b =>
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Disponibilitate", b =>
                 {
-                    b.HasOne("AJFIlfov.DataAccess.Models.Utilizatori", "IdUtilizatorNavigation")
+                    b.HasOne("AJFIlfov.Entities.Entities.Utilizatori", "IdUtilizatorNavigation")
                         .WithMany("Disponibilitates")
                         .HasForeignKey("IdUtilizator")
                         .HasConstraintName("FK__Disponibi__IdUti__38996AB5");
@@ -335,16 +539,20 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.Navigation("IdUtilizatorNavigation");
                 });
 
-            modelBuilder.Entity("AJFIlfov.DataAccess.Models.GrupeEchipa", b =>
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.GrupeEchipa", b =>
                 {
-                    b.HasOne("AJFIlfov.DataAccess.Models.Echipe", "IdEchipaNavigation")
+                    b.HasOne("AJFIlfov.Entities.Entities.Echipe", "IdEchipaNavigation")
                         .WithMany("GrupeEchipas")
                         .HasForeignKey("IdEchipa")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("FK__GrupeEchi__IdEch__2A4B4B5E");
 
-                    b.HasOne("AJFIlfov.DataAccess.Models.Grupe", "IdGrupaNavigation")
+                    b.HasOne("AJFIlfov.Entities.Entities.Grupe", "IdGrupaNavigation")
                         .WithMany("GrupeEchipas")
                         .HasForeignKey("IdGrupa")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("FK__GrupeEchi__IdGru__2B3F6F97");
 
                     b.Navigation("IdEchipaNavigation");
@@ -352,44 +560,44 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.Navigation("IdGrupaNavigation");
                 });
 
-            modelBuilder.Entity("AJFIlfov.DataAccess.Models.Meciuri", b =>
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Meciuri", b =>
                 {
-                    b.HasOne("AJFIlfov.DataAccess.Models.Utilizatori", "IdArbitruNavigation")
+                    b.HasOne("AJFIlfov.Entities.Entities.Utilizatori", "IdArbitruNavigation")
                         .WithMany("MeciuriIdArbitruNavigations")
                         .HasForeignKey("IdArbitru")
                         .HasConstraintName("FK__Meciuri__IdArbit__4222D4EF");
 
-                    b.HasOne("AJFIlfov.DataAccess.Models.Utilizatori", "IdArbitruAsistent1Navigation")
+                    b.HasOne("AJFIlfov.Entities.Entities.Utilizatori", "IdArbitruAsistent1Navigation")
                         .WithMany("MeciuriIdArbitruAsistent1Navigations")
                         .HasForeignKey("IdArbitruAsistent1")
                         .HasConstraintName("FK__Meciuri__IdArbit__4316F928");
 
-                    b.HasOne("AJFIlfov.DataAccess.Models.Utilizatori", "IdArbitruAsistent2Navigation")
+                    b.HasOne("AJFIlfov.Entities.Entities.Utilizatori", "IdArbitruAsistent2Navigation")
                         .WithMany("MeciuriIdArbitruAsistent2Navigations")
                         .HasForeignKey("IdArbitruAsistent2")
                         .HasConstraintName("FK__Meciuri__IdArbit__440B1D61");
 
-                    b.HasOne("AJFIlfov.DataAccess.Models.Utilizatori", "IdArbitruRezervaNavigation")
+                    b.HasOne("AJFIlfov.Entities.Entities.Utilizatori", "IdArbitruRezervaNavigation")
                         .WithMany("MeciuriIdArbitruRezervaNavigations")
                         .HasForeignKey("IdArbitruRezerva")
                         .HasConstraintName("FK__Meciuri__IdArbit__44FF419A");
 
-                    b.HasOne("AJFIlfov.DataAccess.Models.GrupeEchipa", "IdEchipaGazdaNavigation")
+                    b.HasOne("AJFIlfov.Entities.Entities.GrupeEchipa", "IdEchipaGazdaNavigation")
                         .WithMany("MeciuriIdEchipaGazdaNavigations")
                         .HasForeignKey("IdEchipaGazda")
                         .HasConstraintName("FK__Meciuri__IdEchip__403A8C7D");
 
-                    b.HasOne("AJFIlfov.DataAccess.Models.GrupeEchipa", "IdEchipaOaspeteNavigation")
+                    b.HasOne("AJFIlfov.Entities.Entities.GrupeEchipa", "IdEchipaOaspeteNavigation")
                         .WithMany("MeciuriIdEchipaOaspeteNavigations")
                         .HasForeignKey("IdEchipaOaspete")
                         .HasConstraintName("FK__Meciuri__IdEchip__412EB0B6");
 
-                    b.HasOne("AJFIlfov.DataAccess.Models.Utilizatori", "IdObservatorNavigation")
+                    b.HasOne("AJFIlfov.Entities.Entities.Utilizatori", "IdObservatorNavigation")
                         .WithMany("MeciuriIdObservatorNavigations")
                         .HasForeignKey("IdObservator")
                         .HasConstraintName("FK__Meciuri__IdObser__45F365D3");
 
-                    b.HasOne("AJFIlfov.DataAccess.Models.StadionLocalitate", "IdStadionLocalitateNavigation")
+                    b.HasOne("AJFIlfov.Entities.Entities.StadionLocalitate", "IdStadionLocalitateNavigation")
                         .WithMany("Meciuris")
                         .HasForeignKey("IdStadionLocalitate")
                         .HasConstraintName("FK__Meciuri__IdStadi__46E78A0C");
@@ -411,14 +619,26 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.Navigation("IdStadionLocalitateNavigation");
                 });
 
-            modelBuilder.Entity("AJFIlfov.DataAccess.Models.StadionLocalitate", b =>
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.PasswordRecovery", b =>
                 {
-                    b.HasOne("AJFIlfov.DataAccess.Models.Localitati", "IdLocalitateNavigation")
+                    b.HasOne("AJFIlfov.Entities.Entities.Utilizatori", "User")
+                        .WithMany("PasswordRecoveries")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_PasswordRecovery_User");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.StadionLocalitate", b =>
+                {
+                    b.HasOne("AJFIlfov.Entities.Entities.Localitati", "IdLocalitateNavigation")
                         .WithMany("StadionLocalitates")
                         .HasForeignKey("IdLocalitate")
                         .HasConstraintName("FK__StadionLo__IdLoc__3C69FB99");
 
-                    b.HasOne("AJFIlfov.DataAccess.Models.Stadioane", "IdStadionNavigation")
+                    b.HasOne("AJFIlfov.Entities.Entities.Stadioane", "IdStadionNavigation")
                         .WithMany("StadionLocalitates")
                         .HasForeignKey("IdStadion")
                         .HasConstraintName("FK__StadionLo__IdSta__3B75D760");
@@ -428,24 +648,44 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.Navigation("IdStadionNavigation");
                 });
 
-            modelBuilder.Entity("AJFIlfov.DataAccess.Models.Utilizatori", b =>
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.UserAddress", b =>
                 {
-                    b.HasOne("AJFIlfov.DataAccess.Models.Marimi", "IdMarimeAdidasiNavigation")
+                    b.HasOne("AJFIlfov.Entities.Entities.Utilizatori", "User")
+                        .WithOne("UserAddress")
+                        .HasForeignKey("AJFIlfov.Entities.Entities.UserAddress", "UserId")
+                        .IsRequired()
+                        .HasConstraintName("FK__UserAddre__UserI__160F4887");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Utilizatori", b =>
+                {
+                    b.HasOne("AJFIlfov.Entities.Entities.Categorii", "IdCategorieNavigation")
+                        .WithMany("Utilizatories")
+                        .HasForeignKey("IdCategorie")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_Utilizatori_Categorii");
+
+                    b.HasOne("AJFIlfov.Entities.Entities.Marimi", "IdMarimeAdidasiNavigation")
                         .WithMany("UtilizatoriIdMarimeAdidasiNavigations")
                         .HasForeignKey("IdMarimeAdidasi")
                         .HasConstraintName("FK__Utilizato__IdMar__34C8D9D1");
 
-                    b.HasOne("AJFIlfov.DataAccess.Models.Marimi", "IdMarimeHaineNavigation")
+                    b.HasOne("AJFIlfov.Entities.Entities.Marimi", "IdMarimeHaineNavigation")
                         .WithMany("UtilizatoriIdMarimeHaineNavigations")
                         .HasForeignKey("IdMarimeHaine")
                         .HasConstraintName("FK__Utilizato__IdMar__35BCFE0A");
 
-                    b.HasOne("AJFIlfov.DataAccess.Models.Roluri", "IdRolNavigation")
+                    b.HasOne("AJFIlfov.Entities.Entities.Roluri", "IdRolNavigation")
                         .WithMany("Utilizatoris")
                         .HasForeignKey("IdRol")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK__Utilizato__IdRol__33D4B598");
+
+                    b.Navigation("IdCategorieNavigation");
 
                     b.Navigation("IdMarimeAdidasiNavigation");
 
@@ -454,51 +694,56 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.Navigation("IdRolNavigation");
                 });
 
-            modelBuilder.Entity("AJFIlfov.DataAccess.Models.Echipe", b =>
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Categorii", b =>
+                {
+                    b.Navigation("Utilizatories");
+                });
+
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Echipe", b =>
                 {
                     b.Navigation("GrupeEchipas");
                 });
 
-            modelBuilder.Entity("AJFIlfov.DataAccess.Models.Grupe", b =>
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Grupe", b =>
                 {
                     b.Navigation("GrupeEchipas");
                 });
 
-            modelBuilder.Entity("AJFIlfov.DataAccess.Models.GrupeEchipa", b =>
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.GrupeEchipa", b =>
                 {
                     b.Navigation("MeciuriIdEchipaGazdaNavigations");
 
                     b.Navigation("MeciuriIdEchipaOaspeteNavigations");
                 });
 
-            modelBuilder.Entity("AJFIlfov.DataAccess.Models.Localitati", b =>
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Localitati", b =>
                 {
                     b.Navigation("StadionLocalitates");
                 });
 
-            modelBuilder.Entity("AJFIlfov.DataAccess.Models.Marimi", b =>
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Marimi", b =>
                 {
                     b.Navigation("UtilizatoriIdMarimeAdidasiNavigations");
 
                     b.Navigation("UtilizatoriIdMarimeHaineNavigations");
                 });
 
-            modelBuilder.Entity("AJFIlfov.DataAccess.Models.Roluri", b =>
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Roluri", b =>
                 {
                     b.Navigation("Utilizatoris");
                 });
 
-            modelBuilder.Entity("AJFIlfov.DataAccess.Models.Stadioane", b =>
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Stadioane", b =>
                 {
                     b.Navigation("StadionLocalitates");
                 });
 
-            modelBuilder.Entity("AJFIlfov.DataAccess.Models.StadionLocalitate", b =>
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.StadionLocalitate", b =>
                 {
                     b.Navigation("Meciuris");
                 });
 
-            modelBuilder.Entity("AJFIlfov.DataAccess.Models.Utilizatori", b =>
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Utilizatori", b =>
                 {
                     b.Navigation("Disponibilitates");
 
@@ -511,6 +756,10 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.Navigation("MeciuriIdArbitruRezervaNavigations");
 
                     b.Navigation("MeciuriIdObservatorNavigations");
+
+                    b.Navigation("PasswordRecoveries");
+
+                    b.Navigation("UserAddress");
                 });
 #pragma warning restore 612, 618
         }

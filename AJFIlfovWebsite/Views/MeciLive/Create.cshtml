@@ -1,0 +1,138 @@
+﻿@model AJFIlfov.BusinessLogic.Implementation.MeciLiveService.Models.MeciLiveModel
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adaugă Meci Nou - AJF Ilfov</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        /* Include aici stilurile din designul anterior */
+        /* ... (Stilurile din designul "Competiții") ... */
+
+        /* Stiluri specifice pentru formular */
+        .form-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #e3f2fd;
+            border-radius: 8px;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007acc;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            color: #005fa3;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-top: 5px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #007acc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+
+        .btn:hover {
+            background-color: #005fa3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Meniu de navigare -->
+    <nav>
+        <a href="#" class="logo">AJF Ilfov</a>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <ul id="menu">
+            <li><a href="/">Acasă</a></li>
+            <li><a href="/Documente">Documente</a></li>
+            <li><a href="/Anunturi">Anunțuri</a></li>
+            <li><a href="/Comisii">Comisii</a></li>
+            <li><a href="/Competitii">Competiții</a></li>
+            <li><a href="/Contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <h1>Adaugă Meci Nou</h1>
+    </header>
+
+    <!-- Container principal -->
+    <div class="container">
+        <div class="form-container">
+            <form asp-action="Create" method="post">
+                <div class="form-group">
+                    <label asp-for="EchipaGazda"></label>
+                    <input asp-for="EchipaGazda" class="form-control" />
+                    <span asp-validation-for="EchipaGazda" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="EchipaOaspete"></label>
+                    <input asp-for="EchipaOaspete" class="form-control" />
+                    <span asp-validation-for="EchipaOaspete" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DataOra"></label>
+                    <input asp-for="DataOra" class="form-control" type="datetime-local" />
+                    <span asp-validation-for="DataOra" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Status"></label>
+                    <select asp-for="Status" class="form-control">
+                        <option value="Programat">Programat</option>
+                        <option value="InDesfasurare">În Desfășurare</option>
+                        <option value="Finalizat">Finalizat</option>
+                    </select>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="text-align: center;">
+                    <button type="submit" class="btn">Salvează</button>
+                    <a asp-action="Index" class="btn btn-secondary">Înapoi</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 Asociația Județeană de Fotbal Ilfov. Toate drepturile rezervate.</p>
+    </footer>
+
+    <!-- Script pentru toggle meniu -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("menu");
+            menu.classList.toggle("show");
+        }
+    </script>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+</body>
+</html>

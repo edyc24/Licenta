@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq.Expressions;
 
-namespace AJFIlfov.Common
+namespace AJFIlfov.Common;
+
+public interface IRepository<TEntity>
+    where TEntity : class, IEntity
 {
-    public interface IRepository<TEntity>
-            where TEntity : class, IEntity
-    {
-        IQueryable<TEntity> Get();
-        TEntity Insert(TEntity entity);
-        TEntity Update(TEntity entitty);
-        TEntity Find(Guid id);
-        IQueryable<TEntity> Where(Expression<Func<TEntity, bool>> predicate);
-        void Delete(TEntity entity);
-    }
+    IQueryable<TEntity> Get();
+    TEntity Insert(TEntity entity);
+    TEntity Update(TEntity entitty);
+    TEntity Find(Guid id);
+    IQueryable<TEntity> Where(Expression<Func<TEntity, bool>> predicate);
+    void Delete(TEntity entity);
 }

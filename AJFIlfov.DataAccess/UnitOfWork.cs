@@ -33,8 +33,13 @@ namespace AJFIlfov.DataAccess
 
         private IRepository<Meciuri> meciuri;
         public IRepository<Meciuri> Meciuri => meciuri ?? (meciuri = new BaseRepository<Meciuri>(Context));
+        private IRepository<Anunt> anunturi;
+        public IRepository<Anunt> Anunturi => anunturi ?? (anunturi = new BaseRepository<Anunt>(Context));
+
         private IRepository<Echipe> echipe;
         public IRepository<Echipe> Echipe => echipe ?? (echipe = new BaseRepository<Echipe>(Context));
+        private IRepository<MeciLive> meciuriLive;
+        public IRepository<MeciLive> MeciuriLive => meciuriLive ?? (meciuriLive = new BaseRepository<MeciLive>(Context));
         private IRepository<Grupe> grupe;
         public IRepository<Grupe> Grupe => grupe ?? (grupe = new BaseRepository<Grupe>(Context));
         private IRepository<GrupeEchipa> grupeEchipa;

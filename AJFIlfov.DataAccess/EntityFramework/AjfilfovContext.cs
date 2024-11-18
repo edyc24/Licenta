@@ -46,11 +46,13 @@ public partial class AjfilfovContext : DbContext
     public virtual DbSet<UserAddress> UserAddresses { get; set; }
 
     public virtual DbSet<Utilizatori> Utilizatoris { get; set; }
+    public virtual DbSet<Anunt> Anunturi { get; set; }
+    public virtual DbSet<MeciLive> MeciuriLive { get; set; }
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=tcp:cjailfov.database.windows.net,1433;Initial Catalog=AJFIlfov;Persist Security Info=False;User ID=edyc;Password=Eduard123?;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+        => optionsBuilder.UseSqlServer("Server=P1-EDUARDCR;Database=AJFIlfov;Trusted_Connection=True;TrustServerCertificate=True;\r\n");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -59,6 +61,16 @@ public partial class AjfilfovContext : DbContext
     d => d.HasValue ? new DateTime(d.Value.Year, d.Value.Month, d.Value.Day) : (DateTime?)null,
     d => d.HasValue ? DateOnly.FromDateTime(d.Value) : (DateOnly?)null
 );
+        modelBuilder.Entity<Anunt>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Titlu).IsRequired().HasMaxLength(200);
+            entity.Property(e => e.Continut).IsRequired();
+            entity.Property(e => e.TipAnunt).IsRequired();
+
+            entity.Property(e => e.DataPublicarii).HasColumnType("datetime");
+            entity.Property(e => e.Imagine).HasColumnType("varbinary(max)"); // Definim coloana pentru imagine
+        });
 
         modelBuilder.Entity<Disponibilitate>(entity =>
         {

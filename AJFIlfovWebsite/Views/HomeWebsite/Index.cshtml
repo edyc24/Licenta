@@ -1,0 +1,201 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AJF Ilfov - Acasă</title>
+    <!-- meta tag pentru design responsiv -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- font awesome pentru iconite -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- fonturi Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Teko:wght@300..700&display=swap"
+          rel="stylesheet">
+    <!-- stil CSS -->
+    <link rel="stylesheet" href="~/css/HomeWebsite/styles.css">
+</head>
+
+<body>
+
+
+<!-- hero section -->
+<section class="hero">
+
+    <div class="hero-text-container">
+        <h1>Bun venit la AJF ILFOV</h1>
+        <p>Noi suntem fotbal!</p>
+        <a href="#">Află mai multe despre noi</a>
+    </div>
+
+    <div class="hero-images-container">
+        <img src="~/images/hero1.jpg" alt="Hero 1" class="first-image">
+        <img src="~/images/hero2.jpg" alt="Hero 2" class="middle-image">
+        <img src="~/images/hero3.jpg" alt="Hero 3" class="last-image">
+    </div>
+
+    <!-- header section -->
+    <header>
+        <div class="header-content">
+            <div class="header-title">
+                <img src="~/images/logo.png" alt="AJF Ilfov Logo">
+                <h2>Asociația Județeană de Fotbal Ilfov</h2>
+            </div>
+            
+            <!-- Menu Toggle Button (Visible Only on Mobile) -->
+            <div class="header-menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <!-- main navigation links -->
+            <nav>
+                <a href="#">Acasă</a>
+                <a href="#">Despre Noi</a>
+                <a href="Competitii">Competiții</a>
+                <a href="#">Clasamente</a>
+                <a href="Contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+</section>
+
+<div class="content">
+
+    <!-- services section -->
+    <section class="services">
+        <h2>Ce oferim</h2>
+
+        <div class="service-cards-container">
+            <div class="service-card first-card">
+                <h3>Organizare competiții</h3>
+                <p>Gestionăm și organizăm competiții fotbalistice la nivel județean pentru toate categoriile de vârstă.</p>
+            </div>
+
+            <div class="service-card second-card">
+                <h3>Dezvoltare juniori</h3>
+                <p>Susținem creșterea și dezvoltarea tinerilor talentați prin programe dedicate juniorilor.</p>
+            </div>
+
+            <div class="service-card third-card">
+                <h3>Evenimente speciale</h3>
+                <p>Organizăm evenimente și turnee speciale pentru promovarea fotbalului în comunitate.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- latest news section -->
+    <section class="news">
+        <h2>Ultimele știri</h2>
+
+        <div class="news-cards-container">
+            <div class="news-card">
+                <img src="~/images/news1.jpg" alt="Știre 1">
+                <div class="news-card-content">
+                    <h3>Campionatul Județean începe luna viitoare</h3>
+                    <p>Află toate detaliile despre noul sezon și echipele participante.</p>
+                    <a href="#">Citește mai mult &raquo;</a>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <img src="~/images/news2.jpg" alt="Știre 2">
+                <div class="news-card-content">
+                    <h3>Selecții pentru echipele de juniori</h3>
+                    <p>Oportunități pentru tinerii jucători de a-și demonstra talentul.</p>
+                    <a href="#">Citește mai mult &raquo;</a>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <img src="~/images/news3.jpg" alt="Știre 3">
+                <div class="news-card-content">
+                    <h3>Eveniment caritabil organizat de AJF Ilfov</h3>
+                    <p>Alătură-te nouă pentru a susține o cauză nobilă prin fotbal.</p>
+                    <a href="#">Citește mai mult &raquo;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- stats section -->
+<section class="stats">
+    <h2>Statistici</h2>
+
+    <div class="stats-content">
+        <div class="stats-card">
+            <img src="~/images/stat1.png" alt="Statistica 1">
+            <h3>135</h3>
+            <p>echipe active</p>
+        </div>
+
+        <div class="stats-card">
+            <img src="~/images/stat2.png" alt="Statistica 2">
+            <h3>99</h3>
+            <p>arbitri activi</p>
+        </div>
+
+        <div class="stats-card">
+            <img src="~/images/stat3.png" alt="Statistica 4">
+            <h3>0</h3>
+            <p>jucători fara viză 2024</p>
+        </div>
+
+        <div class="stats-card">
+            <img src="~/images/stat3.png" alt="Statistica 3">
+            <h3>3592</h3>
+            <p>jucători</p>
+        </div>
+
+        <div class="stats-card">
+            <img src="~/images/stat4.png" alt="Statistica 4">
+            <h3>2042</h3>
+            <p>meciuri în sezonul actual</p>
+        </div>
+
+        <div class="stats-card">
+            <img src="~/images/stat5.png" alt="Statistica 5">
+            <h3>19</h3>
+            <p>competiții în sezonul actual</p>
+        </div>
+    </div>
+</section>
+
+<!-- contact section -->
+<section class="contact">
+    <div class="contact-content">
+        <h2>Contactează-ne</h2>
+        <p>
+            Suntem aici pentru a răspunde întrebărilor tale și pentru a te ajuta să descoperi mai multe despre fotbalul
+            ilfovean.
+        </p>
+        <a href="#">Pagina de Contact</a>
+    </div>
+</section>
+
+<!-- footer -->
+<footer>
+    <p>&copy; 2023 Asociația Județeană de Fotbal Ilfov. Toate drepturile rezervate.</p>
+    <div class="social-icons">
+        <a href="#">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="#">
+            <i class="fab fa-twitter"></i>
+        </a>
+    </div>
+</footer>
+
+<!-- funcționalități JavaScript -->
+<script src="~/js/scripts.js"></script>
+
+</body>
+
+</html>

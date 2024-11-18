@@ -1,0 +1,42 @@
+﻿@model AJFIlfov.BusinessLogic.Implementation.GrupeService.Models.GrupaModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/Grupe/Create.css"/>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h2>@ViewData["Title"]</h2>
+    </div>
+
+    <hr/>
+
+    <form asp-action="Create" method="post">
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <label asp-for="Nume" class="control-label">Nume Grupa</label>
+            <input asp-for="Nume" class="form-control" placeholder="Introduceți numele grupei"/>
+            <span asp-validation-for="Nume" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Creare" class="btn btn-primary"/>
+            <a asp-action="Index" class="btn btn-secondary">Anulare</a>
+        </div>
+    </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

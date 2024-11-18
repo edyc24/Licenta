@@ -26,6 +26,7 @@
     <Folder Include="Implementation\GrupeEchipe\Validations\" />
     <Folder Include="Implementation\Grupe\Validations\" />
     <Folder Include="Implementation\Localitati\Validations\" />
+    <Folder Include="Implementation\MeciLive\Mappings\" />
     <Folder Include="Implementation\Meciuri\Validations\" />
     <Folder Include="Implementation\StadionLocalitate\Validations\" />
     <Folder Include="Implementation\Stadioane\Validations\" />

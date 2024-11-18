@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace AJFIlfov.Common.DTOs;
 
-namespace AJFIlfov.Common.DTOs
+public class ListItemModel<TText, TValue>
 {
-    public class ListItemModel<TText, TValue>
-    {
-        public TText Text { get; set; }
-        public TValue Value { get; set; }
-    }
+    public TText Text { get; set; }
+    public TValue Value { get; set; }
 }

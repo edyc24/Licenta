@@ -1,0 +1,39 @@
+﻿@model AJFIlfov.BusinessLogic.Implementation.LocalitatiService.Models.LocalitateModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/Localitati/Edit.css"/>
+</head>
+<body>
+
+<div class="container">
+    <h2>@ViewData["Title"]</h2>
+    <hr/>
+
+    <form asp-action="Edit" method="post">
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <label asp-for="Nume" class="control-label">Nume Localitate</label>
+            <input asp-for="Nume" class="form-control" placeholder="Introduceți numele localității"/>
+            <span asp-validation-for="Nume" class="text-danger"></span>
+        </div>
+        <input type="hidden" asp-for="IdLocalitate"/>
+
+        <div class="form-group text-center">
+            <input type="submit" value="Save" class="btn btn-primary"/>
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

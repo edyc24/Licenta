@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Competiții";
+}
+
+<h1>Competiții</h1>
+<p>Explorați competițiile organizate de AJF Ilfov.</p>
+<div class="row">
+    @foreach (var competitie in Model)
+    {
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img src="~/images/competition_placeholder.jpg" class="card-img-top" alt="Imagine Competiție">
+                <div class="card-body">
+                    <h5 class="card-title">@competitie.Nume</h5>
+                    <a href="/Competitii/Detalii/@competitie.Id" class="btn btn-primary">Vezi detalii</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

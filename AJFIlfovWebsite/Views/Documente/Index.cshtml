@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Documente";
+}
+
+<div class="documents-container">
+    <h1>Documente</h1>
+    <ul class="document-list">
+        <li class="document-item"><a href="/Documente/CerereInscriere">Cerere înscriere</a></li>
+        <li class="document-item"><a href="/Documente/CerereAfiliere">Cerere afiliere</a></li>
+        <li class="document-item"><a href="/Documente/TaxeCotizatii">Taxe și cotizații</a></li>
+        <li class="document-item"><a href="/Documente/TaxeCotizatii">Acord transfer</a></li>
+    </ul>
+</div>
+
+<style>
+    /* Container styling for Documents */
+    .documents-container {
+        max-width: 600px;
+        margin: 60px auto;
+        padding: 20px;
+        text-align: center;
+    }
+
+    /* Title styling */
+    .documents-container h1 {
+        font-size: 2em;
+        color: #007acc;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+
+    /* List styling */
+    .document-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .document-item {
+        background-color: #f1f8ff; /* Light blue background */
+        border: 1px solid #cce4ff;
+        border-radius: 5px;
+        margin: 10px 0;
+        padding: 15px;
+        font-size: 1.1em;
+        transition: background-color 0.3s ease;
+    }
+
+    /* Link styling */
+    .document-item a {
+        text-decoration: none;
+        color: #005fa3;
+        font-weight: 500;
+    }
+
+    .document-item a:hover {
+        color: #003f72;
+    }
+
+    /* Hover effect */
+    .document-item:hover {
+        background-color: #e0f2ff;
+    }
+</style>

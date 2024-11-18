@@ -42,6 +42,11 @@ namespace AJFIlfov.DataAccess
             return entity;
         }
 
+        public TEntity FindById(int id)
+        {
+            return Context.Set<TEntity>().Find(id);
+        }
+
         public TEntity Find(Guid id)
         {
             return Context.Set<TEntity>().Find(id);

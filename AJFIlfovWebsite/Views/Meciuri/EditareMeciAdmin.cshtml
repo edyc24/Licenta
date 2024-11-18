@@ -1,0 +1,206 @@
+﻿@model AJFIlfov.BusinessLogic.Implementation.MeciuriService.Models.MeciAdminModel
+
+@{
+    ViewData["Title"] = "Editează Delegare";
+}
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/Meciuri/EditareMeciAdmin.css"/>
+    <style>
+        .availability-table-container {
+            max-height: 600px;
+            overflow-y: auto;
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        .row-flex {
+            display: flex;
+            flex-wrap: nowrap;
+        }
+
+        .col-half {
+            flex: 1;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container-fluid mt-5">
+    <div class="row row-flex">
+        <div class="col-half">
+            <div class="card shadow-sm">
+                <div class="card-header text-center bg-primary text-white">
+                    <h2>@ViewData["Title"]</h2>
+                </div>
+                <div class="card-body">
+                    <form asp-action="EditareMeciAdmin" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" asp-for="IdMeci"/>
+
+                        <!-- Grupa Selection -->
+                        <div class="form-group">
+                            <label asp-for="IdGrupa" class="control-label">Grupa</label>
+                            <select asp-for="IdGrupa" class="form-control" asp-items="@(new SelectList(ViewBag.Grupe, "IdGrupa", "Nume"))">
+                                <option value="">-- Selectează Grupa --</option>
+                            </select>
+                            <span asp-validation-for="IdGrupa" class="text-danger"></span>
+                        </div>
+
+                        <!-- Teams Section -->
+                        <div class="form-group">
+                            <label asp-for="IdEchipaGazda" class="control-label">Echipa Gazdă</label>
+                            <select asp-for="IdEchipaGazda" class="form-control" asp-items="@(new SelectList(ViewBag.Echipe, "Id", "Nume"))">
+                                <option value="">-- Selectează Echipa Gazdă --</option>
+                            </select>
+                            <span asp-validation-for="IdEchipaGazda" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="IdEchipaOaspete" class="control-label">Echipa Oaspete</label>
+                            <select asp-for="IdEchipaOaspete" class="form-control" asp-items="@(new SelectList(ViewBag.Echipe, "Id", "Nume"))">
+                                <option value="">-- Selectează Echipa Oaspete --</option>
+                            </select>
+                            <span asp-validation-for="IdEchipaOaspete" class="text-danger"></span>
+                        </div>
+
+                        <!-- Match Date -->
+                        <div class="form-group">
+                            <label asp-for="DataJoc" class="control-label">Data Meciului</label>
+                            <input asp-for="DataJoc" class="form-control" type="datetime-local" id="DataJocInput"/>
+                            <span asp-validation-for="DataJoc" class="text-danger"></span>
+                        </div>
+
+                        <!-- Referees Section -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="IdArbitru" class="control-label">Arbitru</label>
+                                    <select asp-for="IdArbitru" class="form-control" asp-items="@(new SelectList(ViewBag.Arbitri, "Id", "Nume"))">
+                                        <option value="">-- Selectează Arbitru --</option>
+                                    </select>
+                                    <span asp-validation-for="IdArbitru" class="text-danger"></span>
+                                    <div id="distance-info-arbitru" class="distance-info"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="IdArbitruAsistent1" class="control-label">Arbitru Asistent 1</label>
+                                    <select asp-for="IdArbitruAsistent1" class="form-control" asp-items="@(new SelectList(ViewBag.Arbitri, "Id", "Nume"))">
+                                        <option value="">-- Selectează Arbitru Asistent 1 --</option>
+                                    </select>
+                                    <span asp-validation-for="IdArbitruAsistent1" class="text-danger"></span>
+                                    <div id="distance-info-arbitru1" class="distance-info"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="IdArbitruAsistent2" class="control-label">Arbitru Asistent 2</label>
+                                    <select asp-for="IdArbitruAsistent2" class="form-control" asp-items="@(new SelectList(ViewBag.Arbitri, "Id", "Nume"))">
+                                        <option value="">-- Selectează Arbitru Asistent 2 --</option>
+                                    </select>
+                                    <span asp-validation-for="IdArbitruAsistent2" class="text-danger"></span>
+                                    <div id="distance-info-arbitru2" class="distance-info"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="IdArbitruRezerva" class="control-label">Arbitru Rezervă</label>
+                                    <select asp-for="IdArbitruRezerva" class="form-control" asp-items="@(new SelectList(ViewBag.Arbitri, "Id", "Nume"))">
+                                        <option value="">-- Selectează Arbitru Rezervă --</option>
+                                    </select>
+                                    <span asp-validation-for="IdArbitruRezerva" class="text-danger"></span>
+                                    <div id="distance-info-arbitru3" class="distance-info"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Observer Section -->
+                        <div class="form-group">
+                            <label asp-for="IdObservator" class="control-label">Observator</label>
+                            <select asp-for="IdObservator" class="form-control" asp-items="@(new SelectList(ViewBag.Arbitri, "Id", "Nume"))">
+                                <option value="">-- Selectează Observator --</option>
+                            </select>
+                            <span asp-validation-for="IdObservator" class="text-danger"></span>
+                        </div>
+
+                        <!-- Stadium Section -->
+                        <div class="form-group">
+                            <label asp-for="IdStadionLocalitate" class="control-label">Stadion</label>
+                            <select asp-for="IdStadionLocalitate" class="form-control" asp-items="@(new SelectList(ViewBag.Stadioane, "Id", "Nume"))">
+                                <option value="">-- Selectează Stadion --</option>
+                            </select>
+                            <span asp-validation-for="IdStadionLocalitate" class="text-danger"></span>
+                        </div>
+
+                        <!-- Form Actions -->
+                        <div class="form-group text-center">
+                            <input type="submit" value="Salvează" class="btn btn-primary btn-lg mx-2"/>
+                            <a asp-action="Index" class="btn btn-secondary btn-lg mx-2">Anulează</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Availability Table -->
+        <div class="col-half">
+            <div class="availability-table-container">
+                <h4>Disponibilitatea Arbitrilor</h4>
+                <div id="availabilityTable"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7tfBD6u3cMcf1frPtqHq1K4X95tLtdbk&libraries=places"></script>
+    <script src="~/js/Meciuri/CreareMeci.js"></script>
+    <script>
+            $(document).ready(function () {
+                function fetchDisponibilitati(date) {
+                    if (date) {
+                        $.ajax({
+                            url: '@Url.Action("GetDisponibilitati", "Meciuri")',
+                            type: 'GET',
+                            data: { data: date },
+                            success: function (data) {
+                                $('#availabilityTable').html(data);
+                            },
+                            error: function (xhr, status, error) {
+                                console.error("A apărut o eroare la obținerea disponibilității:", error);
+                            }
+                        });
+                    }
+                }
+
+                // Fetch availability data when the page loads
+                var initialDate = $('#DataJocInput').val();
+                fetchDisponibilitati(initialDate);
+
+                // Fetch availability data when the date changes
+                $('#DataJocInput').on('change', function () {
+                    var selectedDate = $(this).val();
+                    fetchDisponibilitati(selectedDate);
+                });
+            });
+        </script>
+
+}
+
+</body>
+</html>

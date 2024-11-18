@@ -1,0 +1,107 @@
+﻿@model AJFIlfov.BusinessLogic.Implementation.Anunturi.Models.AnuntModel
+
+<div class="create-announcement-container">
+    <h2>Creează un anunț</h2>
+
+    <form asp-action="Create" method="post" enctype="multipart/form-data" class="announcement-form">
+        <div class="form-group">
+            <label for="Titlu">Titlu</label>
+            <input type="text" class="form-control" asp-for="Titlu" placeholder="Introdu titlul anunțului" />
+        </div>
+
+        <div class="form-group">
+            <label for="Continut">Conținut</label>
+            <textarea class="form-control large-textarea" asp-for="Continut" placeholder="Introdu conținutul anunțului"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="TipAnunt">Tip Anunț</label>
+            <select class="form-control" asp-for="TipAnunt">
+                <option value="">Selectează tipul anunțului</option>
+                <option value="Informatii">Informații</option>
+                <option value="Competitii">Competiții</option>
+                <option value="Comisii">Comisii</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="Imagine">Imagine</label>
+            <input type="file" class="form-control" asp-for="Imagine" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Salvează</button>
+    </form>
+</div>
+
+<style>
+    /* Container styling */
+    .create-announcement-container {
+        width: 100%;
+        max-width: 100%;
+        margin: 40px 0;
+        padding: 20px;
+        background-color: #f8fafc;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+        .create-announcement-container h2 {
+            text-align: center;
+            font-size: 2.2em;
+            color: #007acc;
+            margin-bottom: 30px;
+        }
+
+    /* Form styling */
+    .announcement-form .form-group {
+        margin-bottom: 30px;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .announcement-form label {
+        font-size: 1.2em;
+        font-weight: 500;
+        color: #005fa3;
+        margin-bottom: 10px;
+        display: inline-block;
+    }
+
+    .announcement-form .form-control {
+        padding: 12px;
+        font-size: 1.1em;
+        border-radius: 5px;
+        border: 1px solid #cccccc;
+        width: 100%;
+    }
+
+        .announcement-form .form-control::placeholder {
+            color: #999;
+        }
+
+    /* Larger textarea for content */
+    .large-textarea {
+        height: 800px; /* Greatly increased height for large content */
+        padding: 20px;
+    }
+
+    /* Button styling */
+    .announcement-form .btn-primary {
+        width: 80%;
+        padding: 15px;
+        background-color: #007acc;
+        color: #ffffff;
+        font-weight: 600;
+        font-size: 1.2em;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: block;
+        margin: 20px auto;
+    }
+
+        .announcement-form .btn-primary:hover {
+            background-color: #005fa3;
+        }
+</style>

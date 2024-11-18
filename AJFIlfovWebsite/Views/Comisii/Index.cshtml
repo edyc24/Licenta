@@ -1,0 +1,68 @@
+﻿@model IEnumerable<AJFIlfov.BusinessLogic.Implementation.Anunturi.Models.AnuntModel>
+
+<div class="comisii-container">
+    <h1>Anunțuri Comisii</h1>
+
+    @foreach (var anunt in Model)
+    {
+        <div class="announcement-card">
+            <h2>@anunt.Titlu</h2>
+            <p>@anunt.Continut</p>
+            @if (anunt.Imagine != null)
+            {
+                <img src="data:image;base64,@(Convert.ToBase64String(anunt.Imagine))" class="img-fluid" alt="Imagine anunț" />
+            }
+            <p class="announcement-date">Data Publicării: @anunt.DataPublicarii.ToString("dd MMM yyyy")</p>
+        </div>
+    }
+</div>
+
+<style>
+    .comisii-container {
+        max-width: 1000px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #f8fafc;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .comisii-container h1 {
+        font-size: 2em;
+        color: #007acc;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .announcement-card {
+        background-color: #ffffff;
+        padding: 15px;
+        margin: 10px 0;
+        border-left: 4px solid #007acc;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .announcement-card h2 {
+        color: #005fa3;
+        font-size: 1.4em;
+    }
+
+    .announcement-card p {
+        font-size: 1em;
+        color: #666;
+    }
+
+    .announcement-card img {
+        max-width: 100%;
+        height: auto;
+        margin-top: 10px;
+        border-radius: 5px;
+    }
+
+    .announcement-date {
+        font-size: 0.9em;
+        color: #999;
+        margin-top: 5px;
+    }
+</style>

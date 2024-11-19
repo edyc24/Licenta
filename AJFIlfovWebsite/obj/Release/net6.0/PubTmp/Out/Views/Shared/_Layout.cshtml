@@ -1,0 +1,108 @@
+﻿@inject AJFIlfov.Common.DTOs.CurrentUserDto CurrentUser
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CJAIlfov</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    <img src="~/lib/logo.jpeg" alt="CJA Ilfov Logo" style="height: 40px; margin-right: 10px;">
+                    CJA Ilfov
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i> Acasă</a>
+                        </li>
+                        @if (CurrentUser.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Meciuri" asp-action="Index"><i class="fas fa-calendar-alt"></i> Delegari</a>
+                            </li>
+                            @if (CurrentUser.Role != "Administrator")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Disponibilitate" asp-action="Index"><i class="fas fa-calendar-check"></i> Disponibilități</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Meciuri" asp-action="IstoricMeciuri"><i class="fas fa-calendar-alt"></i> Istoric Meciuri Mele</a>
+                                </li>
+                            }
+                            @if (CurrentUser.Role == "Administrator")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Echipe" asp-action="Index"><i class="fas fa-users"></i> Echipe</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="DisponibilitateAdmin" asp-action="Index"><i class="fas fa-user-shield"></i> Cereri Disponibilitate</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Grupe" asp-action="Index"><i class="fas fa-layer-group"></i> Competitii</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Stadioane" asp-action="Index"><i class="fas fa-stadium"></i> Stadioane</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Localitati" asp-action="Index"><i class="fas fa-map-marker-alt"></i> Localități</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Users" asp-action="Index"><i class="fas fa-users-cog"></i> Gestionare Utilizatori</a>
+                                </li>
+                            }
+                        }
+
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        @if (CurrentUser.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Account" asp-action="ProfilePage"><i class="fas fa-user-circle"></i> @CurrentUser.FirstName</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Account" asp-action="Logout"><i class="fas fa-sign-out-alt"></i> Log out</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Account" asp-action="Login"><i class="fas fa-sign-in-alt"></i> Log in</a>
+                            </li>
+                           @*  <li class="nav-item">
+                                <a class="nav-link" asp-controller="Account" asp-action="Register"><i class="fas fa-user-plus"></i> Register</a>
+                            </li> *@
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container mt-4">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted mt-4">
+        <div class="container text-center">
+            &copy; 2024 - CJA Ilfov - <a asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

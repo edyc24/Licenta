@@ -17,5 +17,7 @@ namespace AJFIlfov.Entities.Entities
         // Adăugăm câmpul pentru imagine
         public byte[] Imagine { get; set; }
         public string TipAnunt { get; set; }
+        public string PublishedBy { get; set; } // New property
+        public int Views { get; set; } // New property
     }
 }

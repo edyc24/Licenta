@@ -323,3 +323,10 @@ C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfovWebsite\obj\Debug\net6.0\r
 C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfovWebsite\obj\Debug\net6.0\AJFIlfovWebsite.pdb
 C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfovWebsite\obj\Debug\net6.0\AJFIlfovWebsite.genruntimeconfig.cache
 C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfovWebsite\obj\Debug\net6.0\ref\AJFIlfovWebsite.dll
+C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfovWebsite\bin\Debug\net6.0\UglyToad.PdfPig.Core.dll
+C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfovWebsite\bin\Debug\net6.0\UglyToad.PdfPig.DocumentLayoutAnalysis.dll
+C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfovWebsite\bin\Debug\net6.0\UglyToad.PdfPig.Fonts.dll
+C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfovWebsite\bin\Debug\net6.0\UglyToad.PdfPig.Package.dll
+C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfovWebsite\bin\Debug\net6.0\UglyToad.PdfPig.Tokenization.dll
+C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfovWebsite\bin\Debug\net6.0\UglyToad.PdfPig.Tokens.dll
+C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfovWebsite\bin\Debug\net6.0\UglyToad.PdfPig.dll

@@ -12,6 +12,7 @@
     <PackageReference Include="iTextSharp" Version="5.5.13.4" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="3.1.32" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.15" />
+    <PackageReference Include="PdfPig" Version="0.1.9" />
     <PackageReference Include="Twilio" Version="7.1.1" />
   </ItemGroup>
 

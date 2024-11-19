@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\AJFIlfovWebsite.z8zl68amsa.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\css\\Admin\\Login.css",
+      "PackagePath": "staticwebassets\\css\\Admin\\Login.css"
+    },
+    {
       "Id": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\css\\HomeWebsite\\styles.css",
       "PackagePath": "staticwebassets\\css\\HomeWebsite\\styles.css"
     },
@@ -23,6 +27,10 @@
     {
       "Id": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\child-icon.png",
       "PackagePath": "staticwebassets\\images\\child-icon.png"
+    },
+    {
+      "Id": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\default4.jpg",
+      "PackagePath": "staticwebassets\\images\\default4.jpg"
     },
     {
       "Id": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\football-icon.png",
@@ -57,6 +65,10 @@
       "PackagePath": "staticwebassets\\images\\logo.png"
     },
     {
+      "Id": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\logo1.png",
+      "PackagePath": "staticwebassets\\images\\logo1.png"
+    },
+    {
       "Id": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\news1.jpg",
       "PackagePath": "staticwebassets\\images\\news1.jpg"
     },
@@ -71,6 +83,14 @@
     {
       "Id": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\placeholder.jpg",
       "PackagePath": "staticwebassets\\images\\placeholder.jpg"
+    },
+    {
+      "Id": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\presedinte.png",
+      "PackagePath": "staticwebassets\\images\\presedinte.png"
+    },
+    {
+      "Id": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\secretar.jpg",
+      "PackagePath": "staticwebassets\\images\\secretar.jpg"
     },
     {
       "Id": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\services1.jpg",
@@ -115,6 +135,14 @@
     {
       "Id": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\truck.png",
       "PackagePath": "staticwebassets\\images\\truck.png"
+    },
+    {
+      "Id": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\vicepresedinte.jpg",
+      "PackagePath": "staticwebassets\\images\\vicepresedinte.jpg"
+    },
+    {
+      "Id": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\js\\pdf-viewer.js",
+      "PackagePath": "staticwebassets\\js\\pdf-viewer.js"
     },
     {
       "Id": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\js\\scripts.js",

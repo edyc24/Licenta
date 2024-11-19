@@ -47,12 +47,13 @@ public partial class AjfilfovContext : DbContext
 
     public virtual DbSet<Utilizatori> Utilizatoris { get; set; }
     public virtual DbSet<Anunt> Anunturi { get; set; }
+    public virtual DbSet<Audit> Audits { get; set; }
     public virtual DbSet<MeciLive> MeciuriLive { get; set; }
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=P1-EDUARDCR;Database=AJFIlfov;Trusted_Connection=True;TrustServerCertificate=True;\r\n");
+        => optionsBuilder.UseSqlServer("Server=tcp:ajfilfov.database.windows.net,1433;Initial Catalog=AJFIlfov;Persist Security Info=False;User ID=eduard;Password=Fcsteaua25?;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;\r\n");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

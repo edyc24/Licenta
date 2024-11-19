@@ -1,12 +1,79 @@
 ﻿@model IEnumerable<AJFIlfov.BusinessLogic.Implementation.MeciLiveService.Models.MeciLiveModel>
 
-<!DOCTYPE html>
-<html lang="ro">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrare Scoruri Live - AJF Ilfov</title>
-    <link rel="stylesheet" href="~/css/site.css" />
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Administrare Scoruri Live";
+}
+
+<div class="container my-5">
+    <h1 class="text-center mb-4">Administrare Scoruri Live</h1>
+
+    <div class="text-right mb-3">
+        <a href="@Url.Action("Create")" class="btn btn-primary">Adaugă Meci Nou</a>
+    </div>
+
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>Meci</th>
+                <th>Scor</th>
+                <th>Minut</th>
+                <th>Acțiuni</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var meci in Model)
+            {
+                <tr>
+                    <td>@meci.EchipaGazda vs @meci.EchipaOaspete</td>
+                    <td>@meci.ScorGazda - @meci.ScorOaspete</td>
+                    <td>
+                        @if (meci.Status == "Pauza")
+                        {
+                            <span class="badge badge-warning">Pauză</span>
+                        }
+                        else if (meci.Status == "Finalizat")
+                        {
+                            <span class="badge badge-danger">Final</span>
+                        }
+                        else if (meci.Status == "InDesfasurare")
+                        {
+                            <span>@(meci.Minut ?? 0)'</span>
+                        }
+                        else
+                        {
+                            <span>-</span>
+                        }
+                    </td>
+                    <td>
+                        <form method="post" class="form-inline" asp-action="Start">
+                            <input type="hidden" name="idMeciLive" value="@meci.IdMeciLive" />
+                            <button type="submit" class="btn btn-sm btn-success">Start</button>
+                        </form>
+                        <form method="post" class="form-inline" asp-action="Pauza">
+                            <input type="hidden" name="idMeciLive" value="@meci.IdMeciLive" />
+                            <button type="submit" class="btn btn-sm btn-warning">Pauză</button>
+                        </form>
+                        <form method="post" class="form-inline" asp-action="Final">
+                            <input type="hidden" name="idMeciLive" value="@meci.IdMeciLive" />
+                            <button type="submit" class="btn btn-sm btn-danger">Final</button>
+                        </form>
+                        <form method="post" class="form-inline" asp-action="GolGazde">
+                            <input type="hidden" name="idMeciLive" value="@meci.IdMeciLive" />
+                            <button type="submit" class="btn btn-sm btn-primary">Gol Gazde</button>
+                        </form>
+                        <form method="post" class="form-inline" asp-action="GolOaspeti">
+                            <input type="hidden" name="idMeciLive" value="@meci.IdMeciLive" />
+                            <button type="submit" class="btn btn-sm btn-primary">Gol Oaspeți</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Styles {
     <style>
         .admin-table {
             width: 100%;
@@ -39,114 +106,19 @@
             padding: 5px 10px;
             font-size: 0.9em;
         }
-
-        /* Make footer fixed at the bottom */
-        footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: #007acc;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-        }
-
-        /* Adjust the body padding to prevent content overlap */
-        body {
-            margin: 0;
-            padding-bottom: 60px; /* Height of the footer */
-        }
     </style>
-</head>
-<body>
+}
 
-    <!-- Header -->
-    <header>
-        <h1>Administrare Scoruri Live</h1>
-    </header>
-
-    <!-- Container principal -->
-    <div class="container">
-        <a href="@Url.Action("Create")" class="btn btn-primary mb-3">Adaugă Meci Nou</a>
-
-        <table class="admin-table">
-            <thead>
-                <tr>
-                    <th>Meci</th>
-                    <th>Scor</th>
-                    <th>Minut</th>
-                    <th>Acțiuni</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var meci in Model)
-                {
-                    <tr>
-                        <td>@meci.EchipaGazda vs @meci.EchipaOaspete</td>
-                        <td>@meci.ScorGazda - @meci.ScorOaspete</td>
-                        <td>
-                            @if (meci.Status == "Pauza")
-                            {
-                                <span>Pauză</span>
-                            }
-                            else if (meci.Status == "Finalizat")
-                            {
-                                <span>Final</span>
-                            }
-                            else if (meci.Status == "InDesfasurare")
-                            {
-                                <span>@(meci.Minut ?? 0)'</span>
-                            }
-                            else
-                            {
-                                <span>-</span>
-                            }
-                        </td>
-                        <td>
-                            <form method="post" class="form-inline" asp-action="Start">
-                                <input type="hidden" name="idMeciLive" value="@meci.IdMeciLive" />
-                                <button type="submit" class="btn btn-sm btn-success">Start</button>
-                            </form>
-                            <form method="post" class="form-inline" asp-action="Pauza">
-                                <input type="hidden" name="idMeciLive" value="@meci.IdMeciLive" />
-                                <button type="submit" class="btn btn-sm btn-warning">Pauză</button>
-                            </form>
-                            <form method="post" class="form-inline" asp-action="Final">
-                                <input type="hidden" name="idMeciLive" value="@meci.IdMeciLive" />
-                                <button type="submit" class="btn btn-sm btn-danger">Final</button>
-                            </form>
-                            <form method="post" class="form-inline" asp-action="GolGazde">
-                                <input type="hidden" name="idMeciLive" value="@meci.IdMeciLive" />
-                                <button type="submit" class="btn btn-sm btn-primary">Gol Gazde</button>
-                            </form>
-                            <form method="post" class="form-inline" asp-action="GolOaspeti">
-                                <input type="hidden" name="idMeciLive" value="@meci.IdMeciLive" />
-                                <button type="submit" class="btn btn-sm btn-primary">Gol Oaspeți</button>
-                            </form>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-
-    <!-- Fixed Footer -->
-    <footer>
-        <p>&copy; 2023 Asociația Județeană de Fotbal Ilfov. Toate drepturile rezervate.</p>
-    </footer>
-
-    <!-- Script pentru toggle meniu -->
+@section Scripts {
     <script>
         function toggleMenu() {
             const menu = document.getElementById("menu");
             menu.classList.toggle("show");
         }
 
-        // Reîncărcați pagina la fiecare 60 de secunde pentru a actualiza minutul
+        // Refresh page every 60 seconds to update minute
         setTimeout(function () {
             location.reload();
         }, 60000);
     </script>
-</body>
-</html>
+}

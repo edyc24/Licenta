@@ -51,6 +51,9 @@ namespace AJFIlfov.DataAccess
         public IRepository<Localitati> Localitati => localitati ?? (localitati = new BaseRepository<Localitati>(Context));
         private IRepository<StadionLocalitate> stadionLocalitate;
         public IRepository<StadionLocalitate> StadionLocalitate => stadionLocalitate ?? (stadionLocalitate = new BaseRepository<StadionLocalitate>(Context));
+
+        private IRepository<Audit> audits;
+        public IRepository<Audit> Audits => audits ?? (audits = new BaseRepository<Audit>(Context));
         public void SaveChanges()
         {
             Context.SaveChanges();

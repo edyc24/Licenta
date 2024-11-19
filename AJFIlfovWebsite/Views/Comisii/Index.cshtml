@@ -1,68 +1,200 @@
 ﻿@model IEnumerable<AJFIlfov.BusinessLogic.Implementation.Anunturi.Models.AnuntModel>
 
-<div class="comisii-container">
-    <h1>Anunțuri Comisii</h1>
+<div class="announcements-container">
+    <h1>Comisii jursdictionale</h1>
 
-    @foreach (var anunt in Model)
-    {
-        <div class="announcement-card">
-            <h2>@anunt.Titlu</h2>
-            <p>@anunt.Continut</p>
-            @if (anunt.Imagine != null)
-            {
-                <img src="data:image;base64,@(Convert.ToBase64String(anunt.Imagine))" class="img-fluid" alt="Imagine anunț" />
-            }
-            <p class="announcement-date">Data Publicării: @anunt.DataPublicarii.ToString("dd MMM yyyy")</p>
+    <!-- Filter and Search Section -->
+    <form method="get" class="filter-search-form">
+        <div class="filter-section">
+            <label for="sectionFilter">Filtrează după comisie:</label>
+            <select id="sectionFilter" name="sectionFilter" class="form-control">
+                <option value="all">Toate secțiunile</option>
+                <option value="Comisia de disciplina">Comisia de disciplină</option>
+                <option value="Comisia pentru statutul jucatorului">Comisia pentru statutul jucătorului</option>
+                <option value="Comisia de apel">Comisia de apel</option>
+            </select>
         </div>
-    }
+
+        <div class="search-section">
+            <label for="searchInput">Caută:</label>
+            <input type="text" id="searchInput" name="searchText" class="form-control" placeholder="Introdu textul de căutare..." />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Aplică Filtre</button>
+    </form>
+
+    <!-- Announcements Grid -->
+    <div class="announcements-grid">
+        @foreach (var anunt in Model)
+        {
+            <div class="announcement-card">
+                <h3>@anunt.Titlu</h3>
+                <p class="announcement-section">@anunt.TipAnunt</p>
+                <p>@(anunt.Continut.Length > 150 ? anunt.Continut.Substring(0, 150) + "..." : anunt.Continut)</p>
+                @if (anunt.Imagine != null)
+                {
+                    <img src="~/images/default4.jpg" class="img-fluid announcement-image" alt="Imagine anunț" />
+                }
+                <span class="announcement-date">Data: @anunt.DataPublicarii.ToString("dd MMM yyyy")</span>
+                <a href="/Anunturi/Detalii/@anunt.Id" class="btn btn-primary">Citește mai mult</a>
+            </div>
+        }
+    </div>
 </div>
 
 <style>
-    .comisii-container {
-        max-width: 1000px;
-        margin: 20px auto;
+    /* Container Styling */
+    .announcements-container {
+        max-width: 1200px;
+        margin: 40px auto;
         padding: 20px;
         background-color: #f8fafc;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
-    .comisii-container h1 {
-        font-size: 2em;
-        color: #007acc;
+        .announcements-container h1 {
+            text-align: center;
+            font-size: 2em;
+            color: #007acc;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+    /* Filter and Search Form */
+    .filter-search-form {
         margin-bottom: 20px;
         text-align: center;
     }
 
-    .announcement-card {
-        background-color: #ffffff;
-        padding: 15px;
-        margin: 10px 0;
-        border-left: 4px solid #007acc;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    .filter-section,
+    .search-section {
+        display: inline-block;
+        margin: 0 10px;
     }
 
-    .announcement-card h2 {
-        color: #005fa3;
-        font-size: 1.4em;
+        .filter-section label,
+        .search-section label {
+            font-size: 1.1em;
+            font-weight: 500;
+            color: #007acc;
+            margin-right: 10px;
+        }
+
+        .filter-section select,
+        .search-section input {
+            padding: 8px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: 1px solid #cccccc;
+        }
+
+    .btn-primary {
+        margin-top: 10px;
+        background-color: #007acc;
+        color: #ffffff;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-weight: 600;
+        font-size: 1em;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+        .btn-primary:hover {
+            background-color: #005fa3;
+        }
+
+    /* Announcements Grid */
+    .announcements-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 20px;
+    }
+
+    /* Announcement Card */
+    .announcement-card {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-left: 4px solid #007acc;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+        .announcement-card h3 {
+            color: #005fa3;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+    .announcement-section {
+        font-size: 1em;
+        color: #333;
+        font-weight: bold;
+        margin-bottom: 5px;
     }
 
     .announcement-card p {
-        font-size: 1em;
+        font-size: 0.9em;
+        line-height: 1.4;
         color: #666;
+        margin-bottom: 15px;
+        flex-grow: 1;
     }
 
-    .announcement-card img {
-        max-width: 100%;
-        height: auto;
-        margin-top: 10px;
+    .announcement-image {
+        width: 100%;
+        max-height: 150px;
+        object-fit: cover;
         border-radius: 5px;
+        margin-bottom: 15px;
     }
 
     .announcement-date {
-        font-size: 0.9em;
+        font-size: 0.8em;
         color: #999;
-        margin-top: 5px;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .announcement-card .btn-primary {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Responsive Design */
+    @@media (max-width: 1200px) {
+        .announcements-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @@media (max-width: 992px) {
+        .announcements-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @@media (max-width: 768px) {
+        .announcements-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .filter-section,
+        .search-section {
+            display: block;
+            margin: 10px 0;
+        }
+
+        .filter-search-form {
+            text-align: left;
+        }
+
+        .btn-primary {
+            width: 100%;
+        }
     }
 </style>

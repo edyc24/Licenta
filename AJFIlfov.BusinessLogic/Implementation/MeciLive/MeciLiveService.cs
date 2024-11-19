@@ -115,11 +115,18 @@ namespace AJFIlfov.BusinessLogic.Implementation.MeciLiveService
             var meci = GetMeciLiveEntityById(idMeciLive);
             if (meci != null)
             {
-                if (meci.Status == "Programat" || meci.Status == "Pauza")
+                if (meci.Status == "Programat")
                 {
                     meci.Status = "InDesfasurare";
                     meci.StartTime = DateTime.Now;
                     meci.IsSecondHalf = meci.Status == "Pauza";
+                    UnitOfWork.MeciuriLive.Update(meci);
+                    UnitOfWork.SaveChanges();
+                }
+                else if (meci.Status == "Pauza")
+                {
+                    meci.Status = "InDesfasurare";
+                    meci.IsSecondHalf = true;
                     UnitOfWork.MeciuriLive.Update(meci);
                     UnitOfWork.SaveChanges();
                 }

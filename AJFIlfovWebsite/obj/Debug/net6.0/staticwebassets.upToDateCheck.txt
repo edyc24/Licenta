@@ -1,8 +1,10 @@
+wwwroot\css\Admin\Login.css
 wwwroot\css\HomeWebsite\styles.css
 wwwroot\css\layout.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\images\child-icon.png
+wwwroot\images\default4.jpg
 wwwroot\images\football-icon.png
 wwwroot\images\fotbal1.jpg
 wwwroot\images\fotbal2.jpg
@@ -11,10 +13,13 @@ wwwroot\images\hero1.jpg
 wwwroot\images\hero2.jpg
 wwwroot\images\hero3.jpg
 wwwroot\images\logo.png
+wwwroot\images\logo1.png
 wwwroot\images\news1.jpg
 wwwroot\images\news2.jpg
 wwwroot\images\news3.jpg
 wwwroot\images\placeholder.jpg
+wwwroot\images\presedinte.png
+wwwroot\images\secretar.jpg
 wwwroot\images\services1.jpg
 wwwroot\images\services2.jpg
 wwwroot\images\services3.jpg
@@ -26,6 +31,8 @@ wwwroot\images\stat4.png
 wwwroot\images\stat5.png
 wwwroot\images\stats-bg.png
 wwwroot\images\truck.png
+wwwroot\images\vicepresedinte.jpg
+wwwroot\js\pdf-viewer.js
 wwwroot\js\scripts.js
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css

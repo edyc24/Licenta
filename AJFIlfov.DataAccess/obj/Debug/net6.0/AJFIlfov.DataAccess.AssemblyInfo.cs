@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AJFIlfov.DataAccess")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9d2982f1be777d2dec23842ab515e8f1c476009f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+97ab4dec58664814adb2dfd01c8490ece7bd326d")]
 [assembly: System.Reflection.AssemblyProductAttribute("AJFIlfov.DataAccess")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AJFIlfov.DataAccess")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

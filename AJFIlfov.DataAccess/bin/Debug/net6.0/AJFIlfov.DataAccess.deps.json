@@ -18,6 +18,7 @@
           "Microsoft.EntityFrameworkCore.Tools": "7.0.14",
           "Microsoft.Extensions.Configuration": "8.0.0",
           "PageList": "1.2.3",
+          "PdfPig": "0.1.9",
           "SqlTableDependency": "8.5.8",
           "Syncfusion.Pdf.Net.Core": "25.1.35",
           "Twilio": "7.1.1",
@@ -700,6 +701,38 @@
           "lib/netcoreapp3.1/PageList.dll": {
             "assemblyVersion": "1.2.3.0",
             "fileVersion": "1.2.3.0"
+          }
+        }
+      },
+      "PdfPig/0.1.9": {
+        "runtime": {
+          "lib/net6.0/UglyToad.PdfPig.Core.dll": {
+            "assemblyVersion": "0.1.9.0",
+            "fileVersion": "0.1.9.0"
+          },
+          "lib/net6.0/UglyToad.PdfPig.DocumentLayoutAnalysis.dll": {
+            "assemblyVersion": "0.1.9.0",
+            "fileVersion": "0.1.9.0"
+          },
+          "lib/net6.0/UglyToad.PdfPig.Fonts.dll": {
+            "assemblyVersion": "0.1.9.0",
+            "fileVersion": "0.1.9.0"
+          },
+          "lib/net6.0/UglyToad.PdfPig.Package.dll": {
+            "assemblyVersion": "0.1.8.0",
+            "fileVersion": "0.1.8.0"
+          },
+          "lib/net6.0/UglyToad.PdfPig.Tokenization.dll": {
+            "assemblyVersion": "0.1.9.0",
+            "fileVersion": "0.1.9.0"
+          },
+          "lib/net6.0/UglyToad.PdfPig.Tokens.dll": {
+            "assemblyVersion": "0.1.9.0",
+            "fileVersion": "0.1.9.0"
+          },
+          "lib/net6.0/UglyToad.PdfPig.dll": {
+            "assemblyVersion": "0.1.9.0",
+            "fileVersion": "0.1.9.0"
           }
         }
       },
@@ -1663,6 +1696,7 @@
           "FluentValidation": "11.9.0",
           "Microsoft.AspNetCore.Http.Features": "3.1.32",
           "Microsoft.EntityFrameworkCore": "7.0.15",
+          "PdfPig": "0.1.9",
           "Twilio": "7.1.1",
           "iTextSharp": "5.5.13.4",
           "itext7": "8.0.5"
@@ -1677,6 +1711,7 @@
       "AJFIlfov.Entities/1.0.0": {
         "dependencies": {
           "AJFIlfov.Common": "1.0.0",
+          "PdfPig": "0.1.9",
           "Twilio": "7.1.1",
           "iTextSharp": "5.5.13.4",
           "itext7": "8.0.5"
@@ -2087,6 +2122,13 @@
       "sha512": "sha512-EjIqMC1h1AJJWFUM6hWHvT55pxxJ2V1OUincT+RSZm8Erp8cOWtg7JvAiwzkXPY8x//mGKqVSklaTPncfYfMxg==",
       "path": "pagelist/1.2.3",
       "hashPath": "pagelist.1.2.3.nupkg.sha512"
+    },
+    "PdfPig/0.1.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VU27oq5O0rpD+zWiD639xXkSHtsNXqbPpYV0pzYg9VPhDibH1cq1i67f9DuW2WnzDVEti0HipLcZxDhdayIzGg==",
+      "path": "pdfpig/0.1.9",
+      "hashPath": "pdfpig.0.1.9.nupkg.sha512"
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
       "type": "package",

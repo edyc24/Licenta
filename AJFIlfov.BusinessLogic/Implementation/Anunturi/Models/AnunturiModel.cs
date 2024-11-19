@@ -9,5 +9,7 @@ namespace AJFIlfov.BusinessLogic.Implementation.Anunturi.Models
         public DateTime DataPublicarii { get; set; }
         public byte[] Imagine { get; set; } // Proprietate pentru imagine stocată ca byte[]
         public string TipAnunt { get; set; }
+        public string PublishedBy { get; set; } // New property
+        public int Views { get; set; } // New property
     }
 }

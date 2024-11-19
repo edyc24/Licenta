@@ -2,6 +2,7 @@
 using AJFIlfov.BusinessLogic.Base;
 using AJFIlfov.BusinessLogic.Implementation.Account;
 using AJFIlfov.BusinessLogic.Implementation.Anunturi;
+using AJFIlfov.BusinessLogic.Implementation.Audituri;
 using AJFIlfov.BusinessLogic.Implementation.DisponibilitateAdminService;
 using AJFIlfov.BusinessLogic.Implementation.DisponibilitateService;
 using AJFIlfov.BusinessLogic.Implementation.EchipeService;
@@ -45,6 +46,7 @@ public static class ServiceCollectionExtensionMethods
         services.AddScoped<StadionLocalitateService>();
         services.AddScoped<AnuntService>();
         services.AddScoped<MeciLiveService>();
+        services.AddScoped<AuditService>();
         return services;
     }
 

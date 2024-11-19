@@ -1,0 +1,58 @@
+﻿@model AJFIlfov.BusinessLogic.Implementation.Account.LoginModel
+
+@{
+    ViewData["Title"] = "Autentificare";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Account/Login.css" />
+}
+
+<div class="login-page">
+    <div class="login-container">
+        <div class="login-card">
+            <h2 class="text-center">Autentificare</h2>
+            @if (Model.AreCredentialsInvalid)
+            {
+                <div class="alert alert-danger text-center">
+                    Credențiale invalide
+                </div>
+            }
+
+            <form asp-action="Login">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label">Email</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                        </div>
+                        <input asp-for="Email" class="form-control" placeholder="Introduceți adresa de email" />
+                    </div>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label">Parolă</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                        </div>
+                        <input asp-for="Password" type="password" class="form-control" placeholder="Introduceți parola" />
+                    </div>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <div class="form-group text-center">
+                    <input type="submit" value="Autentificare" class="btn btn-primary btn-block" />
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

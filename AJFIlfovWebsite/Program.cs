@@ -43,8 +43,8 @@ builder.Services.AddAJFIlfovBusinessLogic();
 builder.Services.AddAuthentication("AJFIlfovCookies")
     .AddCookie("AJFIlfovCookies", options =>
     {
-        options.AccessDeniedPath = new PathString("/Home/Index");
-        options.LoginPath = new PathString("/Account/Login");
+        options.AccessDeniedPath = new PathString("/HomeWebsite/Index");
+        options.LoginPath = new PathString("/Admin/Login");
     });
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

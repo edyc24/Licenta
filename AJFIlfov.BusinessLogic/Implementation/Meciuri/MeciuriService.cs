@@ -179,6 +179,7 @@ namespace AJFIlfov.BusinessLogic.Implementation.MeciuriService
                 IdArbitruAsistent2 = model.IdArbitruAsistent2,
                 IdArbitruRezerva = model.IdArbitruRezerva,
                 IdObservator = model.IdObservator,
+               
                 IdStadionLocalitate = model.IdStadionLocalitate,
                 IdDeleted = false
             };

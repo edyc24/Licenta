@@ -1,0 +1,256 @@
+﻿@{
+    ViewData["Title"] = "Despre noi";
+}
+
+<div class="container">
+    <section class="showcase">
+        <div class="content">
+            <h1 class="title">⚽ Noi suntem AJF Ilfov ⚡</h1>
+            <p>Conectăm oameni prin pasiunea pentru fotbal. Descoperă misiunea, valorile și echipa care stă în spatele succesului fotbalului din Ilfov.</p>
+        </div>
+    </section>
+
+    <section class="content futuristic-card" id="misiune">
+        <h2>Misiunea noastră</h2>
+        <p>Creăm oportunități pentru toți pasionații de fotbal, promovând excelența și dezvoltarea talentelor locale.</p>
+        <p>Prin competiții moderne și sprijin personalizat, construim viitorul fotbalului în județul Ilfov.</p>
+    </section>
+
+    <section class="content futuristic-card" id="valori">
+        <h2>Valorile noastre</h2>
+        <ul>
+            <li><strong>🔥 Pasiune:</strong> Ne dedicăm complet sportului.</li>
+            <li><strong>⚖️ Integritate:</strong> Respectăm jocul și regulile sale.</li>
+            <li><strong>🌟 Comunitate:</strong> Încurajăm legăturile între oameni.</li>
+            <li><strong>🚀 Excelență:</strong> Depășim limitele în fiecare zi.</li>
+        </ul>
+    </section>
+
+    <section class="content futuristic-card" id="echipa">
+        <h2>Echipa noastră</h2>
+        <div class="team">
+            <div class="team-member">
+                <img src="~/images/presedinte.png" alt="Președinte" />
+                <h3>Buhac Constantin</h3>
+                <p>Președinte</p>
+            </div>
+            <div class="team-member">
+                <img src="~/images/vicepresedinte.jpg" alt="Vicepreședinte" />
+                <h3>Marius Serban</h3>
+                <p>Vicepreședinte</p>
+            </div>
+            <div class="team-member">
+                <img src="~/images/secretar.jpg" alt="Secretar General" />
+                <h3>Tanasa Mugurel</h3>
+                <p>Secretar General</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content futuristic-card" id="locatii">
+        <h2>Locațiile noastre</h2>
+        <p>Vino să ne descoperi pe terenurile din județul Ilfov!</p>
+        <p><a href="https://maps.app.goo.gl/WDtN3nUpmzqhxrnN6" target="_blank" class="btn-glow">Vezi pe Google Maps</a></p>
+    </section>
+
+    <section class="content futuristic-card" id="contact">
+        <h2>Contactează-ne</h2>
+        <p>Suntem gata să răspundem tuturor întrebărilor tale. Hai să vorbim!</p>
+        <p><a asp-controller="Contact" asp-action="Index" class="btn-glow">Contactează-ne</a></p>
+    </section>
+</div>
+
+<style>
+    /* General */
+    body {
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    h1, h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 1.2em;
+        line-height: 1.6;
+        text-align: center;
+    }
+
+    /* Showcase */
+    .showcase {
+        position: relative;
+        padding: 150px 20px;
+        text-align: center;
+        background: radial-gradient(circle at top, #1c1c1c, #111111);
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+        .showcase .content {
+            z-index: 2;
+            position: relative;
+        }
+
+        .showcase .title {
+            font-size: 3.5em;
+            font-weight: bold;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #f39c12, #e74c3c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 2s infinite;
+        }
+
+    @@keyframes glow {
+        0%, 100%
+
+    {
+        text-shadow: 0 0 20px #f39c12, 0 0 30px #e74c3c;
+    }
+
+    50% {
+        text-shadow: 0 0 30px #e74c3c, 0 0 50px #f39c12;
+    }
+
+    }
+
+    /* Futuristic Cards */
+    .futuristic-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        padding: 30px;
+        margin: 20px 0;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+        .futuristic-card h2 {
+            font-size: 2.5em;
+            color: #00e0ff;
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+            .futuristic-card h2::after {
+                content: '';
+                display: block;
+                width: 80px;
+                height: 3px;
+                background: #00e0ff;
+                margin: 0 auto;
+            }
+
+    /* Butoane */
+    .btn-glow {
+        display: inline-block;
+        padding: 10px 20px;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 25px;
+        background: linear-gradient(90deg, #f39c12, #e74c3c);
+        box-shadow: 0 0 20px rgba(255, 100, 100, 0.6);
+        text-transform: uppercase;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+        .btn-glow:hover {
+            background: linear-gradient(90deg, #e74c3c, #f39c12);
+            box-shadow: 0 0 30px rgba(255, 100, 100, 0.8);
+        }
+
+    /* Secțiunea Echipa */
+    .team {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .team-member {
+        text-align: center;
+        padding: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 10px;
+        background: rgba(0, 0, 0, 0.5);
+        width: 30%;
+    }
+
+        .team-member img {
+            border-radius: 50%;
+            max-width: 120px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            margin-bottom: 15px;
+        }
+
+        .team-member h3 {
+            font-size: 1.5em;
+            color: #00e0ff;
+        }
+
+    /* Optimizare pentru dispozitive mobile */
+    @@media (max-width: 768px) {
+        .container
+
+    {
+        padding: 10px;
+    }
+
+    .showcase {
+        padding: 100px 10px;
+    }
+
+        .showcase .title {
+            font-size: 2.5em;
+        }
+
+    .futuristic-card h2 {
+        font-size: 2em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+
+    .team-member {
+        width: 100%;
+    }
+
+    }
+
+    @@media (max-width: 480px) {
+        .showcase .title
+
+    {
+        font-size: 1.8em;
+    }
+
+    .btn-glow {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+
+    h1, h2 {
+        margin-bottom: 15px;
+    }
+
+    .futuristic-card {
+        padding: 20px;
+        margin: 15px 0;
+    }
+
+    }
+</style>

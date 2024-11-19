@@ -15,6 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Teko:wght@300;400;500;600;700&display=swap"
           rel="stylesheet">
+
     <!-- Stil CSS -->
     <link rel="stylesheet" href="~/css/layout.css">
 </head>
@@ -24,7 +25,7 @@
     <div class="header-content">
         <div class="header-title">
             <a href="/">
-                <img src="~/images/logo.png" alt="AJF Ilfov Logo">
+                <img src="~/images/logo1.png" alt="AJF Ilfov Logo">
                 <h2>Asociația Județeană de Fotbal Ilfov</h2>
             </a>
         </div>
@@ -34,11 +35,13 @@
         </div>
         <!-- Navigare -->
         <nav>
-            <a href="/">Acasă</a>
-            <a href="/Despre">Despre Noi</a>
-            <a href="/Competitii">Competiții</a>
-            <a href="/Clasamente">Clasamente</a>
-            <a href="/Contact">Contact</a>
+            <a asp-controller="HomeWebsite" asp-action="Index"> Acasa</a>
+                <a asp-controller="DespreNoi">Despre Noi</a>
+                <a asp-controller="Anunturi">Anunturi</a>
+                <a asp-controller="Comisii">Comisii jursdictionale</a>
+                <a asp-controller="MeciLive">Meciuri Live</a>
+                <a asp-controller="Documente">Documente</a>
+                <a asp-controller="Contact">Contact</a>
         </nav>
     </div>
 </header>
@@ -46,13 +49,15 @@
 <!-- Conținut Principal -->
 <div class="content">
     @RenderBody()
+    @RenderSection("Scripts", required: false)
+    @RenderSection("Styles", required: false)
 </div>
 
 <!-- Footer -->
 <footer>
     <p>&copy; 2023 Asociația Județeană de Fotbal Ilfov. Toate drepturile rezervate.</p>
     <div class="social-icons">
-        <a href="#">
+            <a href="https://www.facebook.com/AJFIlfov1997/?locale=ro_RO">
             <i class="fab fa-facebook-f"></i>
         </a>
         <a href="#">

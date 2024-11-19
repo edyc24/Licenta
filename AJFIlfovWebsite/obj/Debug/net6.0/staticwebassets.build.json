@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "46C3x2y0bCjnk6eFFQp98p9Y6baBzKw3GLiI9xOoZdg=",
+  "Hash": "pWNRyoeZq5d8Vof1lUQ6JIWTA052V6Th7cVAUtNIXhA=",
   "Source": "AJFIlfovWebsite",
   "BasePath": "_content/AJFIlfovWebsite",
   "Mode": "Default",
@@ -2304,6 +2304,27 @@
       "OriginalItemSpec": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\AJFIlfovWebsite.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\css\\Admin\\Login.css",
+      "SourceId": "AJFIlfovWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\",
+      "BasePath": "_content/AJFIlfovWebsite",
+      "RelativePath": "css/Admin/Login#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "4unq9cieqz",
+      "Integrity": "LPRl3SDGd5hatU+FykUQ7WXEHy4lyyu6C6V+BBOWzIQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Admin\\Login.css"
+    },
+    {
       "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\css\\HomeWebsite\\styles.css",
       "SourceId": "AJFIlfovWebsite",
       "SourceType": "Discovered",
@@ -2318,8 +2339,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "jm3daya3d5",
-      "Integrity": "m8WFQIAEDOFhCsWuutvGD8LJR1NfqZ3qFhv0hy4oonA=",
+      "Fingerprint": "tfk6g38cfk",
+      "Integrity": "+SjRG3th7eQZnNhfNcUTwW084CMhQ8co+of/C8VQ21M=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\HomeWebsite\\styles.css"
@@ -2360,8 +2381,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "oq8r4nbcb2",
-      "Integrity": "AKvNjO3dCPPS0eSU1Ez8T2wI280i08yGycV9ndytL+c=",
+      "Fingerprint": "dr9fbt7djp",
+      "Integrity": "1/G8/g8yxJqFndto9hCEEqvvPyWL0r9PKUPl2FOZYMs=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -2407,6 +2428,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\child-icon.png"
+    },
+    {
+      "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\default4.jpg",
+      "SourceId": "AJFIlfovWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\",
+      "BasePath": "_content/AJFIlfovWebsite",
+      "RelativePath": "images/default4#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "jdwvtbw06r",
+      "Integrity": "p/72r2FwpqNJw2aPeefVk5XeXv/jIJR5nnKtAkwA6UE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\default4.jpg"
     },
     {
       "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\football-icon.png",
@@ -2577,6 +2619,27 @@
       "OriginalItemSpec": "wwwroot\\images\\logo.png"
     },
     {
+      "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\logo1.png",
+      "SourceId": "AJFIlfovWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\",
+      "BasePath": "_content/AJFIlfovWebsite",
+      "RelativePath": "images/logo1#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ly9o6ytz0v",
+      "Integrity": "bWZI1M5taiQ+S4yWm4UTF9mu/f96AtHpAMZEGg3VvDM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\logo1.png"
+    },
+    {
       "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\news1.jpg",
       "SourceId": "AJFIlfovWebsite",
       "SourceType": "Discovered",
@@ -2659,6 +2722,48 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\placeholder.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\presedinte.png",
+      "SourceId": "AJFIlfovWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\",
+      "BasePath": "_content/AJFIlfovWebsite",
+      "RelativePath": "images/presedinte#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "t0e2o8572r",
+      "Integrity": "fft6Ab+ShotX9DcjnHPl5SpwZzJsb84g9Q3am2a3geE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\presedinte.png"
+    },
+    {
+      "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\secretar.jpg",
+      "SourceId": "AJFIlfovWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\",
+      "BasePath": "_content/AJFIlfovWebsite",
+      "RelativePath": "images/secretar#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "42jwgowscx",
+      "Integrity": "fJjBs9fZRHJcnXSBbzccDi74I65VQGqMz9ETyAKDEW0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\secretar.jpg"
     },
     {
       "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\services1.jpg",
@@ -2890,6 +2995,48 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\truck.png"
+    },
+    {
+      "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\vicepresedinte.jpg",
+      "SourceId": "AJFIlfovWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\",
+      "BasePath": "_content/AJFIlfovWebsite",
+      "RelativePath": "images/vicepresedinte#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "kznscowfav",
+      "Integrity": "cBTFvPCDaVJw8X0NGjJ8ykk93/Yl2f3CGk3J+AGTkec=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\vicepresedinte.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\js\\pdf-viewer.js",
+      "SourceId": "AJFIlfovWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\",
+      "BasePath": "_content/AJFIlfovWebsite",
+      "RelativePath": "js/pdf-viewer#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "38hl912ubq",
+      "Integrity": "czfdAhfhR89oCnlBW3LpK18RrvTtrapyWNXRzomW1iU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\pdf-viewer.js"
     },
     {
       "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\js\\scripts.js",
@@ -12997,6 +13144,88 @@
       ]
     },
     {
+      "Route": "css/Admin/Login.4unq9cieqz.css",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\css\\Admin\\Login.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1503"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"LPRl3SDGd5hatU+FykUQ7WXEHy4lyyu6C6V+BBOWzIQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 18 Nov 2024 21:38:12 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4unq9cieqz"
+        },
+        {
+          "Name": "label",
+          "Value": "css/Admin/Login.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-LPRl3SDGd5hatU+FykUQ7WXEHy4lyyu6C6V+BBOWzIQ="
+        }
+      ]
+    },
+    {
+      "Route": "css/Admin/Login.css",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\css\\Admin\\Login.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1503"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"LPRl3SDGd5hatU+FykUQ7WXEHy4lyyu6C6V+BBOWzIQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 18 Nov 2024 21:38:12 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-LPRl3SDGd5hatU+FykUQ7WXEHy4lyyu6C6V+BBOWzIQ="
+        }
+      ]
+    },
+    {
       "Route": "css/HomeWebsite/styles.css",
       "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\css\\HomeWebsite\\styles.css",
       "Selectors": [],
@@ -13007,7 +13236,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "12590"
+          "Value": "13501"
         },
         {
           "Name": "Content-Type",
@@ -13015,11 +13244,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"m8WFQIAEDOFhCsWuutvGD8LJR1NfqZ3qFhv0hy4oonA=\""
+          "Value": "\"+SjRG3th7eQZnNhfNcUTwW084CMhQ8co+of/C8VQ21M=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 18 Nov 2024 16:16:21 GMT"
+          "Value": "Tue, 19 Nov 2024 09:24:29 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -13029,12 +13258,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-m8WFQIAEDOFhCsWuutvGD8LJR1NfqZ3qFhv0hy4oonA="
+          "Value": "sha256-+SjRG3th7eQZnNhfNcUTwW084CMhQ8co+of/C8VQ21M="
         }
       ]
     },
     {
-      "Route": "css/HomeWebsite/styles.jm3daya3d5.css",
+      "Route": "css/HomeWebsite/styles.tfk6g38cfk.css",
       "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\css\\HomeWebsite\\styles.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -13044,7 +13273,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "12590"
+          "Value": "13501"
         },
         {
           "Name": "Content-Type",
@@ -13052,11 +13281,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"m8WFQIAEDOFhCsWuutvGD8LJR1NfqZ3qFhv0hy4oonA=\""
+          "Value": "\"+SjRG3th7eQZnNhfNcUTwW084CMhQ8co+of/C8VQ21M=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 18 Nov 2024 16:16:21 GMT"
+          "Value": "Tue, 19 Nov 2024 09:24:29 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -13066,7 +13295,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "jm3daya3d5"
+          "Value": "tfk6g38cfk"
         },
         {
           "Name": "label",
@@ -13074,7 +13303,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-m8WFQIAEDOFhCsWuutvGD8LJR1NfqZ3qFhv0hy4oonA="
+          "Value": "sha256-+SjRG3th7eQZnNhfNcUTwW084CMhQ8co+of/C8VQ21M="
         }
       ]
     },
@@ -13171,7 +13400,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "194"
+          "Value": "520"
         },
         {
           "Name": "Content-Type",
@@ -13179,11 +13408,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"AKvNjO3dCPPS0eSU1Ez8T2wI280i08yGycV9ndytL+c=\""
+          "Value": "\"1/G8/g8yxJqFndto9hCEEqvvPyWL0r9PKUPl2FOZYMs=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 04 Nov 2024 09:08:15 GMT"
+          "Value": "Mon, 18 Nov 2024 19:36:55 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -13193,12 +13422,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-AKvNjO3dCPPS0eSU1Ez8T2wI280i08yGycV9ndytL+c="
+          "Value": "sha256-1/G8/g8yxJqFndto9hCEEqvvPyWL0r9PKUPl2FOZYMs="
         }
       ]
     },
     {
-      "Route": "css/site.oq8r4nbcb2.css",
+      "Route": "css/site.dr9fbt7djp.css",
       "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\css\\site.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -13208,7 +13437,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "194"
+          "Value": "520"
         },
         {
           "Name": "Content-Type",
@@ -13216,11 +13445,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"AKvNjO3dCPPS0eSU1Ez8T2wI280i08yGycV9ndytL+c=\""
+          "Value": "\"1/G8/g8yxJqFndto9hCEEqvvPyWL0r9PKUPl2FOZYMs=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 04 Nov 2024 09:08:15 GMT"
+          "Value": "Mon, 18 Nov 2024 19:36:55 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -13230,7 +13459,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "oq8r4nbcb2"
+          "Value": "dr9fbt7djp"
         },
         {
           "Name": "label",
@@ -13238,7 +13467,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-AKvNjO3dCPPS0eSU1Ez8T2wI280i08yGycV9ndytL+c="
+          "Value": "sha256-1/G8/g8yxJqFndto9hCEEqvvPyWL0r9PKUPl2FOZYMs="
         }
       ]
     },
@@ -13403,6 +13632,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-2yWIM3qmkKKIPSFG8H9HWGpWNfcadWkwkLYFP3wEJtA="
+        }
+      ]
+    },
+    {
+      "Route": "images/default4.jdwvtbw06r.jpg",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\default4.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "17706"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"p/72r2FwpqNJw2aPeefVk5XeXv/jIJR5nnKtAkwA6UE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 19 Nov 2024 00:13:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "jdwvtbw06r"
+        },
+        {
+          "Name": "label",
+          "Value": "images/default4.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-p/72r2FwpqNJw2aPeefVk5XeXv/jIJR5nnKtAkwA6UE="
+        }
+      ]
+    },
+    {
+      "Route": "images/default4.jpg",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\default4.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "17706"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"p/72r2FwpqNJw2aPeefVk5XeXv/jIJR5nnKtAkwA6UE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 19 Nov 2024 00:13:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-p/72r2FwpqNJw2aPeefVk5XeXv/jIJR5nnKtAkwA6UE="
         }
       ]
     },
@@ -14063,6 +14374,88 @@
       ]
     },
     {
+      "Route": "images/logo1.ly9o6ytz0v.png",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\logo1.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7254"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"bWZI1M5taiQ+S4yWm4UTF9mu/f96AtHpAMZEGg3VvDM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 19 Nov 2024 14:37:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ly9o6ytz0v"
+        },
+        {
+          "Name": "label",
+          "Value": "images/logo1.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-bWZI1M5taiQ+S4yWm4UTF9mu/f96AtHpAMZEGg3VvDM="
+        }
+      ]
+    },
+    {
+      "Route": "images/logo1.png",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\logo1.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7254"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"bWZI1M5taiQ+S4yWm4UTF9mu/f96AtHpAMZEGg3VvDM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 19 Nov 2024 14:37:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-bWZI1M5taiQ+S4yWm4UTF9mu/f96AtHpAMZEGg3VvDM="
+        }
+      ]
+    },
+    {
       "Route": "images/news1.1c1lu5ejr4.jpg",
       "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\news1.jpg",
       "Selectors": [],
@@ -14387,6 +14780,170 @@
         {
           "Name": "integrity",
           "Value": "sha256-l1cCfZhPUxSQpzjyAZwcmAFbWfk+PPy02KWJjGRxVks="
+        }
+      ]
+    },
+    {
+      "Route": "images/presedinte.png",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\presedinte.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "417068"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fft6Ab+ShotX9DcjnHPl5SpwZzJsb84g9Q3am2a3geE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 19 Nov 2024 08:56:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-fft6Ab+ShotX9DcjnHPl5SpwZzJsb84g9Q3am2a3geE="
+        }
+      ]
+    },
+    {
+      "Route": "images/presedinte.t0e2o8572r.png",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\presedinte.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "417068"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fft6Ab+ShotX9DcjnHPl5SpwZzJsb84g9Q3am2a3geE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 19 Nov 2024 08:56:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "t0e2o8572r"
+        },
+        {
+          "Name": "label",
+          "Value": "images/presedinte.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-fft6Ab+ShotX9DcjnHPl5SpwZzJsb84g9Q3am2a3geE="
+        }
+      ]
+    },
+    {
+      "Route": "images/secretar.42jwgowscx.jpg",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\secretar.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4181"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fJjBs9fZRHJcnXSBbzccDi74I65VQGqMz9ETyAKDEW0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 19 Nov 2024 08:52:58 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "42jwgowscx"
+        },
+        {
+          "Name": "label",
+          "Value": "images/secretar.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-fJjBs9fZRHJcnXSBbzccDi74I65VQGqMz9ETyAKDEW0="
+        }
+      ]
+    },
+    {
+      "Route": "images/secretar.jpg",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\secretar.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4181"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fJjBs9fZRHJcnXSBbzccDi74I65VQGqMz9ETyAKDEW0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 19 Nov 2024 08:52:58 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-fJjBs9fZRHJcnXSBbzccDi74I65VQGqMz9ETyAKDEW0="
         }
       ]
     },
@@ -15289,6 +15846,170 @@
         {
           "Name": "integrity",
           "Value": "sha256-FbFpgYGuqke5wuddkHETAIfloIFr96bZr+fl0dDD6Sg="
+        }
+      ]
+    },
+    {
+      "Route": "images/vicepresedinte.jpg",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\vicepresedinte.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8123"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"cBTFvPCDaVJw8X0NGjJ8ykk93/Yl2f3CGk3J+AGTkec=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 19 Nov 2024 08:52:15 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-cBTFvPCDaVJw8X0NGjJ8ykk93/Yl2f3CGk3J+AGTkec="
+        }
+      ]
+    },
+    {
+      "Route": "images/vicepresedinte.kznscowfav.jpg",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\vicepresedinte.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8123"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"cBTFvPCDaVJw8X0NGjJ8ykk93/Yl2f3CGk3J+AGTkec=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 19 Nov 2024 08:52:15 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kznscowfav"
+        },
+        {
+          "Name": "label",
+          "Value": "images/vicepresedinte.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-cBTFvPCDaVJw8X0NGjJ8ykk93/Yl2f3CGk3J+AGTkec="
+        }
+      ]
+    },
+    {
+      "Route": "js/pdf-viewer.38hl912ubq.js",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\js\\pdf-viewer.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2492"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"czfdAhfhR89oCnlBW3LpK18RrvTtrapyWNXRzomW1iU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 18 Nov 2024 19:36:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "38hl912ubq"
+        },
+        {
+          "Name": "label",
+          "Value": "js/pdf-viewer.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-czfdAhfhR89oCnlBW3LpK18RrvTtrapyWNXRzomW1iU="
+        }
+      ]
+    },
+    {
+      "Route": "js/pdf-viewer.js",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\js\\pdf-viewer.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2492"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"czfdAhfhR89oCnlBW3LpK18RrvTtrapyWNXRzomW1iU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 18 Nov 2024 19:36:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-czfdAhfhR89oCnlBW3LpK18RrvTtrapyWNXRzomW1iU="
         }
       ]
     },

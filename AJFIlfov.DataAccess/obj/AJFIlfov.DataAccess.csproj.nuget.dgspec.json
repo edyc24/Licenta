@@ -93,6 +93,10 @@
               "target": "Package",
               "version": "[1.2.3, )"
             },
+            "PdfPig": {
+              "target": "Package",
+              "version": "[0.1.9, )"
+            },
             "SqlTableDependency": {
               "target": "Package",
               "version": "[8.5.8, )"
@@ -184,6 +188,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "PdfPig": {
+              "target": "Package",
+              "version": "[0.1.9, )"
+            },
             "Twilio": {
               "target": "Package",
               "version": "[7.1.1, )"
@@ -274,6 +282,10 @@
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.15, )"
+            },
+            "PdfPig": {
+              "target": "Package",
+              "version": "[0.1.9, )"
             },
             "Twilio": {
               "target": "Package",

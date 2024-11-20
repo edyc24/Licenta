@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "pWNRyoeZq5d8Vof1lUQ6JIWTA052V6Th7cVAUtNIXhA=",
+  "Hash": "vQakNt1Rc4VVOvZspuF3OniMhBH/xumbuSs+AsIQ0kQ=",
   "Source": "AJFIlfovWebsite",
   "BasePath": "_content/AJFIlfovWebsite",
   "Mode": "Default",
@@ -2367,6 +2367,90 @@
       "OriginalItemSpec": "wwwroot\\css\\layout.css"
     },
     {
+      "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\css\\Meciuri\\CreateMeci.css",
+      "SourceId": "AJFIlfovWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\",
+      "BasePath": "_content/AJFIlfovWebsite",
+      "RelativePath": "css/Meciuri/CreateMeci#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "6ds2n3mpf2",
+      "Integrity": "5gBaCR4coxiilXvzAzXmuQ4p18DEBq/acsYJLwi+8yM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Meciuri\\CreateMeci.css"
+    },
+    {
+      "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\css\\Meciuri\\Edit.css",
+      "SourceId": "AJFIlfovWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\",
+      "BasePath": "_content/AJFIlfovWebsite",
+      "RelativePath": "css/Meciuri/Edit#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "28p6gex9wn",
+      "Integrity": "Mh1hWRxZOCIQU2vZ8O8+B0bSvvTHX/bB6aAR3IPZvxQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Meciuri\\Edit.css"
+    },
+    {
+      "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\css\\Meciuri\\EditareMeciAdmin.css",
+      "SourceId": "AJFIlfovWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\",
+      "BasePath": "_content/AJFIlfovWebsite",
+      "RelativePath": "css/Meciuri/EditareMeciAdmin#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "b57hz8n4pf",
+      "Integrity": "kS4F1XvIhyzzCkYdl1GJYhOYgzCMsyXJ1fOwUiaC6ww=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Meciuri\\EditareMeciAdmin.css"
+    },
+    {
+      "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\css\\Meciuri\\Index.css",
+      "SourceId": "AJFIlfovWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\",
+      "BasePath": "_content/AJFIlfovWebsite",
+      "RelativePath": "css/Meciuri/Index#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "tf8oe939on",
+      "Integrity": "R72m8Den7ej6OYqpNl0wBmw482/3YEyS8uSXn/w1J9g=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Meciuri\\Index.css"
+    },
+    {
       "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\css\\site.css",
       "SourceId": "AJFIlfovWebsite",
       "SourceType": "Discovered",
@@ -3016,6 +3100,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\vicepresedinte.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\js\\Meciuri\\CreareMeci.js",
+      "SourceId": "AJFIlfovWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\",
+      "BasePath": "_content/AJFIlfovWebsite",
+      "RelativePath": "js/Meciuri/CreareMeci#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "1pzeou24bj",
+      "Integrity": "NRxPfC4/jisIhwz3S9csruJInJ0Nh7KEqgeS/OnZMR8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Meciuri\\CreareMeci.js"
     },
     {
       "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\js\\pdf-viewer.js",
@@ -13390,6 +13495,334 @@
       ]
     },
     {
+      "Route": "css/Meciuri/CreateMeci.6ds2n3mpf2.css",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\css\\Meciuri\\CreateMeci.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "775"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5gBaCR4coxiilXvzAzXmuQ4p18DEBq/acsYJLwi+8yM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 05 Sep 2024 05:40:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6ds2n3mpf2"
+        },
+        {
+          "Name": "label",
+          "Value": "css/Meciuri/CreateMeci.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-5gBaCR4coxiilXvzAzXmuQ4p18DEBq/acsYJLwi+8yM="
+        }
+      ]
+    },
+    {
+      "Route": "css/Meciuri/CreateMeci.css",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\css\\Meciuri\\CreateMeci.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "775"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5gBaCR4coxiilXvzAzXmuQ4p18DEBq/acsYJLwi+8yM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 05 Sep 2024 05:40:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-5gBaCR4coxiilXvzAzXmuQ4p18DEBq/acsYJLwi+8yM="
+        }
+      ]
+    },
+    {
+      "Route": "css/Meciuri/Edit.28p6gex9wn.css",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\css\\Meciuri\\Edit.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1398"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Mh1hWRxZOCIQU2vZ8O8+B0bSvvTHX/bB6aAR3IPZvxQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 05 Sep 2024 05:40:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "28p6gex9wn"
+        },
+        {
+          "Name": "label",
+          "Value": "css/Meciuri/Edit.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Mh1hWRxZOCIQU2vZ8O8+B0bSvvTHX/bB6aAR3IPZvxQ="
+        }
+      ]
+    },
+    {
+      "Route": "css/Meciuri/Edit.css",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\css\\Meciuri\\Edit.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1398"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Mh1hWRxZOCIQU2vZ8O8+B0bSvvTHX/bB6aAR3IPZvxQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 05 Sep 2024 05:40:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Mh1hWRxZOCIQU2vZ8O8+B0bSvvTHX/bB6aAR3IPZvxQ="
+        }
+      ]
+    },
+    {
+      "Route": "css/Meciuri/EditareMeciAdmin.b57hz8n4pf.css",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\css\\Meciuri\\EditareMeciAdmin.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1585"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kS4F1XvIhyzzCkYdl1GJYhOYgzCMsyXJ1fOwUiaC6ww=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 05 Sep 2024 05:40:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "b57hz8n4pf"
+        },
+        {
+          "Name": "label",
+          "Value": "css/Meciuri/EditareMeciAdmin.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-kS4F1XvIhyzzCkYdl1GJYhOYgzCMsyXJ1fOwUiaC6ww="
+        }
+      ]
+    },
+    {
+      "Route": "css/Meciuri/EditareMeciAdmin.css",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\css\\Meciuri\\EditareMeciAdmin.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1585"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kS4F1XvIhyzzCkYdl1GJYhOYgzCMsyXJ1fOwUiaC6ww=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 05 Sep 2024 05:40:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-kS4F1XvIhyzzCkYdl1GJYhOYgzCMsyXJ1fOwUiaC6ww="
+        }
+      ]
+    },
+    {
+      "Route": "css/Meciuri/Index.css",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\css\\Meciuri\\Index.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1724"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"R72m8Den7ej6OYqpNl0wBmw482/3YEyS8uSXn/w1J9g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 05 Sep 2024 05:40:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-R72m8Den7ej6OYqpNl0wBmw482/3YEyS8uSXn/w1J9g="
+        }
+      ]
+    },
+    {
+      "Route": "css/Meciuri/Index.tf8oe939on.css",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\css\\Meciuri\\Index.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1724"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"R72m8Den7ej6OYqpNl0wBmw482/3YEyS8uSXn/w1J9g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 05 Sep 2024 05:40:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "tf8oe939on"
+        },
+        {
+          "Name": "label",
+          "Value": "css/Meciuri/Index.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-R72m8Den7ej6OYqpNl0wBmw482/3YEyS8uSXn/w1J9g="
+        }
+      ]
+    },
+    {
       "Route": "css/site.css",
       "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\css\\site.css",
       "Selectors": [],
@@ -15928,6 +16361,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-cBTFvPCDaVJw8X0NGjJ8ykk93/Yl2f3CGk3J+AGTkec="
+        }
+      ]
+    },
+    {
+      "Route": "js/Meciuri/CreareMeci.1pzeou24bj.js",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\js\\Meciuri\\CreareMeci.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4366"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"NRxPfC4/jisIhwz3S9csruJInJ0Nh7KEqgeS/OnZMR8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 20 Nov 2024 08:59:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "1pzeou24bj"
+        },
+        {
+          "Name": "label",
+          "Value": "js/Meciuri/CreareMeci.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-NRxPfC4/jisIhwz3S9csruJInJ0Nh7KEqgeS/OnZMR8="
+        }
+      ]
+    },
+    {
+      "Route": "js/Meciuri/CreareMeci.js",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\js\\Meciuri\\CreareMeci.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4366"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"NRxPfC4/jisIhwz3S9csruJInJ0Nh7KEqgeS/OnZMR8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 20 Nov 2024 08:59:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-NRxPfC4/jisIhwz3S9csruJInJ0Nh7KEqgeS/OnZMR8="
         }
       ]
     },

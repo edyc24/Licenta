@@ -8949,6 +8949,334 @@
       ]
     },
     {
+      "Route": "css/Meciuri/CreateMeci.6ds2n3mpf2.css",
+      "AssetFile": "css/Meciuri/CreateMeci.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "775"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5gBaCR4coxiilXvzAzXmuQ4p18DEBq/acsYJLwi+8yM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 05 Sep 2024 05:40:10 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6ds2n3mpf2"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-5gBaCR4coxiilXvzAzXmuQ4p18DEBq/acsYJLwi+8yM="
+        },
+        {
+          "Name": "label",
+          "Value": "css/Meciuri/CreateMeci.css"
+        }
+      ]
+    },
+    {
+      "Route": "css/Meciuri/CreateMeci.css",
+      "AssetFile": "css/Meciuri/CreateMeci.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "775"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5gBaCR4coxiilXvzAzXmuQ4p18DEBq/acsYJLwi+8yM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 05 Sep 2024 05:40:10 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-5gBaCR4coxiilXvzAzXmuQ4p18DEBq/acsYJLwi+8yM="
+        }
+      ]
+    },
+    {
+      "Route": "css/Meciuri/Edit.28p6gex9wn.css",
+      "AssetFile": "css/Meciuri/Edit.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1398"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Mh1hWRxZOCIQU2vZ8O8+B0bSvvTHX/bB6aAR3IPZvxQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 05 Sep 2024 05:40:10 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "28p6gex9wn"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Mh1hWRxZOCIQU2vZ8O8+B0bSvvTHX/bB6aAR3IPZvxQ="
+        },
+        {
+          "Name": "label",
+          "Value": "css/Meciuri/Edit.css"
+        }
+      ]
+    },
+    {
+      "Route": "css/Meciuri/Edit.css",
+      "AssetFile": "css/Meciuri/Edit.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1398"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Mh1hWRxZOCIQU2vZ8O8+B0bSvvTHX/bB6aAR3IPZvxQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 05 Sep 2024 05:40:10 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Mh1hWRxZOCIQU2vZ8O8+B0bSvvTHX/bB6aAR3IPZvxQ="
+        }
+      ]
+    },
+    {
+      "Route": "css/Meciuri/EditareMeciAdmin.b57hz8n4pf.css",
+      "AssetFile": "css/Meciuri/EditareMeciAdmin.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1585"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kS4F1XvIhyzzCkYdl1GJYhOYgzCMsyXJ1fOwUiaC6ww=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 05 Sep 2024 05:40:10 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "b57hz8n4pf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-kS4F1XvIhyzzCkYdl1GJYhOYgzCMsyXJ1fOwUiaC6ww="
+        },
+        {
+          "Name": "label",
+          "Value": "css/Meciuri/EditareMeciAdmin.css"
+        }
+      ]
+    },
+    {
+      "Route": "css/Meciuri/EditareMeciAdmin.css",
+      "AssetFile": "css/Meciuri/EditareMeciAdmin.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1585"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kS4F1XvIhyzzCkYdl1GJYhOYgzCMsyXJ1fOwUiaC6ww=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 05 Sep 2024 05:40:10 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-kS4F1XvIhyzzCkYdl1GJYhOYgzCMsyXJ1fOwUiaC6ww="
+        }
+      ]
+    },
+    {
+      "Route": "css/Meciuri/Index.css",
+      "AssetFile": "css/Meciuri/Index.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1724"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"R72m8Den7ej6OYqpNl0wBmw482/3YEyS8uSXn/w1J9g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 05 Sep 2024 05:40:10 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-R72m8Den7ej6OYqpNl0wBmw482/3YEyS8uSXn/w1J9g="
+        }
+      ]
+    },
+    {
+      "Route": "css/Meciuri/Index.tf8oe939on.css",
+      "AssetFile": "css/Meciuri/Index.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1724"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"R72m8Den7ej6OYqpNl0wBmw482/3YEyS8uSXn/w1J9g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 05 Sep 2024 05:40:10 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "tf8oe939on"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-R72m8Den7ej6OYqpNl0wBmw482/3YEyS8uSXn/w1J9g="
+        },
+        {
+          "Name": "label",
+          "Value": "css/Meciuri/Index.css"
+        }
+      ]
+    },
+    {
       "Route": "css/layout.css",
       "AssetFile": "css/layout.css",
       "Selectors": [],
@@ -11569,6 +11897,88 @@
         {
           "Name": "label",
           "Value": "images/vicepresedinte.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "js/Meciuri/CreareMeci.1pzeou24bj.js",
+      "AssetFile": "js/Meciuri/CreareMeci.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4366"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"NRxPfC4/jisIhwz3S9csruJInJ0Nh7KEqgeS/OnZMR8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 20 Nov 2024 08:59:33 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "1pzeou24bj"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-NRxPfC4/jisIhwz3S9csruJInJ0Nh7KEqgeS/OnZMR8="
+        },
+        {
+          "Name": "label",
+          "Value": "js/Meciuri/CreareMeci.js"
+        }
+      ]
+    },
+    {
+      "Route": "js/Meciuri/CreareMeci.js",
+      "AssetFile": "js/Meciuri/CreareMeci.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4366"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"NRxPfC4/jisIhwz3S9csruJInJ0Nh7KEqgeS/OnZMR8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 20 Nov 2024 08:59:33 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-NRxPfC4/jisIhwz3S9csruJInJ0Nh7KEqgeS/OnZMR8="
         }
       ]
     },

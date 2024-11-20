@@ -16,6 +16,10 @@
         public Guid? IdObservator { get; set; }
         public Guid? IdStadionLocalitate { get; set; }
         public bool? IdDeleted { get; set; }
+        public int? ScorGazde { get; set; }
+        public int? ScorOaspeti{ get; set; }
+        public int? Etapa { get; set; }
+        public string? Locatie { get; set; }
 
         public string? EchipaGazdaNume { get; set; }
         public string? EchipaOaspeteNume { get; set; }

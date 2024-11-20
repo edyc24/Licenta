@@ -1,92 +1,92 @@
-﻿using AJFIlfov.BusinessLogic.Implementation.EchipeService;
-using AJFIlfov.BusinessLogic.Implementation.GrupeEchipaService;
-using AJFIlfov.BusinessLogic.Implementation.GrupeEchipaService.Models;
-using AJFIlfov.BusinessLogic.Implementation.GrupeService;
-using AJFIlfov.Code.Base;
-using AJFIlfov.WebApp.Code.Base;
-using Microsoft.AspNetCore.Mvc;
+﻿//using AJFIlfov.BusinessLogic.Implementation.EchipeService;
+//using AJFIlfov.BusinessLogic.Implementation.GrupeEchipaService;
+//using AJFIlfov.BusinessLogic.Implementation.GrupeEchipaService.Models;
+//using AJFIlfov.BusinessLogic.Implementation.GrupeService;
+//using AJFIlfov.Code.Base;
+//using AJFIlfov.WebApp.Code.Base;
+//using Microsoft.AspNetCore.Mvc;
 
-namespace AJFIlfov.Controllers
-{
-    public class GrupeEchipaController : BaseController
-    {
-        private readonly GrupeEchipaService _service;
-        private readonly EchipeService _echipeService;
-        private readonly GrupeService _grupeService;
+//namespace AJFIlfov.Controllers
+//{
+//    public class GrupeEchipaController : BaseController
+//    {
+//        private readonly GrupeEchipaService _service;
+//        private readonly EchipeService _echipeService;
+//        private readonly GrupeService _grupeService;
 
-        public GrupeEchipaController(ControllerDependencies dependencies, GrupeEchipaService service, EchipeService echipeService, GrupeService grupeService)
-            : base(dependencies)
-        {
-            _service = service;
-            _echipeService = echipeService;
-            _grupeService = grupeService;
-        }
+//        public GrupeEchipaController(ControllerDependencies dependencies, GrupeEchipaService service, EchipeService echipeService, GrupeService grupeService)
+//            : base(dependencies)
+//        {
+//            _service = service;
+//            _echipeService = echipeService;
+//            _grupeService = grupeService;
+//        }
 
-        public IActionResult Index()
-        {
-            var grupeEchipa = _service.GetAll();
-            return View(grupeEchipa);
-        }
+//        public IActionResult Index()
+//        {
+//            var grupeEchipa = _service.GetAll();
+//            return View(grupeEchipa);
+//        }
 
-        [HttpGet]
-        public IActionResult Create()
-        {
-            ViewBag.Echipe = _echipeService.GetAll();
-            ViewBag.Grupe = _grupeService.GetAll();
-            return View();
-        }
+//        [HttpGet]
+//        public IActionResult Create()
+//        {
+//            ViewBag.Echipe = _echipeService.GetAll();
+//            ViewBag.Grupe = _grupeService.GetAll();
+//            return View();
+//        }
 
-        [HttpPost]
-        public IActionResult Create(GrupaEchipaCreateModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                _service.CreateGrupaEchipa(model);
-                return RedirectToAction("Index");
-            }
-            ViewBag.Echipe = _echipeService.GetAll();
-            ViewBag.Grupe = _grupeService.GetAll();
-            return View(model);
-        }
+//        [HttpPost]
+//        public IActionResult Create(GrupaEchipaCreateModel model)
+//        {
+//            if (ModelState.IsValid)
+//            {
+//                _service.CreateGrupaEchipa(model);
+//                return RedirectToAction("Index");
+//            }
+//            ViewBag.Echipe = _echipeService.GetAll();
+//            ViewBag.Grupe = _grupeService.GetAll();
+//            return View(model);
+//        }
 
-        [HttpGet]
-        public IActionResult Edit(Guid id)
-        {
-            var grupaEchipa = _service.GetById(id);
-            if (grupaEchipa == null) return NotFound();
+//        [HttpGet]
+//        public IActionResult Edit(Guid id)
+//        {
+//            var grupaEchipa = _service.GetById(id);
+//            if (grupaEchipa == null) return NotFound();
 
-            ViewBag.Echipe = _echipeService.GetAll();
-            ViewBag.Grupe = _grupeService.GetAll();
-            return View(grupaEchipa);
-        }
+//            ViewBag.Echipe = _echipeService.GetAll();
+//            ViewBag.Grupe = _grupeService.GetAll();
+//            return View(grupaEchipa);
+//        }
 
-        [HttpPost]
-        public IActionResult Edit(GrupaEchipaModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                _service.UpdateGrupaEchipa(model);
-                return RedirectToAction("Index");
-            }
-            ViewBag.Echipe = _echipeService.GetAll();
-            ViewBag.Grupe = _grupeService.GetAll();
-            return View(model);
-        }
+//        [HttpPost]
+//        public IActionResult Edit(GrupaEchipaModel model)
+//        {
+//            if (ModelState.IsValid)
+//            {
+//                _service.UpdateGrupaEchipa(model);
+//                return RedirectToAction("Index");
+//            }
+//            ViewBag.Echipe = _echipeService.GetAll();
+//            ViewBag.Grupe = _grupeService.GetAll();
+//            return View(model);
+//        }
 
-        [HttpGet]
-        public IActionResult Delete(Guid id)
-        {
-            var grupaEchipa = _service.GetById(id);
-            if (grupaEchipa == null) return NotFound();
+//        [HttpGet]
+//        public IActionResult Delete(Guid id)
+//        {
+//            var grupaEchipa = _service.GetById(id);
+//            if (grupaEchipa == null) return NotFound();
 
-            return View(grupaEchipa);
-        }
+//            return View(grupaEchipa);
+//        }
 
-        [HttpPost, ActionName("Delete")]
-        public IActionResult DeleteConfirmed(Guid id)
-        {
-            _service.DeleteGrupaEchipa(id);
-            return RedirectToAction("Index");
-        }
-    }
-}
+//        [HttpPost, ActionName("Delete")]
+//        public IActionResult DeleteConfirmed(Guid id)
+//        {
+//            _service.DeleteGrupaEchipa(id);
+//            return RedirectToAction("Index");
+//        }
+//    }
+//}

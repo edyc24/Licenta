@@ -1,7 +1,9 @@
 ﻿@model AJFIlfov.BusinessLogic.Implementation.MeciuriService.Models.MeciAdminModel
 
 @{
-    ViewData["Title"] = "Creaza Delegare";
+    ViewData["Title"] = "Creează Meci Futuristic";
+    var grupe = ViewBag.Grupe;
+    var echipe = ViewBag.Echipe;
 }
 
 <!DOCTYPE html>
@@ -11,133 +13,147 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/css/Meciuri/CreateMeci.css"/>
+    <style>
+        /* Futuristic Styling */
+        body {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h2 {
+            text-transform: uppercase;
+            text-align: center;
+            color: #00ff88;
+            text-shadow: 0 0 20px #00ff88;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: rgba(36, 36, 62, 0.8);
+            border: 2px solid #00ff88;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #00ff88;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #00ff88;
+        }
+
+        .form-control {
+            background: #24243e;
+            color: #ffffff;
+            border: 2px solid #00ff88;
+            border-radius: 5px;
+            box-shadow: inset 0 0 10px #00ff88;
+        }
+
+        .form-control:focus {
+            outline: none;
+            box-shadow: 0 0 15px #00ff88;
+        }
+
+        .btn-futuristic {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #00ff88;
+            border: 2px solid #00ff88;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 15px #00ff88;
+        }
+
+        .btn-futuristic:hover {
+            background: #00ff88;
+            color: #000000;
+            box-shadow: 0 0 30px #00ff88;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        @@media (max-width: 768px) {
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<div class="container mt-5">
-    <div class="card shadow-sm">
-        <div class="card-header text-center bg-primary text-white">
-            <h2>@ViewData["Title"]</h2>
-        </div>
-        <div class="card-body">
-            <form asp-action="Create" method="post">
-                @Html.AntiForgeryToken()
+<div class="container">
+    <h2>@ViewData["Title"]</h2>
+    <div class="card">
+        <form asp-action="Create" method="post">
+            @Html.AntiForgeryToken()
 
-                <!-- Grupa Selection -->
-                <div class="form-group">
-                    <label asp-for="IdGrupa" class="control-label">Grupa</label>
-                    <select asp-for="IdGrupa" class="form-control" asp-items="@(new SelectList(ViewBag.Grupe, "IdGrupa", "Nume"))">
-                        <option value="">-- Selectează Grupa --</option>
-                    </select>
-                    <span asp-validation-for="IdGrupa" class="text-danger"></span>
-                </div>
+            <!-- Grupa Selection -->
+            <div class="form-group">
+                <label asp-for="IdGrupa" class="control-label">Grupa</label>
+                <select asp-for="IdGrupa" class="form-control" asp-items="@(new SelectList(grupe, "IdGrupa", "Nume"))">
+                    <option value="">-- Selectează Grupa --</option>
+                </select>
+                <span asp-validation-for="IdGrupa" class="text-danger"></span>
+            </div>
 
-                <!-- Teams Section -->
-                <div class="form-group">
-                    <label asp-for="IdEchipaGazda" class="control-label">Echipa Gazdă</label>
-                    <select asp-for="IdEchipaGazda" class="form-control" asp-items="@(new SelectList(ViewBag.Echipe, "Id", "Nume"))">
-                        <option value="">-- Selectează Echipa Gazdă --</option>
-                    </select>
-                    <span asp-validation-for="IdEchipaGazda" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="IdEchipaOaspete" class="control-label">Echipa Oaspete</label>
-                    <select asp-for="IdEchipaOaspete" class="form-control" asp-items="@(new SelectList(ViewBag.Echipe, "Id", "Nume"))">
-                        <option value="">-- Selectează Echipa Oaspete --</option>
-                    </select>
-                    <span asp-validation-for="IdEchipaOaspete" class="text-danger"></span>
-                </div>
+            <!-- Echipa Gazda -->
+            <div class="form-group">
+                <label asp-for="IdEchipaGazda" class="control-label">Echipa Gazdă</label>
+                <select asp-for="IdEchipaGazda" class="form-control" asp-items="@(new SelectList(echipe, "Id", "Nume"))">
+                    <option value="">-- Selectează Echipa Gazdă --</option>
+                </select>
+                <span asp-validation-for="IdEchipaGazda" class="text-danger"></span>
+            </div>
 
-                <!-- Match Date -->
-                <div class="form-group">
-                    <label asp-for="DataJoc" class="control-label">Data Meciului</label>
-                    <input asp-for="DataJoc" class="form-control" type="datetime-local"/>
-                    <span asp-validation-for="DataJoc" class="text-danger"></span>
-                </div>
+            <!-- Echipa Oaspete -->
+            <div class="form-group">
+                <label asp-for="IdEchipaOaspete" class="control-label">Echipa Oaspete</label>
+                <select asp-for="IdEchipaOaspete" class="form-control" asp-items="@(new SelectList(echipe, "Id", "Nume"))">
+                    <option value="">-- Selectează Echipa Oaspete --</option>
+                </select>
+                <span asp-validation-for="IdEchipaOaspete" class="text-danger"></span>
+            </div>
 
-                <!-- Referees Section -->
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label asp-for="IdArbitru" class="control-label">Arbitru</label>
-                            <select asp-for="IdArbitru" class="form-control" asp-items="@(new SelectList(ViewBag.Arbitri, "Id", "Nume"))">
-                                <option value="">-- Selectează Arbitru --</option>
-                            </select>
-                            <span asp-validation-for="IdArbitru" class="text-danger"></span>
-                            <div id="distance-info-arbitru" class="distance-info"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label asp-for="IdArbitruAsistent1" class="control-label">Arbitru Asistent 1</label>
-                            <select asp-for="IdArbitruAsistent1" class="form-control" asp-items="@(new SelectList(ViewBag.Arbitri, "Id", "Nume"))">
-                                <option value="">-- Selectează Arbitru Asistent 1 --</option>
-                            </select>
-                            <span asp-validation-for="IdArbitruAsistent1" class="text-danger"></span>
-                            <div id="distance-info-arbitru1" class="distance-info"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label asp-for="IdArbitruAsistent2" class="control-label">Arbitru Asistent 2</label>
-                            <select asp-for="IdArbitruAsistent2" class="form-control" asp-items="@(new SelectList(ViewBag.Arbitri, "Id", "Nume"))">
-                                <option value="">-- Selectează Arbitru Asistent 2 --</option>
-                            </select>
-                            <span asp-validation-for="IdArbitruAsistent2" class="text-danger"></span>
-                            <div id="distance-info-arbitru2" class="distance-info"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label asp-for="IdArbitruRezerva" class="control-label">Arbitru Rezervă</label>
-                            <select asp-for="IdArbitruRezerva" class="form-control" asp-items="@(new SelectList(ViewBag.Arbitri, "Id", "Nume"))">
-                                <option value="">-- Selectează Arbitru Rezervă --</option>
-                            </select>
-                            <span asp-validation-for="IdArbitruRezerva" class="text-danger"></span>
-                            <div id="distance-info-arbitru3" class="distance-info"></div>
-                        </div>
-                    </div>
-                </div>
+            <!-- Locatie -->
+            <div class="form-group">
+                <label asp-for="Locatie" class="control-label">Locație</label>
+                <input asp-for="Locatie" class="form-control" />
+                <span asp-validation-for="Locatie" class="text-danger"></span>
+            </div>
 
-                <!-- Observer Section -->
-                <div class="form-group">
-                    <label asp-for="IdObservator" class="control-label">Observator</label>
-                    <select asp-for="IdObservator" class="form-control" asp-items="@(new SelectList(ViewBag.Arbitri, "Id", "Nume"))">
-                        <option value="">-- Selectează Observator --</option>
-                    </select>
-                    <span asp-validation-for="IdObservator" class="text-danger"></span>
-                </div>
+            <!-- Data și Ora -->
+            <div class="form-group">
+                <label asp-for="DataJoc" class="control-label">Data și Ora</label>
+                <input asp-for="DataJoc" type="datetime-local" class="form-control" />
+                <span asp-validation-for="DataJoc" class="text-danger"></span>
+            </div>
 
-                <!-- Stadium Section -->
-                <div class="form-group">
-                    <label asp-for="IdStadionLocalitate" class="control-label">Stadion</label>
-                    <select asp-for="IdStadionLocalitate" class="form-control" asp-items="@(new SelectList(ViewBag.Stadioane, "Id", "Nume"))">
-                        <option value="">-- Selectează Stadion --</option>
-                    </select>
-                    <span asp-validation-for="IdStadionLocalitate" class="text-danger"></span>
-                </div>
+            <!-- Etapa -->
+            <div class="form-group">
+                <label asp-for="Etapa" class="control-label">Etapă</label>
+                <input asp-for="Etapa" type="number" class="form-control" />
+                <span asp-validation-for="Etapa" class="text-danger"></span>
+            </div>
 
-                <!-- Form Actions -->
-                <div class="form-group text-center">
-                    <input type="submit" value="Salvează" class="btn btn-primary btn-lg mx-2"/>
-                    <a asp-action="Index" class="btn btn-secondary btn-lg mx-2">Anulează</a>
-                </div>
-            </form>
-        </div>
+            <!-- Submit Button -->
+            <div class="form-group text-center">
+                <button type="submit" class="btn-futuristic">Salvează</button>
+                <a asp-action="Index" class="btn-futuristic">Anulează</a>
+            </div>
+        </form>
     </div>
 </div>
 
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7tfBD6u3cMcf1frPtqHq1K4X95tLtdbk&libraries=places"></script>
-    <script src="~/js/Meciuri/CreareMeci.js"></script>
-}
-
+<script src="~/js/Meciuri/CreareMeci.js"></script>
 </body>
 </html>

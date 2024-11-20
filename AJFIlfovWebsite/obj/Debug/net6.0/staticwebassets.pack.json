@@ -13,6 +13,22 @@
       "PackagePath": "staticwebassets\\css\\HomeWebsite\\styles.css"
     },
     {
+      "Id": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\css\\Meciuri\\CreateMeci.css",
+      "PackagePath": "staticwebassets\\css\\Meciuri\\CreateMeci.css"
+    },
+    {
+      "Id": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\css\\Meciuri\\Edit.css",
+      "PackagePath": "staticwebassets\\css\\Meciuri\\Edit.css"
+    },
+    {
+      "Id": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\css\\Meciuri\\EditareMeciAdmin.css",
+      "PackagePath": "staticwebassets\\css\\Meciuri\\EditareMeciAdmin.css"
+    },
+    {
+      "Id": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\css\\Meciuri\\Index.css",
+      "PackagePath": "staticwebassets\\css\\Meciuri\\Index.css"
+    },
+    {
       "Id": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\css\\layout.css",
       "PackagePath": "staticwebassets\\css\\layout.css"
     },
@@ -139,6 +155,10 @@
     {
       "Id": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\vicepresedinte.jpg",
       "PackagePath": "staticwebassets\\images\\vicepresedinte.jpg"
+    },
+    {
+      "Id": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\js\\Meciuri\\CreareMeci.js",
+      "PackagePath": "staticwebassets\\js\\Meciuri\\CreareMeci.js"
     },
     {
       "Id": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\js\\pdf-viewer.js",

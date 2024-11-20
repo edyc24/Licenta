@@ -1,6 +1,10 @@
 wwwroot\css\Admin\Login.css
 wwwroot\css\HomeWebsite\styles.css
 wwwroot\css\layout.css
+wwwroot\css\Meciuri\CreateMeci.css
+wwwroot\css\Meciuri\Edit.css
+wwwroot\css\Meciuri\EditareMeciAdmin.css
+wwwroot\css\Meciuri\Index.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\images\child-icon.png
@@ -32,6 +36,7 @@ wwwroot\images\stat5.png
 wwwroot\images\stats-bg.png
 wwwroot\images\truck.png
 wwwroot\images\vicepresedinte.jpg
+wwwroot\js\Meciuri\CreareMeci.js
 wwwroot\js\pdf-viewer.js
 wwwroot\js\scripts.js
 wwwroot\js\site.js

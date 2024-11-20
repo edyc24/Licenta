@@ -9,265 +9,265 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = AJFIlfovWebsite
 build_property.RootNamespace = AJFIlfovWebsite
-build_property.ProjectDir = C:\Users\eduardcr\source\repos\edyc24\Licenta\AJFIlfovWebsite\
+build_property.ProjectDir = C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfovWebsite\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\eduardcr\source\repos\edyc24\Licenta\AJFIlfovWebsite
+build_property.MSBuildProjectDirectory = C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfovWebsite
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 6.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Admin/Audit.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Admin/Audit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQXVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Admin/CreateAnunt.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Admin/CreateAnunt.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlQW51bnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Admin/CreateNewPassword.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Admin/CreateNewPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlTmV3UGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Admin/Index.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Admin/Login.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Admin/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Admin/ProfilePage.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Admin/ProfilePage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUHJvZmlsZVBhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Admin/Register.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Admin/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVnaXN0ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Admin/ResetPassword.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Admin/ResetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVzZXRQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Anunturi/Detalii.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Anunturi/Detalii.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW51bnR1cmlcRGV0YWxpaS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Anunturi/Index.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Anunturi/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW51bnR1cmlcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Comisii/Index.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Comisii/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29taXNpaVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Competitii/Index.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Competitii/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGV0aXRpaVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Contact/Index.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Contact/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/DespreNoi/Index.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/DespreNoi/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVzcHJlTm9pXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/DisponibilitateAdmin/Create.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/DisponibilitateAdmin/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzcG9uaWJpbGl0YXRlQWRtaW5cQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/DisponibilitateAdmin/Index.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/DisponibilitateAdmin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzcG9uaWJpbGl0YXRlQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/DisponibilitateAdmin/VeziRezultate.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/DisponibilitateAdmin/VeziRezultate.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzcG9uaWJpbGl0YXRlQWRtaW5cVmV6aVJlenVsdGF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Disponibilitate/Index.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Disponibilitate/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzcG9uaWJpbGl0YXRlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Documente/CerereAfiliere.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Documente/CerereAfiliere.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdW1lbnRlXENlcmVyZUFmaWxpZXJlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Documente/CerereInscriere.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Documente/CerereInscriere.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdW1lbnRlXENlcmVyZUluc2NyaWVyZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Documente/Index.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Documente/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdW1lbnRlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Documente/TaxeCotizatii.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Documente/TaxeCotizatii.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdW1lbnRlXFRheGVDb3RpemF0aWkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Echipe/Create.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Echipe/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWNoaXBlXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Echipe/Edit.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Echipe/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWNoaXBlXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Echipe/Index.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Echipe/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWNoaXBlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/GrupeEchipa/Create.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/GrupeEchipa/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3J1cGVFY2hpcGFcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/GrupeEchipa/Edit.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/GrupeEchipa/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3J1cGVFY2hpcGFcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/GrupeEchipa/Index.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/GrupeEchipa/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3J1cGVFY2hpcGFcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Grupe/Create.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Grupe/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3J1cGVcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Grupe/Edit.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Grupe/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3J1cGVcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Grupe/Index.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Grupe/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3J1cGVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/HomeWebsite/Index.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/HomeWebsite/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVdlYnNpdGVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/HomeWebsite/Privacy.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/HomeWebsite/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVdlYnNpdGVcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Localitati/Create.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Localitati/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYWxpdGF0aVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Localitati/Edit.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Localitati/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYWxpdGF0aVxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Localitati/Index.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Localitati/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYWxpdGF0aVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/MeciLive/Create.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/MeciLive/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVjaUxpdmVcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/MeciLive/Index.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/MeciLive/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVjaUxpdmVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Meciuri/Create.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Meciuri/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVjaXVyaVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Meciuri/Edit.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Meciuri/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVjaXVyaVxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Meciuri/EditareMeciAdmin.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Meciuri/EditareMeciAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVjaXVyaVxFZGl0YXJlTWVjaUFkbWluLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Meciuri/EditareMeciuriGrupa.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Meciuri/EditareMeciuriGrupa.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVjaXVyaVxFZGl0YXJlTWVjaXVyaUdydXBhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Meciuri/Index.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Meciuri/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVjaXVyaVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Meciuri/IstoricMeciuri.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Meciuri/IstoricMeciuri.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVjaXVyaVxJc3RvcmljTWVjaXVyaS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Meciuri/_AvailabilityTable.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Meciuri/_AvailabilityTable.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVjaXVyaVxfQXZhaWxhYmlsaXR5VGFibGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Shared/Error.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Shared/Error_InternalServerError.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Shared/Error_InternalServerError.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yX0ludGVybmFsU2VydmVyRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Shared/Error_NotFound.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Shared/Error_NotFound.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yX05vdEZvdW5kLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Shared/Error_Unauthorized.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Shared/Error_Unauthorized.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yX1VuYXV0aG9yaXplZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Stadioane/Create.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Stadioane/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZGlvYW5lXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Stadioane/Edit.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Stadioane/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZGlvYW5lXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Stadioane/Index.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Stadioane/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZGlvYW5lXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/StadionLocalitate/Create.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/StadionLocalitate/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZGlvbkxvY2FsaXRhdGVcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/StadionLocalitate/Edit.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/StadionLocalitate/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZGlvbkxvY2FsaXRhdGVcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/StadionLocalitate/Index.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/StadionLocalitate/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZGlvbkxvY2FsaXRhdGVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Users/Details.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Users/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Users/Edit.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Users/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Users/Index.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Users/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Users/UserMap.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Users/UserMap.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcVXNlck1hcC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/_ViewImports.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/_ViewStart.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eduardcr/source/repos/edyc24/Licenta/AJFIlfovWebsite/Views/Shared/_Layout.cshtml]
+[C:/Users/eduardcr/Source/Repos/edyc24/Licenta/AJFIlfovWebsite/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-cc7g2zyd8l

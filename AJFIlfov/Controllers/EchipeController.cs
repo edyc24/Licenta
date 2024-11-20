@@ -1,78 +1,78 @@
-﻿using AJFIlfov.BusinessLogic.Implementation.EchipeService;
-using AJFIlfov.BusinessLogic.Implementation.EchipeService.Models;
-using AJFIlfov.Code.Base;
-using AJFIlfov.WebApp.Code.Base;
-using Microsoft.AspNetCore.Mvc;
+﻿//using AJFIlfov.BusinessLogic.Implementation.EchipeService;
+//using AJFIlfov.BusinessLogic.Implementation.EchipeService.Models;
+//using AJFIlfov.Code.Base;
+//using AJFIlfov.WebApp.Code.Base;
+//using Microsoft.AspNetCore.Mvc;
 
-namespace AJFIlfov.Controllers
-{
-    public class EchipeController : BaseController
-    {
-        private readonly EchipeService _service;
+//namespace AJFIlfov.Controllers
+//{
+//    public class EchipeController : BaseController
+//    {
+//        private readonly EchipeService _service;
 
-        public EchipeController(ControllerDependencies dependencies, EchipeService service)
-            : base(dependencies)
-        {
-            _service = service;
-        }
+//        public EchipeController(ControllerDependencies dependencies, EchipeService service)
+//            : base(dependencies)
+//        {
+//            _service = service;
+//        }
 
-        public IActionResult Index()
-        {
-            var echipe = _service.GetAll();
-            return View(echipe);
-        }
+//        public IActionResult Index()
+//        {
+//            var echipe = _service.GetAll();
+//            return View(echipe);
+//        }
 
-        [HttpGet]
-        public IActionResult Create()
-        {
-            return View();
-        }
+//        [HttpGet]
+//        public IActionResult Create()
+//        {
+//            return View();
+//        }
 
-        [HttpPost]
-        public IActionResult Create(EchipaModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                _service.CreateEchipa(model);
-                return RedirectToAction("Index");
-            }
-            return View(model);
-        }
+//        [HttpPost]
+//        public IActionResult Create(EchipaModel model)
+//        {
+//            if (ModelState.IsValid)
+//            {
+//                _service.CreateEchipa(model);
+//                return RedirectToAction("Index");
+//            }
+//            return View(model);
+//        }
 
-        [HttpGet]
-        public IActionResult Edit(Guid id)
-        {
-            var echipa = _service.GetById(id);
-            if (echipa == null) return NotFound();
+//        [HttpGet]
+//        public IActionResult Edit(Guid id)
+//        {
+//            var echipa = _service.GetById(id);
+//            if (echipa == null) return NotFound();
 
-            return View(echipa);
-        }
+//            return View(echipa);
+//        }
 
-        [HttpPost]
-        public IActionResult Edit(EchipaModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                _service.UpdateEchipa(model);
-                return RedirectToAction("Index");
-            }
-            return View(model);
-        }
+//        [HttpPost]
+//        public IActionResult Edit(EchipaModel model)
+//        {
+//            if (ModelState.IsValid)
+//            {
+//                _service.UpdateEchipa(model);
+//                return RedirectToAction("Index");
+//            }
+//            return View(model);
+//        }
 
-        [HttpGet]
-        public IActionResult Delete(Guid id)
-        {
-            var echipa = _service.GetById(id);
-            if (echipa == null) return NotFound();
+//        [HttpGet]
+//        public IActionResult Delete(Guid id)
+//        {
+//            var echipa = _service.GetById(id);
+//            if (echipa == null) return NotFound();
 
-            return View(echipa);
-        }
+//            return View(echipa);
+//        }
 
-        [HttpPost, ActionName("Delete")]
-        public IActionResult DeleteConfirmed(Guid id)
-        {
-            _service.DeleteEchipa(id);
-            return RedirectToAction("Index");
-        }
-    }
-}
+//        [HttpPost, ActionName("Delete")]
+//        public IActionResult DeleteConfirmed(Guid id)
+//        {
+//            _service.DeleteEchipa(id);
+//            return RedirectToAction("Index");
+//        }
+//    }
+//}

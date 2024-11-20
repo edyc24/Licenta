@@ -33,6 +33,10 @@ public partial class Meciuri : IEntity
     public Guid? IdStadionLocalitate { get; set; }
 
     public bool? IdDeleted { get; set; }
+    public int? ScorGazde { get; set; }
+    public int? ScorOaspeti { get; set; }
+    public int? Etapa { get; set; }
+    public string? Locatie { get; set; }
 
     public virtual Utilizatori? IdArbitruAsistent1Navigation { get; set; }
 

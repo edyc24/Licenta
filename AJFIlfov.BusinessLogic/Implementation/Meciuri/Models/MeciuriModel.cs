@@ -17,6 +17,11 @@
         public Guid? IdArbitruRezerva { get; set; }
         public Guid? IdObservator { get; set; }
         public Guid? IdStadionLocalitate { get; set; }
+
+        public int? ScorGazde { get; set; }
+        public int? ScorOaspeti { get; set; }
+        public int? Etapa { get; set; }
+        public string? Locatie { get; set; }
     }
     public class MeciArbitruModel
     {

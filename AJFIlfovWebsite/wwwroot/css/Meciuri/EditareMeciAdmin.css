@@ -1,0 +1,96 @@
+﻿body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.container-fluid {
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #003366;
+    color: white;
+    padding: 15px;
+    border-radius: 10px 10px 0 0;
+}
+
+h2 {
+    margin: 0;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #333;
+}
+
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 100%;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: inline-block;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn-primary {
+    background-color: #003366;
+    border: none;
+    color: white;
+}
+
+    .btn-primary:hover {
+        background-color: #002244;
+    }
+
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    color: white;
+}
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+    }
+
+.distance-info {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 5px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.row {
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .container-fluid {
+        padding: 15px;
+    }
+
+    .btn-primary, .btn-secondary {
+        width: 100%;
+    }
+}

@@ -65,7 +65,11 @@ namespace AJFIlfov.BusinessLogic.Implementation.MeciuriService
                     ArbitruRezervaNume = m.IdArbitruRezervaNavigation?.Nume + ' ' + m.IdArbitruRezervaNavigation?.Prenume,
                     ObservatorNume = m.IdObservatorNavigation?.Nume + ' ' + m.IdObservatorNavigation?.Prenume,
                     StadionNume = m.IdStadionLocalitateNavigation?.IdStadionNavigation?.Nume,
-                    LocalitateNume = m.IdStadionLocalitateNavigation?.IdLocalitateNavigation?.Nume
+                    LocalitateNume = m.IdStadionLocalitateNavigation?.IdLocalitateNavigation?.Nume,
+                    ScorGazde = m.ScorGazde,
+                    ScorOaspeti = m.ScorOaspeti,
+                    Locatie = m.Locatie,
+                    Etapa = m.Etapa
                 })
                 .ToList();
 
@@ -121,7 +125,11 @@ namespace AJFIlfov.BusinessLogic.Implementation.MeciuriService
                 IdObservator = meci.IdObservator,
                 IdStadionLocalitate = meci.IdStadionLocalitate,
                 EchipaGazdaNume = meci.IdEchipaGazdaNavigation?.IdEchipaNavigation?.Nume,
-                EchipaOaspeteNume = meci.IdEchipaOaspeteNavigation?.IdEchipaNavigation?.Nume
+                EchipaOaspeteNume = meci.IdEchipaOaspeteNavigation?.IdEchipaNavigation?.Nume,
+                ScorGazde = meci.ScorGazde,
+                ScorOaspeti = meci.ScorOaspeti,
+                Locatie = meci.Locatie,
+                Etapa = meci.Etapa
             };
         }
 
@@ -159,7 +167,11 @@ namespace AJFIlfov.BusinessLogic.Implementation.MeciuriService
                 IdObservator = meci.IdObservator,
                 IdStadionLocalitate = meci.IdStadionLocalitate,
                 EchipaGazdaNume = meci.IdEchipaGazdaNavigation?.IdEchipaNavigation?.Nume,
-                EchipaOaspeteNume = meci.IdEchipaOaspeteNavigation?.IdEchipaNavigation?.Nume
+                EchipaOaspeteNume = meci.IdEchipaOaspeteNavigation?.IdEchipaNavigation?.Nume,
+                ScorGazde = meci.ScorGazde,
+                ScorOaspeti = meci.ScorOaspeti,
+                Locatie = meci.Locatie,
+                Etapa = meci.Etapa
             }).ToList();
         }
 
@@ -181,7 +193,9 @@ namespace AJFIlfov.BusinessLogic.Implementation.MeciuriService
                 IdObservator = model.IdObservator,
                
                 IdStadionLocalitate = model.IdStadionLocalitate,
-                IdDeleted = false
+                IdDeleted = false,
+                Locatie = model.Locatie,
+                Etapa = model.Etapa
             };
 
             UnitOfWork.Meciuri.Insert(meci);
@@ -190,6 +204,17 @@ namespace AJFIlfov.BusinessLogic.Implementation.MeciuriService
             // Send SMS to all assigned referees
             NotifyReferees(meci);
             return true;
+        }
+
+        public List<int> GetEtapeByGrupa(Guid grupaId)
+        {
+            // Preia lista de etape distincte
+            return UnitOfWork.Meciuri.Get()
+                .Where(m => m.IdEchipaGazdaNavigation.IdGrupa == grupaId && m.IdDeleted == false)
+                .Select(m => m.Etapa.Value)
+                .Distinct()
+                .OrderBy(e => e)
+                .ToList();
         }
 
 

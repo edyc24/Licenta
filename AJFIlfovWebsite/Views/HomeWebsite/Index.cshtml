@@ -53,8 +53,9 @@
                 <nav>
                     <a href="HomeWebsite">Acasă</a>
                     <a href="DespreNoi">Despre Noi</a>
-                    <a href="Anunturi">Anunturi</a>
-                    <a href="Comisii">Comisii jursdictionale</a>
+                    <a href="Anunturi">Comunicate</a>
+                    <a href="Comisii">Comisii jursdicționale</a>
+                    <a href="Competitii">Competitii</a>
                     <a href="MeciLive">Meciuri Live</a>
                     <a href="Documente">Documente</a>
                     <a href="Contact">Contact</a>
@@ -69,17 +70,17 @@
             <h2>Ce oferim</h2>
 
             <div class="service-cards-container">
-                <div class="service-card first-card">
+                <div class="service-card first-card" onclick="openCarousel(1)">
                     <h3>Organizare competiții</h3>
                     <p>Gestionăm și organizăm competiții fotbalistice la nivel județean pentru toate categoriile de vârstă.</p>
                 </div>
 
-                <div class="service-card second-card">
+                <div class="service-card second-card" onclick="openCarousel(2)">
                     <h3>Dezvoltare juniori</h3>
                     <p>Susținem creșterea și dezvoltarea tinerilor talentați prin programe dedicate juniorilor.</p>
                 </div>
 
-                <div class="service-card third-card">
+                <div class="service-card third-card" onclick="openCarousel(3)">
                     <h3>Evenimente speciale</h3>
                     <p>Organizăm evenimente și turnee speciale pentru promovarea fotbalului în comunitate.</p>
                 </div>
@@ -92,7 +93,7 @@
 
             <div class="news-cards-container">
                 <div class="news-card">
-                    <img src="~/images/news1.jpg" alt="Știre 1">
+                    <img src="~/images/news1.jpg" alt="Știre 1" >
                     <div class="news-card-content">
                         <h3>Campionatul Județean începe luna viitoare</h3>
                         <p>Află toate detaliile despre noul sezon și echipele participante.</p>
@@ -119,6 +120,16 @@
                 </div>
             </div>
         </section>
+
+        <div id="carouselModal" class="carousel-modal" onclick="closeCarousel(event)">
+            <div class="carousel-content">
+                <span class="close" onclick="closeCarousel()">&times;</span>
+                <button class="carousel-button left" onclick="navigateCarousel(-1)">&#10094;</button>
+                <div id="carouselImages" class="carousel-images"></div>
+                <button class="carousel-button right" onclick="navigateCarousel(1)">&#10095;</button>
+            </div>
+        </div>
+
 
         <!-- stats section -->
         <section class="stats">
@@ -198,6 +209,71 @@
             const nav = document.querySelector('header nav');
             nav.classList.toggle('show');
         }
+
+         const carouselImages = {
+            1: ["images/competii/image00025.jpeg", "images/competii/image00081.jpeg", "images/competii/image00082.jpeg"],
+            2: ["images/dezvoltare/image00043.jpeg", "images/dezvoltare/image00058.jpeg", "images/dezvoltare/image00060.jpeg"],
+            3: ["images/evenimente/image00006.jpeg", "images/evenimente/image00098.jpeg", "images/evenimente/image00099.jpeg"],
+        };
+
+                let currentIndex = 0;
+
+        function openCarousel(id) {
+            const modal = document.getElementById("carouselModal");
+            const carouselContainer = document.getElementById("carouselImages");
+
+            // Creare HTML pentru imagini și setarea indexului inițial
+            const images = carouselImages[id].map((src) => `<img src="${src.replace('~', '')}" alt="Carousel Image">`);
+            currentIndex = 0;
+            carouselContainer.innerHTML = images.join("");
+
+            // Alinierea pe prima imagine
+            updateCarousel();
+
+            modal.style.display = "flex";
+        }
+        function closeCarousel(event) {
+            // Închidere doar dacă s-a apăsat în afara conținutului
+            const modal = document.getElementById("carouselModal");
+            const content = document.querySelector(".carousel-content");
+
+            if (!content.contains(event.target)) {
+                modal.style.display = "none";
+            }
+        }
+
+
+        function navigateCarousel(direction) {
+            const images = document.querySelectorAll("#carouselImages img");
+            const totalImages = images.length;
+
+            // Actualizare index curent
+            currentIndex += direction;
+
+            // Gestionare buclă în cazul depășirii limitelor
+            if (currentIndex < 0) {
+                currentIndex = totalImages - 1;
+            } else if (currentIndex >= totalImages) {
+                currentIndex = 0;
+            }
+
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const carouselContainer = document.getElementById("carouselImages");
+            const images = document.querySelectorAll("#carouselImages img");
+
+            // Calculare transformare pentru afișarea imaginii curente
+            const translateX = -currentIndex * 100;
+            carouselContainer.style.transform = `translateX(${translateX}%)`;
+
+            // Opțional: gestionare opacitate pentru imagini (dacă dorim să evidențiem)
+            images.forEach((img, index) => {
+                img.style.opacity = index === currentIndex ? "1" : "0.5";
+            });
+        }
+
     </script>
 
 </body>

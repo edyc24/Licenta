@@ -127,7 +127,7 @@ namespace AJFIlfovWebsite.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAnunt(AnuntModel model, IFormFile Imagine)
+        public async Task<IActionResult> CreateAnunt(AnuntModel model, IFormFile Imagine, IFormFile ImagineAnunt)
         {
             if (Imagine != null && Imagine.Length > 0)
             {
@@ -150,6 +150,13 @@ namespace AJFIlfovWebsite.Controllers
                 {
                     await Imagine.CopyToAsync(ms);
                     model.Imagine = ms.ToArray();
+                }
+
+                // Read the PDF file into a byte array
+                using (var ms = new MemoryStream())
+                {
+                    await ImagineAnunt.CopyToAsync(ms);
+                    model.ImagineAnunt = ms.ToArray();
                 }
             }
 

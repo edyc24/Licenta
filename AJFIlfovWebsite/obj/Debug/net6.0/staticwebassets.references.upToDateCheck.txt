@@ -73,3 +73,15 @@ C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfov\obj\Debug\net6.0\staticwe
 C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfov\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfov\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfov\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfov\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfov\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfov\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfov\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfov\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfov\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfov\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfov\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfov\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfov\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfov\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfov\obj\Debug\net6.0\staticwebassets.build.json

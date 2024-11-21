@@ -31,7 +31,7 @@ public class CompetitiiController : BaseController
         var meciuri = _service.GetMeciuriByGrupa(grupaId);
         if (meciuri == null) return NotFound();
 
-        var clasament = meciuri.Where(m => m.ScorGazde != null)
+        var clasament = meciuri.Where(m => m.ScorGazde != null && m.ScorOaspeti != null)
             .SelectMany(m => new[]
             {
                 new
@@ -99,7 +99,7 @@ public class CompetitiiController : BaseController
     [HttpGet]
     public IActionResult GetEtapaUrmatoare(Guid grupaId)
     {
-        var meciuri = _service.GetMeciuriByGrupa(grupaId).Where(m => !m.ScorGazde.HasValue && !m.ScorOaspeti.HasValue).ToList();
+        var meciuri = _service.GetMeciuriByGrupa(grupaId).Where(m => m.ScorGazde == null && m.ScorOaspeti == null && m.DataJoc != null).ToList();
         return Json(meciuri);
     }
 
@@ -107,9 +107,11 @@ public class CompetitiiController : BaseController
     public IActionResult GetEtapeByGrupa(Guid grupaId)
     {
         // Preia lista de etape pe baza meciurilor din grupa selectată
+
+        var test = _service.GetMeciuriByGrupa(grupaId);
         var etape = _service.GetMeciuriByGrupa(grupaId)
-            .Where(m => m.Etapa.HasValue)
-            .Select(m => m.Etapa.Value)
+            .Where(m => m.Etapa != 0)
+            .Select(m => m.Etapa)
             .Distinct()
             .OrderBy(e => e)
             .ToList();

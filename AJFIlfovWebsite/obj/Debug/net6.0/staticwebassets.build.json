@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "vQakNt1Rc4VVOvZspuF3OniMhBH/xumbuSs+AsIQ0kQ=",
+  "Hash": "iXS3OZ8oCFXnUaEstzLSLo9FWFegJeF8ukCjjR6NiVg=",
   "Source": "AJFIlfovWebsite",
   "BasePath": "_content/AJFIlfovWebsite",
   "Mode": "Default",
@@ -2514,6 +2514,111 @@
       "OriginalItemSpec": "wwwroot\\images\\child-icon.png"
     },
     {
+      "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\competii\\image00025.jpeg",
+      "SourceId": "AJFIlfovWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\",
+      "BasePath": "_content/AJFIlfovWebsite",
+      "RelativePath": "images/competii/image00025#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "kp9qjxnply",
+      "Integrity": "qHoU0bIdOahoxtYH/hyXYhQGWmTuHT53tZTkKZ+ceMY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\competii\\image00025.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\competii\\image00081.jpeg",
+      "SourceId": "AJFIlfovWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\",
+      "BasePath": "_content/AJFIlfovWebsite",
+      "RelativePath": "images/competii/image00081#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "sbtilsoi1j",
+      "Integrity": "+InI5z9HHRVONiE+utUODmGlnju9Bz+K6UYvtfTW/eg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\competii\\image00081.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\competii\\image00082.jpeg",
+      "SourceId": "AJFIlfovWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\",
+      "BasePath": "_content/AJFIlfovWebsite",
+      "RelativePath": "images/competii/image00082#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "u3su5hhwqr",
+      "Integrity": "Nv0myaJi/VvVySWKuPCNzttAmFkrccpiJzvhD2jmPfs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\competii\\image00082.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\competii\\image00084.jpeg",
+      "SourceId": "AJFIlfovWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\",
+      "BasePath": "_content/AJFIlfovWebsite",
+      "RelativePath": "images/competii/image00084#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "c01in01l1l",
+      "Integrity": "nJxpnnHJey5bEcpXvJdrfDQB5JKQTd0sAWTGqoXXPQg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\competii\\image00084.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\competii\\image00085.jpeg",
+      "SourceId": "AJFIlfovWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\",
+      "BasePath": "_content/AJFIlfovWebsite",
+      "RelativePath": "images/competii/image00085#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "lhqcfi74gl",
+      "Integrity": "54fwdonyH2GxAgOF4gP6mw2UWA5LAXz5mcicjYbomSs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\competii\\image00085.jpeg"
+    },
+    {
       "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\default4.jpg",
       "SourceId": "AJFIlfovWebsite",
       "SourceType": "Discovered",
@@ -2533,6 +2638,132 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\default4.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\dezvoltare\\image00043.jpeg",
+      "SourceId": "AJFIlfovWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\",
+      "BasePath": "_content/AJFIlfovWebsite",
+      "RelativePath": "images/dezvoltare/image00043#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "006ayq4xe3",
+      "Integrity": "4MZfPQpH1vw2dPTsspO0fFhFnJR6ttortah/C/d41uE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\dezvoltare\\image00043.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\dezvoltare\\image00058.jpeg",
+      "SourceId": "AJFIlfovWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\",
+      "BasePath": "_content/AJFIlfovWebsite",
+      "RelativePath": "images/dezvoltare/image00058#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "0o68c0vj68",
+      "Integrity": "wA9hiDq1XM1K/LP9JwqcQnWUTiuk5IwuxMBglppH6GQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\dezvoltare\\image00058.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\dezvoltare\\image00060.jpeg",
+      "SourceId": "AJFIlfovWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\",
+      "BasePath": "_content/AJFIlfovWebsite",
+      "RelativePath": "images/dezvoltare/image00060#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "6cylekvb88",
+      "Integrity": "Fu/iX5Ts+mlWCq5sl7Bs0ABa1B1xi4V3aYKGobjk0hc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\dezvoltare\\image00060.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\evenimente\\image00006.jpeg",
+      "SourceId": "AJFIlfovWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\",
+      "BasePath": "_content/AJFIlfovWebsite",
+      "RelativePath": "images/evenimente/image00006#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "n9xo4djxfm",
+      "Integrity": "lfmBq2YsPnf59Hx29klvJdr7oKTFIxipL5O6jrZKrbw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\evenimente\\image00006.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\evenimente\\image00098.jpeg",
+      "SourceId": "AJFIlfovWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\",
+      "BasePath": "_content/AJFIlfovWebsite",
+      "RelativePath": "images/evenimente/image00098#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "unhlv2ry3j",
+      "Integrity": "qkN5U9LVRThtwwtcEnJJuOMszIfHD6Uf/wa7cnmjYPk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\evenimente\\image00098.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\evenimente\\image00099.jpeg",
+      "SourceId": "AJFIlfovWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\",
+      "BasePath": "_content/AJFIlfovWebsite",
+      "RelativePath": "images/evenimente/image00099#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ix8idf7qjj",
+      "Integrity": "trY0a832MHcOqnbDeDt1bgamBFq7Wb8/otRbTYNuHu8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\evenimente\\image00099.jpeg"
     },
     {
       "Identity": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\football-icon.png",
@@ -14069,6 +14300,416 @@
       ]
     },
     {
+      "Route": "images/competii/image00025.jpeg",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\competii\\image00025.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "159165"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"qHoU0bIdOahoxtYH/hyXYhQGWmTuHT53tZTkKZ+ceMY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 21 Nov 2024 15:21:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-qHoU0bIdOahoxtYH/hyXYhQGWmTuHT53tZTkKZ+ceMY="
+        }
+      ]
+    },
+    {
+      "Route": "images/competii/image00025.kp9qjxnply.jpeg",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\competii\\image00025.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "159165"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"qHoU0bIdOahoxtYH/hyXYhQGWmTuHT53tZTkKZ+ceMY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 21 Nov 2024 15:21:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kp9qjxnply"
+        },
+        {
+          "Name": "label",
+          "Value": "images/competii/image00025.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-qHoU0bIdOahoxtYH/hyXYhQGWmTuHT53tZTkKZ+ceMY="
+        }
+      ]
+    },
+    {
+      "Route": "images/competii/image00081.jpeg",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\competii\\image00081.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2740127"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+InI5z9HHRVONiE+utUODmGlnju9Bz+K6UYvtfTW/eg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 21 Nov 2024 15:21:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-+InI5z9HHRVONiE+utUODmGlnju9Bz+K6UYvtfTW/eg="
+        }
+      ]
+    },
+    {
+      "Route": "images/competii/image00081.sbtilsoi1j.jpeg",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\competii\\image00081.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2740127"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+InI5z9HHRVONiE+utUODmGlnju9Bz+K6UYvtfTW/eg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 21 Nov 2024 15:21:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "sbtilsoi1j"
+        },
+        {
+          "Name": "label",
+          "Value": "images/competii/image00081.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-+InI5z9HHRVONiE+utUODmGlnju9Bz+K6UYvtfTW/eg="
+        }
+      ]
+    },
+    {
+      "Route": "images/competii/image00082.jpeg",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\competii\\image00082.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3068916"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Nv0myaJi/VvVySWKuPCNzttAmFkrccpiJzvhD2jmPfs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 21 Nov 2024 15:21:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Nv0myaJi/VvVySWKuPCNzttAmFkrccpiJzvhD2jmPfs="
+        }
+      ]
+    },
+    {
+      "Route": "images/competii/image00082.u3su5hhwqr.jpeg",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\competii\\image00082.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3068916"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Nv0myaJi/VvVySWKuPCNzttAmFkrccpiJzvhD2jmPfs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 21 Nov 2024 15:21:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "u3su5hhwqr"
+        },
+        {
+          "Name": "label",
+          "Value": "images/competii/image00082.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Nv0myaJi/VvVySWKuPCNzttAmFkrccpiJzvhD2jmPfs="
+        }
+      ]
+    },
+    {
+      "Route": "images/competii/image00084.c01in01l1l.jpeg",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\competii\\image00084.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "168597"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nJxpnnHJey5bEcpXvJdrfDQB5JKQTd0sAWTGqoXXPQg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 21 Nov 2024 15:21:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "c01in01l1l"
+        },
+        {
+          "Name": "label",
+          "Value": "images/competii/image00084.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-nJxpnnHJey5bEcpXvJdrfDQB5JKQTd0sAWTGqoXXPQg="
+        }
+      ]
+    },
+    {
+      "Route": "images/competii/image00084.jpeg",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\competii\\image00084.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "168597"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nJxpnnHJey5bEcpXvJdrfDQB5JKQTd0sAWTGqoXXPQg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 21 Nov 2024 15:21:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-nJxpnnHJey5bEcpXvJdrfDQB5JKQTd0sAWTGqoXXPQg="
+        }
+      ]
+    },
+    {
+      "Route": "images/competii/image00085.jpeg",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\competii\\image00085.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "213838"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"54fwdonyH2GxAgOF4gP6mw2UWA5LAXz5mcicjYbomSs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 21 Nov 2024 15:21:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-54fwdonyH2GxAgOF4gP6mw2UWA5LAXz5mcicjYbomSs="
+        }
+      ]
+    },
+    {
+      "Route": "images/competii/image00085.lhqcfi74gl.jpeg",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\competii\\image00085.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "213838"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"54fwdonyH2GxAgOF4gP6mw2UWA5LAXz5mcicjYbomSs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 21 Nov 2024 15:21:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "lhqcfi74gl"
+        },
+        {
+          "Name": "label",
+          "Value": "images/competii/image00085.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-54fwdonyH2GxAgOF4gP6mw2UWA5LAXz5mcicjYbomSs="
+        }
+      ]
+    },
+    {
       "Route": "images/default4.jdwvtbw06r.jpg",
       "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\default4.jpg",
       "Selectors": [],
@@ -14147,6 +14788,498 @@
         {
           "Name": "integrity",
           "Value": "sha256-p/72r2FwpqNJw2aPeefVk5XeXv/jIJR5nnKtAkwA6UE="
+        }
+      ]
+    },
+    {
+      "Route": "images/dezvoltare/image00043.006ayq4xe3.jpeg",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\dezvoltare\\image00043.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2960600"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4MZfPQpH1vw2dPTsspO0fFhFnJR6ttortah/C/d41uE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 21 Nov 2024 15:21:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "006ayq4xe3"
+        },
+        {
+          "Name": "label",
+          "Value": "images/dezvoltare/image00043.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-4MZfPQpH1vw2dPTsspO0fFhFnJR6ttortah/C/d41uE="
+        }
+      ]
+    },
+    {
+      "Route": "images/dezvoltare/image00043.jpeg",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\dezvoltare\\image00043.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2960600"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4MZfPQpH1vw2dPTsspO0fFhFnJR6ttortah/C/d41uE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 21 Nov 2024 15:21:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-4MZfPQpH1vw2dPTsspO0fFhFnJR6ttortah/C/d41uE="
+        }
+      ]
+    },
+    {
+      "Route": "images/dezvoltare/image00058.0o68c0vj68.jpeg",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\dezvoltare\\image00058.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3558048"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wA9hiDq1XM1K/LP9JwqcQnWUTiuk5IwuxMBglppH6GQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 21 Nov 2024 15:21:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "0o68c0vj68"
+        },
+        {
+          "Name": "label",
+          "Value": "images/dezvoltare/image00058.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wA9hiDq1XM1K/LP9JwqcQnWUTiuk5IwuxMBglppH6GQ="
+        }
+      ]
+    },
+    {
+      "Route": "images/dezvoltare/image00058.jpeg",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\dezvoltare\\image00058.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3558048"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wA9hiDq1XM1K/LP9JwqcQnWUTiuk5IwuxMBglppH6GQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 21 Nov 2024 15:21:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wA9hiDq1XM1K/LP9JwqcQnWUTiuk5IwuxMBglppH6GQ="
+        }
+      ]
+    },
+    {
+      "Route": "images/dezvoltare/image00060.6cylekvb88.jpeg",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\dezvoltare\\image00060.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3232850"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Fu/iX5Ts+mlWCq5sl7Bs0ABa1B1xi4V3aYKGobjk0hc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 21 Nov 2024 15:21:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6cylekvb88"
+        },
+        {
+          "Name": "label",
+          "Value": "images/dezvoltare/image00060.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Fu/iX5Ts+mlWCq5sl7Bs0ABa1B1xi4V3aYKGobjk0hc="
+        }
+      ]
+    },
+    {
+      "Route": "images/dezvoltare/image00060.jpeg",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\dezvoltare\\image00060.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3232850"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Fu/iX5Ts+mlWCq5sl7Bs0ABa1B1xi4V3aYKGobjk0hc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 21 Nov 2024 15:21:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Fu/iX5Ts+mlWCq5sl7Bs0ABa1B1xi4V3aYKGobjk0hc="
+        }
+      ]
+    },
+    {
+      "Route": "images/evenimente/image00006.jpeg",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\evenimente\\image00006.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "585552"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"lfmBq2YsPnf59Hx29klvJdr7oKTFIxipL5O6jrZKrbw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 21 Nov 2024 15:21:30 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-lfmBq2YsPnf59Hx29klvJdr7oKTFIxipL5O6jrZKrbw="
+        }
+      ]
+    },
+    {
+      "Route": "images/evenimente/image00006.n9xo4djxfm.jpeg",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\evenimente\\image00006.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "585552"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"lfmBq2YsPnf59Hx29klvJdr7oKTFIxipL5O6jrZKrbw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 21 Nov 2024 15:21:30 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "n9xo4djxfm"
+        },
+        {
+          "Name": "label",
+          "Value": "images/evenimente/image00006.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-lfmBq2YsPnf59Hx29klvJdr7oKTFIxipL5O6jrZKrbw="
+        }
+      ]
+    },
+    {
+      "Route": "images/evenimente/image00098.jpeg",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\evenimente\\image00098.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "135535"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"qkN5U9LVRThtwwtcEnJJuOMszIfHD6Uf/wa7cnmjYPk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 21 Nov 2024 15:21:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-qkN5U9LVRThtwwtcEnJJuOMszIfHD6Uf/wa7cnmjYPk="
+        }
+      ]
+    },
+    {
+      "Route": "images/evenimente/image00098.unhlv2ry3j.jpeg",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\evenimente\\image00098.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "135535"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"qkN5U9LVRThtwwtcEnJJuOMszIfHD6Uf/wa7cnmjYPk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 21 Nov 2024 15:21:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "unhlv2ry3j"
+        },
+        {
+          "Name": "label",
+          "Value": "images/evenimente/image00098.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-qkN5U9LVRThtwwtcEnJJuOMszIfHD6Uf/wa7cnmjYPk="
+        }
+      ]
+    },
+    {
+      "Route": "images/evenimente/image00099.ix8idf7qjj.jpeg",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\evenimente\\image00099.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "96295"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"trY0a832MHcOqnbDeDt1bgamBFq7Wb8/otRbTYNuHu8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 21 Nov 2024 15:21:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ix8idf7qjj"
+        },
+        {
+          "Name": "label",
+          "Value": "images/evenimente/image00099.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-trY0a832MHcOqnbDeDt1bgamBFq7Wb8/otRbTYNuHu8="
+        }
+      ]
+    },
+    {
+      "Route": "images/evenimente/image00099.jpeg",
+      "AssetFile": "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\images\\evenimente\\image00099.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "96295"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"trY0a832MHcOqnbDeDt1bgamBFq7Wb8/otRbTYNuHu8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 21 Nov 2024 15:21:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-trY0a832MHcOqnbDeDt1bgamBFq7Wb8/otRbTYNuHu8="
         }
       ]
     },

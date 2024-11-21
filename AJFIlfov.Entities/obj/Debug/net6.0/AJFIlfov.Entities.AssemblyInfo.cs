@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AJFIlfov.Entities")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9d0b1cf6be914fe702b0dafae20cf2641f478832")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+192b98bc96447ee295a80503aa816fd12449e633")]
 [assembly: System.Reflection.AssemblyProductAttribute("AJFIlfov.Entities")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AJFIlfov.Entities")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

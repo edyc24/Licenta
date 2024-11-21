@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<AJFIlfov.BusinessLogic.Implementation.Anunturi.Models.AnuntModel>
 
 <div class="announcements-container">
-    <h1>Anunțuri</h1>
+    <h1>Comunicate</h1>
 
     <!-- Filter and Search Section -->
     <form method="get" class="filter-search-form">
@@ -11,9 +11,6 @@
                 <option value="all">Toate secțiunile</option>
                 <option value="Informatii">Informații</option>
                 <option value="Competitii">Competiții</option>
-                <option value="Comisia de disciplină">Comisia de disciplină</option>
-                <option value="Comisia pentru statutul jucătorului">Comisia pentru statutul jucătorului</option>
-                <option value="Comisia de apel">Comisia de apel</option>
             </select>
         </div>
 
@@ -33,10 +30,15 @@
                 <h3>@anunt.Titlu</h3>
                 <p class="announcement-section">@anunt.TipAnunt</p>
                 <p>@(anunt.Continut.Length > 150 ? anunt.Continut.Substring(0, 150) + "..." : anunt.Continut)</p>
-                @if (anunt.Imagine != null)
-                {
-                    <img src="~/images/default4.jpg" class="img-fluid announcement-image" alt="Imagine anunț" />
+                @{
+                    // Convert byte[] to Base64 string
+                    string imageBase64 = anunt.ImagineAnunt != null
+                        ? "data:image/jpeg;base64," + Convert.ToBase64String(anunt.ImagineAnunt)
+                        : "~/images/default4.jpg";
                 }
+
+                <img src="@imageBase64" class="img-fluid announcement-image" alt="Imagine anunț" />
+
                 <span class="announcement-date">Data: @anunt.DataPublicarii.ToString("dd MMM yyyy")</span>
                 <a href="/Anunturi/Detalii/@anunt.Id" class="btn btn-primary">Citește mai mult</a>
             </div>
@@ -148,11 +150,12 @@
     }
 
     .announcement-image {
-        width: 100%;
-        max-height: 150px;
-        object-fit: cover;
-        border-radius: 5px;
-        margin-bottom: 15px;
+        width: 100%; /* Asigură lățimea maximă */
+        height: 150px; /* Înălțime fixă */
+        object-fit: contain; /* Păstrează întreaga imagine în container */
+        border-radius: 5px; /* Colțuri rotunjite */
+        margin-bottom: 15px; /* Spațiu jos */
+        background-color: #f0f0f0; /* Culoare de fundal pentru a evidenția imaginile mai mici */
     }
 
     .announcement-date {

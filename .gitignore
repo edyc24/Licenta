@@ -3,3 +3,9 @@ AJFIlfov.DataAccess/obj
 AJFIlfov.Entitites/obj
 AJFIlfovWebsite/obj
 Common/obj
+
+AJFIlfov.BusinessLogic/bin
+AJFIlfov.DataAccess/bin
+AJFIlfov.Entitites/bin
+AJFIlfovWebsite/bin
+Common/bin

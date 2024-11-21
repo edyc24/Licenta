@@ -1,5 +1,0 @@
-C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfov\obj\Release\net6.0\staticwebassets.build.json
-C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfov\obj\Release\net6.0\staticwebassets.build.json
-C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfov\obj\Release\net6.0\staticwebassets.build.json
-C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfov\obj\Release\net6.0\staticwebassets.build.json
-C:\Users\eduardcr\Source\Repos\edyc24\Licenta\AJFIlfov\obj\Release\net6.0\staticwebassets.build.json

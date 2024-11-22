@@ -330,6 +330,7 @@ header nav {
             height: 200px;
             -o-object-fit: cover;
             object-fit: cover;
+            object-position: center 35%;
         }
 
         .news .news-card .news-card-content {

@@ -31,10 +31,8 @@
                 <h3>@anunt.Titlu</h3>
                 <p class="announcement-section">@anunt.TipAnunt</p>
                 <p>@(anunt.Continut.Length > 150 ? anunt.Continut.Substring(0, 150) + "..." : anunt.Continut)</p>
-                @if (anunt.Imagine != null)
-                {
-                    <img src="~/images/default4.jpg" class="img-fluid announcement-image" alt="Imagine anunț" />
-                }
+
+                <img src="~/images/hotarari.jpg" class="img-fluid announcement-image" alt="Imagine anunț" />
                 <span class="announcement-date">Data: @anunt.DataPublicarii.ToString("dd MMM yyyy")</span>
                 <a href="/Anunturi/Detalii/@anunt.Id" class="btn btn-primary">Citește mai mult</a>
             </div>

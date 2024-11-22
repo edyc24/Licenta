@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<AJFIlfov.BusinessLogic.Implementation.Anunturi.Models.AnuntModel>
+
+@{
     Layout = null;
 }
 <!DOCTYPE html>
@@ -80,32 +82,32 @@
             <h2>Ultimele știri</h2>
 
             <div class="news-cards-container">
-                <div class="news-card">
-                    <img src="~/images/news1.jpg" alt="Știre 1">
-                    <div class="news-card-content">
-                        <h3>Campionatul Județean începe luna viitoare</h3>
-                        <p>Află toate detaliile despre noul sezon și echipele participante.</p>
-                        <a href="#">Citește mai mult &raquo;</a>
-                    </div>
-                </div>
+                @if (Model != null && Model.Any())
+                {
+                    @foreach (var anunt in Model.Take(3)) 
+                    {
+                        <div class="news-card">
+                            @{
+                                // Convert byte[] to Base64 string
+                                string imageBase64 = anunt.ImagineAnunt.Length > 0
+                                    ? "data:image/jpeg;base64," + Convert.ToBase64String(anunt.ImagineAnunt)
+                                    : "/images/hotarari.jpg";
+                            }
 
-                <div class="news-card">
-                    <img src="~/images/news2.jpg" alt="Știre 2">
-                    <div class="news-card-content">
-                        <h3>Selecții pentru echipele de juniori</h3>
-                        <p>Oportunități pentru tinerii jucători de a-și demonstra talentul.</p>
-                        <a href="#">Citește mai mult &raquo;</a>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <img src="~/images/news3.jpg" alt="Știre 3">
-                    <div class="news-card-content">
-                        <h3>Eveniment caritabil organizat de AJF Ilfov</h3>
-                        <p>Alătură-te nouă pentru a susține o cauză nobilă prin fotbal.</p>
-                        <a href="#">Citește mai mult &raquo;</a>
-                    </div>
-                </div>
+                            <img src="@imageBase64" class="img-fluid announcement-image" alt="Imagine anunț" />
+                            
+                            <div class="news-card-content">
+                                <h3>@anunt.Titlu</h3>
+                                <p>@(anunt.Continut.Length > 150 ? anunt.Continut.Substring(0, 150) + "..." : anunt.Continut)</p>
+                                <a href="/Anunturi/Detalii/@anunt.Id">Citește mai mult &raquo;</a>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p>Nu există știri disponibile în acest moment.</p>
+                }
             </div>
         </section>
 
@@ -193,7 +195,7 @@
 
     <!-- footer -->
     <footer>
-        <p>&copy; 2023 Asociația Județeană de Fotbal Ilfov. Toate drepturile rezervate.</p>
+        <p>&copy; 2024 Asociația Județeană de Fotbal Ilfov. Toate drepturile rezervate.</p>
         <div class="social-icons">
             <a href="https://www.facebook.com/AJFIlfov1997/?locale=ro_RO">
                 <i class="fab fa-facebook-f"></i>

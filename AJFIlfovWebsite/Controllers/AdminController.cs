@@ -162,11 +162,15 @@ namespace AJFIlfovWebsite.Controllers
                     model.Imagine = ms.ToArray();
                 }
 
-                // Read the PDF file into a byte array
-                using (var ms = new MemoryStream())
+                if (ImagineAnunt != null && ImagineAnunt.Length > 0)
                 {
-                    await ImagineAnunt.CopyToAsync(ms);
-                    model.ImagineAnunt = ms.ToArray();
+                    // Read the PDF file into a byte array
+                    using (var ms = new MemoryStream())
+                    {
+                        await ImagineAnunt.CopyToAsync(ms);
+                        model.ImagineAnunt = ms.ToArray();
+                    }
+
                 }
             }
 

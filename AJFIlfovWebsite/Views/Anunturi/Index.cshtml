@@ -32,9 +32,9 @@
                 <p>@(anunt.Continut.Length > 150 ? anunt.Continut.Substring(0, 150) + "..." : anunt.Continut)</p>
                 @{
                     // Convert byte[] to Base64 string
-                    string imageBase64 = anunt.ImagineAnunt != null
+                    string imageBase64 = anunt.ImagineAnunt.Length > 0
                     ? "data:image/jpeg;base64," + Convert.ToBase64String(anunt.ImagineAnunt)
-                    : "~/images/default4.jpg";
+                    : "/images/hotarari.jpg";
                 }
 
                 <img src="@imageBase64" class="img-fluid announcement-image" alt="Imagine anunț" />

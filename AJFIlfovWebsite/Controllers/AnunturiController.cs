@@ -18,7 +18,7 @@ public class AnunturiController : Controller
 
     public IActionResult Index(string searchText = "", string sectionFilter = "all")
     {
-        var anunturi = _anuntService.GetAllAnunturi();
+        var anunturi = _anuntService.GetAllAnunturi().Where(a => a.TipAnunt == "Informatii" || a.TipAnunt == "Competitii");
 
         if (!string.IsNullOrEmpty(searchText))
         {

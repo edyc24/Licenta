@@ -3,10 +3,10 @@
     Layout = "_Layout";
 }
 
-<div class="container">
+<div class="about-container">
     <section class="showcase">
         <div class="content">
-            <h1 class="title">⚽ Noi suntem AJF Ilfov ⚡</h1>
+            <h1 class="title">⚡ Noi suntem AJF Ilfov ⚡</h1>
             <p>Conectăm oameni prin pasiunea pentru fotbal. Descoperă misiunea, valorile și echipa care stă în spatele succesului fotbalului din Ilfov.</p>
         </div>
     </section>
@@ -70,7 +70,7 @@
     <section class="content futuristic-card" id="locatii">
         <h2>Bazele noastre</h2>
         <p>Vino să ne descoperi pe terenurile din județul Ilfov!</p>
-        <p><a href="https://maps.app.goo.gl/WDtN3nUpmzqhxrnN6" target="_blank" class="btn-glow">Vezi pe Google Maps</a></p
+        <p><a href="https://maps.app.goo.gl/WDtN3nUpmzqhxrnN6" target="_blank" class="btn-glow">Vezi pe Google Maps</a></p>
     </section>
 
     <section class="content futuristic-card" id="contact">
@@ -85,12 +85,6 @@
         background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     }
 
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-    }
-
     h1, h2 {
         text-align: center;
         margin-bottom: 20px;
@@ -102,7 +96,44 @@
         text-align: center;
     }
 
-    /* Showcase */
+    .about-container {
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        margin: 60px 80px;
+        padding: 20px;
+    }
+
+    /* futuristic cards */
+    .futuristic-card {
+        border-radius: 15px;
+        padding: 30px;
+        margin: 20px 0;
+        color: var(--color-on-primary);
+    }
+
+        .futuristic-card h2 {
+            font-size: 2.5em;
+            color: #00e0ff;
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+            .futuristic-card h2::after {
+                content: '';
+                display: block;
+                width: 80px;
+                height: 3px;
+                background: #00e0ff;
+                margin: 0 auto;
+            }
+
+    /* header section */
+    header {
+        background: transparent;
+    }
+
+    /* showcase section */
     .showcase {
         position: relative;
         padding: 150px 20px;
@@ -128,6 +159,10 @@
             animation: glow 2s infinite;
         }
 
+        .showcase p {
+            color: var(--color-on-primary);
+        }
+
     @@keyframes glow {
         0%, 100% {
             text-shadow: 0 0 20px #f39c12, 0 0 30px #e74c3c;
@@ -138,34 +173,7 @@
         }
     }
 
-    /* Futuristic Cards */
-    .futuristic-card {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 15px;
-        padding: 30px;
-        margin: 20px 0;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
-
-        .futuristic-card h2 {
-            font-size: 2.5em;
-            color: #00e0ff;
-            position: relative;
-            margin-bottom: 15px;
-        }
-
-            .futuristic-card h2::after {
-                content: '';
-                display: block;
-                width: 80px;
-                height: 3px;
-                background: #00e0ff;
-                margin: 0 auto;
-            }
-
-    /* Butoane */
+    /* glowing buttons */
     .btn-glow {
         display: inline-block;
         padding: 10px 20px;
@@ -184,12 +192,30 @@
             box-shadow: 0 0 30px rgba(255, 100, 100, 0.8);
         }
 
+    /* mission, values and story sections */
+    #misiune,
+    #valori,
     #poveste {
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-top: 60px;
+        margin-bottom: 60px;
+        padding: 0 160px;
+        text-align: center;
+        font-size: 1.2em;
     }
 
-    /* Secțiunea Echipa */
+    #valori ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* team section */
+    #echipa {
+        padding: 0 20px;
+        margin-top: 60px;
+        margin-bottom: 60px;
+    }
+
     .team {
         display: flex;
         justify-content: space-around;
@@ -199,7 +225,7 @@
 
     .team-member {
         text-align: center;
-        padding: 7px;
+        padding: 10px;
         border: 1px solid rgba(255, 255, 255, 0.3);
         border-radius: 7px;
         background: rgba(0, 0, 0, 0.5);
@@ -211,7 +237,7 @@
             width: 100px;
             height: 100px;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-            margin-bottom: 7px;
+            margin-bottom: 10px;
             -o-object-fit: cover;
             object-fit: cover;
             object-position: center bottom;
@@ -222,9 +248,25 @@
             color: #00e0ff;
         }
 
-    /* Optimizare pentru dispozitive mobile */
+    /* locations section */
+    #locatii {
+        margin-top: 60px;
+        margin-bottom: 60px;
+    }
+
+    /* contact section */
+    #contact {
+        margin-top: 60px;
+    }
+
+    /* footer */
+    footer {
+        background-color: transparent;
+    }
+
+    /* mobile devices responsiveness */
     @@media (max-width: 768px) {
-        .container {
+        .about-about-container {
             padding: 10px;
         }
 

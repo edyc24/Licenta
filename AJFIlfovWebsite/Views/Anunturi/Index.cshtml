@@ -33,8 +33,8 @@
                 @{
                     // Convert byte[] to Base64 string
                     string imageBase64 = anunt.ImagineAnunt != null
-                        ? "data:image/jpeg;base64," + Convert.ToBase64String(anunt.ImagineAnunt)
-                        : "~/images/default4.jpg";
+                    ? "data:image/jpeg;base64," + Convert.ToBase64String(anunt.ImagineAnunt)
+                    : "~/images/default4.jpg";
                 }
 
                 <img src="@imageBase64" class="img-fluid announcement-image" alt="Imagine anunț" />
@@ -172,43 +172,34 @@
 
     /* Responsive Design */
     @@media (max-width: 1200px) {
-        .announcements-grid
-
-    {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
+        .announcements-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
     }
 
     @@media (max-width: 992px) {
-        .announcements-grid
-
-    {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
+        .announcements-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
     }
 
     @@media (max-width: 768px) {
-        .announcements-grid
+        .announcements-grid {
+            grid-template-columns: 1fr;
+        }
 
-    {
-        grid-template-columns: 1fr;
-    }
+        .filter-section,
+        .search-section {
+            display: block;
+            margin: 10px 0;
+        }
 
-    .filter-section,
-    .search-section {
-        display: block;
-        margin: 10px 0;
-    }
+        .filter-search-form {
+            text-align: left;
+        }
 
-    .filter-search-form {
-        text-align: left;
-    }
-
-    .btn-primary {
-        width: 100%;
-    }
-
+        .btn-primary {
+            width: 100%;
+        }
     }
 </style>

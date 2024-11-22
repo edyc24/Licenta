@@ -1,12 +1,10 @@
-﻿/* Resetare marginile și padding-urile */
-* {
+﻿* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Variabile CSS pentru culori și fonturi */
-:root {
+/*:root {
     --font-primary: "Montserrat", sans-serif;
     --font-secondary: "Fira Sans", sans-serif;
     --color-primary: #1d3557cc;
@@ -19,40 +17,62 @@
     --color-on-surface: #0f0f0f;
     --color-scrim-small: rgba(0, 0, 0, 0.5);
     --color-shadow: rgba(0, 0, 0, 0.1);
+}*/
+
+:root {
+    --font-primary: "Teko", sans-serif;
+    --font-secondary: serif;
+    --color-primary: #0c0942;
+    --color-primary-hover: #555555;
+    --color-on-primary: #fefefe;
+    --color-on-primary-hover: #ffffff;
+    --color-secondary: #de4c3f;
+    --color-secondary-hover: #d62828;
+    --color-on-secondary: #fefefe;
+    --color-on-secondary-hover: #ffffff;
+    --color-surface: #d1d1d1;
+    --color-surface-inverse: #0f0f0f;
+    --color-on-surface: #0f0f0f;
+    --color-on-surface-inverse: #d1d1d1;
+    --color-scrim-big: rgba(50, 50, 50, 0.5);
+    --color-scrim-medium: rgba(0, 0, 0, 0.85);
+    --color-scrim-small: rgba(0, 0, 0, 0.5);
+    --color-shadow: rgba(0, 0, 0, 0.1);
 }
 
-/* Stiluri generale */
 body {
     font-family: var(--font-primary), sans-serif;
-    background-color: var(--color-surface);
-    color: var(--color-on-surface);
+    background-color: var(--color-primary);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     overflow-x: hidden;
+    width: 100vw;
 }
 
-/* Linkuri */
 a {
     text-decoration: none;
     color: inherit;
 }
 
-/* Header */
+/* header */
 header {
-    position: fixed;
-    width: 100%;
+    width: 100vw;
     top: 0;
-    background-color: var(--color-secondary);
-    color: var(--color-on-secondary);
+    background: linear-gradient(180deg, var(--color-primary) 0%, rgba(0, 0, 0, 0) 100%);
     z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .header-content {
     display: flex;
     align-items: center;
+    width: 100%;
     justify-content: space-between;
-    padding: 15px 10%;
+    position: relative;
+    padding: 1em 3em;
 }
 
 .header-title {
@@ -63,82 +83,94 @@ header {
     .header-title a {
         display: flex;
         align-items: center;
-        color: var(--color-on-secondary);
-    }
-
-    .header-title img {
-        width: 50px;
-        height: auto;
-        margin-right: 10px;
+        text-decoration: none;
+        text-align: start;
     }
 
     .header-title h2 {
-        font-size: 1.5em;
+        margin: 0;
+        letter-spacing: 2px;
+        margin-left: 1em;
+        color: var(--color-on-surface-inverse);
+    }
+
+    .header-title img {
+        width: 4em;
+        height: auto;
+        border-radius: 8px;
     }
 
 .header-menu-toggle {
     display: none;
-    color: var(--color-on-secondary);
+    color: var(--color-on-surface-inverse);
     font-size: 1.5em;
     cursor: pointer;
 }
 
-nav {
+/* navigation */
+header nav {
     display: flex;
+    align-items: center;
+    gap: 30px;
 }
 
-    nav a {
-        color: var(--color-on-secondary);
-        margin: 0 15px;
-        font-size: 1em;
+    header nav a {
+        color: var(--color-on-surface-inverse);
         text-decoration: none;
+        font-size: 1.1em;
+        transition: color 0.3s;
     }
 
-        nav a:hover {
-            color: var(--color-tertiary);
+        header nav a:hover {
+            color: var(--color-secondary);
         }
 
-/* Responsivitate pentru navigare */
-@media (max-width: 768px) {
+/* mobile responsiveness */
+@media (max-width: 1084px) {
+    .header-title h2 {
+        display: none;
+    }
+
     .header-menu-toggle {
         display: block;
+        z-index: 10 !important;
     }
 
-    nav {
+    /* mobile nav */
+    header nav {
         display: none;
         flex-direction: column;
-        background-color: var(--color-secondary);
+        background-color: var(--color-primary);
         position: absolute;
-        top: 60px;
+        top: 70px;
         right: 0;
         width: 200px;
+        gap: 30px;
+        padding: 20px 0;
+        z-index: 1000;
     }
 
-        nav.show {
+        header nav.show {
             display: flex;
         }
 
-        nav a {
-            margin: 15px;
+        header nav a {
+            font-size: 1.2em;
+            color: var(--color-on-primary);
         }
 }
 
-/* Conținut Principal */
+/* main content */
 .content {
-    margin-top: 80px; /* Pentru a evita suprapunerea cu header-ul fix */
-    flex: 1;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
     padding: 20px;
 }
 
-/* Footer */
+/* footer */
 footer {
-    background-color: var(--color-secondary);
-    color: var(--color-on-secondary);
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    padding: 40px 20px;
     text-align: center;
-    padding: 20px 0;
 }
 
     footer p {
@@ -146,11 +178,11 @@ footer {
     }
 
     footer .social-icons a {
-        color: var(--color-on-secondary);
+        color: var(--color-on-primary);
         margin: 0 10px;
         font-size: 1.5em;
     }
 
         footer .social-icons a:hover {
-            color: var(--color-tertiary);
+            color: var(--color-secondary-hover);
         }

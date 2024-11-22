@@ -7,15 +7,15 @@
 <head>
     <meta charset="UTF-8">
     <title>AJF Ilfov - Acasă</title>
-    <!-- meta tag pentru design responsiv -->
+    <!-- meta tag for responsive design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- font awesome pentru iconite -->
+    <!-- font awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- fonturi Google -->
+    <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
-    <!-- stil CSS -->
+    <!-- css style -->
     <link rel="stylesheet" href="~/css/HomeWebsite/styles.css">
 </head>
 
@@ -24,16 +24,14 @@
     <!-- hero section -->
     <section class="hero">
         <div class="hero-text-container">
-            <h1>Bun venit la AJF ILFOV</h1>
-            <p>Noi suntem fotbal!</p>
+            <h1>Noi suntem fotbal!</h1>
             <a href="#">Află mai multe despre noi</a>
         </div>
 
         <div class="hero-images-overlay"></div>
         <div class="hero-images-container">
             <img src="~/images/hero1.jpg" alt="Hero 1" class="first-image">
-            <img src="~/images/hero2.jpg" alt="Hero 2" class="middle-image">
-            <img src="~/images/hero3.jpg" alt="Hero 3" class="last-image">
+            <img src="~/images/hero2.jpg" alt="Hero 2" class="last-image">
         </div>
 
         <!-- header section -->
@@ -44,7 +42,7 @@
                     <h2>Asociația Județeană de Fotbal Ilfov</h2>
                 </div>
 
-                <!-- Menu Toggle Button (Visible Only on Mobile) -->
+                <!-- menu toggle button (visible only on mobile) -->
                 <div class="header-menu-toggle" onclick="toggleMenu()">
                     <i class="fas fa-bars"></i>
                 </div>
@@ -52,11 +50,11 @@
                 <!-- main navigation links -->
                 <nav>
                     <a href="HomeWebsite">Acasă</a>
-                    <a href="DespreNoi">Despre Noi</a>
+                    <a href="DespreNoi">Despre noi</a>
                     <a href="Anunturi">Comunicate</a>
                     <a href="Comisii">Comisii jursdicționale</a>
-                    <a href="Competitii">Competitii</a>
-                    <a href="MeciLive">Meciuri Live</a>
+                    <a href="Competitii">Competiții</a>
+                    <a href="MeciLive">Meciuri live</a>
                     <a href="Documente">Documente</a>
                     <a href="Contact">Contact</a>
                 </nav>
@@ -64,25 +62,15 @@
         </header>
     </section>
 
+    <!-- actual page content -->
     <div class="content">
-        <!-- services section -->
-        <section class="services">
-            <h2>Ce oferim</h2>
-
-            <div class="service-cards-container">
-                <div class="service-card first-card" onclick="openCarousel(1)">
-                    <h3>Organizare competiții</h3>
-                    <p>Gestionăm și organizăm competiții fotbalistice la nivel județean pentru toate categoriile de vârstă.</p>
-                </div>
-
-                <div class="service-card second-card" onclick="openCarousel(2)">
-                    <h3>Dezvoltare juniori</h3>
-                    <p>Susținem creșterea și dezvoltarea tinerilor talentați prin programe dedicate juniorilor.</p>
-                </div>
-
-                <div class="service-card third-card" onclick="openCarousel(3)">
-                    <h3>Evenimente speciale</h3>
-                    <p>Organizăm evenimente și turnee speciale pentru promovarea fotbalului în comunitate.</p>
+        <!-- most important news -->
+        <section class="main-news">
+            <div class="main-news-card">
+                <img src="~/images/our-story.jpg" alt="Știre principală">
+                <div class="main-news-card-content">
+                    <h3>Povestea noastră</h3>
+                    <a href="/DespreNoi">Citește mai mult &raquo;</a>
                 </div>
             </div>
         </section>
@@ -93,7 +81,7 @@
 
             <div class="news-cards-container">
                 <div class="news-card">
-                    <img src="~/images/news1.jpg" alt="Știre 1" >
+                    <img src="~/images/news1.jpg" alt="Știre 1">
                     <div class="news-card-content">
                         <h3>Campionatul Județean începe luna viitoare</h3>
                         <p>Află toate detaliile despre noul sezon și echipele participante.</p>
@@ -121,15 +109,37 @@
             </div>
         </section>
 
+        <!-- services section -->
+        <section class="services">
+            <h2>Valorile noastre</h2>
+
+            <div class="service-cards-container">
+                <div class="service-card first-card" onclick="openCarousel(1)">
+                    <h3>Organizare competiții</h3>
+                    <p>Gestionăm și organizăm competiții fotbalistice la nivel județean pentru toate categoriile de vârstă.</p>
+                </div>
+
+                <div class="service-card second-card" onclick="openCarousel(2)">
+                    <h3>Dezvoltare juniori</h3>
+                    <p>Susținem creșterea și dezvoltarea tinerilor talentați prin programe dedicate juniorilor.</p>
+                </div>
+
+                <div class="service-card third-card" onclick="openCarousel(3)">
+                    <h3>Evenimente speciale</h3>
+                    <p>Organizăm evenimente și turnee speciale pentru promovarea fotbalului în comunitate.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- services carousel -->
         <div id="carouselModal" class="carousel-modal" onclick="closeCarousel(event)">
             <div class="carousel-content">
-                <span class="close" onclick="closeCarousel()">&times;</span>
+                <span class="carousel-close" onclick="closeCarousel()">&times;</span>
                 <button class="carousel-button left" onclick="navigateCarousel(-1)">&#10094;</button>
                 <div id="carouselImages" class="carousel-images"></div>
                 <button class="carousel-button right" onclick="navigateCarousel(1)">&#10095;</button>
             </div>
         </div>
-
 
         <!-- stats section -->
         <section class="stats">
@@ -197,7 +207,7 @@
         </div>
     </footer>
 
-    <!-- funcționalități JavaScript -->
+    <!-- js functionalities -->
     <script>
         function toggleMenu() {
             const nav = document.querySelector('header nav');
@@ -210,7 +220,7 @@
             3: ["images/evenimente/image00006.jpeg", "images/evenimente/image00098.jpeg", "images/evenimente/image00099.jpeg"],
         };
 
-                let currentIndex = 0;
+        let currentIndex = 0;
 
         function openCarousel(id) {
             const modal = document.getElementById("carouselModal");
@@ -267,7 +277,6 @@
                 img.style.opacity = index === currentIndex ? "1" : "0.5";
             });
         }
-
     </script>
 
 </body>

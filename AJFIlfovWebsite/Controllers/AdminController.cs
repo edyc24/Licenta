@@ -97,14 +97,14 @@ namespace AJFIlfovWebsite.Controllers
 
             _accountService.RegisterNewUser(model);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Admin");
         }
 
         [HttpGet]
         public async Task<IActionResult> Logout()
         {
             await LogOut();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "HomeWebsite");
         }
 
         private async Task LogIn(CurrentUserDto user)

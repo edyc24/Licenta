@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Despre noi";
+    Layout = "_Layout";
 }
 
 <div class="container">
@@ -25,10 +26,24 @@
             <li><strong>🚀 Excelență:</strong> Depășim limitele în fiecare zi.</li>
         </ul>
     </section>
-    
+
     <section class="content futuristic-card" id="poveste">
         <h2>Povestea noastră</h2>
-        <p>Aici va fi povestea noastră. Completează acest spațiu cu textul dorit.</p>
+        <p>Povestea începe în anul 1997, atunci când, după reorganizarea teritorială a României, fostul până atunci Sector Agricol Ilfov, subordonat administrativ capitalei București, devine unitate administrativ-teritorială de sine stătătoare sub denumirea de Județul Ilfov și în aceste condiții, fiind creat cadrul necesar, un grup de oameni iubitori ai fotbalului, au avut inițiativa de a înființa Asociația Județeană de Fotbal Ilfov așa cum o cunoaștem noi astăzi!</p>
+        <br />
+        <p>De la înființare și până în prezent, asociația a organizat un număr de 27 de ediții de campionat atât la nivel de seniori cât și la nivel de junior, competiția cea mai importantă a județului fiind de la inaugurare în 1997 și până în prezent liga a 4-a, competiție care dă posibilitatea echipei campioane să participe la barajul pentru promovarea în liga a 3-a!</p>
+        <br />
+        <p>În urma celor 27 de ediții ale ligii a 4-a organizate de către asociație, mai multe dintre echipele campioane au reușit performanțe notabile, multe dintre ele promovând în eșalonul 3 sau 2 al fotbalului românesc, (FC Snagov, CS Balotești, CS Otopeni, CS Afumați, SC Popești-Leordeni, CS Tunari, CSL Ștefănești) 5 dintre ele ajungând să promoveze în chiar primul eșalon fotbalistic al României este vorba despre FC Victoria Brănești, CS Concordia Chiajna, FC Voluntari, Academica Clinceni și Fulgerul Bragadiru, în cazul celor de la Bragadiru, echipa a promovat în liga 1 în anul 2002 sub denumirea schimbată în returul ligii a II-a din Fulgerul Bragadiru în AEK București!</p>
+        <br />
+        <p>Actualmente suntem una dintre asociațiile județene de fotbal, cel mai bine reprezentate la nivelul eșaloanelor superioare ale competițiilor fotbalistice din România, organizate de Federația Română de Fotbal, având un număr de 3 cluburi ce evoluează în competiția liga a 2-a, Concordia Chiajna, FC Voluntari, CS Afumați și 4 cluburi ce evoluează în competiția liga a 3-a, CS Tunari, SC Popești Leordeni, LPS Clinceni și CSL Ștefănești!</p>
+        <br />
+        <p>În paralel cu activitatea de organizare a competițiilor de seniori, strategia de dezvoltare a asociației pe termen mediu și lung este una strâns legată de fotbalul juvenil, în ultimii ani concentrându-ne eforturile pe două axe centrale, una fiind creșterea numărului de practicanți ai fotbalului din rândul copiilor și juniorilor, iar cealaltă fiind crearea cadrului propice pentru dezvoltarea și evoluția în condiții optime a copiilor și tinerilor implicați în activitatea fotbalistică sub toate aspectele ei, inclusiv asigurarea unui echilibru între activitatea școlară și cea sportivă!</p>
+        <br />
+        <p>Sub aspectul actualei strategii de dezvoltare, putem menționa pe axa întâi o creștere spectaculoasă a numărului de practicanți, de la un număr de aproximativ 1700 de sportivi legitimați la nivelul anului 2022, ajungând în prezent la un număr de peste 3500 de sportivi legitimați!</p>
+        <br />
+        <p>Legat de asigurarea cadrului propice pentru dezvoltarea și evoluția în condiții optime a copiilor și tinerilor implicați în activitatea fotbalistică, ne dorim atragerea de parteneri, alături de care să putem susține efortul logistic și financiar, necesar sprijinirii activității curente a cluburilor implicate în competițiile pe care le organizăm, înființării de noi competiții, finanțarea de programe de sprijinire a copiilor practicanți ai fotbalului, în vederea împiedicării abandonului sportiv al acestora!</p>
+        <br />
+        <p><b><i>Aceasta este o mică parte din povestea fotbalului ilfovean, iar noi în semn de respect pentru cei care au scris-o înaintea noastră, vom continua să o scriem, dacă îți dorești să faci și tu parte din poveste, vino alături de noi, ca partener, practicant, arbitru sau sub orice altă formă, fotbalul cu siguranță ne va răsplăti pe toți!</i></b></p>
     </section>
 
     <section class="content futuristic-card" id="echipa">
@@ -45,7 +60,7 @@
                 <p>Vicepreședinte</p>
             </div>
             <div class="team-member">
-                <img src="~/images/secretar.jpg" alt="Vicepreședinte2" />
+                <img src="~/images/secretar.jpg" alt="Secretar" />
                 <h3>Tanasa Mugurel</h3>
                 <p>Vicepreședinte</p>
             </div>
@@ -55,7 +70,7 @@
     <section class="content futuristic-card" id="locatii">
         <h2>Bazele noastre</h2>
         <p>Vino să ne descoperi pe terenurile din județul Ilfov!</p>
-        <p><a href="https://maps.app.goo.gl/WDtN3nUpmzqhxrnN6" target="_blank" class="btn-glow">Vezi pe Google Maps</a></p>
+        <p><a href="https://maps.app.goo.gl/WDtN3nUpmzqhxrnN6" target="_blank" class="btn-glow">Vezi pe Google Maps</a></p
     </section>
 
     <section class="content futuristic-card" id="contact">
@@ -66,13 +81,8 @@
 </div>
 
 <style>
-    /* General */
     body {
         background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-        color: #fff;
-        font-family: 'Montserrat', sans-serif;
-        margin: 0;
-        padding: 0;
     }
 
     .container {
@@ -119,16 +129,13 @@
         }
 
     @@keyframes glow {
-        0%, 100%
+        0%, 100% {
+            text-shadow: 0 0 20px #f39c12, 0 0 30px #e74c3c;
+        }
 
-    {
-        text-shadow: 0 0 20px #f39c12, 0 0 30px #e74c3c;
-    }
-
-    50% {
-        text-shadow: 0 0 30px #e74c3c, 0 0 50px #f39c12;
-    }
-
+        50% {
+            text-shadow: 0 0 30px #e74c3c, 0 0 50px #f39c12;
+        }
     }
 
     /* Futuristic Cards */
@@ -178,7 +185,6 @@
         }
 
     #poveste {
-        text-align: center;
         margin-top: 20px;
         margin-bottom: 20px;
     }
@@ -202,9 +208,13 @@
 
         .team-member img {
             border-radius: 50%;
-            max-width: 100px;
+            width: 100px;
+            height: 100px;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
             margin-bottom: 7px;
+            -o-object-fit: cover;
+            object-fit: cover;
+            object-position: center bottom;
         }
 
         .team-member h3 {
@@ -214,54 +224,48 @@
 
     /* Optimizare pentru dispozitive mobile */
     @@media (max-width: 768px) {
-        .container
-
-    {
-        padding: 10px;
-    }
-
-    .showcase {
-        padding: 100px 10px;
-    }
-
-        .showcase .title {
-            font-size: 2.5em;
+        .container {
+            padding: 10px;
         }
 
-    .futuristic-card h2 {
-        font-size: 2em;
-    }
+        .showcase {
+            padding: 100px 10px;
+        }
 
-    p {
-        font-size: 1em;
-    }
+            .showcase .title {
+                font-size: 2.5em;
+            }
 
-    .team-member {
-        width: 100%;
-    }
+        .futuristic-card h2 {
+            font-size: 2em;
+        }
 
+        p {
+            font-size: 1em;
+        }
+
+        .team-member {
+            width: 100%;
+        }
     }
 
     @@media (max-width: 480px) {
-        .showcase .title
+        .showcase .title {
+            font-size: 1.8em;
+        }
 
-    {
-        font-size: 1.8em;
-    }
+        .btn-glow {
+            padding: 8px 15px;
+            font-size: 0.9em;
+        }
 
-    .btn-glow {
-        padding: 8px 15px;
-        font-size: 0.9em;
-    }
+        h1, h2 {
+            margin-bottom: 15px;
+        }
 
-    h1, h2 {
-        margin-bottom: 15px;
-    }
-
-    .futuristic-card {
-        padding: 20px;
-        margin: 15px 0;
-    }
-
+        .futuristic-card {
+            padding: 20px;
+            margin: 15px 0;
+        }
     }
 </style>

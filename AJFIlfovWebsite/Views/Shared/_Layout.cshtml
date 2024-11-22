@@ -3,76 +3,79 @@
 }
 <!DOCTYPE html>
 <html lang="ro">
+
 <head>
     <meta charset="UTF-8">
     <title>@ViewData["Title"] - Asociația Județeană de Fotbal Ilfov</title>
-    <!-- Meta tag pentru design responsiv -->
+    <!-- meta tag for responsive design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Font Awesome pentru iconițe -->
+    <!-- font awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Fonturi Google -->
+    <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Teko:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet">
-
-    <!-- Stil CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
+    <!-- css style -->
     <link rel="stylesheet" href="~/css/layout.css">
 </head>
+
 <body>
-<!-- Header -->
-<header>
-    <div class="header-content">
-        <div class="header-title">
-            <a href="/">
-                <img src="~/images/logo1.png" alt="AJF Ilfov Logo">
-                <h2>Asociația Județeană de Fotbal Ilfov</h2>
-            </a>
-        </div>
-        <!-- Buton de Meniu pentru Mobil -->
-        <div class="header-menu-toggle" onclick="toggleMenu()">
-            <i class="fas fa-bars"></i>
-        </div>
-        <!-- Navigare -->
-        <nav>
-            <a asp-controller="HomeWebsite" asp-action="Index"> Acasa</a>
-                <a asp-controller="DespreNoi">Despre Noi</a>
+
+    <!-- header -->
+    <header>
+        <div class="header-content">
+            <div class="header-title">
+                <a href="/">
+                    <img src="~/images/logo1.png" alt="AJF Ilfov Logo">
+                    <h2>Asociația Județeană de Fotbal Ilfov</h2>
+                </a>
+            </div>
+            
+            <!-- menu toggle button (visible only on mobile) -->
+            <div class="header-menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <!-- navigation -->
+            <nav>
+                <a asp-controller="HomeWebsite" asp-action="Index">Acasă</a>
+                <a asp-controller="DespreNoi">Despre noi</a>
                 <a asp-controller="Anunturi">Comunicate</a>
                 <a asp-controller="Comisii">Comisii jursdicționale</a>
-                <a asp-controller="MeciLive">Meciuri Live</a>
-                <a asp-controller="Competitii">Competitii</a>
+                <a asp-controller="MeciLive">Meciuri live</a>
+                <a asp-controller="Competitii">Competiții</a>
                 <a asp-controller="Documente">Documente</a>
                 <a asp-controller="Contact">Contact</a>
-        </nav>
+            </nav>
+        </div>
+    </header>
+
+    <!-- main content -->
+    <div class="content">
+        @RenderBody()
+        @RenderSection("Scripts", required: false)
+        @RenderSection("Styles", required: false)
     </div>
-</header>
 
-<!-- Conținut Principal -->
-<div class="content">
-    @RenderBody()
-    @RenderSection("Scripts", required: false)
-    @RenderSection("Styles", required: false)
-</div>
-
-<!-- Footer -->
-<footer>
-    <p>&copy; 2023 Asociația Județeană de Fotbal Ilfov. Toate drepturile rezervate.</p>
-    <div class="social-icons">
+    <!-- footer -->
+    <footer>
+        <p>&copy; 2023 Asociația Județeană de Fotbal Ilfov. Toate drepturile rezervate.</p>
+        <div class="social-icons">
             <a href="https://www.facebook.com/AJFIlfov1997/?locale=ro_RO">
-            <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="#">
-            <i class="fab fa-instagram"></i>
-        </a>
-        <a href="#">
-            <i class="fab fa-twitter"></i>
-        </a>
-    </div>
-</footer>
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </div>
+    </footer>
 
-<!-- Scripturi JavaScript -->
-<script src="~/js/scripts.js"></script>
-<script>
+    <!-- Scripturi JavaScript -->
+    <script src="~/js/scripts.js"></script>
+    <script>
         // Meniu de navigare responsive
         function toggleMenu() {
             const nav = document.querySelector('header nav');

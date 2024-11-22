@@ -3,7 +3,7 @@
 <div class="announcements-container">
     <h1>Comunicate</h1>
 
-    <!-- Filter and Search Section -->
+    <!-- filter and search section -->
     <form method="get" class="filter-search-form">
         <div class="filter-section">
             <label for="sectionFilter">Filtrează după secțiune:</label>
@@ -16,7 +16,7 @@
 
         <div class="search-section">
             <label for="searchInput">Caută:</label>
-            <input type="text" id="searchInput" name="searchText" class="form-control" placeholder="Introdu textul de căutare..." />
+            <input type="text" id="searchInput" name="searchText" placeholder="Introdu textul de căutare..." />
         </div>
 
         <button type="submit" class="btn btn-primary">Aplică Filtre</button>
@@ -49,8 +49,9 @@
 <style>
     /* Container Styling */
     .announcements-container {
-        max-width: 1200px;
-        margin: 40px auto;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        margin: 60px 80px;
         padding: 20px;
         background-color: #f8fafc;
     }
@@ -63,7 +64,7 @@
             font-weight: 600;
         }
 
-    /* Filter and Search Form */
+    /* filter and search form */
     .filter-search-form {
         margin-bottom: 20px;
         text-align: center;
@@ -108,14 +109,27 @@
             background-color: #005fa3;
         }
 
-    /* Announcements Grid */
+    .form-control {
+        margin-top: 10px;
+        background-color: #007acc;
+        color: #ffffff;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-weight: 600;
+        font-size: 1em;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    /* announcements grid */
     .announcements-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-gap: 20px;
     }
 
-    /* Announcement Card */
+    /* announcement card */
     .announcement-card {
         background-color: #ffffff;
         padding: 20px;
@@ -150,12 +164,12 @@
     }
 
     .announcement-image {
-        width: 100%; /* Asigură lățimea maximă */
-        height: 150px; /* Înălțime fixă */
-        object-fit: contain; /* Păstrează întreaga imagine în container */
-        border-radius: 5px; /* Colțuri rotunjite */
-        margin-bottom: 15px; /* Spațiu jos */
-        background-color: #f0f0f0; /* Culoare de fundal pentru a evidenția imaginile mai mici */
+        width: 100%;
+        height: 150px;
+        object-fit: contain;
+        border-radius: 5px;
+        margin-bottom: 15px;
+        background-color: #f0f0f0;
     }
 
     .announcement-date {
@@ -170,7 +184,7 @@
         text-align: center;
     }
 
-    /* Responsive Design */
+    /* responsive mobile design */
     @@media (max-width: 1200px) {
         .announcements-grid {
             grid-template-columns: repeat(3, 1fr);

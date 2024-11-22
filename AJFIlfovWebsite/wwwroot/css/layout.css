@@ -1,25 +1,4 @@
-﻿* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/*:root {
-    --font-primary: "Montserrat", sans-serif;
-    --font-secondary: "Fira Sans", sans-serif;
-    --color-primary: #1d3557cc;
-    --color-on-primary: #fefefe;
-    --color-secondary: #1d3557;
-    --color-on-secondary: #fefefe;
-    --color-tertiary: #de4c3f;
-    --color-on-tertiary: #fefefe;
-    --color-surface: #fefefe;
-    --color-on-surface: #0f0f0f;
-    --color-scrim-small: rgba(0, 0, 0, 0.5);
-    --color-shadow: rgba(0, 0, 0, 0.1);
-}*/
-
-:root {
+﻿:root {
     --font-primary: "Teko", sans-serif;
     --font-secondary: serif;
     --color-primary: #0c0942;
@@ -38,6 +17,18 @@
     --color-scrim-medium: rgba(0, 0, 0, 0.85);
     --color-scrim-small: rgba(0, 0, 0, 0.5);
     --color-shadow: rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -162,7 +153,7 @@ header nav {
 
 /* main content */
 .content {
-    padding: 20px;
+    padding: 0px;
 }
 
 /* footer */

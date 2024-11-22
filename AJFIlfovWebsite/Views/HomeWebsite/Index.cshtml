@@ -232,18 +232,18 @@
             const modal = document.getElementById("carouselModal");
             const carouselContainer = document.getElementById("carouselImages");
 
-            // Creare HTML pentru imagini și setarea indexului inițial
+            // create html for images and set the initial index
             const images = carouselImages[id].map((src) => `<img src="${src.replace('~', '')}" alt="Carousel Image">`);
             currentIndex = 0;
             carouselContainer.innerHTML = images.join("");
 
-            // Alinierea pe prima imagine
+            // aligning to the first image
             updateCarousel();
 
             modal.style.display = "flex";
         }
         function closeCarousel(event) {
-            // Închidere doar dacă s-a apăsat în afara conținutului
+            // close only if clicked outside the content
             const modal = document.getElementById("carouselModal");
             const content = document.querySelector(".carousel-content");
 
@@ -257,10 +257,10 @@
             const images = document.querySelectorAll("#carouselImages img");
             const totalImages = images.length;
 
-            // Actualizare index curent
+            // update current index
             currentIndex += direction;
 
-            // Gestionare buclă în cazul depășirii limitelor
+            // handle loop in case of exceeding limits
             if (currentIndex < 0) {
                 currentIndex = totalImages - 1;
             } else if (currentIndex >= totalImages) {
@@ -274,11 +274,11 @@
             const carouselContainer = document.getElementById("carouselImages");
             const images = document.querySelectorAll("#carouselImages img");
 
-            // Calculare transformare pentru afișarea imaginii curente
+            // calculate transformation for displaying the current image
             const translateX = -currentIndex * 100;
             carouselContainer.style.transform = `translateX(${translateX}%)`;
 
-            // Opțional: gestionare opacitate pentru imagini (dacă dorim să evidențiem)
+            // optional: handle opacity for images (if we want to highlight)
             images.forEach((img, index) => {
                 img.style.opacity = index === currentIndex ? "1" : "0.5";
             });

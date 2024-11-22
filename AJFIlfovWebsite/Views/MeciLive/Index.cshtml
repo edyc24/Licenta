@@ -5,9 +5,8 @@
     ViewData["Title"] = "Meciuri Live";
 }
 
-<div class="container my-5">
+<div class="matches-container my-5">
     <h1 class="text-center mb-4">Meciuri Live</h1>
-
 
     <table class="admin-table">
         <thead>
@@ -49,10 +48,30 @@
 
 @section Styles {
     <style>
+        .matches-container {
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 60px 80px;
+            padding: 20px;
+            background-color: #f8fafc;
+        }
+
+            .matches-container h1 {
+                text-align: center;
+                font-size: 2em;
+                color: #007acc;
+                margin-bottom: 30px;
+                font-weight: 600;
+            }
+
         .admin-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 20px;
+            overflow: hidden;
         }
 
             .admin-table th, .admin-table td {
@@ -65,6 +84,20 @@
                 background-color: #007acc;
                 color: white;
             }
+
+        th, td {
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            border-top: 1px solid #ddd;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
 
         .form-inline {
             display: inline-block;
@@ -90,7 +123,7 @@
             menu.classList.toggle("show");
         }
 
-        // Refresh page every 60 seconds to update minute
+        // refresh page every 60 seconds to update minute
         setTimeout(function () {
             location.reload();
         }, 60000);

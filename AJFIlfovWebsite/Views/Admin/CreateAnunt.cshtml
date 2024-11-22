@@ -1,22 +1,22 @@
 ﻿@model AJFIlfov.BusinessLogic.Implementation.Anunturi.Models.AnuntModel
 
 <div class="create-announcement-container">
-    <h2>Creează un anunț</h2>
+    <h2 class="futuristic-title">Creează un anunț</h2>
 
     <form asp-action="CreateAnunt" method="post" enctype="multipart/form-data" class="announcement-form">
         <div class="form-group">
-            <label for="Titlu">Titlu</label>
-            <input type="text" class="form-control" asp-for="Titlu" placeholder="Introdu titlul anunțului" />
+            <label for="Titlu" class="futuristic-label">Titlu</label>
+            <input type="text" class="futuristic-input" asp-for="Titlu" placeholder="Introdu titlul anunțului" />
         </div>
 
         <div class="form-group">
-            <label for="Continut">Conținut</label>
-            <textarea class="form-control large-textarea" asp-for="Continut" placeholder="Introdu conținutul anunțului"></textarea>
+            <label for="Continut" class="futuristic-label">Conținut</label>
+            <textarea class="futuristic-input large-textarea" asp-for="Continut" placeholder="Introdu conținutul anunțului"></textarea>
         </div>
 
         <div class="form-group">
-            <label for="TipAnunt">Tip Anunț</label>
-            <select class="form-control" asp-for="TipAnunt">
+            <label for="TipAnunt" class="futuristic-label">Tip Anunț</label>
+            <select class="futuristic-input" asp-for="TipAnunt">
                 <option value="">Selectează tipul anunțului</option>
                 <option value="Informatii">Informații</option>
                 <option value="Competitii">Competiții</option>
@@ -27,38 +27,44 @@
         </div>
 
         <div class="form-group">
-            <label for="Imagine">Fișier PDF</label>
-            <input type="file" class="form-control" asp-for="Imagine" accept="application/pdf" />
-        </div>
-        
-        <div class="form-group">
-            <label for="Imagine">Imagine Comunicat(doar pentru Comunicate)</label>
-            <input type="file" class="form-control" asp-for="ImagineAnunt" accept="application/jpg" />
+            <label for="Imagine" class="futuristic-label">Fișier PDF</label>
+            <input type="file" class="futuristic-input" asp-for="Imagine" accept="application/pdf" />
         </div>
 
-        <button type="submit" class="btn btn-primary">Salvează</button>
+        <div class="form-group">
+            <label for="ImagineAnunt" class="futuristic-label">Imagine Comunicat (doar pentru Comunicate)</label>
+            <input type="file" class="futuristic-input" asp-for="ImagineAnunt" accept="application/jpg" />
+        </div>
+
+        <button type="submit" class="btn-futuristic">Salvează</button>
     </form>
 </div>
 
 <style>
-    /* Keep your existing styles */
-    /* Container styling */
-    .create-announcement-container {
-        width: 100%;
-        max-width: 100%;
-        margin: 40px 0;
-        padding: 20px;
-        background-color: #f8fafc;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* General styles */
+    body {
+        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
     }
 
-        .create-announcement-container h2 {
-            text-align: center;
-            font-size: 2.2em;
-            color: #007acc;
-            margin-bottom: 30px;
-        }
+    .create-announcement-container {
+        margin: 60px 80px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+    }
+
+    .futuristic-title {
+        text-align: center;
+        font-size: 2.5em;
+        color: #00e0ff;
+        margin-bottom: 20px;
+    }
 
     /* Form styling */
     .announcement-form .form-group {
@@ -68,48 +74,81 @@
         margin-right: auto;
     }
 
-    .announcement-form label {
+    .futuristic-label {
         font-size: 1.2em;
-        font-weight: 500;
-        color: #005fa3;
+        color: #00e0ff;
         margin-bottom: 10px;
         display: inline-block;
     }
 
-    .announcement-form .form-control {
+    .futuristic-input {
+        width: 100%;
         padding: 12px;
         font-size: 1.1em;
-        border-radius: 5px;
-        border: 1px solid #cccccc;
-        width: 100%;
+        border-radius: 10px;
+        border: 1px solid #00e0ff;
+        background-color: #24243e;
+        color: #ffffff;
     }
 
-        .announcement-form .form-control::placeholder {
+        .futuristic-input::placeholder {
             color: #999;
         }
 
     /* Larger textarea for content */
     .large-textarea {
-        height: 800px;
+        height: 300px;
         padding: 20px;
     }
 
     /* Button styling */
-    .announcement-form .btn-primary {
+    .btn-futuristic {
         width: 80%;
         padding: 15px;
-        background-color: #007acc;
+        background-color: #00e0ff;
         color: #ffffff;
         font-weight: 600;
         font-size: 1.2em;
         border: none;
-        border-radius: 5px;
+        border-radius: 10px;
         cursor: pointer;
         display: block;
         margin: 20px auto;
+        transition: background-color 0.3s;
     }
 
-        .announcement-form .btn-primary:hover {
-            background-color: #005fa3;
+        .btn-futuristic:hover {
+            background-color: #ff4081;
         }
+
+    /* Responsive styles */
+    @@media (max-width: 768px) {
+        .create-announcement-container {
+            margin: 20px;
+            padding: 10px;
+        }
+
+        .futuristic-title {
+            font-size: 2em;
+        }
+
+        .futuristic-input {
+            font-size: 1em;
+        }
+    }
+
+    @@media (max-width: 480px) {
+        .futuristic-title {
+            font-size: 1.8em;
+        }
+
+        .futuristic-input {
+            font-size: 0.9em;
+        }
+
+        .btn-futuristic {
+            font-size: 1em;
+            padding: 10px;
+        }
+    }
 </style>

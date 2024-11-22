@@ -4,26 +4,24 @@
     ViewData["Title"] = "Jurnal de Audit";
 }
 
-<div class="container my-5">
-    <h2 class="text-center mb-4">Jurnal de Audit</h2>
+<div class="audit-container">
+    <h2 class="futuristic-title">Jurnal de Audit</h2>
 
     <!-- Filter Section -->
-    <div class="filter-section mb-4">
-        <div class="row">
-            <div class="col-md-4">
-                <label for="nameFilter">Filtrează după nume:</label>
-                <input type="text" id="nameFilter" class="form-control" placeholder="Introduceți numele utilizatorului" onkeyup="filterLogs()" />
-            </div>
-            <div class="col-md-4">
-                <label for="dateFilter">Filtrează după dată:</label>
-                <input type="date" id="dateFilter" class="form-control" onchange="filterLogs()" />
-            </div>
+    <div class="filter-section">
+        <div class="filter-group">
+            <label for="nameFilter" class="futuristic-label">Filtrează după nume:</label>
+            <input type="text" id="nameFilter" class="futuristic-input" placeholder="Introduceți numele utilizatorului" onkeyup="filterLogs()" />
+        </div>
+        <div class="filter-group">
+            <label for="dateFilter" class="futuristic-label">Filtrează după dată:</label>
+            <input type="date" id="dateFilter" class="futuristic-input" onchange="filterLogs()" />
         </div>
     </div>
 
     <!-- Audit Log Table -->
     <div class="table-responsive">
-        <table class="table table-striped table-bordered" id="auditTable">
+        <table class="futuristic-table" id="auditTable">
             <thead>
                 <tr>
                     <th>Utilizator</th>
@@ -47,34 +45,122 @@
 
 @section Styles {
     <style>
-        /* Custom styles for the Audit Log */
-        .table thead th {
-            background-color: #007acc;
-            color: #ffffff;
-            border: none;
+        /* General styles */
+        body {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        .table tbody tr:hover {
-            background-color: #f2f2f2;
+        .audit-container {
+            margin: 60px 80px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
         }
 
-        .table td, .table th {
-            vertical-align: middle;
-        }
-
-        /* Spacing between rows */
-        .table tbody tr {
-            height: 60px;
+        .futuristic-title {
+            text-align: center;
+            font-size: 2.5em;
+            color: #00e0ff;
+            margin-bottom: 20px;
         }
 
         /* Filter section styling */
-        .filter-section label {
-            font-weight: bold;
-            color: #007acc;
+        .filter-section {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
         }
 
-        .filter-section .form-control {
-            border-radius: 5px;
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .futuristic-label {
+            font-size: 1.2em;
+            color: #00e0ff;
+            margin-bottom: 10px;
+        }
+
+        .futuristic-input {
+            width: 250px;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #00e0ff;
+            background-color: #24243e;
+            color: #ffffff;
+            border-radius: 10px;
+        }
+
+            .futuristic-input:focus {
+                outline: none;
+                border-color: #ff4081;
+            }
+
+        /* Table styling */
+        .futuristic-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+            .futuristic-table th, .futuristic-table td {
+                padding: 15px;
+                text-align: center;
+                color: #ffffff;
+                border-bottom: 1px solid #00e0ff;
+            }
+
+            .futuristic-table th {
+                background-color: #007acc;
+            }
+
+            .futuristic-table tbody tr:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+
+        /* Responsive styles */
+        @@media (max-width: 768px) {
+            .audit-container {
+                margin: 20px;
+                padding: 10px;
+            }
+
+            .futuristic-title {
+                font-size: 2em;
+            }
+
+            .filter-section {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .futuristic-input {
+                width: 100%;
+            }
+        }
+
+        @@media (max-width: 480px) {
+            .futuristic-title {
+                font-size: 1.8em;
+            }
+
+            .futuristic-input {
+                font-size: 0.9em;
+            }
+
+            .futuristic-table th, .futuristic-table td {
+                font-size: 0.9em;
+                padding: 10px;
+            }
         }
     </style>
 }

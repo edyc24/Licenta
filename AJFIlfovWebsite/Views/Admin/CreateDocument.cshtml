@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Adăugați un Document";
+}
+
+<h1>Adăugați un Document</h1>
+
+<form method="post" enctype="multipart/form-data">
+    <div>
+        <label for="NumeDocument">Nume Document:</label>
+        <input type="text" id="NumeDocument" name="NumeDocument" required />
+    </div>
+    <div>
+        <label for="PdfFile">Fișier PDF:</label>
+        <input type="file" id="PdfFile" name="PdfFile" accept=".pdf" required />
+    </div>
+    <button type="submit">Adaugă</button>
+</form>

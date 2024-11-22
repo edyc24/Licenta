@@ -4,16 +4,19 @@ using AJFIlfov.DataAccess.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace AJFIlfov.DataAccess.Migrations
+namespace AJFIlfov.DataAccess.data_acces
 {
     [DbContext(typeof(AjfilfovContext))]
-    partial class AjfilfovContextModelSnapshot : ModelSnapshot
+    [Migration("20241122135949_documente")]
+    partial class documente
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

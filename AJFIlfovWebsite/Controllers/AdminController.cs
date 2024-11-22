@@ -9,11 +9,15 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using System.Text;
 using AJFIlfov.BusinessLogic.Implementation.Audituri;
+using AJFIlfov.BusinessLogic.Implementation.Documente;
+using AJFIlfov.BusinessLogic.Implementation.MeciLiveService;
 using AJFIlfov.Code.Base;
 using AJFIlfov.WebApp.Code.Base;
 using UglyToad.PdfPig;
 using UglyToad.PdfPig.Content;
 using Microsoft.AspNetCore.Authorization;
+using AJFIlfov.BusinessLogic.Implementation.MeciLiveService.Models;
+using AJFIlfov.BusinessLogic.Implementation.Documente.Models;
 
 namespace AJFIlfovWebsite.Controllers
 {
@@ -23,17 +27,23 @@ namespace AJFIlfovWebsite.Controllers
         private readonly AccountService _accountService;
         private readonly AnuntService _anuntService;
         private readonly AuditService _auditService;
+        private readonly MeciLiveService _service;
+        private readonly DocumenteService _documentService;
 
         public AdminController(
             ControllerDependencies dependencies,
             AccountService accountService,
             AnuntService anuntService,
-            AuditService auditService)
+            AuditService auditService,
+            MeciLiveService meciLiveService,
+            DocumenteService documentService)
             : base(dependencies)
         {
             _accountService = accountService;
             _anuntService = anuntService;
             _auditService = auditService;
+            _service = meciLiveService;
+            _documentService = documentService;
         }
 
         public IActionResult Index()
@@ -170,6 +180,135 @@ namespace AJFIlfovWebsite.Controllers
         {
             var logs = _auditService.GetAllLogs();
             return View(logs);
+        }
+
+        public IActionResult MeciuriLive()
+        {
+            var meciuriLive = _service.GetAllMeciuriLive();
+
+            // Actualizăm minutul pentru fiecare meci
+            foreach (var meciModel in meciuriLive)
+            {
+                var meciEntity = _service.GetMeciLiveEntityById(meciModel.IdMeciLive);
+                _service.UpdateMinut(meciEntity);
+
+                // Actualizăm modelul cu noile valori
+                meciModel.Minut = meciEntity.Minut;
+                meciModel.Status = meciEntity.Status;
+            }
+
+            return View(meciuriLive);
+        }
+
+        [HttpPost]
+        public IActionResult Start(int idMeciLive)
+        {
+            _service.StartMeci(idMeciLive);
+            return RedirectToAction("MeciuriLive");
+        }
+
+        [HttpPost]
+        public IActionResult Pauza(int idMeciLive)
+        {
+            _service.PauzaMeci(idMeciLive);
+            return RedirectToAction("MeciuriLive");
+        }
+
+        [HttpPost]
+        public IActionResult Final(int idMeciLive)
+        {
+            _service.FinalizeazaMeci(idMeciLive);
+            return RedirectToAction("MeciuriLive");
+        }
+
+        [HttpPost]
+        public IActionResult GolGazde(int idMeciLive)
+        {
+            _service.GolGazde(idMeciLive);
+            return RedirectToAction("MeciuriLive");
+        }
+
+        [HttpPost]
+        public IActionResult GolOaspeti(int idMeciLive)
+        {
+            _service.GolOaspeti(idMeciLive);
+            return RedirectToAction("MeciuriLive");
+        }
+
+        [HttpGet]
+        public IActionResult CreateMatch()
+        {
+            return View(new MeciLiveModel { DataOra = DateTime.Now });
+        }
+
+        [HttpPost]
+        public IActionResult CreateMatch(MeciLiveModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                _service.CreateMeciLive(model);
+                return RedirectToAction("MeciuriLive");
+            }
+
+            return View(model);
+        }
+
+        public IActionResult GetUpdatedMatches()
+        {
+            var meciuriLive = _service.GetAllMeciuriLive();
+
+            // Actualizăm minutul pentru fiecare meci
+            foreach (var meciModel in meciuriLive)
+            {
+                var meciEntity = _service.GetMeciLiveEntityById(meciModel.IdMeciLive);
+                _service.UpdateMinut(meciEntity);
+
+                // Actualizăm modelul cu noile valori
+                meciModel.Minut = meciEntity.Minut;
+                meciModel.Status = meciEntity.Status;
+            }
+
+            // Returnați datele în format JSON
+            var meciuriDto = meciuriLive.Select(m => new
+            {
+                m.IdMeciLive,
+                Meci = $"{m.EchipaGazda} vs {m.EchipaOaspete}",
+                Scor = $"{m.ScorGazda} - {m.ScorOaspete}",
+                Minut = m.Status == "Pauza" ? "Pauză" :
+                    m.Status == "Finalizat" ? "Final" :
+                    m.Status == "InDesfasurare" ? $"{m.Minut ?? 0}'" : "-"
+            }).ToList();
+
+            return Json(meciuriDto);
+        }
+
+        public IActionResult CreateDocument()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateDocument(string NumeDocument, IFormFile PdfFile)
+        {
+            if (PdfFile != null && PdfFile.Length > 0)
+            {
+                using var memoryStream = new MemoryStream();
+                PdfFile.CopyTo(memoryStream);
+
+                var document = new DocumentModel
+                {
+                    NumeDocument = NumeDocument,
+                    PdfContent = memoryStream.ToArray(),
+                    ContentType = PdfFile.ContentType
+                };
+
+                _documentService.CreateDocument(document);
+
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Eroare la încărcarea documentului. Asigurați-vă că fișierul este valid.");
+            return View();
         }
 
     }

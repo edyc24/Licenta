@@ -87,7 +87,7 @@ namespace AJFIlfov.BusinessLogic.Implementation.MeciLiveService
                 var elapsedTime = DateTime.Now - meci.StartTime.Value;
                 int minute = (int)elapsedTime.TotalMinutes;
 
-                if (meci.IsSecondHalf)
+                if (meci.IsSecondHalf && meci.Status != "Pauza")
                 {
                     meci.Minut = 45 + minute;
                     if (meci.Minut >= 90)
@@ -119,13 +119,14 @@ namespace AJFIlfov.BusinessLogic.Implementation.MeciLiveService
                 {
                     meci.Status = "InDesfasurare";
                     meci.StartTime = DateTime.Now;
-                    meci.IsSecondHalf = meci.Status == "Pauza";
+                    meci.IsSecondHalf = false;
                     UnitOfWork.MeciuriLive.Update(meci);
                     UnitOfWork.SaveChanges();
                 }
                 else if (meci.Status == "Pauza")
                 {
                     meci.Status = "InDesfasurare";
+                    meci.StartTime = DateTime.Now;
                     meci.IsSecondHalf = true;
                     UnitOfWork.MeciuriLive.Update(meci);
                     UnitOfWork.SaveChanges();
@@ -136,7 +137,7 @@ namespace AJFIlfov.BusinessLogic.Implementation.MeciLiveService
         public void PauzaMeci(int idMeciLive)
         {
             var meci = GetMeciLiveEntityById(idMeciLive);
-            if (meci != null && meci.Status == "InDesfasurare")
+            if (meci != null && meci.Status == "InDesfasurare" && meci.Minut < 50)
             {
                 meci.Status = "Pauza";
                 meci.Minut = 45;

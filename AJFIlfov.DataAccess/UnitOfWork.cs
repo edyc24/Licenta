@@ -54,6 +54,9 @@ namespace AJFIlfov.DataAccess
 
         private IRepository<Audit> audits;
         public IRepository<Audit> Audits => audits ?? (audits = new BaseRepository<Audit>(Context));
+
+        private IRepository<Document> documents;
+        public IRepository<Document> Documente => documents ?? (documents = new BaseRepository<Document>(Context));
         public void SaveChanges()
         {
             Context.SaveChanges();

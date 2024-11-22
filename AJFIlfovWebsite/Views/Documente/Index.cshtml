@@ -1,63 +1,158 @@
 ﻿@{
     ViewData["Title"] = "Documente";
+    var documente = ViewBag.Documente as List<AJFIlfov.BusinessLogic.Implementation.Documente.Models.DocumentModel>;
 }
 
-<div class="documents-container">
-    <h1>Documente</h1>
-    <ul class="document-list">
-        <li class="document-item"><a href="/Documente/CerereInscriere">Cerere înscriere</a></li>
-        <li class="document-item"><a href="/Documente/CerereAfiliere">Cerere afiliere</a></li>
-        <li class="document-item"><a href="/Documente/TaxeCotizatii">Taxe și cotizații</a></li>
-        <li class="document-item"><a href="/Documente/TaxeCotizatii">Acord transfer</a></li>
-    </ul>
+<h1 class="futuristic-title">📂 Documente</h1>
+<div class="document-container">
+    <div class="document-filter">
+        <label for="documentSelect" class="futuristic-label">Selectați un document:</label>
+        <select id="documentSelect" class="futuristic-dropdown" onchange="showDocument(this.value)">
+            <option value="">-- Alegeți un document --</option>
+            @foreach (var doc in documente)
+            {
+                <option value="@doc.Id" data-url="@Url.Action("Download", new { id = doc.Id })">
+                    @doc.NumeDocument
+                </option>
+            }
+        </select>
+    </div>
+
+    <div id="documentDisplay" class="futuristic-display">
+        <p>Vă rugăm să selectați un document pentru a-l vizualiza.</p>
+    </div>
 </div>
 
+<script>
+    function showDocument(id) {
+        const select = document.getElementById('documentSelect');
+        const selectedOption = select.options[select.selectedIndex];
+        const url = selectedOption.getAttribute('data-url');
+
+        if (url) {
+            const displayContainer = document.getElementById('documentDisplay');
+            displayContainer.innerHTML = `
+                <iframe src="${url}" width="100%" height="600px" frameborder="0"></iframe>
+                <a href="${url}" class="futuristic-download-btn">Descarcă PDF</a>
+            `;
+        } else {
+            const displayContainer = document.getElementById('documentDisplay');
+            displayContainer.innerHTML = `<p>Vă rugăm să selectați un document pentru a-l vizualiza.</p>`;
+        }
+    }
+</script>
+
 <style>
-    /* Container styling for Documents */
-    .documents-container {
-        max-width: 600px;
-        margin: 60px auto;
+    /* Stiluri generale */
+    body {
+        font-family: 'Montserrat', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #121212;
+        color: #ffffff;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
         padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 2em;
+        margin-bottom: 20px;
+        color: #00e0ff;
+    }
+
+    /* Dropdown styling */
+    #documentSelect {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        font-size: 1em;
+        border: 2px solid #00e0ff;
+        background-color: #1e1e1e;
+        color: #ffffff;
+        border-radius: 5px;
+    }
+
+        #documentSelect:focus {
+            outline: none;
+            border-color: #ff4081;
+        }
+
+    /* Display container */
+    #documentDisplay {
+        margin-top: 20px;
         text-align: center;
     }
 
-    /* Title styling */
-    .documents-container h1 {
-        font-size: 2em;
-        color: #007acc;
-        margin-bottom: 20px;
-        font-weight: 600;
-    }
+        #documentDisplay iframe {
+            width: 100%;
+            max-width: 100%;
+            height: 80vh; /* Use most of the viewport height */
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+        }
 
-    /* List styling */
-    .document-list {
-        list-style: none;
-        padding: 0;
-    }
-
-    .document-item {
-        background-color: #f1f8ff; /* Light blue background */
-        border: 1px solid #cce4ff;
-        border-radius: 5px;
-        margin: 10px 0;
-        padding: 15px;
-        font-size: 1.1em;
-        transition: background-color 0.3s ease;
-    }
-
-    /* Link styling */
-    .document-item a {
+    /* Buton de download */
+    .download-button {
+        display: inline-block;
+        padding: 10px 20px;
+        margin-top: 20px;
+        background-color: #00e0ff;
+        color: #ffffff;
         text-decoration: none;
-        color: #005fa3;
-        font-weight: 500;
+        border-radius: 5px;
+        font-size: 1em;
+        transition: background-color 0.3s;
     }
 
-    .document-item a:hover {
-        color: #003f72;
+        .download-button:hover {
+            background-color: #ff4081;
+        }
+
+    /* Responsivitate */
+    @@media (max-width: 768px) {
+        h1
+
+    {
+        font-size: 1.8em;
     }
 
-    /* Hover effect */
-    .document-item:hover {
-        background-color: #e0f2ff;
+    #documentSelect {
+        font-size: 0.9em;
+    }
+
+        #documentDisplay iframe {
+            height: 70vh; /* Slightly smaller for tablets */
+        }
+    .download-button {
+        font-size: 0.9em;
+    }
+
+    }
+
+    @@media (max-width: 480px) {
+        h1
+
+    {
+        font-size: 1.5em;
+    }
+
+    #documentSelect {
+        font-size: 0.8em;
+    }
+
+        #documentDisplay iframe {
+            height: 60vh; /* Smaller height for mobile devices */
+        }
+    .download-button {
+        font-size: 0.8em;
+        padding: 8px 15px;
+    }
+
     }
 </style>

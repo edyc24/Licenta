@@ -2,12 +2,15 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewData["Title"] = "Meciuri Live";
+    ViewData["Title"] = "Administrare Scoruri Live";
 }
 
 <div class="container my-5">
-    <h1 class="text-center mb-4">Meciuri Live</h1>
+    <h1 class="text-center mb-4">Administrare Scoruri Live</h1>
 
+    <div class="text-right mb-3">
+        <a href="@Url.Action("CreateMatch")" class="btn btn-primary">Adaugă Meci Nou</a>
+    </div>
 
     <table class="admin-table">
         <thead>
@@ -15,6 +18,7 @@
                 <th>Meci</th>
                 <th>Scor</th>
                 <th>Minut</th>
+                <th>Acțiuni</th>
             </tr>
         </thead>
         <tbody>
@@ -40,6 +44,28 @@
                         {
                             <span>-</span>
                         }
+                    </td>
+                    <td>
+                        <form method="post" class="form-inline" asp-action="Start">
+                            <input type="hidden" name="idMeciLive" value="@meci.IdMeciLive" />
+                            <button type="submit" class="btn btn-sm btn-success">Start</button>
+                        </form>
+                        <form method="post" class="form-inline" asp-action="Pauza">
+                            <input type="hidden" name="idMeciLive" value="@meci.IdMeciLive" />
+                            <button type="submit" class="btn btn-sm btn-warning">Pauză</button>
+                        </form>
+                        <form method="post" class="form-inline" asp-action="Final">
+                            <input type="hidden" name="idMeciLive" value="@meci.IdMeciLive" />
+                            <button type="submit" class="btn btn-sm btn-danger">Final</button>
+                        </form>
+                        <form method="post" class="form-inline" asp-action="GolGazde">
+                            <input type="hidden" name="idMeciLive" value="@meci.IdMeciLive" />
+                            <button type="submit" class="btn btn-sm btn-primary">Gol Gazde</button>
+                        </form>
+                        <form method="post" class="form-inline" asp-action="GolOaspeti">
+                            <input type="hidden" name="idMeciLive" value="@meci.IdMeciLive" />
+                            <button type="submit" class="btn btn-sm btn-primary">Gol Oaspeți</button>
+                        </form>
                     </td>
                 </tr>
             }

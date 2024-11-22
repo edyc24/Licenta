@@ -5,6 +5,7 @@ using AJFIlfov.BusinessLogic.Implementation.Anunturi;
 using AJFIlfov.BusinessLogic.Implementation.Audituri;
 using AJFIlfov.BusinessLogic.Implementation.DisponibilitateAdminService;
 using AJFIlfov.BusinessLogic.Implementation.DisponibilitateService;
+using AJFIlfov.BusinessLogic.Implementation.Documente;
 using AJFIlfov.BusinessLogic.Implementation.EchipeService;
 using AJFIlfov.BusinessLogic.Implementation.GrupeEchipaService;
 using AJFIlfov.BusinessLogic.Implementation.GrupeService;
@@ -47,6 +48,7 @@ public static class ServiceCollectionExtensionMethods
         services.AddScoped<AnuntService>();
         services.AddScoped<MeciLiveService>();
         services.AddScoped<AuditService>();
+        services.AddScoped<DocumenteService>();
         return services;
     }
 

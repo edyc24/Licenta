@@ -19,6 +19,7 @@ using AJFIlfov.WebApp.Code.Base;
 using System.Security.Claims;
 using AJFIlfov.BusinessLogic.Implementation.Anunturi;
 using AJFIlfov.BusinessLogic.Implementation.Audituri;
+using AJFIlfov.BusinessLogic.Implementation.Documente;
 using AJFIlfov.BusinessLogic.Implementation.MeciLiveService;
 
 namespace AJFIlfov.WebApp.Code.ExtensionMethods
@@ -51,6 +52,7 @@ namespace AJFIlfov.WebApp.Code.ExtensionMethods
             services.AddScoped<AnuntService>();
             services.AddScoped<MeciLiveService>();
             services.AddScoped<AuditService>();
+            services.AddScoped<DocumenteService>();
             return services;
         }
 

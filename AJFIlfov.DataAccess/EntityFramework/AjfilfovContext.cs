@@ -49,6 +49,7 @@ public partial class AjfilfovContext : DbContext
     public virtual DbSet<Anunt> Anunturi { get; set; }
     public virtual DbSet<Audit> Audits { get; set; }
     public virtual DbSet<MeciLive> MeciuriLive { get; set; }
+    public virtual DbSet<Document> Documente { get; set; }
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -22,8 +22,16 @@
 </head>
 
 <body>
+    
+<div id="birthdayPopup" class="popup-overlay">
+    <div class="popup-content">
+        <h2>🎉 La mulți ani, Marius Serban! 🎉</h2>
+        <p>Mulțumim pentru tot sprijinul și dedicarea ta. AJF Ilfov îți urează un an plin de realizări!</p>
+        <button id="closePopup">Închide</button>
+    </div>
+</div>
 
-    <!-- hero section -->
+<!-- hero section -->
     <section class="hero">
         <div class="hero-text-container">
             <h1>Noi suntem fotbal!</h1>
@@ -279,6 +287,34 @@
                 img.style.opacity = index === currentIndex ? "1" : "0.5";
             });
         }
+
+        document.addEventListener("DOMContentLoaded", function () {
+        const popup = document.getElementById("birthdayPopup");
+        const closeButton = document.getElementById("closePopup");
+
+        // Check if the popup cookie exists
+        if (!document.cookie.split('; ').find(row => row.startsWith('popupSeen='))) {
+            // Show the popup if the cookie doesn't exist
+            popup.style.display = "flex";
+
+            // Set the cookie to expire after 7 days
+            const expirationDate = new Date();
+            expirationDate.setDate(expirationDate.getDate() + 1);
+            document.cookie = `popupSeen=true; expires=${expirationDate.toUTCString()}; path=/`;
+        }
+
+        // Close the popup when the button is clicked
+        closeButton.addEventListener("click", function () {
+            popup.style.display = "none";
+        });
+
+        // Also close the popup if the user clicks outside it
+        popup.addEventListener("click", function (event) {
+            if (event.target === popup) {
+                popup.style.display = "none";
+            }
+        });
+    });
     </script>
 
 </body>

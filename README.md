@@ -103,10 +103,12 @@
 ![UsecaseDiagramUsers](https://github.com/user-attachments/assets/40e8aa2e-dde9-4762-9429-dba6e2b54bd2)
 
 **Flowchart Diagram**
+![flow chart](https://github.com/user-attachments/assets/e1dfc0c4-480c-4099-85d2-52321bee7325)
 
 **UML Diagram**
 
 **Database Diagram**
+![db](https://github.com/user-attachments/assets/7d777593-2ce8-4810-b3fc-77526bee209b)
 
 **Packages Diagram**
 

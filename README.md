@@ -96,7 +96,11 @@
 
 **States Diagram**
 
+![DiagramaStare](https://github.com/user-attachments/assets/abe2b421-0163-438e-acce-efd452456607)
+
 **Use-Case Diagram**
+
+![UsecaseDiagramUsers](https://github.com/user-attachments/assets/40e8aa2e-dde9-4762-9429-dba6e2b54bd2)
 
 **Flowchart Diagram**
 

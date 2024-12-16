@@ -110,13 +110,18 @@
 **Database Diagram**
 ![db](https://github.com/user-attachments/assets/7d777593-2ce8-4810-b3fc-77526bee209b)
 
+
+
 **Packages Diagram**
 ![image](https://github.com/user-attachments/assets/cad6490c-622e-46f7-932a-fe7f382cbdbf)
+
 
 **Components Diagram**
 ![Diagrama componente](https://github.com/user-attachments/assets/7b41be28-c6e8-41d2-bfd2-2f373e7d6b60)
 
+
 **Deployment Diagram**
+![image](https://github.com/user-attachments/assets/9ec1bc7a-2273-4f0b-987f-2241a02564ff)
 
 **Interaction Diagram**
 ![InteractionDiagram](https://github.com/user-attachments/assets/0a4bd029-55ff-442f-b2ab-9336b68b327b)

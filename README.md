@@ -111,6 +111,7 @@
 ![db](https://github.com/user-attachments/assets/7d777593-2ce8-4810-b3fc-77526bee209b)
 
 **Packages Diagram**
+![image](https://github.com/user-attachments/assets/cad6490c-622e-46f7-932a-fe7f382cbdbf)
 
 **Components Diagram**
 ![Diagrama componente](https://github.com/user-attachments/assets/7b41be28-c6e8-41d2-bfd2-2f373e7d6b60)

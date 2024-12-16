@@ -57,6 +57,15 @@ namespace AJFIlfov.DataAccess
 
         private IRepository<Document> documents;
         public IRepository<Document> Documente => documents ?? (documents = new BaseRepository<Document>(Context));
+
+        private IRepository<Answer> answers;
+        public IRepository<Answer> Answers => answers ?? (answers = new BaseRepository<Answer>(Context));
+
+        private IRepository<Question> questions;
+        public IRepository<Question> Questions => questions ?? (questions = new BaseRepository<Question>(Context));
+
+        private IRepository<Suggestion> suggestions;
+        public IRepository<Suggestion> Suggestions => suggestions ?? (suggestions = new BaseRepository<Suggestion>(Context));
         public void SaveChanges()
         {
             Context.SaveChanges();

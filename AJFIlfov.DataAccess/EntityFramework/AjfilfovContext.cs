@@ -50,11 +50,14 @@ public partial class AjfilfovContext : DbContext
     public virtual DbSet<Audit> Audits { get; set; }
     public virtual DbSet<MeciLive> MeciuriLive { get; set; }
     public virtual DbSet<Document> Documente { get; set; }
+    public virtual DbSet<Question> Questions { get; set; }
+    public virtual DbSet<Answer> Answers { get; set; }
+    public virtual DbSet<Suggestion> Suggestions { get; set; }
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=tcp:ajfilfov.database.windows.net,1433;Initial Catalog=AJFIlfov;Persist Security Info=False;User ID=eduard;Password=Fcsteaua25?;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;\r\n");
+        => optionsBuilder.UseSqlServer("Server=tcp:ajfilfov.database.windows.net,1433;Initial Catalog=AJFIlfovCopy;Persist Security Info=False;User ID=eduard;Password=Fcsteaua25?;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;\r\n");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -225,6 +228,11 @@ public partial class AjfilfovContext : DbContext
             entity.HasOne(d => d.IdStadionLocalitateNavigation).WithMany(p => p.Meciuris)
                 .HasForeignKey(d => d.IdStadionLocalitate)
                 .HasConstraintName("FK__Meciuri__IdStadi__46E78A0C");
+
+            modelBuilder.Entity<Meciuri>()
+                .HasIndex(m => m.Etapa)
+                .IsUnique(false); // Permite valori duplicate
+
         });
 
         modelBuilder.Entity<PasswordRecovery>(entity =>

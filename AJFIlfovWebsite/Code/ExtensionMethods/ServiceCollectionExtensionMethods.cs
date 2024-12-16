@@ -17,6 +17,7 @@ using AJFIlfov.BusinessLogic.Implementation.StadionLocalitateService;
 using AJFIlfov.BusinessLogic.Implementation.User;
 using AJFIlfov.Code.Base;
 using AJFIlfov.Common.DTOs;
+using QnA.BusinessLogic;
 
 namespace AJFIlfovWebsite.WebApp.Code.ExtensionMethods;
 
@@ -49,6 +50,7 @@ public static class ServiceCollectionExtensionMethods
         services.AddScoped<MeciLiveService>();
         services.AddScoped<AuditService>();
         services.AddScoped<DocumenteService>();
+        services.AddScoped<QuestionService>();
         return services;
     }
 

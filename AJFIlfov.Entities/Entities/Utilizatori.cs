@@ -29,6 +29,7 @@ public partial class Utilizatori : IEntity
     public int? IdMarimeAdidasi { get; set; }
 
     public int? IdMarimeHaine { get; set; }
+    public int? Points { get; set; }
 
     public bool? IsDeleted { get; set; }
 

@@ -22,203 +22,195 @@
 </head>
 
 <body>
-    
-<div id="birthdayPopup" class="popup-overlay">
-    <div class="popup-content">
-        <h2>🎉 La mulți ani, Marius Serban! 🎉</h2>
-        <p>Mulțumim pentru tot sprijinul și dedicarea ta. AJF Ilfov îți urează un an plin de realizări!</p>
-        <button id="closePopup">Închide</button>
-    </div>
-</div>
 
 <!-- hero section -->
-    <section class="hero">
-        <div class="hero-text-container">
-            <h1>Noi suntem fotbal!</h1>
-            <a href="/DespreNoi">Află mai multe despre noi</a>
-        </div>
-
-        <div class="hero-images-overlay"></div>
-        <div class="hero-images-container">
-            <img src="~/images/hero1.jpeg" alt="Hero 1" class="first-image">
-            <img src="~/images/hero2.jpeg" alt="Hero 2" class="last-image">
-        </div>
-
-        <!-- header section -->
-        <header>
-            <div class="header-content">
-                <div class="header-title">
-                    <img src="~/images/logo1.png" alt="AJF Ilfov Logo">
-                    <h2>Asociația Județeană de Fotbal Ilfov</h2>
-                </div>
-
-                <!-- menu toggle button (visible only on mobile) -->
-                <div class="header-menu-toggle" onclick="toggleMenu()">
-                    <i class="fas fa-bars"></i>
-                </div>
-
-                <!-- main navigation links -->
-                <nav>
-                    <a href="HomeWebsite">Acasă</a>
-                    <a href="DespreNoi">Despre noi</a>
-                    <a href="Anunturi">Comunicate</a>
-                    <a href="Comisii">Comisii jurisdicționale</a>
-                    <a href="Competitii">Competiții</a>
-                    <a href="MeciLive">Meciuri live</a>
-                    <a href="Documente">Documente</a>
-                    <a href="Contact">Contact</a>
-                </nav>
-            </div>
-        </header>
-    </section>
-
-    <!-- actual page content -->
-    <div class="content">
-        <!-- most important news -->
-        <section class="main-news">
-            <div class="main-news-card">
-                <img src="~/images/our-story.jpg" alt="Știre principală">
-                <div class="main-news-card-content">
-                    <h3>Povestea noastră</h3>
-                    <a href="/DespreNoi">Citește mai mult &raquo;</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- latest news section -->
-        <section class="news">
-            <h2>Ultimele știri</h2>
-
-            <div class="news-cards-container">
-                @if (Model != null && Model.Any())
-                {
-                    @foreach (var anunt in Model.Take(3)) 
-                    {
-                        <div class="news-card">
-                            @{
-                                // Convert byte[] to Base64 string
-                                string imageBase64 = anunt.ImagineAnunt.Length > 0
-                                    ? "data:image/jpeg;base64," + Convert.ToBase64String(anunt.ImagineAnunt)
-                                    : "/images/hotarari.jpg";
-                            }
-
-                            <img src="@imageBase64" class="img-fluid announcement-image" alt="Imagine anunț" />
-                            
-                            <div class="news-card-content">
-                                <h3>@anunt.Titlu</h3>
-                                <p>@(anunt.Continut.Length > 150 ? anunt.Continut.Substring(0, 150) + "..." : anunt.Continut)</p>
-                                <a href="/Anunturi/Detalii/@anunt.Id">Citește mai mult &raquo;</a>
-                            </div>
-                        </div>
-                    }
-                }
-                else
-                {
-                    <p>Nu există știri disponibile în acest moment.</p>
-                }
-            </div>
-        </section>
-
-        <!-- services section -->
-        <section class="services">
-            <h2>Valorile noastre</h2>
-
-            <div class="service-cards-container">
-                <div class="service-card first-card" onclick="openCarousel(1)">
-                    <h3>Organizare competiții</h3>
-                    <p>Gestionăm și organizăm competiții fotbalistice la nivel județean pentru toate categoriile de vârstă.</p>
-                </div>
-
-                <div class="service-card second-card" onclick="openCarousel(2)">
-                    <h3>Dezvoltare juniori</h3>
-                    <p>Susținem creșterea și dezvoltarea tinerilor talentați prin programe dedicate juniorilor.</p>
-                </div>
-
-                <div class="service-card third-card" onclick="openCarousel(3)">
-                    <h3>Evenimente speciale</h3>
-                    <p>Organizăm evenimente și turnee speciale pentru promovarea fotbalului în comunitate.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- services carousel -->
-        <div id="carouselModal" class="carousel-modal" onclick="closeCarousel(event)">
-            <div class="carousel-content">
-                <span class="carousel-close" onclick="closeCarousel()">&times;</span>
-                <button class="carousel-button left" onclick="navigateCarousel(-1)">&#10094;</button>
-                <div id="carouselImages" class="carousel-images"></div>
-                <button class="carousel-button right" onclick="navigateCarousel(1)">&#10095;</button>
-            </div>
-        </div>
-
-        <!-- stats section -->
-        <section class="stats">
-            <h2>Statistici</h2>
-
-            <div class="stats-content">
-                <div class="stats-card">
-                    <img src="~/images/stat1.png" alt="Statistica 1">
-                    <h3>164</h3>
-                    <p>echipe active</p>
-                </div>
-
-                <div class="stats-card">
-                    <img src="../images/stat2.png" alt="Statistica 2">
-                    <h3>130</h3>
-                    <p>arbitri activi</p>
-                </div>
-
-                <div class="stats-card">
-                    <img src="~/images/stat3.png" alt="Statistica 3">
-                    <h3>3640</h3>
-                    <p>jucători</p>
-                </div>
-
-                <div class="stats-card">
-                    <img src="~/images/stat4.png" alt="Statistica 4">
-                    <h3>1600</h3>
-                    <p>meciuri în sezonul actual</p>
-                </div>
-
-                <div class="stats-card">
-                    <img src="~/images/stat5.png" alt="Statistica 5">
-                    <h3>18</h3>
-                    <p>competiții în sezonul actual</p>
-                </div>
-            </div>
-        </section>
+<section class="hero">
+    <div class="hero-text-container">
+        <h1>Noi suntem fotbal!</h1>
+        <a href="/DespreNoi">Află mai multe despre noi</a>
     </div>
 
-    <!-- contact section -->
-    <section class="contact">
-        <div class="contact-content">
-            <h2>Contactează-ne</h2>
-            <p>
-                Suntem aici pentru a răspunde întrebărilor tale și pentru a te ajuta să descoperi mai multe despre fotbalul
-                ilfovean.
-            </p>
-            <a asp-controller="Contact" asp-action="Index">Pagina de Contact</a>
+    <div class="hero-images-overlay"></div>
+    <div class="hero-images-container">
+        <img src="~/images/hero1.jpeg" alt="Hero 1" class="first-image">
+        <img src="~/images/hero2.jpeg" alt="Hero 2" class="last-image">
+    </div>
+
+    <!-- header section -->
+    <header>
+        <div class="header-content">
+            <div class="header-title">
+                <img src="~/images/logo1.png" alt="AJF Ilfov Logo">
+                <h2>Asociația Județeană de Fotbal Ilfov</h2>
+            </div>
+
+            <!-- menu toggle button (visible only on mobile) -->
+            <div class="header-menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <!-- main navigation links -->
+            <nav>
+                <a href="HomeWebsite">Acasă</a>
+                <a href="DespreNoi">Despre noi</a>
+                <a href="Anunturi">Comunicate</a>
+                <a href="Comisii">Comisii jurisdicționale</a>
+                <a href="Competitii">Competiții</a>
+                <a href="MeciLive">Meciuri live</a>
+                <a href="Documente">Documente</a>
+                <a href="Contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+</section>
+
+<!-- actual page content -->
+<div class="content">
+    <!-- most important news -->
+    <section class="main-news">
+        <div class="main-news-card">
+            <img src="~/images/our-story.jpg" alt="Știre principală">
+            <div class="main-news-card-content">
+                <h3>Povestea noastră</h3>
+                <a href="/DespreNoi">Citește mai mult &raquo;</a>
+            </div>
         </div>
     </section>
 
-    <!-- footer -->
-    <footer>
-        <p>&copy; 2024 Asociația Județeană de Fotbal Ilfov. Toate drepturile rezervate.</p>
-        <div class="social-icons">
-            <a href="https://www.facebook.com/AJFIlfov1997/?locale=ro_RO">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="#">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="#">
-                <i class="fab fa-twitter"></i>
-            </a>
-        </div>
-    </footer>
+    <!-- latest news section -->
+    <section class="news">
+        <h2>Ultimele știri</h2>
 
-    <!-- js functionalities -->
-    <script>
+        <div class="news-cards-container">
+            @if (Model != null && Model.Any())
+            {
+                @foreach (var anunt in Model.Take(3))
+                {
+                    <div class="news-card">
+                        @{
+                            // Convert byte[] to Base64 string
+                            string imageBase64 = anunt.ImagineAnunt.Length > 0
+                                ? "data:image/jpeg;base64," + Convert.ToBase64String(anunt.ImagineAnunt)
+                                : "/images/hotarari.jpg";
+                        }
+
+                        <img src="@imageBase64" class="img-fluid announcement-image" alt="Imagine anunț"/>
+
+                        <div class="news-card-content">
+                            <h3>@anunt.Titlu</h3>
+                            <p>@(anunt.Continut.Length > 150 ? anunt.Continut.Substring(0, 150) + "..." : anunt.Continut)</p>
+                            <a href="/Anunturi/Detalii/@anunt.Id">Citește mai mult &raquo;</a>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <p>Nu există știri disponibile în acest moment.</p>
+            }
+        </div>
+    </section>
+
+    <!-- services section -->
+    <section class="services">
+        <h2>Valorile noastre</h2>
+
+        <div class="service-cards-container">
+            <div class="service-card first-card" onclick="openCarousel(1)">
+                <h3>Organizare competiții</h3>
+                <p>Gestionăm și organizăm competiții fotbalistice la nivel județean pentru toate categoriile de vârstă.</p>
+            </div>
+
+            <div class="service-card second-card" onclick="openCarousel(2)">
+                <h3>Dezvoltare juniori</h3>
+                <p>Susținem creșterea și dezvoltarea tinerilor talentați prin programe dedicate juniorilor.</p>
+            </div>
+
+            <div class="service-card third-card" onclick="openCarousel(3)">
+                <h3>Evenimente speciale</h3>
+                <p>Organizăm evenimente și turnee speciale pentru promovarea fotbalului în comunitate.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- services carousel -->
+    <div id="carouselModal" class="carousel-modal" onclick="closeCarousel(event)">
+        <div class="carousel-content">
+            <span class="carousel-close" onclick="closeCarousel()">&times;</span>
+            <button class="carousel-button left" onclick="navigateCarousel(-1)">&#10094;</button>
+            <div id="carouselImages" class="carousel-images"></div>
+            <button class="carousel-button right" onclick="navigateCarousel(1)">&#10095;</button>
+        </div>
+    </div>
+
+    <!-- stats section -->
+    <section class="stats">
+        <h2>Statistici</h2>
+
+        <div class="stats-content">
+            <div class="stats-card">
+                <img src="~/images/stat1.png" alt="Statistica 1">
+                <h3>164</h3>
+                <p>echipe active</p>
+            </div>
+
+            <div class="stats-card">
+                <img src="../images/stat2.png" alt="Statistica 2">
+                <h3>130</h3>
+                <p>arbitri activi</p>
+            </div>
+
+            <div class="stats-card">
+                <img src="~/images/stat3.png" alt="Statistica 3">
+                <h3>3640</h3>
+                <p>jucători</p>
+            </div>
+
+            <div class="stats-card">
+                <img src="~/images/stat4.png" alt="Statistica 4">
+                <h3>1600</h3>
+                <p>meciuri în sezonul actual</p>
+            </div>
+
+            <div class="stats-card">
+                <img src="~/images/stat5.png" alt="Statistica 5">
+                <h3>18</h3>
+                <p>competiții în sezonul actual</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- contact section -->
+<section class="contact">
+    <div class="contact-content">
+        <h2>Contactează-ne</h2>
+        <p>
+            Suntem aici pentru a răspunde întrebărilor tale și pentru a te ajuta să descoperi mai multe despre fotbalul
+            ilfovean.
+        </p>
+        <a asp-controller="Contact" asp-action="Index">Pagina de Contact</a>
+    </div>
+</section>
+
+<!-- footer -->
+<footer>
+    <p>&copy; 2024 Asociația Județeană de Fotbal Ilfov. Toate drepturile rezervate.</p>
+    <div class="social-icons">
+        <a href="https://www.facebook.com/AJFIlfov1997/?locale=ro_RO">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="#">
+            <i class="fab fa-twitter"></i>
+        </a>
+    </div>
+</footer>
+
+<!-- js functionalities -->
+<script>
         function toggleMenu() {
             const nav = document.querySelector('header nav');
             nav.classList.toggle('show');

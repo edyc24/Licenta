@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace AJFIlfov.DataAccess.data_acces
+namespace AJFIlfov.DataAccess.Migrations
 {
     [DbContext(typeof(AjfilfovContext))]
-    [Migration("20241106082723_meciLive")]
-    partial class meciLive
+    [Migration("20241216120718_qna2")]
+    partial class qna2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -44,6 +44,13 @@ namespace AJFIlfov.DataAccess.data_acces
                         .IsRequired()
                         .HasColumnType("varbinary(max)");
 
+                    b.Property<byte[]>("ImagineAnunt")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("PublishedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("TipAnunt")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -53,9 +60,36 @@ namespace AJFIlfov.DataAccess.data_acces
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
+                    b.Property<int>("Views")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("Anunturi");
+                });
+
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Audit", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ActionPerformed")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Audits");
                 });
 
             modelBuilder.Entity("AJFIlfov.Entities.Entities.Categorii", b =>
@@ -118,6 +152,31 @@ namespace AJFIlfov.DataAccess.data_acces
                     b.HasKey("IdDisponibilitateAdmin");
 
                     b.ToTable("DisponibilitateAdmin", (string)null);
+                });
+
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Document", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ContentType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NumeDocument")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("PdfContent")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Documente");
                 });
 
             modelBuilder.Entity("AJFIlfov.Entities.Entities.Echipe", b =>
@@ -231,11 +290,20 @@ namespace AJFIlfov.DataAccess.data_acces
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsSecondHalf")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("Minut")
+                        .HasColumnType("int");
+
                     b.Property<int>("ScorGazda")
                         .HasColumnType("int");
 
                     b.Property<int>("ScorOaspete")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("StartTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -253,6 +321,9 @@ namespace AJFIlfov.DataAccess.data_acces
 
                     b.Property<DateTime?>("DataJoc")
                         .HasColumnType("datetime");
+
+                    b.Property<int?>("Etapa")
+                        .HasColumnType("int");
 
                     b.Property<Guid?>("IdArbitru")
                         .HasColumnType("uniqueidentifier");
@@ -282,6 +353,9 @@ namespace AJFIlfov.DataAccess.data_acces
                     b.Property<Guid?>("IdStadionLocalitate")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Locatie")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Observatii")
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
@@ -293,8 +367,16 @@ namespace AJFIlfov.DataAccess.data_acces
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int?>("ScorGazde")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ScorOaspeti")
+                        .HasColumnType("int");
+
                     b.HasKey("IdMeci")
                         .HasName("PK__Meciuri__4D7C0B75D32C1A8D");
+
+                    b.HasIndex("Etapa");
 
                     b.HasIndex(new[] { "IdArbitru" }, "IX_Meciuri_IdArbitru");
 
@@ -497,6 +579,9 @@ namespace AJFIlfov.DataAccess.data_acces
                     b.Property<string>("Parola")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<int?>("Points")
+                        .HasColumnType("int");
 
                     b.Property<string>("Prenume")
                         .IsRequired()

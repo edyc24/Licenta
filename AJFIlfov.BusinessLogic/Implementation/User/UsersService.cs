@@ -58,6 +58,20 @@ namespace AJFIlfov.BusinessLogic.Implementation.User
             return userModel;
         }
 
+        public void AddPoints(int points)
+        {
+            var utilizator = UnitOfWork.Users.Get().Where(i => i.IdUtilizator == CurrentUser.Id).First();
+            utilizator.Points += points;
+            UnitOfWork.Users.Update(utilizator);
+        }
+
+        public void AddPoints(Guid id, int points)
+        {
+            var utilizator = UnitOfWork.Users.Get().Where(i => i.IdUtilizator == id).First();
+            utilizator.Points += points;
+            UnitOfWork.Users.Update(utilizator);
+        }
+
         public List<UserAddress> GetAllUserAddresses()
         {
             return UnitOfWork.UserAddresses.Get().Include(u => u.User).ToList();

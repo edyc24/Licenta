@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace AJFIlfov.DataAccess.data_acces
+namespace AJFIlfov.DataAccess.Migrations
 {
     [DbContext(typeof(AjfilfovContext))]
-    [Migration("20241106085104_meciLiveupdate")]
-    partial class meciLiveupdate
+    [Migration("20241216121845_qna3")]
+    partial class qna3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,34 @@ namespace AJFIlfov.DataAccess.data_acces
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Answer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuestionId");
+
+                    b.ToTable("Answers");
+                });
 
             modelBuilder.Entity("AJFIlfov.Entities.Entities.Anunt", b =>
                 {
@@ -44,6 +72,13 @@ namespace AJFIlfov.DataAccess.data_acces
                         .IsRequired()
                         .HasColumnType("varbinary(max)");
 
+                    b.Property<byte[]>("ImagineAnunt")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("PublishedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("TipAnunt")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -53,9 +88,36 @@ namespace AJFIlfov.DataAccess.data_acces
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
+                    b.Property<int>("Views")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("Anunturi");
+                });
+
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Audit", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ActionPerformed")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Audits");
                 });
 
             modelBuilder.Entity("AJFIlfov.Entities.Entities.Categorii", b =>
@@ -118,6 +180,31 @@ namespace AJFIlfov.DataAccess.data_acces
                     b.HasKey("IdDisponibilitateAdmin");
 
                     b.ToTable("DisponibilitateAdmin", (string)null);
+                });
+
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Document", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ContentType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NumeDocument")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("PdfContent")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Documente");
                 });
 
             modelBuilder.Entity("AJFIlfov.Entities.Entities.Echipe", b =>
@@ -263,6 +350,9 @@ namespace AJFIlfov.DataAccess.data_acces
                     b.Property<DateTime?>("DataJoc")
                         .HasColumnType("datetime");
 
+                    b.Property<int?>("Etapa")
+                        .HasColumnType("int");
+
                     b.Property<Guid?>("IdArbitru")
                         .HasColumnType("uniqueidentifier");
 
@@ -291,6 +381,9 @@ namespace AJFIlfov.DataAccess.data_acces
                     b.Property<Guid?>("IdStadionLocalitate")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Locatie")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Observatii")
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
@@ -302,8 +395,16 @@ namespace AJFIlfov.DataAccess.data_acces
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int?>("ScorGazde")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ScorOaspeti")
+                        .HasColumnType("int");
+
                     b.HasKey("IdMeci")
                         .HasName("PK__Meciuri__4D7C0B75D32C1A8D");
+
+                    b.HasIndex("Etapa");
 
                     b.HasIndex(new[] { "IdArbitru" }, "IX_Meciuri_IdArbitru");
 
@@ -350,6 +451,36 @@ namespace AJFIlfov.DataAccess.data_acces
                     b.HasIndex("UserId");
 
                     b.ToTable("PasswordRecovery", (string)null);
+                });
+
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Question", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("BestAnswerId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Questions");
                 });
 
             modelBuilder.Entity("AJFIlfov.Entities.Entities.Refereestat", b =>
@@ -416,6 +547,34 @@ namespace AJFIlfov.DataAccess.data_acces
                     b.HasIndex(new[] { "IdStadion" }, "IX_StadionLocalitate_IdStadion");
 
                     b.ToTable("StadionLocalitate", (string)null);
+                });
+
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Suggestion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SuggestedContent")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuestionId");
+
+                    b.ToTable("Suggestions");
                 });
 
             modelBuilder.Entity("AJFIlfov.Entities.Entities.UserAddress", b =>
@@ -507,6 +666,9 @@ namespace AJFIlfov.DataAccess.data_acces
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int?>("Points")
+                        .HasColumnType("int");
+
                     b.Property<string>("Prenume")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -530,6 +692,15 @@ namespace AJFIlfov.DataAccess.data_acces
                     b.HasIndex(new[] { "IdRol" }, "IX_Utilizatori_IdRol");
 
                     b.ToTable("Utilizatori", (string)null);
+                });
+
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Answer", b =>
+                {
+                    b.HasOne("AJFIlfov.Entities.Entities.Question", null)
+                        .WithMany("Answers")
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("AJFIlfov.Entities.Entities.Disponibilitate", b =>
@@ -651,6 +822,15 @@ namespace AJFIlfov.DataAccess.data_acces
                     b.Navigation("IdStadionNavigation");
                 });
 
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Suggestion", b =>
+                {
+                    b.HasOne("AJFIlfov.Entities.Entities.Question", null)
+                        .WithMany("Suggestions")
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("AJFIlfov.Entities.Entities.UserAddress", b =>
                 {
                     b.HasOne("AJFIlfov.Entities.Entities.Utilizatori", "User")
@@ -729,6 +909,13 @@ namespace AJFIlfov.DataAccess.data_acces
                     b.Navigation("UtilizatoriIdMarimeAdidasiNavigations");
 
                     b.Navigation("UtilizatoriIdMarimeHaineNavigations");
+                });
+
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Question", b =>
+                {
+                    b.Navigation("Answers");
+
+                    b.Navigation("Suggestions");
                 });
 
             modelBuilder.Entity("AJFIlfov.Entities.Entities.Roluri", b =>

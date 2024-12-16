@@ -21,6 +21,7 @@ using AJFIlfov.BusinessLogic.Implementation.Anunturi;
 using AJFIlfov.BusinessLogic.Implementation.Audituri;
 using AJFIlfov.BusinessLogic.Implementation.Documente;
 using AJFIlfov.BusinessLogic.Implementation.MeciLiveService;
+using QnA.BusinessLogic;
 
 namespace AJFIlfov.WebApp.Code.ExtensionMethods
 {
@@ -53,6 +54,7 @@ namespace AJFIlfov.WebApp.Code.ExtensionMethods
             services.AddScoped<MeciLiveService>();
             services.AddScoped<AuditService>();
             services.AddScoped<DocumenteService>();
+            services.AddScoped<QuestionService>();
             return services;
         }
 

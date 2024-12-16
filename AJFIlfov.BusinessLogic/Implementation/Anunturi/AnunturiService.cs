@@ -1,7 +1,6 @@
 ﻿// BusinessLogic.Implementation.AnuntService/AnuntService.cs
 using AJFIlfov.BusinessLogic.Implementation.Anunturi.Models;
 using AJFIlfov.DataAccess;
-using AJFIlfov.DataAccess.data_acces;
 using AJFIlfov.Entities.Entities;
 using AutoMapper;
 using System;

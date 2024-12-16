@@ -22,6 +22,44 @@ namespace AJFIlfov.DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Answer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DownVote")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UpVote")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuestionId");
+
+                    b.ToTable("Answers");
+                });
+
             modelBuilder.Entity("AJFIlfov.Entities.Entities.Anunt", b =>
                 {
                     b.Property<int>("Id")
@@ -173,7 +211,7 @@ namespace AJFIlfov.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Documents");
+                    b.ToTable("Documente");
                 });
 
             modelBuilder.Entity("AJFIlfov.Entities.Entities.Echipe", b =>
@@ -373,6 +411,8 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.HasKey("IdMeci")
                         .HasName("PK__Meciuri__4D7C0B75D32C1A8D");
 
+                    b.HasIndex("Etapa");
+
                     b.HasIndex(new[] { "IdArbitru" }, "IX_Meciuri_IdArbitru");
 
                     b.HasIndex(new[] { "IdArbitruAsistent1" }, "IX_Meciuri_IdArbitruAsistent1");
@@ -418,6 +458,40 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("PasswordRecovery", (string)null);
+                });
+
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Question", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("BestAnswerId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Questions");
                 });
 
             modelBuilder.Entity("AJFIlfov.Entities.Entities.Refereestat", b =>
@@ -484,6 +558,38 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.HasIndex(new[] { "IdStadion" }, "IX_StadionLocalitate_IdStadion");
 
                     b.ToTable("StadionLocalitate", (string)null);
+                });
+
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Suggestion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SuggestedContent")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuestionId");
+
+                    b.ToTable("Suggestions");
                 });
 
             modelBuilder.Entity("AJFIlfov.Entities.Entities.UserAddress", b =>
@@ -575,6 +681,9 @@ namespace AJFIlfov.DataAccess.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int?>("Points")
+                        .HasColumnType("int");
+
                     b.Property<string>("Prenume")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -598,6 +707,15 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.HasIndex(new[] { "IdRol" }, "IX_Utilizatori_IdRol");
 
                     b.ToTable("Utilizatori", (string)null);
+                });
+
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Answer", b =>
+                {
+                    b.HasOne("AJFIlfov.Entities.Entities.Question", null)
+                        .WithMany("Answers")
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("AJFIlfov.Entities.Entities.Disponibilitate", b =>
@@ -719,6 +837,15 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.Navigation("IdStadionNavigation");
                 });
 
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Suggestion", b =>
+                {
+                    b.HasOne("AJFIlfov.Entities.Entities.Question", null)
+                        .WithMany("Suggestions")
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("AJFIlfov.Entities.Entities.UserAddress", b =>
                 {
                     b.HasOne("AJFIlfov.Entities.Entities.Utilizatori", "User")
@@ -797,6 +924,13 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.Navigation("UtilizatoriIdMarimeAdidasiNavigations");
 
                     b.Navigation("UtilizatoriIdMarimeHaineNavigations");
+                });
+
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Question", b =>
+                {
+                    b.Navigation("Answers");
+
+                    b.Navigation("Suggestions");
                 });
 
             modelBuilder.Entity("AJFIlfov.Entities.Entities.Roluri", b =>

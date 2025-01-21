@@ -106,7 +106,7 @@
 
 ![flow chart](https://github.com/user-attachments/assets/e1dfc0c4-480c-4099-85d2-52321bee7325)
 
-**UML Diagram**
+**UML Class Diagram**
 
 ![uml](https://github.com/user-attachments/assets/623796fc-71eb-4425-a8ea-45f3b4940bda)
 
@@ -136,8 +136,8 @@
 
 # Team Contributions
 
-- Cristea Eduard: Implemented additional features like search, UI enhancements, and database setup
-- Ciocan Alexandra-Diana: Implemented CRUD operations for questions and answers
-- Lăscae Andrei: Implemented CRUD operations for questions and answers
-- Ciubotaru Mihaela: Developed the badge system
+- Cristea Eduard: Implemented additional features like search, UI enhancements, and database setup, deployment diagram, packages diagram
+- Ciocan Alexandra-Diana: Implemented CRUD operations for questions and answers, flowchart diagram, database diagram
+- Lăscae Andrei: Implemented CRUD operations for questions and answers, component diagram, interaction diagram
+- Ciubotaru Mihaela: Developed the badge system, state diagram, use-case diagram
 

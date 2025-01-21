@@ -132,3 +132,12 @@
 **Interaction Diagram**
 
 ![InteractionDiagram](https://github.com/user-attachments/assets/0a4bd029-55ff-442f-b2ab-9336b68b327b)
+
+
+# Team Contributions
+
+- Cristea Eduard: Implemented additional features like search, UI enhancements, and database setup
+- Ciocan Alexandra-Diana: Implemented CRUD operations for questions and answers
+- Lăscae Andrei: Implemented CRUD operations for questions and answers
+- Ciubotaru Mihaela: Developed the badge system
+

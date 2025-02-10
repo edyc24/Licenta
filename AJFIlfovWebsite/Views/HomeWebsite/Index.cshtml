@@ -11,12 +11,10 @@
     <title>AJF Ilfov - Acasă</title>
     <!-- meta tag for responsive design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- font awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">
     <!-- css style -->
     <link rel="stylesheet" href="~/css/HomeWebsite/styles.css">
     <link rel="stylesheet" href="~/css/Common/common.css">
@@ -36,7 +34,6 @@
             <img src="~/images/hero1.jpeg" alt="Hero 1" class="first-image">
             <img src="~/images/hero2.jpeg" alt="Hero 2" class="last-image">
         </div>
-        <div class="hero-images-overlay"></div>
 
         <!-- header section -->
         <header>
@@ -48,9 +45,7 @@
                 </div>
 
                 <!-- menu toggle button (visible only on mobile) -->
-                <div class="header-menu-toggle" onclick="toggleMenu()">
-                    <i class="fas fa-bars"></i>
-                </div>
+                <div class="header-menu-toggle" onclick="toggleMenu()"></div>
             </div>
         </header>
     </section>
@@ -58,7 +53,7 @@
     <!-- ----------------------------------------------------------------------------------- -->
 
     <!-- actual page content -->
-    <div class="content">
+    <article class="content">
 
         <!-- most important news -->
         <section class="main-news">
@@ -73,7 +68,7 @@
 
         <!-- latest news section -->
         <section class="news">
-            <h2>Ultimele știri</h2>
+            <h2 class="section-header">Ultimele știri</h2>
 
             <div class="news-cards-container">
                 @if (Model != null && Model.Any())
@@ -92,7 +87,7 @@
 
                             <div class="news-card-content">
                                 <h3>@anunt.Titlu</h3>
-                                <p>@(anunt.Continut.Length > 90 ? anunt.Continut.Substring(0, 90) + "..." : anunt.Continut)</p>
+                                <p>@(anunt.Continut.Length > 110 ? anunt.Continut.Substring(0, 110) + "..." : anunt.Continut)</p>
                                 <a href="/Anunturi/Detalii/@anunt.Id">Citește mai mult &raquo;</a>
                             </div>
                         </div>
@@ -107,11 +102,12 @@
 
         <!-- services section -->
         <section class="services">
-            <h2>Valorile noastre</h2>
+            <h2 class="section-header">Valorile noastre</h2>
+
             <div class="service-cards-container">
                 <div class="service-card first-card" onclick="openCarousel(1)">
                     <h3>Organizare competiții</h3>
-                    <p>Gestionăm și organizăm competiții fotbalistice la nivel județean pentru toate categoriile de vârstă.</p>
+                    <p>Gestionăm și organizăm competiții la nivel județean pentru toate categoriile de vârstă.</p>
                 </div>
 
                 <div class="service-card second-card" onclick="openCarousel(2)">
@@ -138,7 +134,8 @@
 
         <!-- stats section -->
         <section class="stats">
-            <h2>Statistici</h2>
+            <h2 class="section-header">Statistici</h2>
+
             <div class="stats-content">
                 <div class="stats-card">
                     <img src="~/images/stat1.png" alt="Statistica 1">
@@ -172,16 +169,13 @@
             </div>
         </section>
 
-    </div>
+    </article>
 
     <!-- contact section -->
     <section class="contact">
         <div class="contact-content">
             <h2>Contactează-ne</h2>
-            <p>
-                Suntem aici pentru a răspunde întrebărilor tale și pentru a te ajuta să descoperi mai multe despre fotbalul
-                ilfovean.
-            </p>
+            <p>Suntem aici pentru a răspunde întrebărilor tale și pentru a te ajuta să descoperi mai multe despre fotbalul ilfovean.</p>
             <a asp-controller="Contact" asp-action="Index">Pagina de Contact</a>
         </div>
     </section>
@@ -190,15 +184,9 @@
     <footer>
         <p>&copy; 2024 Asociația Județeană de Fotbal Ilfov. Toate drepturile rezervate.</p>
         <div class="social-icons">
-            <a href="https://www.facebook.com/AJFIlfov1997/?locale=ro_RO">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="#">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="#">
-                <i class="fab fa-twitter"></i>
-            </a>
+            <a class="facebook" href="https://www.facebook.com/AJFIlfov1997/?locale=ro_RO"></a>
+            <a class="instagram" href="#"></a>
+            <a class="twitter" href="#"></a>
         </div>
     </footer>
 

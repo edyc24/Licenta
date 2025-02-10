@@ -1,5 +1,7 @@
 ﻿:root {
-    --font-primary: "Teko", sans-serif;
+    --font-primary: "Funnel Display", sans-serif;
+    --font-secondary: serif;
+
     --font-secondary: serif;
     --color-primary: #0c0942;
     --color-primary-hover: #555555;

@@ -121,7 +121,6 @@ header {
 /* ---------- */
 .small-nav {
     display: flex;
-    background-color: var(--color-surface-inverse);
     position: absolute;
     top: 0;
     right: 0;
@@ -129,6 +128,7 @@ header {
     height: 100%;
     z-index: 1000 !important;
     overflow: hidden;
+    background-color: var(--color-surface-inverse);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;

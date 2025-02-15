@@ -22,36 +22,37 @@
 
 
 <body>
-    <!-- hero section -->
-    <section class="hero">
-        <div class="hero-text-container">
-            <h1>Noi suntem fotbal!</h1>
-            <a href="/DespreNoi">Află mai multe despre noi</a>
-        </div>
-
-        <div class="hero-images-container">
-            <img src="~/images/hero1.jpeg" alt="Hero 1" class="first-image">
-            <img src="~/images/hero2.jpeg" alt="Hero 2" class="last-image">
-        </div>
-
-        <!-- header section -->
-        <header>
-            <div class="header-content">
-                <div class="header-title">
-                    <img src="~/images/logo1.png" alt="Logo AJF Ilfov">
-                    <h2>Asociația Județeană de Fotbal Ilfov</h2>
-                    <h3>AJF Ilfov</h3>
-                </div>
-
-                <!-- menu toggle button (visible only on mobile) -->
-                <div class="header-menu-toggle" onclick="toggleMenu()"></div>
-            </div>
-        </header>
-    </section>
-
-    <!-- ----------------------------------------------------------------------------------- -->
-    <!-- filter over hexagon background to make it blurred and cool -->
+    <!-- filter over hexagon background to make it blurred and cool; it needs to wrap around the whole content so that its height matches it -->
     <div style="backdrop-filter: blur(1px); position: relative;">
+
+        <!-- hero section -->
+        <section class="hero">
+            <div class="hero-text-container">
+                <h1>Noi suntem fotbal!</h1>
+                <a href="/DespreNoi">Află mai multe despre noi</a>
+            </div>
+
+            <div class="hero-images-container">
+                <img src="~/images/hero1.jpeg" alt="Hero 1" class="first-image">
+                <img src="~/images/hero2.jpeg" alt="Hero 2" class="last-image">
+            </div>
+
+            <!-- header section -->
+            <header>
+                <div class="header-content">
+                    <div class="header-title">
+                        <img src="~/images/logo1.png" alt="Logo AJF Ilfov">
+                        <h2>Asociația Județeană de Fotbal Ilfov</h2>
+                        <h3>AJF Ilfov</h3>
+                    </div>
+
+                    <!-- menu toggle button (visible only on mobile) -->
+                    <div class="header-menu-toggle" onclick="toggleMenu()"></div>
+                </div>
+            </header>
+        </section>
+
+        <!-- ------------------------------------------------- -->
 
         <!-- actual page content -->
         <main class="content">
@@ -78,7 +79,7 @@
                         {
                             <div class="news-card">
                                 @{
-                                    // Convert byte[] to Base64 string
+                                    // convert byte[] to base64 string
                                     string imageBase64 = anunt.ImagineAnunt.Length > 0
                                     ? "data:image/jpeg;base64," + Convert.ToBase64String(anunt.ImagineAnunt)
                                     : "/images/hotarari.jpg";
@@ -122,16 +123,6 @@
                     </div>
                 </div>
             </section>
-
-            <!-- services carousel -->
-            <div id="carouselModal" class="carousel-modal" onclick="closeCarousel(event)">
-                <div class="carousel-content">
-                    <span class="carousel-close" onclick="closeCarousel()">&times;</span>
-                    <button class="carousel-button left" onclick="navigateCarousel(-1)">&#10094;</button>
-                    <div id="carouselImages" class="carousel-images"></div>
-                    <button class="carousel-button right" onclick="navigateCarousel(1)">&#10095;</button>
-                </div>
-            </div>
 
             <!-- stats section -->
             <section class="stats">
@@ -183,14 +174,24 @@
             <footer>
                 <p>&copy; 2024 Asociația Județeană de Fotbal Ilfov. Toate drepturile rezervate.</p>
                 <div class="social-icons">
-                    <a class="facebook" href="https://www.facebook.com/AJFIlfov1997/?locale=ro_RO"></a>
                     <a class="instagram" href="#"></a>
+                    <a class="facebook" href="https://www.facebook.com/AJFIlfov1997/?locale=ro_RO"></a>
                     <a class="twitter" href="#"></a>
                 </div>
             </footer>
 
         </main>
 
+    </div>
+
+    <!-- services carousel -->
+    <div id="carouselModal" class="carousel-modal" onclick="closeCarousel(event)">
+        <div class="carousel-content">
+            <span class="carousel-close" onclick="closeCarousel()">&times;</span>
+            <button class="carousel-button left" onclick="navigateCarousel(-1)">&#10094;</button>
+            <div id="carouselImages" class="carousel-images"></div>
+            <button class="carousel-button right" onclick="navigateCarousel(1)">&#10095;</button>
+        </div>
     </div>
 
     <!-- main navigation links for mobile -->
@@ -211,99 +212,106 @@
         </div>
     </nav>
 
-
     <!-- js functionalities -->
     <script>
-            function toggleMenu() {
-                const mobileNav = document.getElementsByClassName('small-nav')[0];
-                mobileNav.classList.toggle('show');
+        /* --------------
+        nav menu behavior
+        -------------- */
+        function toggleMenu() {
+            const mobileNav = document.getElementsByClassName('small-nav')[0];
+            mobileNav.classList.toggle('show');
+        }
+
+            const carouselImages = {
+            1: ["images/competii/image00025.jpeg", "images/competii/image00081.jpeg", "images/competii/image00082.jpeg"],
+            2: ["images/dezvoltare/image00043.jpeg", "images/dezvoltare/image00058.jpeg", "images/dezvoltare/image00060.jpeg"],
+            3: ["images/evenimente/image00006.jpeg", "images/evenimente/image00098.jpeg", "images/evenimente/image00099.jpeg"],
+        };
+
+        /* --------------
+        carousel behavior
+        -------------- */
+        let carouselCurrentIndex = 0;
+        const carouselModal = document.getElementById("carouselModal");
+
+        function openCarousel(id) {
+            const carouselContainer = document.getElementById("carouselImages");
+
+            // create html for images and set the initial index
+            const images = carouselImages[id].map((src) => `<img src="${src.replace('~', '')}" alt="Carousel Image">`);
+            carouselCurrentIndex = 0;
+            carouselContainer.innerHTML = images.join("");
+
+            // aligning to the first image
+            updateCarousel();
+
+            carouselModal.classList.add('show');
+        }
+
+        function closeCarousel(event) {
+            const content = document.querySelector(".carousel-content");
+
+            // close only if clicked outside the content
+            if (!content.contains(event.target)) {
+                carouselModal.classList.remove('show');
+            }
+        }
+
+        function navigateCarousel(direction) {
+            const images = document.querySelectorAll("#carouselImages img");
+            const totalImages = images.length;
+
+            // update current index
+            carouselCurrentIndex += direction;
+
+            // handle loop in case of exceeding limits
+            if (carouselCurrentIndex < 0) {
+                carouselCurrentIndex = totalImages - 1;
+            } else if (carouselCurrentIndex >= totalImages) {
+                carouselCurrentIndex = 0;
             }
 
-             const carouselImages = {
-                1: ["images/competii/image00025.jpeg", "images/competii/image00081.jpeg", "images/competii/image00082.jpeg"],
-                2: ["images/dezvoltare/image00043.jpeg", "images/dezvoltare/image00058.jpeg", "images/dezvoltare/image00060.jpeg"],
-                3: ["images/evenimente/image00006.jpeg", "images/evenimente/image00098.jpeg", "images/evenimente/image00099.jpeg"],
-            };
+            updateCarousel();
+        }
 
-            let currentIndex = 0;
+        function updateCarousel() {
+            const carouselContainer = document.getElementById("carouselImages");
+            const images = document.querySelectorAll("#carouselImages img");
 
-            function openCarousel(id) {
-                const modal = document.getElementById("carouselModal");
-                const carouselContainer = document.getElementById("carouselImages");
+            // calculate transformation for displaying the current image
+            const translateX = -carouselCurrentIndex * 100;
+            carouselContainer.style.transform = `translateX(${translateX}%)`;
 
-                // create html for images and set the initial index
-                const images = carouselImages[id].map((src) => `<img src="${src.replace('~', '')}" alt="Carousel Image">`);
-                currentIndex = 0;
-                carouselContainer.innerHTML = images.join("");
+            // optional: handle opacity for images (if we want to highlight)
+            images.forEach((img, index) => {
+                img.style.opacity = index === carouselCurrentIndex ? "1" : "0.5";
+            });
+        }
 
-                // aligning to the first image
-                updateCarousel();
-
-                modal.style.display = "flex";
-            }
-            function closeCarousel(event) {
-                // close only if clicked outside the content
-                const modal = document.getElementById("carouselModal");
-                const content = document.querySelector(".carousel-content");
-
-                if (!content.contains(event.target)) {
-                    modal.style.display = "none";
-                }
-            }
-
-
-            function navigateCarousel(direction) {
-                const images = document.querySelectorAll("#carouselImages img");
-                const totalImages = images.length;
-
-                // update current index
-                currentIndex += direction;
-
-                // handle loop in case of exceeding limits
-                if (currentIndex < 0) {
-                    currentIndex = totalImages - 1;
-                } else if (currentIndex >= totalImages) {
-                    currentIndex = 0;
-                }
-
-                updateCarousel();
-            }
-
-            function updateCarousel() {
-                const carouselContainer = document.getElementById("carouselImages");
-                const images = document.querySelectorAll("#carouselImages img");
-
-                // calculate transformation for displaying the current image
-                const translateX = -currentIndex * 100;
-                carouselContainer.style.transform = `translateX(${translateX}%)`;
-
-                // optional: handle opacity for images (if we want to highlight)
-                images.forEach((img, index) => {
-                    img.style.opacity = index === currentIndex ? "1" : "0.5";
-                });
-            }
-
-            document.addEventListener("DOMContentLoaded", function () {
+        /* -----------------
+        popup modal behavior
+        ----------------- */
+        document.addEventListener("DOMContentLoaded", function () {
             const popup = document.getElementById("birthdayPopup");
             const closeButton = document.getElementById("closePopup");
 
-            // Check if the popup cookie exists
+            // check if the popup cookie exists
             if (!document.cookie.split('; ').find(row => row.startsWith('popupSeen='))) {
                 // Show the popup if the cookie doesn't exist
                 popup.style.display = "flex";
 
-                // Set the cookie to expire after 7 days
+                // set the cookie to expire after 7 days
                 const expirationDate = new Date();
                 expirationDate.setDate(expirationDate.getDate() + 1);
                 document.cookie = `popupSeen=true; expires=${expirationDate.toUTCString()}; path=/`;
             }
 
-            // Close the popup when the button is clicked
+            // close the popup when the button is clicked
             closeButton.addEventListener("click", function () {
                 popup.style.display = "none";
             });
 
-            // Also close the popup if the user clicks outside it
+            // also close the popup if the user clicks outside it
             popup.addEventListener("click", function (event) {
                 if (event.target === popup) {
                     popup.style.display = "none";

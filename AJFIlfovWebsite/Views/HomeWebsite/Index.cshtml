@@ -22,37 +22,37 @@
 
 
 <body>
-    <!-- filter over hexagon background to make it blurred and cool -->
-    <div style="backdrop-filter: blur(1px);">
+    <!-- hero section -->
+    <section class="hero">
+        <div class="hero-text-container">
+            <h1>Noi suntem fotbal!</h1>
+            <a href="/DespreNoi">Află mai multe despre noi</a>
+        </div>
 
-        <!-- hero section -->
-        <section class="hero">
-            <div class="hero-text-container">
-                <h1>Noi suntem fotbal!</h1>
-                <a href="/DespreNoi">Află mai multe despre noi</a>
-            </div>
+        <div class="hero-images-container">
+            <img src="~/images/hero1.jpeg" alt="Hero 1" class="first-image">
+            <img src="~/images/hero2.jpeg" alt="Hero 2" class="last-image">
+        </div>
 
-            <div class="hero-images-container">
-                <img src="~/images/hero1.jpeg" alt="Hero 1" class="first-image">
-                <img src="~/images/hero2.jpeg" alt="Hero 2" class="last-image">
-            </div>
-
-            <!-- header section -->
-            <header>
-                <div class="header-content">
-                    <div class="header-title">
-                        <img src="~/images/logo1.png" alt="Logo AJF Ilfov">
-                        <h2>Asociația Județeană de Fotbal Ilfov</h2>
-                        <h3>AJF Ilfov</h3>
-                    </div>
-
-                    <!-- menu toggle button (visible only on mobile) -->
-                    <div class="header-menu-toggle" onclick="toggleMenu()"></div>
+        <!-- header section -->
+        <header>
+            <div class="header-content">
+                <div class="header-title">
+                    <img src="~/images/logo1.png" alt="Logo AJF Ilfov">
+                    <h2>Asociația Județeană de Fotbal Ilfov</h2>
+                    <h3>AJF Ilfov</h3>
                 </div>
-            </header>
-        </section>
 
-        <!-- ----------------------------------------------------------------------------------- -->
+                <!-- menu toggle button (visible only on mobile) -->
+                <div class="header-menu-toggle" onclick="toggleMenu()"></div>
+            </div>
+        </header>
+    </section>
+
+    <!-- ----------------------------------------------------------------------------------- -->
+    <!-- filter over hexagon background to make it blurred and cool -->
+    <div style="backdrop-filter: blur(1px); position: relative;">
+
         <!-- actual page content -->
         <main class="content">
 
@@ -190,25 +190,33 @@
             </footer>
 
         </main>
+
     </div>
 
-    <!-- main navigation links -->
-    <nav>
-        <a href="HomeWebsite">Acasă</a>
-        <a href="DespreNoi">Despre noi</a>
-        <a href="Anunturi">Comunicate</a>
-        <a href="Comisii">Comisii jurisdicționale</a>
-        <a href="Competitii">Competiții</a>
-        <a href="MeciLive">Meciuri live</a>
-        <a href="Documente">Documente</a>
-        <a href="Contact">Contact</a>
+    <!-- main navigation links for mobile -->
+    <nav class="small-nav">
+        <div class="header-content">
+            <div class="header-menu-toggle" onclick="toggleMenu()"></div>
+        </div>
+
+        <div class="small-nav-content">
+            <a href="HomeWebsite">Acasă</a>
+            <a href="DespreNoi">Despre noi</a>
+            <a href="Anunturi">Comunicate</a>
+            <a href="Comisii">Comisii jurisdicționale</a>
+            <a href="Competitii">Competiții</a>
+            <a href="MeciLive">Meciuri live</a>
+            <a href="Documente">Documente</a>
+            <a href="Contact">Contact</a>
+        </div>
     </nav>
+
 
     <!-- js functionalities -->
     <script>
             function toggleMenu() {
-                const nav = document.querySelector('nav');
-                nav.classList.toggle('show');
+                const mobileNav = document.getElementsByClassName('small-nav')[0];
+                mobileNav.classList.toggle('show');
             }
 
              const carouselImages = {

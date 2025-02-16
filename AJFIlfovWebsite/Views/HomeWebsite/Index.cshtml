@@ -48,6 +48,18 @@
 
                     <!-- menu toggle button (visible only on mobile) -->
                     <div class="header-menu-toggle" onclick="toggleMenu()"></div>
+
+                    <!-- main navigation links for big screens -->
+                    <nav class="big-nav">
+                        <a href="HomeWebsite">Acasă</a>
+                        <a href="DespreNoi">Despre noi</a>
+                        <a href="Anunturi">Comunicate</a>
+                        <a href="Comisii">Comisii jurisdicționale</a>
+                        <a href="Competitii">Competiții</a>
+                        <a href="MeciLive">Meciuri live</a>
+                        <a href="Documente">Documente</a>
+                        <a href="Contact">Contact</a>
+                    </nav>
                 </div>
             </header>
         </section>
@@ -129,34 +141,34 @@
                 <h2 class="section-header">Statistici</h2>
 
                 <div class="stats-content">
-                    <div class="stats-card">
+                    <div class="stats-card" id="stat1">
                         <img src="~/images/stat1.png" alt="Statistica 1">
                         <h3>164</h3>
                         <p>echipe active</p>
                     </div>
 
-                    <div class="stats-card">
+                    <div class="stats-card" id="stat2">
                         <img src="../images/stat2.png" alt="Statistica 2">
                         <h3>130</h3>
                         <p>arbitri activi</p>
                     </div>
 
-                    <div class="stats-card">
+                    <div class="stats-card" id="stat3">
                         <img src="~/images/stat3.png" alt="Statistica 3">
                         <h3>3640</h3>
                         <p>jucători</p>
                     </div>
 
-                    <div class="stats-card">
+                    <div class="stats-card" id="stat4">
                         <img src="~/images/stat4.png" alt="Statistica 4">
                         <h3>1600</h3>
-                        <p>meciuri în sezonul actual</p>
+                        <p>meciuri</p>
                     </div>
 
-                    <div class="stats-card">
+                    <div class="stats-card" id="stat5">
                         <img src="~/images/stat5.png" alt="Statistica 5">
                         <h3>18</h3>
-                        <p>competiții în sezonul actual</p>
+                        <p>competiții</p>
                     </div>
                 </div>
             </section>
@@ -194,7 +206,7 @@
         </div>
     </div>
 
-    <!-- main navigation links for mobile -->
+    <!-- main navigation links for small screens -->
     <nav class="small-nav">
         <div class="header-content">
             <div class="header-menu-toggle" onclick="toggleMenu()"></div>

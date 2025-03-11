@@ -11,20 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-
-// Add services to the container.
-
 var connectionString = builder.Configuration["ConnectionString"];
-object value = builder.Services.AddDbContext<AjfilfovContext>(options =>
+builder.Services.AddDbContext<AjfilfovContext>(options =>
     options.UseSqlServer(connectionString));
-
-//builder.Configure.AddConfiguration((hostingContext, config) =>
-//{
-//    config.SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
-//          .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-//          .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", optional: true)
-//          .AddEnvironmentVariables();
-//});
 
 builder.Services.AddDistributedMemoryCache();
 
@@ -36,7 +25,6 @@ builder.Services.AddSession(options =>
 });
 
 builder.Services.AddAJFIlfovCurrentUser();
-
 builder.Services.AddPresentation();
 builder.Services.AddAJFIlfovBusinessLogic();
 
@@ -64,11 +52,14 @@ builder.Services.AddScoped<UnitOfWork>();
 builder.Services.AddSignalR();
 
 var app = builder.Build();
+
+// Middleware to handle subdomain routing
+app.UseMiddleware<SubdomainMiddleware>();
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -82,8 +73,41 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
-    "default",
-    "{controller=HomeWebsite}/{action=Index}/{id?}");
+    name: "default",
+    pattern: "{controller=HomeWebsite}/{action=Index}/{id?}");
 
+app.MapControllerRoute(
+    name: "turnee",
+    pattern: "{controller=Turnee}/{action=Index}/{id?}");
 
 app.Run();
+
+// Middleware class for subdomain handling
+public class SubdomainMiddleware
+{
+    private readonly RequestDelegate _next;
+
+    public SubdomainMiddleware(RequestDelegate next)
+    {
+        _next = next;
+    }
+
+    public async Task InvokeAsync(HttpContext context)
+    {
+        var host = context.Request.Host.Host;
+        if (host.StartsWith("turnee.ajfilfov.ro"))
+        {
+            context.Request.Path = "/Turnee" + context.Request.Path;
+        }
+
+        await _next(context);
+    }
+}
+
+public static class SubdomainMiddlewareExtensions
+{
+    public static IApplicationBuilder UseSubdomainMiddleware(this IApplicationBuilder builder)
+    {
+        return builder.UseMiddleware<SubdomainMiddleware>();
+    }
+}

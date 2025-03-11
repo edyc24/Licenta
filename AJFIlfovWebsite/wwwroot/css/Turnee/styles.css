@@ -1,0 +1,166 @@
+/* ----------- */
+/* tournaments */
+/* ----------- */
+.tournament-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.3rem;
+    transition: margin-top 0.3s ease;
+    position: relative;
+    top: 50%;
+}
+
+.tournament-brackets {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style-type: none;
+    height: 100%;
+}
+
+.bracket {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    list-style-type: none;
+    flex: 1;
+    padding: 0 12px;
+}
+
+.team-item-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+    .team-item-container:after {
+        content: '';
+        border: 2px none #555555;
+        position: absolute;
+        display: block;
+        width: 8px;
+        right: -14px;
+    }
+
+    .team-item-container:nth-of-type(odd):after {
+        border-right-style: solid;
+        border-top-style: solid;
+        height: 100%;
+        top: 50%;
+    }
+
+    .team-item-container:nth-of-type(even):after {
+        border-right-style: solid;
+        border-bottom-style: solid;
+        height: 100%;
+        top: -50%;
+    }
+
+    .team-item-container:before {
+        content: '';
+        border-top: 2px solid #555555;
+        position: absolute;
+        height: 2px;
+        width: 8px;
+        left: -12px;
+        top: 50%;
+    }
+
+.bracket:first-of-type .team-item-container:before {
+    display: none;
+}
+
+.bracket:last-of-type .team-item-container:after {
+    display: none;
+}
+
+.team-item-content {
+    border-radius: 0.5rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #ffffff;
+    height: 4.8rem;
+    margin: 0.4rem 0;
+    width: 100%;
+    position: relative;
+}
+
+    .team-item-content time {
+        background-color: #555555;
+        font-size: 0.8rem;
+        padding: 2px 4px;
+        margin: 0 0.4rem;
+        border-radius: 0.25rem;
+    }
+
+.team-name {
+    background-color: #00cbbc;
+    width: 8rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+}
+
+.stadium-name {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    transform: translateY(-20%);
+    color: #000000;
+    text-align: center;
+}
+
+
+/* --------------------- */
+/* mobile responsiveness */
+/* --------------------- */
+@media (max-width: 1280px) {
+    .tournament-brackets {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+
+    .bracket {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        list-style-type: none;
+        gap: 1rem 2rem;
+        position: relative;
+    }
+
+        .bracket:after {
+            content: '';
+            background-color: #555555;
+            position: absolute;
+            width: 2px;
+            height: 2rem;
+            bottom: -3rem;
+        }
+
+        .bracket:last-child:after {
+            display: none;
+        }
+
+    .team-item-container {
+        flex: 0 0 0;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+        .team-item-container:after,
+        .team-item-container:before {
+            display: none;
+        }
+}

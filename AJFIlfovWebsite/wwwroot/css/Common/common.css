@@ -43,9 +43,9 @@ body {
 
 body {
     font-family: var(--font-primary);
-    background-color: var(--color-primary);
     overflow-x: hidden;
     width: 100vw;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='100%25' height='100%25'%3E%3Cdefs%3E%3Cpattern id='hexagons' width='50' height='43.4' patternUnits='userSpaceOnUse' patternTransform='scale(3) translate(2) rotate(20)'%3E%3Cpolygon points='24.8,22 37.3,29.2 37.3,43.7 24.8,50.9 12.3,43.7 12.3,29.2' id='hex' fill='%23ffffffff' stroke-width='0.5' stroke='%23232a2a28'/%3E%3Cuse xlink:href='%23hex' x='25' /%3E%3Cuse xlink:href='%23hex' x='-25' /%3E%3Cuse xlink:href='%23hex' x='12.5' y='-21.7' /%3E%3Cuse xlink:href='%23hex' x='-12.5' y='-21.7' /%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23hexagons)' /%3E%3C/svg%3E");
 }
 
 a {

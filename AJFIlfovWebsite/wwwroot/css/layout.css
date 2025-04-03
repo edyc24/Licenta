@@ -1,5 +1,7 @@
 ﻿:root {
-    --font-primary: "Teko", sans-serif;
+    --font-primary: "Funnel Display", sans-serif;
+    --font-secondary: serif;
+
     --font-secondary: serif;
     --color-primary: #0c0942;
     --color-primary-hover: #555555;
@@ -154,7 +156,13 @@ header nav {
 /* main content */
 .content {
     padding: 0px;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
+
+    .content::-webkit-scrollbar {
+        display: none; /* Chrome, Safari and Opera */
+    }
 
 /* footer */
 footer {

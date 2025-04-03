@@ -1,0 +1,293 @@
+﻿@{
+    ViewData["Title"] = "Futuristic Sports";
+}
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewData["Title"]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">
+    <!-- css styles -->
+    <link rel="stylesheet" href="~/css/Turnee/elimination.css">
+    <link rel="stylesheet" href="~/css/Common/common.css">
+    <style>
+        html,
+        body,
+        .body-filter {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .header-title h2 {
+            color: var(--color-on-surface);
+        }
+
+        .header-title h3 {
+            color: var(--color-on-surface);
+        }
+
+        .header-menu-toggle {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960' fill='%230f0f0fff'%3E%3Cpath d='M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z'/%3E%3C/svg%3E");
+            color: var(--color-on-surface);
+        }
+
+        .big-nav a {
+            color: var(--color-on-surface);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- filter over hexagon background to make it blurred and cool; it needs to wrap around the whole content so that its height matches it -->
+    <div class="body-filter">
+
+        <!-- header section -->
+        <header>
+            <div class="header-content">
+                <div class="header-title">
+                    <img src="~/images/logo1.png" alt="Logo AJF Ilfov">
+                    <h2>Asociația Județeană de Fotbal Ilfov</h2>
+                    <h3>AJF Ilfov</h3>
+                </div>
+
+                <!-- menu toggle button (visible only on mobile) -->
+                <div class="header-menu-toggle" onclick="toggleMenu()"></div>
+
+                <!-- main navigation links for big screens -->
+                <nav class="big-nav">
+                    <a href="HomeWebsite">Acasă</a>
+                    <a href="DespreNoi">Despre noi</a>
+                    <a href="Anunturi">Comunicate</a>
+                    <a href="Comisii">Comisii jurisdicționale</a>
+                    <a href="Competitii">Competiții</a>
+                    <a href="MeciLive">Meciuri live</a>
+                    <a href="Documente">Documente</a>
+                    <a href="Contact">Contact</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- ------------------------------------------------- -->
+        
+        <!-- page title -->
+        <h1 class="page-title">Etapa de eliminare</h1>
+
+        <!-- actual page content -->
+        <div class="tournament-container" id="tournament-container">
+            <div class="tournament-brackets" id="tournament-brackets"></div>
+        </div>
+
+        <!-- Add footer here -->
+        <footer>
+            <p>&copy; 2024 Asociația Județeană de Fotbal Ilfov. Toate drepturile rezervate.</p>
+            <div class="social-icons">
+                <a class="instagram" href="#"></a>
+                <a class="facebook" href="https://www.facebook.com/AJFIlfov1997/?locale=ro_RO"></a>
+                <a class="twitter" href="#"></a>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- main navigation links for small screens -->
+    <nav class="small-nav">
+        <div class="header-content">
+            <div class="header-menu-toggle" onclick="toggleMenu()"></div>
+        </div>
+
+        <div class="small-nav-content">
+            <a href="HomeWebsite">Acasă</a>
+            <a href="DespreNoi">Despre noi</a>
+            <a href="Anunturi">Comunicate</a>
+            <a href="Comisii">Comisii jurisdicționale</a>
+            <a href="Competitii">Competiții</a>
+            <a href="MeciLive">Meciuri live</a>
+            <a href="Documente">Documente</a>
+            <a href="Contact">Contact</a>
+        </div>
+    </nav>
+
+    <script>
+        function abbreviateTeamName(name) {
+            const words = name.split(' ');
+            const isConsonant = (char) => !'aeiou'.includes(char.toLowerCase());
+
+            if (words.length === 1) {
+                return words[0].length > 4 && words[0] !== words[0].toUpperCase() ? words[0].slice(0, 4) + '.' : words[0];
+            }
+
+            if (words.length === 2) {
+                return words.map(word => {
+                    if (word.length <= 3 || word === word.toUpperCase()) {
+                        return word;
+                    }
+                    if (word.length === 4) {
+                        return word;
+                    }
+                    if (word.length > 3 && isConsonant(word[3])) {
+                        return word.slice(0, 4) + '.';
+                    }
+                    return word.slice(0, 3) + '.';
+                }).join(' ');
+            } else if (words.length >= 3) {
+                return words.map((word, index) => {
+                    if (index === 0) {
+                        if (word.length <= 3 || word === word.toUpperCase()) {
+                            return word;
+                        }
+                        if (word.length === 4) {
+                            return word;
+                        }
+                        if (word.length > 3 && isConsonant(word[3])) {
+                            return word.slice(0, 4) + '.';
+                        }
+                        return word.slice(0, 3) + '.';
+                    }
+                    return word.length <= 3 || word === word.toUpperCase() ? word : word[0] + '.';
+                }).join(' ');
+            }
+
+            return words[0].slice(0, 4) + '.';
+        }
+
+        // const round1 = [
+        //     ["Steaua București", "Dinamo București", "14:00", "Arena Națională"],
+        //     ["CFR Cluj", "Universitatea Craiova", "16:00", "Stadionul Dr. Constantin Rădulescu"],
+        //     ["Rapid București", "FC Argeș", "18:00", "Stadionul Giulești"],
+        //     ["FC Botoșani", "Sepsi OSK", "20:00", "Stadionul Municipal Botoșani"],
+        //     ["UTA Arad", "FC Voluntari", "14:00", "Stadionul Francisc von Neuman"],
+        //     ["Chindia Târgoviște", "Gaz Metan Mediaș", "16:00", "Stadionul Eugen Popescu"],
+        //     ["Astra Giurgiu", "Viitorul Constanța", "18:00", "Stadionul Marin Anastasovici"],
+        //     ["Politehnica Iași", "Hermannstadt", "20:00", "Stadionul Emil Alexandrescu"],
+        //     ["Steaua București", "Dinamo București", "14:00", "Arena Națională"],
+        //     ["CFR Cluj", "Universitatea Craiova", "16:00", "Stadionul Dr. Constantin Rădulescu"],
+        //     ["Rapid București", "FC Argeș", "18:00", "Stadionul Giulești"],
+        //     ["FC Botoșani", "Sepsi OSK", "20:00", "Stadionul Municipal Botoșani"],
+        //     ["UTA Arad", "FC Voluntari", "14:00", "Stadionul Francisc von Neuman"],
+        //     ["Chindia Târgoviște", "Gaz Metan Mediaș", "16:00", "Stadionul Eugen Popescu"],
+        //     ["Astra Giurgiu", "Viitorul Constanța", "18:00", "Stadionul Marin Anastasovici"],
+        //     ["Politehnica Iași", "Hermannstadt", "20:00", "Stadionul Emil Alexandrescu"]
+        // ];
+
+        const round2 = [
+            ["Steaua București", "Dinamo București", "14:00", "Arena Națională", "2-1"],
+            ["CFR Cluj", "Universitatea Craiova", "16:00", "Stadionul Dr. Constantin Rădulescu", "0-0"],
+            ["Rapid București", "FC Argeș", "18:00", "Stadionul Giulești", "3-2"],
+            ["FC Botoșani", "Sepsi OSK", "20:00", "Stadionul Municipal Botoșani", "1-1"],
+            ["UTA Arad", "FC Voluntari", "14:00", "Stadionul Francisc von Neuman", "2-0"],
+            ["Chindia Târgoviște", "Gaz Metan Mediaș", "16:00", "Stadionul Eugen Popescu", "0-1"],
+            ["Astra Giurgiu", "Viitorul Constanța", "18:00", "Stadionul Marin Anastasovici", "1-2"],
+            ["Politehnica Iași", "Hermannstadt", "20:00", "Stadionul Emil Alexandrescu", "2-2"]
+        ];
+
+        const round3 = [
+            ["Steaua București", "CFR Cluj", "15:00", "Arena Națională", "2-0"],
+            ["Rapid București", "FC Botoșani", "17:00", "Stadionul Giulești", "2-0"],
+            ["UTA Arad", "Chindia Târgoviște", "19:00", "Stadionul Francisc von Neuman", "2-0"],
+            ["Astra Giurgiu", "Politehnica Iași", "21:00", "Stadionul Marin Anastasovici", "2-0"]
+        ];
+
+        const round4 = [
+            ["Steaua București", "Rapid București", "16:00", "Arena Națională"],
+            ["UTA Arad", "Astra Giurgiu", "18:00", "Stadionul Francisc von Neuman"]
+        ];
+
+        const round5 = [
+            ["Steaua București", "UTA Arad", "17:00", "Arena Națională"]
+        ];
+
+        const rounds = [
+            // round1,
+            round2,
+            round3,
+            round4,
+            round5
+        ];
+
+        function generateTournament(rounds) {
+            const brackets = document.getElementById('tournament-brackets');
+            brackets.innerHTML = '';
+
+            rounds.forEach((round, index) => {
+                const bracket = document.createElement('ul');
+                bracket.className = `bracket bracket-${index + 1}`;
+
+                round.forEach(pair => {
+                    const teamItemContainer = document.createElement('li');
+                    teamItemContainer.className = 'team-item-container';
+
+                    const teamItemContent = document.createElement('div');
+                    teamItemContent.className = 'team-item-content';
+
+                    /* const team1Abbr = abbreviateTeamName(pair[0]);
+                    const team2Abbr = abbreviateTeamName(pair[1]); */
+                    const team1Abbr = pair[0];
+                    const team2Abbr = pair[1];
+                    const score = (pair[4] === undefined || pair[4] === null || pair[4] === '') ? '?-?' : pair[4];
+
+                    /*
+                    // <strong class="stadium-name">${pair[3]}</strong>
+                        // <div class="teams-column">
+                        //     <span class="team-name">${team1Abbr}</span>
+                        //     <span class="team-name">${team2Abbr}</span>
+                        // </div>
+                        // <div class="time-score-column">
+                        //     <time>${pair[2]}</time>
+                        //     <span class="match-score">${score}</span>
+                        // </div>
+                    */
+
+                    teamItemContent.innerHTML = `
+                        <strong class="stadium-name">${pair[3]}</strong>
+                        <div class="match-info-row">
+                            <time>${pair[2]}</time>
+                            <div class="teams-column">
+                                <span class="team-name">${team1Abbr}</span>
+                                <span class="team-name">${team2Abbr}</span>
+                            </div>
+                            <span class="match-score">${score}</span>
+                        </div>
+                    `;
+
+                    teamItemContainer.appendChild(teamItemContent);
+                    bracket.appendChild(teamItemContainer);
+                });
+
+                brackets.appendChild(bracket);
+            });
+
+            // adjustContainerPosition();
+        }
+
+        // function adjustContainerPosition() {
+        //     const container = document.getElementById('tournament-container');
+        //     const bodyHeight = container.scrollHeight;
+        //     const windowHeight = window.innerHeight;
+
+        //     if (bodyHeight < windowHeight) {
+        //         container.style.marginTop = `${(windowHeight - bodyHeight) / 2}px`;
+        //     } else {
+        //         container.style.marginTop = '0';
+        //     }
+        // }
+
+        // window.addEventListener('load', adjustContainerPosition);
+        // window.addEventListener('resize', () => {
+        //     generateTournament(rounds);
+        // });
+
+        generateTournament(rounds);
+    </script>
+</body>
+
+</html>

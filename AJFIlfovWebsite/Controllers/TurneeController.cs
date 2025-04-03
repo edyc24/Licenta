@@ -8,5 +8,15 @@ namespace AJFIlfovWebsite.Controllers
         {
             return View();
         }
+
+        public IActionResult GroupStage()
+        {
+            return View();
+        }
+
+        public IActionResult EliminationStage()
+        {
+            return View();
+        }
     }
 }

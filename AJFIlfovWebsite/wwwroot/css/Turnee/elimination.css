@@ -1,3 +1,14 @@
+/* ---------- */
+/* page title */
+/* ---------- */
+.page-title {
+    color: var(--color-on-surface);
+    text-align: center;
+    margin-top: 1rem;
+    padding-bottom: 2rem;
+}
+
+
 /* ----------- */
 /* tournaments */
 /* ----------- */
@@ -26,6 +37,7 @@
     list-style-type: none;
     flex: 1;
     padding: 0 12px;
+    gap: 2.5rem;
 }
 
 .team-item-container {
@@ -33,6 +45,7 @@
     display: flex;
     align-items: center;
     flex-grow: 1;
+    /* margin: 1rem; */
 }
 
     .team-item-container:after {
@@ -80,28 +93,55 @@
     border-radius: 0.5rem;
     text-align: center;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
     color: #ffffff;
-    height: 4.8rem;
-    margin: 0.4rem 0;
-    width: 100%;
+    height: auto;
     position: relative;
+    gap: 0.5rem;
+    padding: 0.5rem;
 }
 
-    .team-item-content time {
-        background-color: #555555;
-        font-size: 0.8rem;
-        padding: 2px 4px;
-        margin: 0 0.4rem;
-        border-radius: 0.25rem;
-    }
+.match-info-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.teams-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    flex: 1;
+    width: 11rem;
+}
+
+.team-item-content time,
+.match-score {
+    font-size: 0.8rem;
+    padding: 2px 4px;
+    border-radius: 0.25rem;
+    width: 3rem;
+    display: block;
+}
+
+.team-item-container time {
+    background-color: #555555;
+}
+
+.match-score {
+    background-color: #ff0000;
+}
 
 .team-name {
     background-color: #00cbbc;
-    width: 8rem;
-    padding: 0.5rem 1rem;
+    padding: 0.25rem;
     border-radius: 0.25rem;
+    width: 100%;
+    display: block;
 }
 
 .stadium-name {
@@ -113,7 +153,8 @@
     text-align: center;
     position: absolute;
     top: 0;
-    transform: translateY(-20%);
+    left: 0;
+    transform: translateY(-80%);
     color: #000000;
     text-align: center;
 }
@@ -126,7 +167,7 @@
     .tournament-brackets {
         display: flex;
         flex-direction: column;
-        gap: 2.5rem;
+        gap: 5rem;
     }
 
     .bracket {
@@ -135,7 +176,7 @@
         justify-content: center;
         flex-wrap: wrap;
         list-style-type: none;
-        gap: 1rem 2rem;
+        gap: 2rem 1rem;
         position: relative;
     }
 

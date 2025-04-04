@@ -107,6 +107,21 @@ public partial class AjfilfovContext : DbContext
             entity.Property(e => e.Zi).HasColumnType("date");
         });
 
+        modelBuilder.Entity<Appointment>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Title).IsRequired().HasMaxLength(100);
+            entity.Property(e => e.Date).IsRequired();
+            entity.Property(e => e.Description).HasMaxLength(500);
+            entity.Property(e => e.Status).IsRequired().HasMaxLength(50);
+
+            // Configure relationship with User entity
+            entity.HasOne(e => e.User)
+                .WithMany(u => u.Appointments)
+                .HasForeignKey(e => e.UserId);
+        });
+
+
         modelBuilder.Entity<Echipe>(entity =>
         {
             entity.HasKey(e => e.IdEchipa).HasName("PK__Echipe__D4A3A318683D43A3");

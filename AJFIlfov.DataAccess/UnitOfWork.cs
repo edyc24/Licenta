@@ -66,6 +66,10 @@ namespace AJFIlfov.DataAccess
 
         private IRepository<Suggestion> suggestions;
         public IRepository<Suggestion> Suggestions => suggestions ?? (suggestions = new BaseRepository<Suggestion>(Context));
+
+
+        private IRepository<Appointment> appointments;
+        public IRepository<Appointment> Appointments => appointments ?? (appointments = new BaseRepository<Appointment>(Context));
         public void SaveChanges()
         {
             Context.SaveChanges();

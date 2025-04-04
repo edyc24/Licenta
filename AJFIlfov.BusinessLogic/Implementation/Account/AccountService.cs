@@ -266,6 +266,58 @@ namespace AJFIlfov.BusinessLogic.Implementation.Account
             };
         }
 
+        public void CreateAppointment(CreateAppointmentModel model)
+        {
+            var appointment = new Appointment
+            {
+                Id = Guid.NewGuid(),
+                Title = model.Title,
+                Date = model.Date,
+                Description = model.Description,
+                Status = "Scheduled"
+            };
+            UnitOfWork.Appointments.Insert(appointment);
+            UnitOfWork.SaveChanges();
+        }
+
+        public List<AppointmentModel> GetAppointments()
+        {
+            return UnitOfWork.Appointments.Get()
+                .Select(a => new AppointmentModel
+                {
+                    Id = a.Id,
+                    Title = a.Title,
+                    Date = a.Date,
+                    Description = a.Description,
+                    Status = a.Status
+                }).ToList();
+        }
+
+        public void UpdateAppointment(AppointmentModel model)
+        {
+            var appointment = UnitOfWork.Appointments.Find(model.Id);
+            if (appointment != null)
+            {
+                appointment.Title = model.Title;
+                appointment.Date = model.Date;
+                appointment.Description = model.Description;
+                appointment.Status = model.Status;
+                UnitOfWork.Appointments.Update(appointment);
+                UnitOfWork.SaveChanges();
+            }
+        }
+
+        public void DeleteAppointment(Guid id)
+        {
+            var appointment = UnitOfWork.Appointments.Find(id);
+            if (appointment != null)
+            {
+                UnitOfWork.Appointments.Delete(appointment);
+                UnitOfWork.SaveChanges();
+            }
+        }
+
+
         public void SaveUserAddress(UserAddress userAddress)
         {
             var existingAddress = UnitOfWork.UserAddresses.Get().AsNoTracking().Where(u => u.UserId == userAddress.UserId).FirstOrDefault();

@@ -1,0 +1,74 @@
+﻿@model List<AJFIlfov.BusinessLogic.Implementation.Account.Models.AppointmentModel>
+
+<h2 class="futuristic-title">Appointments</h2>
+<table class="table futuristic-table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var appointment in Model)
+        {
+            <tr>
+                <td>@appointment.Title</td>
+                <td>@appointment.Date</td>
+                <td>@appointment.Description</td>
+                <td>@appointment.Status</td>
+                <td>
+                    <a asp-action="EditAppointment" asp-route-id="@appointment.Id" class="btn futuristic-link">Edit</a>
+                    <form asp-action="DeleteAppointment" asp-route-id="@appointment.Id" method="post" style="display:inline;">
+                        <button type="submit" class="btn futuristic-link">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    .futuristic-table {
+        width: 100%;
+        margin: 0 auto;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        color: #ffffff;
+    }
+
+        .futuristic-table th, .futuristic-table td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #00e0ff;
+        }
+
+        .futuristic-table th {
+            color: #00e0ff;
+            font-size: 1.2em;
+        }
+
+        .futuristic-table td {
+            color: #ffffff;
+        }
+
+    .futuristic-link {
+        display: inline-block;
+        width: auto;
+        text-align: center;
+        font-size: 1em;
+        color: #00e0ff;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.1);
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+        .futuristic-link:hover {
+            background-color: #ff4081;
+            color: #ffffff;
+        }
+</style>

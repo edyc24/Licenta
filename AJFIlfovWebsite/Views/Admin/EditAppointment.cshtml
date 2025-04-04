@@ -1,0 +1,67 @@
+﻿@model AJFIlfov.BusinessLogic.Implementation.Account.Models.AppointmentModel
+
+<h2 class="futuristic-title">Edit Appointment</h2>
+<form asp-action="EditAppointment" method="post" class="futuristic-form">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label asp-for="Title" class="futuristic-label"></label>
+        <input asp-for="Title" class="form-control futuristic-input" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Date" class="futuristic-label"></label>
+        <input asp-for="Date" type="datetime-local" class="form-control futuristic-input" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="futuristic-label"></label>
+        <textarea asp-for="Description" class="form-control futuristic-input"></textarea>
+    </div>
+    <div class="form-group">
+        <label asp-for="Status" class="futuristic-label"></label>
+        <select asp-for="Status" class="form-control futuristic-input">
+            <option value="Scheduled">Scheduled</option>
+            <option value="Completed">Completed</option>
+            <option value="Cancelled">Cancelled</option>
+        </select>
+    </div>
+    <button type="submit" class="btn futuristic-button">Save</button>
+</form>
+
+<style>
+    .futuristic-form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+    }
+
+    .futuristic-label {
+        color: #00e0ff;
+        font-size: 1.2em;
+    }
+
+    .futuristic-input {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+        border: none;
+        border-bottom: 2px solid #00e0ff;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    .futuristic-button {
+        background-color: #00e0ff;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .futuristic-button:hover {
+        background-color: #ff4081;
+        color: #ffffff;
+    }
+</style>

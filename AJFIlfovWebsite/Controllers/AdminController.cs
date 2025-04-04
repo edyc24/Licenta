@@ -315,5 +315,59 @@ namespace AJFIlfovWebsite.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult CreateAppointment()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateAppointment(CreateAppointmentModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                _accountService.CreateAppointment(model);
+                return RedirectToAction("Appointments");
+            }
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult Appointments()
+        {
+            var appointments = _accountService.GetAppointments();
+            return View(appointments);
+        }
+
+        [HttpGet]
+        public IActionResult EditAppointment(Guid id)
+        {
+            var appointment = _accountService.GetAppointments().FirstOrDefault(a => a.Id == id);
+            if (appointment == null)
+            {
+                return NotFound();
+            }
+            return View(appointment);
+        }
+
+        [HttpPost]
+        public IActionResult EditAppointment(AppointmentModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                _accountService.UpdateAppointment(model);
+                return RedirectToAction("Appointments");
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteAppointment(Guid id)
+        {
+            _accountService.DeleteAppointment(id);
+            return RedirectToAction("Appointments");
+        }
+
+
     }
 }

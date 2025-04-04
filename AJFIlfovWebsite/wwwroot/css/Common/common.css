@@ -47,7 +47,7 @@
 html,
 body {
     margin: 0;
-    padding: 0
+    padding: 0;
 }
 
 body {
@@ -66,6 +66,17 @@ a {
 .body-filter {
     position: relative;
     backdrop-filter: blur(4px) grayscale(20%);
+}
+
+
+/* ---------- */
+/* page title */
+/* ---------- */
+.page-title {
+    color: var(--color-on-surface);
+    text-align: center;
+    margin-top: 1rem;
+    padding-bottom: 2rem;
 }
 
 
@@ -205,6 +216,7 @@ header {
 /* footer */
 /* ------ */
 footer {
+    bottom: 0;
     padding-top: 4rem;
     padding-right: 1.2rem;
     padding-bottom: 2rem;

@@ -1,0 +1,218 @@
+﻿@model AJFIlfov.BusinessLogic.Implementation.Account.RegisterModel
+
+<h2 class="page-title-alt">Înregistrare</h2>
+
+<div class="register-container">
+    <form asp-action="Register" asp-controller="Account" class="register-form">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label asp-for="Email" class="register-label">Email</label>
+            <input asp-for="Email" class="register-input" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Password" class="register-label">Parolă</label>
+            <input asp-for="Password" type="password" class="register-input" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="FirstName" class="register-label">Prenume</label>
+            <input asp-for="FirstName" class="register-input" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="LastName" class="register-label">Nume</label>
+            <input asp-for="LastName" class="register-input" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Role" class="register-label">Rol</label>
+            <select asp-for="Role" class="register-input">
+                <option value="1">Utilizator</option>
+                <option value="2">Administrator</option>
+                <option value="3">Arbitru</option>
+                <option value="4">Observator</option>
+                <option value="5">Arbitru Asistent</option>
+            </select>
+            <span asp-validation-for="Role" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Categorie" class="register-label">Categorie</label>
+            <select asp-for="Categorie" class="register-input">
+                <option value="1">Categoria 1</option>
+                <option value="2">Categoria 2</option>
+                <option value="3">Stagiar</option>
+                <option value="4">Liga 3</option>
+            </select>
+            <span asp-validation-for="Categorie" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="register-button">Înregistrează-te</button>
+
+        <div class="links-container">
+            <a asp-action="Index" class="register-link">Înapoi la Listă</a>
+        </div>
+    </form>
+</div>
+
+<style>
+    body {
+        background-image: none;
+        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .page-title-alt {
+        text-align: center;
+        font-size: 2.5rem;
+        color: #00e0ff;
+        margin-bottom: 2rem;
+    }
+
+    .register-container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        margin: 0 auto;
+        padding: 2rem;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-huge);
+        max-width: 500px;
+    }
+
+    .register-form {
+        width: 100%;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 2rem;
+    }
+
+    .register-label {
+        font-size: 1.2rem;
+        color: #00e0ff;
+        margin-bottom: 0.6rem;
+        display: inline-block;
+        font-weight: bold;
+    }
+
+    .register-input {
+        width: 100%;
+        padding: 0.7rem;
+        font-size: 1.1rem;
+        border-radius: 0.6rem;
+        border: 1px solid #00e0ff;
+        background-color: #24243e;
+        color: #ffffff;
+    }
+
+        .register-input::placeholder {
+            color: #999999;
+        }
+
+    select.register-input {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300e0ff'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 0.7rem center;
+        background-size: 1.5rem;
+        padding-right: 2.5rem;
+    }
+
+        select.register-input::-ms-expand {
+            display: none;
+        }
+
+    .text-danger {
+        color: #ff4081;
+        font-size: 0.9rem;
+        margin-top: 0.3rem;
+    }
+
+    .register-button {
+        width: 100%;
+        padding: 1rem;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 1.2rem;
+        border: none;
+        cursor: pointer;
+        display: block;
+        margin: 1.5rem 0;
+        background-color: rgba(255, 255, 255, 0.1);
+        transition: background-color 0.3s, color 0.3s;
+        border-radius: var(--radius-big);
+    }
+
+        .register-button:hover {
+            background-color: #ff4081;
+            color: #ffffff;
+        }
+
+    .links-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    .register-link {
+        color: #00e0ff;
+        text-decoration: none;
+        font-size: 1.1rem;
+        transition: color 0.3s;
+    }
+
+        .register-link:hover {
+            color: #ff4081;
+        }
+
+    footer {
+        margin-top: auto;
+    }
+
+    @@media (max-width: 480px) {
+        .page-title-alt {
+            font-size: 1.8rem;
+        }
+
+        .register-container {
+            padding: 1.5rem;
+            margin: 1rem;
+        }
+
+        .register-input {
+            font-size: 0.9rem;
+        }
+
+        .register-button {
+            font-size: 1rem;
+            padding: 0.8rem;
+        }
+
+        .register-link {
+            font-size: 1rem;
+        }
+    }
+</style>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

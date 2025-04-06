@@ -5,14 +5,14 @@
     ViewData["Title"] = "Administrare Scoruri Live";
 }
 
-<div class="live-scores-container">
-    <h1 class="futuristic-title text-center">Administrare Scoruri Live</h1>
+<h2 class="page-title-alt">Administrare scoruri live</h2>
 
+<div class="live-scores-container">
     <div class="text-right mb-3">
-        <a href="@Url.Action("CreateMatch")" class="btn-futuristic">Adaugă Meci Nou</a>
+        <a href="@Url.Action("CreateMatch")" class="scores-button">Adaugă Meci Nou</a>
     </div>
 
-    <table class="futuristic-table">
+    <table class="scores-table">
         <thead>
             <tr>
                 <th>Meci</th>
@@ -46,23 +46,23 @@
                         }
                     </td>
                     <td>
-                        <form method="post" class="form-inline" asp-action="Start">
+                        <form method="post" class="live-group" asp-action="Start">
                             <input type="hidden" name="idMeciLive" value="@meci.IdMeciLive" />
                             <button type="submit" class="btn btn-sm btn-success">Start</button>
                         </form>
-                        <form method="post" class="form-inline" asp-action="Pauza">
+                        <form method="post" class="live-group" asp-action="Pauza">
                             <input type="hidden" name="idMeciLive" value="@meci.IdMeciLive" />
                             <button type="submit" class="btn btn-sm btn-warning">Pauză</button>
                         </form>
-                        <form method="post" class="form-inline" asp-action="Final">
+                        <form method="post" class="live-group" asp-action="Final">
                             <input type="hidden" name="idMeciLive" value="@meci.IdMeciLive" />
                             <button type="submit" class="btn btn-sm btn-danger">Final</button>
                         </form>
-                        <form method="post" class="form-inline" asp-action="GolGazde">
+                        <form method="post" class="live-group" asp-action="GolGazde">
                             <input type="hidden" name="idMeciLive" value="@meci.IdMeciLive" />
                             <button type="submit" class="btn btn-sm btn-primary">Gol Gazde</button>
                         </form>
-                        <form method="post" class="form-inline" asp-action="GolOaspeti">
+                        <form method="post" class="live-group" asp-action="GolOaspeti">
                             <input type="hidden" name="idMeciLive" value="@meci.IdMeciLive" />
                             <button type="submit" class="btn btn-sm btn-primary">Gol Oaspeți</button>
                         </form>
@@ -75,82 +75,123 @@
 
 @section Styles {
     <style>
+        body {
+            background-image: none;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
         .live-scores-container {
-            margin: 60px 80px;
-            padding: 20px;
+            padding: 2rem;
             background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
+            backdrop-filter: blur(0.6rem);
+            border-radius: var(--radius-huge);
         }
 
-        .futuristic-title {
-            text-align: center;
-            font-size: 2.5em;
-            color: #00e0ff;
-            margin-bottom: 20px;
-        }
-
-        .futuristic-table {
+        .scores-table {
             width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 1.1rem;
             color: #ffffff;
         }
 
-            .futuristic-table th, .futuristic-table td {
-                padding: 10px;
+            .scores-table th,
+            .scores-table td {
+                padding: 0.6rem;
                 border: 1px solid #00e0ff;
                 text-align: center;
             }
 
-            .futuristic-table th {
+            .scores-table th {
                 background-color: #00e0ff;
                 color: #24243e;
             }
 
-        .form-inline {
+            .scores-table thead tr th:first-child {
+                border-top-left-radius: var(--radius-big);
+            }
+
+            .scores-table thead tr th:last-child {
+                border-top-right-radius: var(--radius-big);
+            }
+
+            .scores-table tbody tr:last-child td:first-child {
+                border-bottom-left-radius: var(--radius-big);
+            }
+
+            .scores-table tbody tr:last-child td:last-child {
+                border-bottom-right-radius: var(--radius-big);
+            }
+
+            .scores-table tr td,
+            .scores-table tr th {
+                border-right: 0;
+                border-bottom: 0;
+            }
+
+                .scores-table tr td:first-child,
+                .scores-table tr th:first-child {
+                    border-left: 1px solid #00e0ff;
+                }
+
+            .scores-table tr:first-child th {
+                border-top: 1px solid #00e0ff;
+            }
+
+            .scores-table tr:last-child td {
+                border-bottom: 1px solid #00e0ff;
+            }
+
+            .scores-table tr td:last-child,
+            .scores-table tr th:last-child {
+                border-right: 1px solid #00e0ff;
+            }
+
+        .live-group {
             display: inline-block;
             margin: 2px;
         }
 
-            .form-inline button {
-                padding: 6px 10px;
+            .live-group button {
+                padding: 6px 0.6rem;
                 font-size: 0.9em;
-                border-radius: 10px;
+                border-radius: 0.6rem;
                 transition: background-color 0.3s;
             }
 
-        .btn-futuristic {
-            padding: 10px 20px;
-            background-color: #00e0ff;
+        .scores-button {
+            width: 100%;
+            padding: 1rem;
             color: #ffffff;
-            font-weight: 600;
-            font-size: 1.2em;
+            font-weight: bold;
+            font-size: 1.2rem;
             border: none;
-            border-radius: 10px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            display: block;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: background-color 0.3s, color 0.3s;
+            border-radius: var(--radius-big);
+            text-align: center;
         }
 
-            .btn-futuristic:hover {
+            .scores-button:hover {
                 background-color: #ff4081;
+                color: #ffffff;
             }
 
-        .btn-sm {
-            padding: 5px 10px;
-            font-size: 0.9em;
+        footer {
+            margin-top: auto;
         }
     </style>
 }
 
 @section Scripts {
     <script>
-        function toggleMenu() {
-            const menu = document.getElementById("menu");
-            menu.classList.toggle("show");
-        }
-
-        // Refresh page every 60 seconds to update minute
         setTimeout(function () {
             location.reload();
         }, 60000);

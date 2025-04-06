@@ -1,31 +1,21 @@
 ﻿@model List<AJFIlfov.BusinessLogic.Implementation.Account.Models.AppointmentModel>
 
-<h2 class="futuristic-title">Appointment Calendar</h2>
-<div id="calendar-container">
-    <div id="calendar-header">
-        <button id="prev-month" class="calendar-nav">&lt;</button>
-        <h1 id="current-month"></h1>
-        <button id="next-month" class="calendar-nav">&gt;</button>
-    </div>
-    <div id="calendar"></div>
-</div>
-
-<!-- Modal for displaying appointments -->
-<div id="appointment-modal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Appointments for <span id="modal-date"></span></h2>
-        <div id="modal-appointments"></div>
-    </div>
-</div>
-
 <style>
+    body {
+        background-image: none;
+        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
     #calendar-container {
-        max-width: 900px;
         margin: 0 auto;
         background-color: rgba(255, 255, 255, 0.1);
-        border-radius: 10px;
-        padding: 20px;
+        border-radius: var(--radius-huge);
+        padding: 1.1rem;
         color: #ffffff;
     }
 
@@ -33,8 +23,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 10px;
-        background-color: #333;
+        padding: 0.6rem;
         color: #fff;
     }
 
@@ -42,8 +31,8 @@
         background-color: #00e0ff;
         border: none;
         color: #ffffff;
-        padding: 10px;
-        border-radius: 5px;
+        padding: 0.6rem;
+        border-radius: var(--radius-small);
         cursor: pointer;
     }
 
@@ -54,72 +43,198 @@
     #calendar {
         display: grid;
         grid-template-columns: repeat(7, 1fr);
-        gap: 10px;
-        padding: 10px;
+        gap: 0.6rem;
+        padding: 0.6rem;
     }
 
     .calendar-day {
         background-color: rgba(255, 255, 255, 0.1);
-        border-radius: 5px;
-        padding: 10px;
+        border-radius: var(--radius-small);
+        padding: 0.6rem;
         text-align: center;
         cursor: pointer;
+        position: relative;
+        min-height: 3.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .calendar-day-header {
         font-weight: bold;
         color: #00e0ff;
+        min-height: auto;
     }
 
-    .calendar-day-appointment {
+    .appointment-indicator {
+        width: 8px;
+        height: 8px;
         background-color: #00e0ff;
-        color: #ffffff;
-        border-radius: 5px;
-        padding: 5px;
-        margin-top: 5px;
+        border-radius: 50%;
+        position: absolute;
+        bottom: 8px;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     .modal {
         display: none;
         position: fixed;
-        z-index: 1;
+        z-index: 1000;
         left: 0;
         top: 0;
+        right: 0;
+        bottom: 0;
         width: 100%;
-        height: 100%;
-        overflow: auto;
+        height: 100vh;
         background-color: rgba(0, 0, 0, 0.5);
     }
 
+    .modal.show {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     .modal-content {
-        background-color: #333;
-        margin: 15% auto;
-        padding: 20px;
-        border: 1px solid #888;
+        background-color: #333333;
         width: 80%;
-        color: #fff;
-        border-radius: 10px;
+        max-width: 600px;
+        max-height: 90vh;
+        color: #ffffff;
+        border-radius: var(--radius-huge);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        transform: translateY(0);
+    }
+
+    .modal-header {
+        padding: 1.1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        position: relative;
+    }
+
+    .modal-header h2 {
+        margin: 0;
+        padding-right: 2rem;
     }
 
     .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
+        color: #aaaaaa;
+        font-size: 1.5rem;
         font-weight: bold;
+        position: absolute;
+        right: 1.1rem;
+        top: 1.1rem;
+        line-height: 1;
     }
 
-        .close:hover,
-        .close:focus {
-            color: #fff;
-            text-decoration: none;
-            cursor: pointer;
+    .close:hover,
+    .close:focus {
+        color: #ffffff;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    #modal-appointments {
+        padding: 1.1rem;
+        overflow-y: auto;
+        max-height: calc(90vh - 5rem);
+    }
+
+    .appointment-details {
+        margin-bottom: 1rem;
+        padding: 1rem;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-small);
+    }
+
+    .appointment-details:last-child {
+        margin-bottom: 0;
+    }
+
+    .appointment-details-row {
+        margin: 0.5rem 0;
+    }
+
+    .appointment-details-label {
+        color: #00e0ff;
+        margin-right: 0.5rem;
+    }
+
+    footer {
+        margin-top: auto;
+    }
+
+    @@media (max-width: 768px) {
+        #calendar-container {
+            padding: 0.8rem;
         }
+
+        #calendar {
+            gap: 0.4rem;
+            padding: 0.4rem;
+        }
+
+        .calendar-day {
+            padding: 0.4rem;
+            min-height: 2.8rem;
+            font-size: 0.9rem;
+        }
+
+        .appointment-indicator {
+            width: 6px;
+            height: 6px;
+            bottom: 4px;
+        }
+
+        .calendar-nav {
+            padding: 0.4rem;
+        }
+    }
+
+    @@media (max-width: 480px) {
+        .calendar-day-header {
+            font-size: 0.8rem;
+        }
+
+        [data-day="Sunday"] { content: "S"; }
+        [data-day="Monday"] { content: "M"; }
+        [data-day="Tuesday"] { content: "T"; }
+        [data-day="Wednesday"] { content: "W"; }
+        [data-day="Thursday"] { content: "T"; }
+        [data-day="Friday"] { content: "F"; }
+        [data-day="Saturday"] { content: "S"; }
+    }
 </style>
+
+<h2 class="page-title-alt">Calendar</h2>
+
+<div id="calendar-container">
+    <div id="calendar-header">
+        <button id="prev-month" class="calendar-nav">&lt;</button>
+        <h1 id="current-month"></h1>
+        <button id="next-month" class="calendar-nav">&gt;</button>
+    </div>
+    <div id="calendar"></div>
+</div>
+
+<div id="appointment-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Programări pentru <span id="modal-date"></span></h2>
+            <span class="close">&times;</span>
+        </div>
+        <div id="modal-appointments"></div>
+    </div>
+</div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const appointments = @Html.Raw(Json.Serialize(Model));
-        console.log('Appointments:', appointments); // Debugging step
+        console.log('Appointments:', appointments);
         const calendarEl = document.getElementById('calendar');
         const currentMonthEl = document.getElementById('current-month');
         const prevMonthBtn = document.getElementById('prev-month');
@@ -131,6 +246,15 @@
 
         let currentDate = new Date();
 
+        function formatDate(date) {
+            return date.toLocaleDateString('ro-RO', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+        }
+
         function renderCalendar(date) {
             calendarEl.innerHTML = '';
             const year = date.getFullYear();
@@ -141,10 +265,13 @@
             currentMonthEl.textContent = date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
 
             const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-            daysOfWeek.forEach(day => {
+            const shortDaysOfWeek = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+            
+            daysOfWeek.forEach((day, index) => {
                 const dayHeader = document.createElement('div');
                 dayHeader.classList.add('calendar-day', 'calendar-day-header');
-                dayHeader.textContent = day;
+                dayHeader.setAttribute('data-day', day);
+                dayHeader.textContent = window.innerWidth <= 480 ? shortDaysOfWeek[index] : day;
                 calendarEl.appendChild(dayHeader);
             });
 
@@ -160,25 +287,55 @@
                 dayEl.textContent = day;
 
                 const appointmentDate = new Date(year, month, day);
-                const dayAppointments = appointments.filter(app => new Date(app.Date).toDateString() === appointmentDate.toDateString());
-                console.log(`Appointments for ${appointmentDate.toDateString()}:`, dayAppointments); // Debugging step
-
-                dayAppointments.forEach(app => {
-                    const appEl = document.createElement('div');
-                    appEl.classList.add('calendar-day-appointment');
-                    appEl.textContent = app.Title;
-                    dayEl.appendChild(appEl);
+                const dayAppointments = appointments.filter(appointment => {
+                    const appointmentDateTime = new Date(appointment.date);
+                    return appointmentDateTime.toDateString() === appointmentDate.toDateString();
                 });
 
+                if (dayAppointments.length > 0) {
+                    const indicator = document.createElement('div');
+                    indicator.classList.add('appointment-indicator');
+                    dayEl.appendChild(indicator);
+                }
+
                 dayEl.addEventListener('click', () => {
-                    modalDateEl.textContent = appointmentDate.toDateString();
+                    modalDateEl.textContent = formatDate(appointmentDate);
                     modalAppointmentsEl.innerHTML = '';
-                    dayAppointments.forEach(app => {
+                    
+                    if (dayAppointments.length === 0) {
+                        return;
+                    }
+
+                    dayAppointments.forEach(appointment => {
                         const appDetailEl = document.createElement('div');
-                        appDetailEl.textContent = `${app.UserName} - ${app.Time} - ${app.Title} - ${app.Description}`;
+                        appDetailEl.classList.add('appointment-details');
+                        
+                        const userName = appointment.userName || 'Nespecificat';
+                        const time = appointment.time || 'Nespecificat';
+                        const title = appointment.title || 'Nespecificat';
+                        const description = appointment.description || 'Nespecificat';
+                        
+                        appDetailEl.innerHTML = `
+                            <div class="appointment-details-row">
+                                <span class="appointment-details-label">Utilizator:</span>
+                                <span>${userName}</span>
+                            </div>
+                            <div class="appointment-details-row">
+                                <span class="appointment-details-label">Ora:</span>
+                                <span>${time}</span>
+                            </div>
+                            <div class="appointment-details-row">
+                                <span class="appointment-details-label">Titlu:</span>
+                                <span>${title}</span>
+                            </div>
+                            <div class="appointment-details-row">
+                                <span class="appointment-details-label">Descriere:</span>
+                                <span>${description}</span>
+                            </div>
+                        `;
                         modalAppointmentsEl.appendChild(appDetailEl);
                     });
-                    modal.style.display = 'block';
+                    modal.classList.add('show');
                 });
 
                 calendarEl.appendChild(dayEl);
@@ -196,15 +353,19 @@
         });
 
         closeModalBtn.addEventListener('click', () => {
-            modal.style.display = 'none';
+            modal.classList.remove('show');
         });
 
         window.addEventListener('click', (event) => {
             if (event.target === modal) {
-                modal.style.display = 'none';
+                modal.classList.remove('show');
             }
         });
 
         renderCalendar(currentDate);
+        
+        window.addEventListener('resize', () => {
+            renderCalendar(currentDate);
+        });
     });
 </script>

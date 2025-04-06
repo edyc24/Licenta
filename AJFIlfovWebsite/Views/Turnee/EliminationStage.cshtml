@@ -25,7 +25,6 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            position: relative;
         }
 
         .header-title h2 {
@@ -118,6 +117,17 @@
     </nav>
 
     <script>
+        /* --------------
+        nav menu behavior
+        -------------- */
+        function toggleMenu() {
+            const mobileNav = document.getElementsByClassName('small-nav')[0];
+            mobileNav.classList.toggle('show');
+        }
+
+        /* --------------
+        name abbreviation
+        -------------- */
         function abbreviateTeamName(name) {
             const words = name.split(' ');
             const isConsonant = (char) => !'aeiou'.includes(char.toLowerCase());
@@ -160,6 +170,9 @@
             return words[0].slice(0, 4) + '.';
         }
 
+        /* -----------------
+        rounds ui generation
+        ----------------- */
         // const round1 = [
         //     ["Steaua București", "Dinamo București", "14:00", "Arena Națională"],
         //     ["CFR Cluj", "Universitatea Craiova", "16:00", "Stadionul Dr. Constantin Rădulescu"],
@@ -179,16 +192,16 @@
         //     ["Politehnica Iași", "Hermannstadt", "20:00", "Stadionul Emil Alexandrescu"]
         // ];
 
-        const round2 = [
-            ["Steaua București", "Dinamo București", "14:00", "Arena Națională", "2-1"],
-            ["CFR Cluj", "Universitatea Craiova", "16:00", "Stadionul Dr. Constantin Rădulescu", "0-0"],
-            ["Rapid București", "FC Argeș", "18:00", "Stadionul Giulești", "3-2"],
-            ["FC Botoșani", "Sepsi OSK", "20:00", "Stadionul Municipal Botoșani", "1-1"],
-            ["UTA Arad", "FC Voluntari", "14:00", "Stadionul Francisc von Neuman", "2-0"],
-            ["Chindia Târgoviște", "Gaz Metan Mediaș", "16:00", "Stadionul Eugen Popescu", "0-1"],
-            ["Astra Giurgiu", "Viitorul Constanța", "18:00", "Stadionul Marin Anastasovici", "1-2"],
-            ["Politehnica Iași", "Hermannstadt", "20:00", "Stadionul Emil Alexandrescu", "2-2"]
-        ];
+        // const round2 = [
+        //     ["Steaua București", "Dinamo București", "14:00", "Arena Națională", "2-1"],
+        //     ["CFR Cluj", "Universitatea Craiova", "16:00", "Stadionul Dr. Constantin Rădulescu", "0-0"],
+        //     ["Rapid București", "FC Argeș", "18:00", "Stadionul Giulești", "3-2"],
+        //     ["FC Botoșani", "Sepsi OSK", "20:00", "Stadionul Municipal Botoșani", "1-1"],
+        //     ["UTA Arad", "FC Voluntari", "14:00", "Stadionul Francisc von Neuman", "2-0"],
+        //     ["Chindia Târgoviște", "Gaz Metan Mediaș", "16:00", "Stadionul Eugen Popescu", "0-1"],
+        //     ["Astra Giurgiu", "Viitorul Constanța", "18:00", "Stadionul Marin Anastasovici", "1-2"],
+        //     ["Politehnica Iași", "Hermannstadt", "20:00", "Stadionul Emil Alexandrescu", "2-2"]
+        // ];
 
         const round3 = [
             ["Steaua București", "CFR Cluj", "15:00", "Arena Națională", "2-0"],
@@ -208,7 +221,7 @@
 
         const rounds = [
             // round1,
-            round2,
+            // round2,
             round3,
             round4,
             round5
@@ -269,6 +282,9 @@
             // adjustContainerPosition();
         }
 
+        /* --------------------
+        ui position adjustement
+        -------------------- */
         // function adjustContainerPosition() {
         //     const container = document.getElementById('tournament-container');
         //     const bodyHeight = container.scrollHeight;

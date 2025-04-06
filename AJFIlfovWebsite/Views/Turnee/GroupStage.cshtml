@@ -1,5 +1,234 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Grupele campionatului";
 }
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewData["Title"]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">
+    <!-- css styles -->
+    <link rel="stylesheet" href="~/css/Turnee/Group.css">
+    <link rel="stylesheet" href="~/css/Common/Common.css">
+    <style>
+        html,
+        body,
+        .body-filter {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .header-title h2 {
+            color: var(--color-on-surface);
+        }
+
+        .header-title h3 {
+            color: var(--color-on-surface);
+        }
+
+        .header-menu-toggle {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960' fill='%230f0f0fff'%3E%3Cpath d='M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z'/%3E%3C/svg%3E");
+            color: var(--color-on-surface);
+        }
+
+        .big-nav a {
+            color: var(--color-on-surface);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- filter over hexagon background to make it blurred and cool; it needs to wrap around the whole content so that its height matches it -->
+    <div class="body-filter">
+
+        <!-- header section -->
+        <header>
+            <div class="header-content">
+                <div class="header-title">
+                    <img src="~/images/logo1.png" alt="Logo AJF Ilfov">
+                    <h2>Asociația Județeană de Fotbal Ilfov</h2>
+                    <h3>AJF Ilfov</h3>
+                </div>
+
+                <!-- menu toggle button (visible only on mobile) -->
+                <div class="header-menu-toggle" onclick="toggleMenu()"></div>
+
+                <!-- main navigation links for big screens -->
+                <nav class="big-nav">
+                    <a href="HomeWebsite">Acasă</a>
+                    <a href="DespreNoi">Despre noi</a>
+                    <a href="Anunturi">Comunicate</a>
+                    <a href="Comisii">Comisii jurisdicționale</a>
+                    <a href="Competitii">Competiții</a>
+                    <a href="MeciLive">Meciuri live</a>
+                    <a href="Documente">Documente</a>
+                    <a href="Contact">Contact</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- ------------------------------------------------- -->
+        <!-- page title -->
+        <h1 class="page-title">Grupele campionatului</h1>
+
+        <!-- actual page content -->
+        <main class="group-stage">
+            <section class="group-content"></section>
+        </main>
+
+        <!-- page footer -->
+        <footer>
+            <p>&copy; 2024 Asociația Județeană de Fotbal Ilfov. Toate drepturile rezervate.</p>
+            <div class="social-icons">
+                <a class="instagram" href="#"></a>
+                <a class="facebook" href="https://www.facebook.com/AJFIlfov1997/?locale=ro_RO"></a>
+                <a class="twitter" href="#"></a>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- main navigation links for small screens -->
+    <nav class="small-nav">
+        <div class="header-content">
+            <div class="header-menu-toggle" onclick="toggleMenu()"></div>
+        </div>
+
+        <div class="small-nav-content">
+            <a href="HomeWebsite">Acasă</a>
+            <a href="DespreNoi">Despre noi</a>
+            <a href="Anunturi">Comunicate</a>
+            <a href="Comisii">Comisii jurisdicționale</a>
+            <a href="Competitii">Competiții</a>
+            <a href="MeciLive">Meciuri live</a>
+            <a href="Documente">Documente</a>
+            <a href="Contact">Contact</a>
+        </div>
+    </nav>
+
+    <script>
+        /* --------------
+        nav menu behavior
+        -------------- */
+        function toggleMenu() {
+            const mobileNav = document.getElementsByClassName('small-nav')[0];
+            mobileNav.classList.toggle('show');
+        }
+
+        /* -------------
+        group generation
+        ------------- */
+        const groupData = [
+            {
+                name: "Grupa A",
+                teams: [
+                    ["1", "FC Voluntari", "3", "3", "0", "0", "7", "2", "9"],
+                    ["2", "CS Tunari", "3", "2", "0", "1", "5", "3", "6"],
+                    ["3", "AS Buftea", "3", "1", "1", "1", "4", "4", "4"],
+                    ["4", "CS Snagov", "3", "0", "1", "2", "2", "5", "1"],
+                    ["5", "CS Snagov", "3", "0", "1", "2", "2", "5", "1"]
+                ]
+            },
+            {
+                name: "Grupa B",
+                teams: [
+                    ["1", "CS Otopeni", "3", "2", "1", "0", "6", "2", "7"],
+                    ["2", "AS Chitila", "3", "2", "0", "1", "5", "4", "6"],
+                    ["3", "FC Clinceni", "3", "1", "0", "2", "3", "5", "3"],
+                    ["4", "CS Mogoșoaia", "3", "0", "1", "2", "2", "5", "1"]
+                ]
+            },
+            {
+                name: "Grupa C",
+                teams: [
+                    ["1", "AS Brănești", "3", "3", "0", "0", "8", "1", "9"],
+                    ["2", "CS Periș", "3", "1", "1", "1", "4", "4", "4"],
+                    ["3", "AS Cornetu", "3", "1", "0", "2", "3", "6", "3"],
+                    ["4", "CS Cernica", "3", "0", "1", "2", "2", "6", "1"]
+                ]
+            },
+            {
+                name: "Grupa D",
+                teams: [
+                    ["1", "AS Berceni", "3", "2", "1", "0", "5", "2", "7"],
+                    ["2", "CS Ștefănești", "3", "2", "0", "1", "6", "3", "6"],
+                    ["3", "FC Afumați", "3", "1", "0", "2", "3", "4", "3"],
+                    ["4", "AS Glina", "3", "0", "1", "2", "1", "6", "1"]
+                ]
+            }
+        ];
+
+        function generateStandingsTable(teams) {
+            const table = document.createElement('table');
+            table.className = 'standings-table';
+
+            const thead = document.createElement('thead');
+            thead.innerHTML = `
+                <tr>
+                    <th>Pos</th>
+                    <th class="team-name">Echipa</th>
+                    <th>J</th>
+                    <th>V</th>
+                    <th>E</th>
+                    <th>Î</th>
+                    <th>GM</th>
+                    <th>GP</th>
+                    <th>P</th>
+                </tr>
+            `;
+
+            const tbody = document.createElement('tbody');
+            teams.forEach(team => {
+                const tr = document.createElement('tr');
+                team.forEach((data, index) => {
+                    const td = document.createElement('td');
+                    td.textContent = data;
+                    if (index === 1) td.className = 'team-name';
+                    tr.appendChild(td);
+                });
+                tbody.appendChild(tr);
+            });
+
+            table.appendChild(thead);
+            table.appendChild(tbody);
+            return table;
+        }
+
+        function generateGroups(data) {
+            const groupContent = document.querySelector('.group-content');
+            groupContent.innerHTML = '';
+
+            data.forEach(group => {
+                const article = document.createElement('article');
+                article.className = 'group';
+
+                const header = document.createElement('header');
+                header.className = 'group-header';
+                header.innerHTML = `<h2>${group.name}</h2>`;
+
+                const table = generateStandingsTable(group.teams);
+
+                article.appendChild(header);
+                article.appendChild(table);
+                groupContent.appendChild(article);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            generateGroups(groupData);
+        });
+    </script>
+
+</body>
+
+</html>

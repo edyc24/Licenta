@@ -7,6 +7,11 @@ using AJFIlfov.Common;
 using AJFIlfov.WebApp.Code.Base;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PdfSharp.Pdf;
+using PdfSharp.Pdf.AcroForms;
+using PdfSharp.Pdf.IO;
+using static PdfSharp.Pdf.AcroForms.PdfAcroField;
+
 
 namespace AJFIlfovWebsite.Controllers;
 
@@ -195,63 +200,76 @@ public class MeciuriController : BaseController
 
         var reportData = new MatchReportData
         {
-            MatchLocation = match.LocalitateNume,
-            MatchDate = match.DataJoc.Value,
-            StadiumName = match.StadionNume,
-            RefereeName = match.ArbitruNume,
-            AssistantReferee1 = match.ArbitruAsistent1Nume,
-            AssistantReferee2 = match.ArbitruAsistent2Nume,
-            HomeTeam = match.EchipaGazdaNume,
-            AwayTeam = match.EchipaOaspeteNume
+            MatchLocation = match.LocalitateNume ?? "-",
+            MatchDate = ConvertDateTimeToString(match.DataJoc),
+            StadiumName = match.StadionNume ?? "-",
+            RefereeName = match.ArbitruNume ?? "-",
+            AssistantReferee1 = match.ArbitruAsistent1Nume ?? "-",
+            AssistantReferee2 = match.ArbitruAsistent2Nume ?? "-",
+            HomeTeam = match.EchipaGazdaNume ?? "-",
+            AwayTeam = match.EchipaOaspeteNume ?? "-"
         };
 
-        var path = "C:\\Users\\eduard.cristea\\source\\repos\\Licenta\\AJFIlfov\\wwwroot\\raport.pdf";
+        var path = "C:\\Users\\eduardcr\\Source\\Repos\\edyc24\\Licenta\\AJFIlfovWebsite\\wwwroot\\raport.pdf";
 
+        if (System.IO.File.Exists(path))
+        {
+            var sourceFile = System.IO.File.OpenRead(path);
+            var output = new MemoryStream();
 
-        //if (System.IO.File.Exists(path))
-        //{
-        //    var sourceFile = System.IO.File.OpenRead(path);
-        //    var output = new MemoryStream();
+            try
+            {
+                var pdfDocument = PdfReader.Open(sourceFile, PdfDocumentOpenMode.Modify);
+                var form = pdfDocument.AcroForm;
 
+                if (form != null)
+                {
+                    SetField(form.Fields, "Localitate", reportData.MatchLocation);
+                    //SetField(form.Fields, "Competitia", reportData.MatchLocation);
+                    SetField(form.Fields, "Localitate1", "Ilfov");
+                    SetField(form.Fields, "Localitate2", "Ilfov");
+                    SetField(form.Fields, "Localitate3", "Ilfov");
+                    SetField(form.Fields, "Data", reportData.MatchDate);
+                    SetField(form.Fields, "Jocul", reportData.HomeTeam + '-' + reportData.AwayTeam);
+                    SetField(form.Fields, "Stadion", reportData.StadiumName);
+                    SetField(form.Fields, "Arbitru", reportData.RefereeName);
+                    SetField(form.Fields, "ArbitruAsistent1", reportData.AssistantReferee1);
+                    SetField(form.Fields, "ArbitruAsistent2", reportData.AssistantReferee2);
+                    SetField(form.Fields, "EchipaGazda", reportData.HomeTeam);
+                    SetField(form.Fields, "EchipaOaspete", reportData.AwayTeam);
 
-        //    try
-        //    {
-        //        using var pdfDocument = new PdfDocument(new PdfReader(sourceFile));
+                    pdfDocument.Save(output);
+                    byte[] bytes = output.ToArray();
 
-        //        PdfAChecker pdfAChecker = new PdfAChecker(PdfAConformanceLevel.PDF_A_1B);
-        //        pdfAChecker.CheckPdfAConformance(pdfDocument);
-
-        //        Console.WriteLine("PDF-ul este conform standardului PDF/A.");
-        //    }
-        //    catch (PdfAConformanceException ex)
-        //    {
-        //        Console.WriteLine("PDF-ul nu este conform standardului PDF/A: " + ex.Message);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine("O eroare neașteptată a apărut: " + ex.Message);
-        //    }
-
-        //    //var pdf = new PdfDocument(new PdfReader(sourceFile), new PdfWriter(output));
-        //    //PdfAcroForm form = PdfAcroForm.GetAcroForm(pdf, false);
-
-        //    //if(form != null)
-        //    //{
-        //    //    IDictionary<String, PdfFormField> fields = form.GetAllFormFields();
-        //    //    PdfFormField toset;
-
-        //    //    fields.TryGetValue("Jocul", out toset);
-        //    //    toset.SetValue("test");
-        //    //    pdf.Close();
-        //    //    byte[] bytes = output.ToArray();
-
-
-        //    //    return File(bytes, System.Net.Mime.MediaTypeNames.Application.Octet);
-        //    //}
-        //}
+                    return File(bytes, "application/pdf", "raport.pdf");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An unexpected error occurred: " + ex.Message);
+            }
+        }
 
         return View("Index");
     }
+
+    private void SetField(PdfAcroFieldCollection fields, string fieldName, string value)
+    {
+        if (fields[fieldName] is PdfTextField textField)
+        {
+            textField.Value = new PdfString(value);
+        }
+    }
+
+
+
+
+    private string ConvertDateTimeToString(DateTime? dateTime)
+    {
+        return dateTime.HasValue ? dateTime.Value.ToString("yyyy-MM-dd") : "-";
+    }
+
+
 
     public async Task<IActionResult> EditareMeciuriGrupa(Guid idGrupa)
     {

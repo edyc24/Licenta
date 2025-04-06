@@ -224,7 +224,8 @@ header {
 /* footer */
 /* ------ */
 footer {
-    bottom: 0;
+    margin-top: auto;
+    width: 100%;
     padding-top: 4rem;
     padding-right: 1.2rem;
     padding-bottom: 2rem;

@@ -88,7 +88,6 @@
                     <div class="tournament-details">
                         <h2>23-26 Aprilie</h2>
                         <h3>Baza sportivă Clinceni</h3>
-                        <p>Format: FETE 11 VS 11</p>
                         <p>Pentru înscrieri: <a href="tel:0729149449">0729149449</a> sau <a href="tel:0762151881">0762151881</a></p>
                     </div>
 
@@ -126,17 +125,17 @@
                     </div>
                 </aside>
             </section>
-
-            <!-- page footer -->
-            <footer>
-                <p>&copy; 2024 Asociația Județeană de Fotbal Ilfov. Toate drepturile rezervate.</p>
-                <div class="social-icons">
-                    <a class="instagram" href="#"></a>
-                    <a class="facebook" href="https://www.facebook.com/AJFIlfov1997/?locale=ro_RO"></a>
-                    <a class="twitter" href="#"></a>
-                </div>
-            </footer>
         </main>
+
+        <!-- page footer -->
+        <footer>
+            <p>&copy; 2024 Asociația Județeană de Fotbal Ilfov. Toate drepturile rezervate.</p>
+            <div class="social-icons">
+                <a class="instagram" href="#"></a>
+                <a class="facebook" href="https://www.facebook.com/AJFIlfov1997/?locale=ro_RO"></a>
+                <a class="twitter" href="#"></a>
+            </div>
+        </footer>
 
     </div>
 
@@ -159,17 +158,28 @@
     </nav>
 
     <script>
-        function generatePastelColor() {
-            const hue = Math.floor(Math.random() * 360);
-            const saturation = 70 + Math.random() * 10;
-            const lightness = 65 + Math.random() * 10;
+        /* --------------
+        nav menu behavior
+        -------------- */
+        function toggleMenu() {
+            const mobileNav = document.getElementsByClassName('small-nav')[0];
+            mobileNav.classList.toggle('show');
+        }
+
+        /* -------------
+        group tag colors
+        ------------- */
+        function generateGreenBlueColor() {
+            const hue = 120 + Math.floor(Math.random() * 120);
+            const saturation = 85 + Math.random() * 15;
+            const lightness = 45 + Math.random() * 15;
             return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
         }
 
         document.addEventListener('DOMContentLoaded', function() {
             const groupTags = document.querySelectorAll('.group-tag');
             groupTags.forEach(tag => {
-                tag.style.backgroundColor = generatePastelColor();
+                tag.style.backgroundColor = generateGreenBlueColor();
             });
         });
     </script>

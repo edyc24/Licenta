@@ -1,0 +1,195 @@
+﻿.group-stage {
+    width: 100%;
+    padding: 2rem 5rem;
+    margin: 0 auto;
+}
+
+.group-content {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(min-content, 40rem));
+    gap: 3rem;
+    padding: 2rem;
+    width: 100%;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.group {
+    width: 100%;
+    background-color: var(--color-surface);
+    border-radius: 1rem;
+    padding: 1rem 0 0 0;
+    box-shadow: 0 0.5rem 1rem var(--color-shadow);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: min-content;
+    height: 100%;
+}
+
+.group:nth-child(odd):not(:last-child),
+.group:nth-child(even) {
+    display: flex;
+}
+
+.group-header {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0 1.5rem;
+}
+
+.group-header h2 {
+    font-size: 1.5rem;
+    color: var(--color-on-surface);
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.standings-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    margin-bottom: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.standings-table thead {
+    flex: 0 0 auto;
+    width: 100%;
+}
+
+.standings-table tbody {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.standings-table tr {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.standings-table th,
+.standings-table td {
+    padding: 0.75rem;
+    text-align: center;
+    color: var(--color-on-surface);
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.standings-table th.team-name,
+.standings-table td.team-name {
+    flex: 2;
+    justify-content: flex-start;
+}
+
+.standings-table th {
+    font-weight: 600;
+    background-color: #00cbbc;
+    color: white;
+}
+
+.standings-table td {
+    border-bottom: 0.0625rem solid rgba(0, 0, 0, 0.1);
+    min-height: 100%;
+    word-break: break-word;
+    white-space: normal;
+}
+
+.standings-table tbody tr {
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+    min-height: 3rem;
+    border-bottom: 0.0625rem solid rgba(0, 0, 0, 0.1);
+}
+
+.standings-table tbody tr:first-child {
+    background-color: rgba(0, 203, 188, 0.1);
+}
+
+.standings-table tbody tr:last-child {
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+.team-name {
+    text-align: left;
+    font-weight: 500;
+}
+
+.group:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: 40rem;
+    justify-self: center;
+}
+
+.standings-table tr:last-child td {
+    border-bottom: none;
+}
+
+@media (max-width: 1200px) {
+    .group-stage {
+        padding: 2rem;
+    }
+
+    .group-content {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+        gap: 3rem;
+    }
+
+    .group {
+        max-width: 40rem;
+        margin: 0 auto;
+    }
+
+    .standings-table,
+    .standings-table tbody,
+    .standings-table tr,
+    .standings-table td,
+    .standings-table th {
+        display: table;
+        height: auto;
+        flex: none;
+    }
+
+    .standings-table {
+        display: table;
+    }
+
+    .standings-table tbody {
+        display: table-row-group;
+    }
+
+    .standings-table tr {
+        display: table-row;
+    }
+
+    .standings-table td,
+    .standings-table th {
+        display: table-cell;
+    }
+
+    .group:last-child:nth-child(odd) {
+        grid-column: auto;
+        max-width: 40rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .group-stage {
+        padding: 1.5rem;
+    }
+
+    .group-content {
+        padding: 1.5rem;
+        gap: 2.5rem;
+    }
+}

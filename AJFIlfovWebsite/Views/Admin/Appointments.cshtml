@@ -1,74 +1,118 @@
 ﻿@model List<AJFIlfov.BusinessLogic.Implementation.Account.Models.AppointmentModel>
 
-<h2 class="futuristic-title">Appointments</h2>
-<table class="table futuristic-table">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Date & Time</th>
-            <th>Description</th>
-            <th>Status</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var appointment in Model)
-        {
-            <tr>
-                <td>@appointment.Title</td>
-                <td>@appointment.Date.ToString("yyyy-MM-dd") @appointment.Time.ToString(@"hh\:mm")</td>
-                <td>@appointment.Description</td>
-                <td>@appointment.Status</td>
-                <td>
-                    <a asp-action="EditAppointment" asp-route-id="@appointment.Id" class="btn futuristic-link">Edit</a>
-                    <form asp-action="DeleteAppointment" asp-route-id="@appointment.Id" method="post" style="display:inline;">
-                        <button type="submit" class="btn futuristic-link">Delete</button>
-                    </form>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
-
 <style>
-    .futuristic-table {
+    body {
+        background-image: none;
+        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .appointments-container {
+        overflow-x: auto;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-huge);
+    }
+
+    .appointments-table {
         width: 100%;
         margin: 0 auto;
-        background-color: rgba(255, 255, 255, 0.1);
-        border-radius: 10px;
+        color: #ffffff;
+        min-width: 800px;
+    }
+
+    .appointments-table th,
+    .appointments-table td {
+        padding: 0.5rem;
+        text-align: center;
+        border-bottom: 1px solid #00e0ff;
+    }
+
+    .appointments-table tr:last-child td {
+        border-bottom: none;
+    }
+
+    .appointments-table th {
+        color: #00e0ff;
+        font-size: 1.2rem;
+    }
+
+    .appointments-table td {
         color: #ffffff;
     }
 
-        .futuristic-table th, .futuristic-table td {
-            padding: 10px;
-            text-align: center;
-            border-bottom: 1px solid #00e0ff;
-        }
-
-        .futuristic-table th {
-            color: #00e0ff;
-            font-size: 1.2em;
-        }
-
-        .futuristic-table td {
-            color: #ffffff;
-        }
-
-    .futuristic-link {
+    .appointments-action {
         display: inline-block;
         width: auto;
         text-align: center;
-        font-size: 1em;
+        font-size: 1rem;
         color: #00e0ff;
         text-decoration: none;
-        padding: 10px 20px;
-        border-radius: 10px;
+        padding: 0.8rem 1.3rem;
+        border-radius: var(--radius-big);
+        border: none;
         background-color: rgba(255, 255, 255, 0.1);
         transition: background-color 0.3s, color 0.3s;
     }
 
-        .futuristic-link:hover {
-            background-color: #ff4081;
-            color: #ffffff;
+    .appointments-action:hover {
+        background-color: #ff4081;
+        color: #ffffff;
+    }
+
+    footer {
+        margin-top: auto;
+    }
+
+    @@media (max-width: 768px) {
+        .appointments-container {
         }
+
+        .appointments-table th,
+        .appointments-table td {
+            padding: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .appointments-action {
+            padding: 0.6rem 1rem;
+            font-size: 0.9rem;
+        }
+    }
 </style>
+
+<h2 class="page-title-alt">Appointments</h2>
+
+<div class="appointments-container">
+    <table class="appointments-table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date & Time</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var appointment in Model)
+            {
+                <tr>
+                    <td>@appointment.Title</td>
+                    <td>@appointment.Date.ToString("yyyy-MM-dd") @appointment.Time.ToString(@"hh\:mm")</td>
+                    <td>@appointment.Description</td>
+                    <td>@appointment.Status</td>
+                    <td>
+                        <a asp-action="EditAppointment" asp-route-id="@appointment.Id" class="btn appointments-action" style="margin-right: 1rem">Edit</a>
+                        <form asp-action="DeleteAppointment" asp-route-id="@appointment.Id" method="post" style="display:inline;">
+                            <button type="submit" class="btn appointments-action">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

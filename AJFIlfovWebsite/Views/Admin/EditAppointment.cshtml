@@ -1,67 +1,171 @@
 ﻿@model AJFIlfov.BusinessLogic.Implementation.Account.Models.AppointmentModel
 
-<h2 class="futuristic-title">Edit Appointment</h2>
-<form asp-action="EditAppointment" method="post" class="futuristic-form">
-    <input type="hidden" asp-for="Id" />
-    <div class="form-group">
-        <label asp-for="Title" class="futuristic-label"></label>
-        <input asp-for="Title" class="form-control futuristic-input" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Date" class="futuristic-label"></label>
-        <input asp-for="Date" type="datetime-local" class="form-control futuristic-input" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Description" class="futuristic-label"></label>
-        <textarea asp-for="Description" class="form-control futuristic-input"></textarea>
-    </div>
-    <div class="form-group">
-        <label asp-for="Status" class="futuristic-label"></label>
-        <select asp-for="Status" class="form-control futuristic-input">
-            <option value="Scheduled">Scheduled</option>
-            <option value="Completed">Completed</option>
-            <option value="Cancelled">Cancelled</option>
-        </select>
-    </div>
-    <button type="submit" class="btn futuristic-button">Save</button>
-</form>
+<h2 class="page-title-alt">Editează programare</h2>
+
+<div class="appointment-container">
+    <form asp-action="EditAppointment" method="post" class="appointment-form">
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <label asp-for="Title" class="appointment-label">Titlu</label>
+            <input asp-for="Title" class="form-control appointment-input" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Date" class="appointment-label">Data</label>
+            <input asp-for="Date" type="datetime-local" class="form-control appointment-input" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" class="appointment-label">Descriere</label>
+            <textarea asp-for="Description" class="form-control appointment-input"></textarea>
+        </div>
+        <div class="form-group">
+            <label asp-for="Status" class="appointment-label">Status</label>
+            <select asp-for="Status" class="form-control appointment-input">
+                <option value="Scheduled">Scheduled</option>
+                <option value="Completed">Completed</option>
+                <option value="Cancelled">Cancelled</option>
+            </select>
+        </div>
+        <button type="submit" class="btn appointment-button">Salvează</button>
+    </form>
+</div>
 
 <style>
-    .futuristic-form {
-        max-width: 600px;
+    body {
+        background-image: none;
+        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .appointment-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
         margin: 0 auto;
-        padding: 20px;
+        padding: 2rem;
         background-color: rgba(255, 255, 255, 0.1);
-        border-radius: 10px;
+        border-radius: var(--radius-huge);
     }
 
-    .futuristic-label {
+    .appointment-form {
+        flex: 1;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 2rem;
+    }
+
+    .profile-container {
+        text-align: center;
+        margin-left: 2rem;
+    }
+
+    .profile-image {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        margin-bottom: 0.6rem;
+        object-fit: cover;
+        object-position: center 30%;
+    }
+
+    .profile-name {
         color: #00e0ff;
-        font-size: 1.2em;
+        font-size: 1.2rem;
     }
 
-    .futuristic-input {
-        background-color: rgba(255, 255, 255, 0.1);
-        color: #ffffff;
-        border: none;
-        border-bottom: 2px solid #00e0ff;
-        border-radius: 5px;
-        padding: 10px;
-        margin-bottom: 20px;
+    .appointment-label {
+        font-size: 1.2rem;
+        color: #00e0ff;
+        margin-bottom: 0.6rem;
+        display: inline-block;
+        font-weight: bold;
     }
 
-    .futuristic-button {
-        background-color: #00e0ff;
+    .appointment-input {
+        width: 100%;
+        padding: 0.7rem;
+        font-size: 1.1rem;
+        border-radius: 0.6rem;
+        border: 1px solid #00e0ff;
+        background-color: #24243e;
         color: #ffffff;
+    }
+
+        .appointment-input::placeholder {
+            color: #999999;
+        }
+
+    select.appointment-input {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300e0ff'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 0.7rem center;
+        background-size: 1.5rem;
+        padding-right: 2.5rem;
+    }
+
+        select.appointment-input::-ms-expand {
+            display: none;
+        }
+
+    .appointment-button {
+        width: 80%;
+        padding: 1rem;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 1.2rem;
         border: none;
-        padding: 10px 20px;
-        border-radius: 10px;
         cursor: pointer;
+        display: block;
+        margin: 1.1rem auto;
+        background-color: rgba(255, 255, 255, 0.1);
         transition: background-color 0.3s, color 0.3s;
+        border-radius: var(--radius-big);
     }
 
-    .futuristic-button:hover {
-        background-color: #ff4081;
-        color: #ffffff;
+        .appointment-button:hover {
+            background-color: #ff4081;
+            color: #ffffff;
+        }
+
+    footer {
+        margin-top: auto;
+    }
+
+    @@media (max-width: 800px) {
+        .appointment-container {
+            flex-direction: column;
+        }
+
+        .appointment-form {
+            margin-right: 0;
+            margin-bottom: 1.1rem;
+            width: 100%;
+        }
+
+        .profile-container {
+            width: 100%;
+            margin-top: 1.1rem;
+            margin-left: 0;
+        }
+    }
+
+    @@media (max-width: 480px) {
+        .appointment-input {
+            font-size: 0.9rem;
+        }
+
+        .appointment-button {
+            font-size: 1rem;
+            padding: 0.6rem;
+        }
     }
 </style>

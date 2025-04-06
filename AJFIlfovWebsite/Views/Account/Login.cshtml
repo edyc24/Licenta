@@ -6,28 +6,29 @@
     <form asp-action="Login" class="login-form">
         @if (Model.AreCredentialsInvalid)
         {
-            <div class="alert alert-danger">Credențiale invalide</div>
+            <div class="text-danger" style="text-align: center; margin-bottom: 1rem;">Credențiale invalide</div>
         }
 
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
         <div class="form-group">
             <label asp-for="Email" class="login-label">Email</label>
-            <div class="input-group">
-                <input asp-for="Email" class="login-input" placeholder="Introduceți adresa de email" />
-            </div>
+            <input asp-for="Email" class="login-input" />
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
 
         <div class="form-group">
             <label asp-for="Password" class="login-label">Parolă</label>
-            <div class="input-group">
-                <input asp-for="Password" type="password" class="login-input" placeholder="Introduceți parola" />
-            </div>
+            <input asp-for="Password" type="password" class="login-input" />
             <span asp-validation-for="Password" class="text-danger"></span>
         </div>
 
         <button type="submit" class="login-button">Autentificare</button>
+
+        <div class="links-container">
+            <a asp-action="ResetPassword" class="login-link">Resetare Parolă</a>
+            <a asp-action="Index" class="login-link">Înapoi la Listă</a>
+        </div>
     </form>
 </div>
 
@@ -51,13 +52,13 @@
 
     .login-container {
         display: flex;
-        flex-direction: column;
-        align-items: center;
+        justify-content: center;
+        align-items: flex-start;
         margin: 0 auto;
         padding: 2rem;
         background-color: rgba(255, 255, 255, 0.1);
         border-radius: var(--radius-huge);
-        max-width: 400px;
+        max-width: 500px;
     }
 
     .login-form {
@@ -78,38 +79,6 @@
         font-weight: bold;
     }
 
-    .input-group {
-        display: flex;
-        align-items: center;
-        position: relative;
-        border: none;
-        outline: none;
-        box-shadow: none;
-    }
-
-        .input-group::before {
-            display: none;
-        }
-
-        .input-group::after {
-            display: none;
-        }
-
-    .input-group-prepend {
-        display: flex;
-        align-items: center;
-        padding: 0 1rem;
-        background-color: rgba(0, 224, 255, 0.1);
-        border: 1px solid #00e0ff;
-        border-right: none;
-        border-radius: 0.6rem 0 0 0.6rem;
-    }
-
-    .input-group-text {
-        color: #00e0ff;
-        font-size: 1.1rem;
-    }
-
     .login-input {
         width: 100%;
         padding: 0.7rem;
@@ -118,11 +87,6 @@
         border: 1px solid #00e0ff;
         background-color: #24243e;
         color: #ffffff;
-        outline: none;
-        box-shadow: none;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
     }
 
         .login-input::placeholder {
@@ -133,16 +97,6 @@
         color: #ff4081;
         font-size: 0.9rem;
         margin-top: 0.3rem;
-    }
-
-    .alert {
-        background-color: rgba(255, 64, 129, 0.1);
-        color: #ff4081;
-        border: 1px solid #ff4081;
-        border-radius: 0.6rem;
-        padding: 1rem;
-        margin-bottom: 1.5rem;
-        text-align: center;
     }
 
     .login-button {
@@ -163,6 +117,25 @@
         .login-button:hover {
             background-color: #ff4081;
             color: #ffffff;
+        }
+
+    .links-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    .login-link {
+        color: #00e0ff;
+        text-decoration: none;
+        font-size: 1.1rem;
+        transition: color 0.3s;
+    }
+
+        .login-link:hover {
+            color: #ff4081;
         }
 
     footer {
@@ -187,9 +160,15 @@
             font-size: 1rem;
             padding: 0.8rem;
         }
+
+        .login-link {
+            font-size: 1rem;
+        }
     }
 </style>
 
 @section Scripts {
-    <partial name="_ValidationScriptsPartial" />
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

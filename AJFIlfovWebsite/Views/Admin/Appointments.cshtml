@@ -5,7 +5,7 @@
     <thead>
         <tr>
             <th>Title</th>
-            <th>Date</th>
+            <th>Date & Time</th>
             <th>Description</th>
             <th>Status</th>
             <th>Actions</th>
@@ -16,7 +16,7 @@
         {
             <tr>
                 <td>@appointment.Title</td>
-                <td>@appointment.Date</td>
+                <td>@appointment.Date.ToString("yyyy-MM-dd") @appointment.Time.ToString(@"hh\:mm")</td>
                 <td>@appointment.Description</td>
                 <td>@appointment.Status</td>
                 <td>

@@ -269,7 +269,7 @@ namespace AJFIlfov.BusinessLogic.Implementation.Account
         {
             var appointments = UnitOfWork.Appointments.Get()
                 .Where(a => a.Date.Date == date.Date)
-                .Select(a => a.Date.TimeOfDay)
+                .Select(a => a.Time) // Change to select the Time property
                 .ToList();
 
             var availableSlots = new List<TimeSpan>();
@@ -297,6 +297,7 @@ namespace AJFIlfov.BusinessLogic.Implementation.Account
                 Id = Guid.NewGuid(),
                 Title = model.Title,
                 Date = model.Date,
+                Time = model.Time,
                 Description = model.Description,
                 Status = "Scheduled",
                 UserId = CurrentUser.Id// Assuming UserId is passed in the model
@@ -314,6 +315,7 @@ namespace AJFIlfov.BusinessLogic.Implementation.Account
                     Id = a.Id,
                     Title = a.Title,
                     Date = a.Date,
+                    Time = a.Time,
                     Description = a.Description,
                     Status = a.Status
                 }).ToList();

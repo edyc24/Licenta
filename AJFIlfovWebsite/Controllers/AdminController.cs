@@ -316,9 +316,16 @@ namespace AJFIlfovWebsite.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetAvailableSlots(DateTime date)
+        {
+            var availableSlots = _accountService.GetAvailableSlots(date);
+            return Json(availableSlots);
+        }
+
+        [HttpGet]
         public IActionResult CreateAppointment()
         {
-            ViewBag.AvailableSlots = _accountService.GetAvailableSlots(DateTime.Today);
+            ViewBag.AvailableSlots = _accountService.GetAvailableSlots(DateTime.Today.AddDays(1));
             return View(new CreateAppointmentModel());
         }
 
@@ -333,6 +340,7 @@ namespace AJFIlfovWebsite.Controllers
             ViewBag.AvailableSlots = _accountService.GetAvailableSlots(model.Date);
             return View(model);
         }
+
 
         [HttpGet]
         public IActionResult Appointments()

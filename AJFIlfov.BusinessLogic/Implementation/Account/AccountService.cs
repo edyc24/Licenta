@@ -317,7 +317,8 @@ namespace AJFIlfov.BusinessLogic.Implementation.Account
                     Date = a.Date,
                     Time = a.Time,
                     Description = a.Description,
-                    Status = a.Status
+                    Status = a.Status,
+                    UserName = a.User.Nume + " " + a.User.Prenume // Populate UserName from User navigation property
                 }).ToList();
         }
 

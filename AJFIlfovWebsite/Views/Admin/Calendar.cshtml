@@ -175,7 +175,7 @@
                     modalAppointmentsEl.innerHTML = '';
                     dayAppointments.forEach(app => {
                         const appDetailEl = document.createElement('div');
-                        appDetailEl.textContent = `${app.Title} - ${app.Description}`;
+                        appDetailEl.textContent = `${app.UserName} - ${app.Time} - ${app.Title} - ${app.Description}`;
                         modalAppointmentsEl.appendChild(appDetailEl);
                     });
                     modal.style.display = 'block';

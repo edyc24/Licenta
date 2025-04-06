@@ -14,6 +14,7 @@ namespace AJFIlfov.BusinessLogic.Implementation.Account.Models
         public TimeSpan Time { get; set; } // Add this line
         public string Description { get; set; }
         public string Status { get; set; } // e.g., Scheduled, Completed, Cancelled
+        public string UserName { get; set; }
     }
 
 

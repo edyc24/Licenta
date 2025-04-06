@@ -4,6 +4,7 @@ using AJFIlfov.DataAccess.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AJFIlfov.DataAccess.Migrations
 {
     [DbContext(typeof(AjfilfovContext))]
-    partial class AjfilfovContextModelSnapshot : ModelSnapshot
+    [Migration("20250406205107_changes")]
+    partial class changes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -137,7 +140,7 @@ namespace AJFIlfov.DataAccess.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Appointment");
+                    b.ToTable("Appointments");
                 });
 
             modelBuilder.Entity("AJFIlfov.Entities.Entities.Audit", b =>
@@ -310,32 +313,13 @@ namespace AJFIlfov.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("ClientAddress")
+                    b.Property<string>("CustomerAddress")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ClientBank")
+                    b.Property<string>("CustomerName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClientCUI")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClientIBAN")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClientName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClientRegCom")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DueDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("InvoiceDate")
                         .HasColumnType("datetime2");
@@ -348,76 +332,12 @@ namespace AJFIlfov.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("varbinary(max)");
 
-                    b.Property<string>("SupplierAddress")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SupplierBank")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SupplierCUI")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SupplierCapital")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SupplierIBAN")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SupplierName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SupplierRegCom")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<decimal>("TotalAmount")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Invoices");
-                });
-
-            modelBuilder.Entity("AJFIlfov.Entities.Entities.InvoiceItem", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("InvoiceId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Total")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("UnitOfMeasure")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("UnitPrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("Value")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("InvoiceId");
-
-                    b.ToTable("InvoiceItem");
                 });
 
             modelBuilder.Entity("AJFIlfov.Entities.Entities.Localitati", b =>
@@ -913,17 +833,6 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.Navigation("IdGrupaNavigation");
                 });
 
-            modelBuilder.Entity("AJFIlfov.Entities.Entities.InvoiceItem", b =>
-                {
-                    b.HasOne("AJFIlfov.Entities.Entities.Invoice", "Invoice")
-                        .WithMany("Items")
-                        .HasForeignKey("InvoiceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Invoice");
-                });
-
             modelBuilder.Entity("AJFIlfov.Entities.Entities.Meciuri", b =>
                 {
                     b.HasOne("AJFIlfov.Entities.Entities.Utilizatori", "IdArbitruNavigation")
@@ -1087,11 +996,6 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.Navigation("MeciuriIdEchipaGazdaNavigations");
 
                     b.Navigation("MeciuriIdEchipaOaspeteNavigations");
-                });
-
-            modelBuilder.Entity("AJFIlfov.Entities.Entities.Invoice", b =>
-                {
-                    b.Navigation("Items");
                 });
 
             modelBuilder.Entity("AJFIlfov.Entities.Entities.Localitati", b =>

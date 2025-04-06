@@ -53,6 +53,7 @@ public partial class AjfilfovContext : DbContext
     public virtual DbSet<Question> Questions { get; set; }
     public virtual DbSet<Answer> Answers { get; set; }
     public virtual DbSet<Suggestion> Suggestions { get; set; }
+    public virtual DbSet<Invoice> Invoices { get; set; }
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -162,6 +163,12 @@ public partial class AjfilfovContext : DbContext
                 .HasForeignKey(d => d.IdGrupa)
                 .HasConstraintName("FK__GrupeEchi__IdGru__2B3F6F97");
         });
+
+        modelBuilder.Entity<Invoice>()
+            .HasMany(i => i.Items)
+            .WithOne(ii => ii.Invoice)
+            .HasForeignKey(ii => ii.InvoiceId);
+
 
         modelBuilder.Entity<Localitati>(entity =>
         {

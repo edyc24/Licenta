@@ -9,6 +9,7 @@ using AJFIlfov.BusinessLogic.Implementation.Documente;
 using AJFIlfov.BusinessLogic.Implementation.EchipeService;
 using AJFIlfov.BusinessLogic.Implementation.GrupeEchipaService;
 using AJFIlfov.BusinessLogic.Implementation.GrupeService;
+using AJFIlfov.BusinessLogic.Implementation.Invoice;
 using AJFIlfov.BusinessLogic.Implementation.LocalitatiService;
 using AJFIlfov.BusinessLogic.Implementation.MeciLiveService;
 using AJFIlfov.BusinessLogic.Implementation.MeciuriService;
@@ -51,6 +52,7 @@ public static class ServiceCollectionExtensionMethods
         services.AddScoped<AuditService>();
         services.AddScoped<DocumenteService>();
         services.AddScoped<QuestionService>();
+        services.AddScoped<InvoiceService>();
         return services;
     }
 

@@ -12,7 +12,9 @@
     <PackageReference Include="itext7" Version="8.0.5" />
     <PackageReference Include="iTextSharp" Version="5.5.13.4" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="4.0.0" />
     <PackageReference Include="PdfPig" Version="0.1.9" />
+    <PackageReference Include="PDFsharp" Version="6.1.1" />
     <PackageReference Include="Twilio" Version="7.1.1" />
   </ItemGroup>
 

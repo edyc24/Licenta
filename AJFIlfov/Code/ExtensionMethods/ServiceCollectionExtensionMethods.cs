@@ -20,6 +20,7 @@ using System.Security.Claims;
 using AJFIlfov.BusinessLogic.Implementation.Anunturi;
 using AJFIlfov.BusinessLogic.Implementation.Audituri;
 using AJFIlfov.BusinessLogic.Implementation.Documente;
+using AJFIlfov.BusinessLogic.Implementation.Invoice;
 using AJFIlfov.BusinessLogic.Implementation.MeciLiveService;
 using QnA.BusinessLogic;
 
@@ -55,6 +56,7 @@ namespace AJFIlfov.WebApp.Code.ExtensionMethods
             services.AddScoped<AuditService>();
             services.AddScoped<DocumenteService>();
             services.AddScoped<QuestionService>();
+            services.AddScoped<InvoiceService>();
             return services;
         }
 

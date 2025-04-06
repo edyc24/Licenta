@@ -1,125 +1,195 @@
 ﻿@model AJFIlfov.BusinessLogic.Implementation.Account.LoginModel
 
-@{
-    ViewData["Title"] = "Autentificare";
-}
+<h2 class="page-title-alt">Autentificare</h2>
 
-<div class="login-page">
-    <div class="login-container">
-        <div class="login-card">
-            <h2 class="futuristic-title text-center">Autentificare</h2>
-            @if (Model.AreCredentialsInvalid)
-            {
-                <div class="alert alert-danger text-center">
-                    Credențiale invalide
-                </div>
-            }
+<div class="login-container">
+    <form asp-action="Login" class="login-form">
+        @if (Model.AreCredentialsInvalid)
+        {
+            <div class="alert alert-danger">Credențiale invalide</div>
+        }
 
-            <form asp-action="Login">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                <div class="form-group">
-                    <label asp-for="Email" class="futuristic-label">Email</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                        </div>
-                        <input asp-for="Email" class="futuristic-input" placeholder="Introduceți adresa de email" />
-                    </div>
-                    <span asp-validation-for="Email" class="text-danger"></span>
-                </div>
-
-                <div class="form-group">
-                    <label asp-for="Password" class="futuristic-label">Parolă</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                        </div>
-                        <input asp-for="Password" type="password" class="futuristic-input" placeholder="Introduceți parola" />
-                    </div>
-                    <span asp-validation-for="Password" class="text-danger"></span>
-                </div>
-
-                <div class="form-group text-center">
-                    <input type="submit" value="Autentificare" class="btn-futuristic" />
-                </div>
-            </form>
-
+        <div class="form-group">
+            <label asp-for="Email" class="login-label">Email</label>
+            <div class="input-group">
+                <input asp-for="Email" class="login-input" placeholder="Introduceți adresa de email" />
+            </div>
+            <span asp-validation-for="Email" class="text-danger"></span>
         </div>
-    </div>
+
+        <div class="form-group">
+            <label asp-for="Password" class="login-label">Parolă</label>
+            <div class="input-group">
+                <input asp-for="Password" type="password" class="login-input" placeholder="Introduceți parola" />
+            </div>
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="login-button">Autentificare</button>
+    </form>
 </div>
+
+<style>
+    body {
+        background-image: none;
+        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .page-title-alt {
+        text-align: center;
+        font-size: 2.5rem;
+        color: #00e0ff;
+        margin-bottom: 2rem;
+    }
+
+    .login-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+        padding: 2rem;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-huge);
+        max-width: 400px;
+    }
+
+    .login-form {
+        width: 100%;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 2rem;
+    }
+
+    .login-label {
+        font-size: 1.2rem;
+        color: #00e0ff;
+        margin-bottom: 0.6rem;
+        display: inline-block;
+        font-weight: bold;
+    }
+
+    .input-group {
+        display: flex;
+        align-items: center;
+        position: relative;
+        border: none;
+        outline: none;
+        box-shadow: none;
+    }
+
+        .input-group::before {
+            display: none;
+        }
+
+        .input-group::after {
+            display: none;
+        }
+
+    .input-group-prepend {
+        display: flex;
+        align-items: center;
+        padding: 0 1rem;
+        background-color: rgba(0, 224, 255, 0.1);
+        border: 1px solid #00e0ff;
+        border-right: none;
+        border-radius: 0.6rem 0 0 0.6rem;
+    }
+
+    .input-group-text {
+        color: #00e0ff;
+        font-size: 1.1rem;
+    }
+
+    .login-input {
+        width: 100%;
+        padding: 0.7rem;
+        font-size: 1.1rem;
+        border-radius: 0.6rem;
+        border: 1px solid #00e0ff;
+        background-color: #24243e;
+        color: #ffffff;
+        outline: none;
+        box-shadow: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+
+        .login-input::placeholder {
+            color: #999999;
+        }
+
+    .text-danger {
+        color: #ff4081;
+        font-size: 0.9rem;
+        margin-top: 0.3rem;
+    }
+
+    .alert {
+        background-color: rgba(255, 64, 129, 0.1);
+        color: #ff4081;
+        border: 1px solid #ff4081;
+        border-radius: 0.6rem;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    .login-button {
+        width: 100%;
+        padding: 1rem;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 1.2rem;
+        border: none;
+        cursor: pointer;
+        display: block;
+        margin: 1.5rem 0;
+        background-color: rgba(255, 255, 255, 0.1);
+        transition: background-color 0.3s, color 0.3s;
+        border-radius: var(--radius-big);
+    }
+
+        .login-button:hover {
+            background-color: #ff4081;
+            color: #ffffff;
+        }
+
+    footer {
+        margin-top: auto;
+    }
+
+    @@media (max-width: 480px) {
+        .page-title-alt {
+            font-size: 1.8rem;
+        }
+
+        .login-container {
+            padding: 1.5rem;
+            margin: 1rem;
+        }
+
+        .login-input {
+            font-size: 0.9rem;
+        }
+
+        .login-button {
+            font-size: 1rem;
+            padding: 0.8rem;
+        }
+    }
+</style>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
-
-<style>
-    .login-page {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-    }
-
-    .login-container {
-        width: 100%;
-        max-width: 400px;
-        padding: 20px;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        border-radius: 20px;
-    }
-
-    .futuristic-title {
-        font-size: 2.5em;
-        color: #00e0ff;
-        margin-bottom: 20px;
-    }
-
-    .futuristic-label {
-        font-size: 1.2em;
-        color: #00e0ff;
-        margin-bottom: 10px;
-        display: block;
-    }
-
-    .futuristic-input {
-        width: 100%;
-        padding: 12px;
-        font-size: 1.1em;
-        border-radius: 10px;
-        border: 1px solid #00e0ff;
-        background-color: #24243e;
-        color: #ffffff;
-    }
-
-        .futuristic-input::placeholder {
-            color: #999;
-        }
-
-    .btn-futuristic {
-        width: 100%;
-        padding: 12px;
-        background-color: #00e0ff;
-        color: #ffffff;
-        font-weight: 600;
-        font-size: 1.2em;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-
-        .btn-futuristic:hover {
-            background-color: #ff4081;
-        }
-
-    .alert {
-        background-color: rgba(255, 0, 0, 0.1);
-        color: #ff4081;
-        border-radius: 10px;
-        padding: 10px;
-        margin-bottom: 20px;
-    }
-</style>

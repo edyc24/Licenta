@@ -24,7 +24,7 @@ namespace AJFIlfov.BusinessLogic.Implementation.MeciuriService
 
                         // Fill in the form fields with data
                         form.GetField("MatchLocation").SetValue(reportData.MatchLocation);
-                        form.GetField("MatchDate").SetValue(reportData.MatchDate.ToString("dd/MM/yyyy"));
+                        form.GetField("MatchDate").SetValue(reportData.MatchDate);
                         form.GetField("StadiumName").SetValue(reportData.StadiumName);
                         form.GetField("RefereeName").SetValue(reportData.RefereeName);
                         form.GetField("AssistantReferee1").SetValue(reportData.AssistantReferee1);
@@ -43,7 +43,7 @@ namespace AJFIlfov.BusinessLogic.Implementation.MeciuriService
     public class MatchReportData
     {
         public string MatchLocation { get; set; }
-        public DateTime MatchDate { get; set; }
+        public string MatchDate { get; set; }
         public string StadiumName { get; set; }
         public string RefereeName { get; set; }
         public string AssistantReferee1 { get; set; }

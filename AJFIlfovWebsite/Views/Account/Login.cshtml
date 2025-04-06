@@ -1,0 +1,174 @@
+﻿@model AJFIlfov.BusinessLogic.Implementation.Account.LoginModel
+
+<h2 class="page-title-alt">Autentificare</h2>
+
+<div class="login-container">
+    <form asp-action="Login" class="login-form">
+        @if (Model.AreCredentialsInvalid)
+        {
+            <div class="text-danger" style="text-align: center; margin-bottom: 1rem;">Credențiale invalide</div>
+        }
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label asp-for="Email" class="login-label">Email</label>
+            <input asp-for="Email" class="login-input" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Password" class="login-label">Parolă</label>
+            <input asp-for="Password" type="password" class="login-input" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="login-button">Autentificare</button>
+
+        <div class="links-container">
+            <a asp-action="ResetPassword" class="login-link">Resetare Parolă</a>
+            <a asp-action="Index" class="login-link">Înapoi la Listă</a>
+        </div>
+    </form>
+</div>
+
+<style>
+    body {
+        background-image: none;
+        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .page-title-alt {
+        text-align: center;
+        font-size: 2.5rem;
+        color: #00e0ff;
+        margin-bottom: 2rem;
+    }
+
+    .login-container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        margin: 0 auto;
+        padding: 2rem;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-huge);
+        max-width: 500px;
+    }
+
+    .login-form {
+        width: 100%;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 2rem;
+    }
+
+    .login-label {
+        font-size: 1.2rem;
+        color: #00e0ff;
+        margin-bottom: 0.6rem;
+        display: inline-block;
+        font-weight: bold;
+    }
+
+    .login-input {
+        width: 100%;
+        padding: 0.7rem;
+        font-size: 1.1rem;
+        border-radius: 0.6rem;
+        border: 1px solid #00e0ff;
+        background-color: #24243e;
+        color: #ffffff;
+    }
+
+        .login-input::placeholder {
+            color: #999999;
+        }
+
+    .text-danger {
+        color: #ff4081;
+        font-size: 0.9rem;
+        margin-top: 0.3rem;
+    }
+
+    .login-button {
+        width: 100%;
+        padding: 1rem;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 1.2rem;
+        border: none;
+        cursor: pointer;
+        display: block;
+        margin: 1.5rem 0;
+        background-color: rgba(255, 255, 255, 0.1);
+        transition: background-color 0.3s, color 0.3s;
+        border-radius: var(--radius-big);
+    }
+
+        .login-button:hover {
+            background-color: #ff4081;
+            color: #ffffff;
+        }
+
+    .links-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    .login-link {
+        color: #00e0ff;
+        text-decoration: none;
+        font-size: 1.1rem;
+        transition: color 0.3s;
+    }
+
+        .login-link:hover {
+            color: #ff4081;
+        }
+
+    footer {
+        margin-top: auto;
+    }
+
+    @@media (max-width: 480px) {
+        .page-title-alt {
+            font-size: 1.8rem;
+        }
+
+        .login-container {
+            padding: 1.5rem;
+            margin: 1rem;
+        }
+
+        .login-input {
+            font-size: 0.9rem;
+        }
+
+        .login-button {
+            font-size: 1rem;
+            padding: 0.8rem;
+        }
+
+        .login-link {
+            font-size: 1rem;
+        }
+    }
+</style>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

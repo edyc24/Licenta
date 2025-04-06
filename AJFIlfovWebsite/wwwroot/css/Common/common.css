@@ -34,6 +34,7 @@
 
     --radius-small: 0.2rem;
     --radius-big: 0.4rem;
+    --radius-huge: 1rem;
 
     --blur: 80px;
 }
@@ -79,6 +80,13 @@ a {
     padding-bottom: 2rem;
 }
 
+.page-title-alt {
+    color: var(--color-on-surface-inverse);
+    text-align: center;
+    margin-top: 1rem;
+    padding-bottom: 2rem;
+}
+
 
 /* ------ */
 /* header */
@@ -90,7 +98,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    z-index: 1000;
+    z-index: 999;
 }
 
 .header-content {

@@ -265,6 +265,87 @@ namespace AJFIlfov.BusinessLogic.Implementation.Account
                 Email = userAddress.User.Mail
             };
         }
+        public List<TimeSpan> GetAvailableSlots(DateTime date)
+        {
+            var appointments = UnitOfWork.Appointments.Get()
+                .Where(a => a.Date.Date == date.Date)
+                .Select(a => a.Time) // Change to select the Time property
+                .ToList();
+
+            var availableSlots = new List<TimeSpan>();
+            var startTime = new TimeSpan(10, 0, 0);
+            var endTime = new TimeSpan(16, 0, 0);
+            var breakStart = new TimeSpan(13, 0, 0);
+            var breakEnd = new TimeSpan(13, 30, 0);
+
+            for (var time = startTime; time < endTime; time = time.Add(new TimeSpan(0, 30, 0)))
+            {
+                if (time >= breakStart && time < breakEnd)
+                    continue;
+
+                if (!appointments.Contains(time))
+                    availableSlots.Add(time);
+            }
+
+            return availableSlots;
+        }
+
+        public void CreateAppointment(CreateAppointmentModel model)
+        {
+            var appointment = new Appointment
+            {
+                Id = Guid.NewGuid(),
+                Title = model.Title,
+                Date = model.Date,
+                Time = model.Time,
+                Description = model.Description,
+                Status = "Scheduled",
+                UserId = CurrentUser.Id// Assuming UserId is passed in the model
+            };
+            UnitOfWork.Appointments.Insert(appointment);
+            UnitOfWork.SaveChanges();
+        }
+
+
+        public List<AppointmentModel> GetAppointments()
+        {
+            return UnitOfWork.Appointments.Get()
+                .Select(a => new AppointmentModel
+                {
+                    Id = a.Id,
+                    Title = a.Title,
+                    Date = a.Date,
+                    Time = a.Time,
+                    Description = a.Description,
+                    Status = a.Status,
+                    UserName = a.User.Nume + " " + a.User.Prenume // Populate UserName from User navigation property
+                }).ToList();
+        }
+
+        public void UpdateAppointment(AppointmentModel model)
+        {
+            var appointment = UnitOfWork.Appointments.Find(model.Id);
+            if (appointment != null)
+            {
+                appointment.Title = model.Title;
+                appointment.Date = model.Date;
+                appointment.Description = model.Description;
+                appointment.Status = model.Status;
+                UnitOfWork.Appointments.Update(appointment);
+                UnitOfWork.SaveChanges();
+            }
+        }
+
+        public void DeleteAppointment(Guid id)
+        {
+            var appointment = UnitOfWork.Appointments.Find(id);
+            if (appointment != null)
+            {
+                UnitOfWork.Appointments.Delete(appointment);
+                UnitOfWork.SaveChanges();
+            }
+        }
+
 
         public void SaveUserAddress(UserAddress userAddress)
         {

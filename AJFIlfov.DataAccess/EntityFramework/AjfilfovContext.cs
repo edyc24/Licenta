@@ -53,6 +53,7 @@ public partial class AjfilfovContext : DbContext
     public virtual DbSet<Question> Questions { get; set; }
     public virtual DbSet<Answer> Answers { get; set; }
     public virtual DbSet<Suggestion> Suggestions { get; set; }
+    public virtual DbSet<Invoice> Invoices { get; set; }
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -107,6 +108,21 @@ public partial class AjfilfovContext : DbContext
             entity.Property(e => e.Zi).HasColumnType("date");
         });
 
+        modelBuilder.Entity<Appointment>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Title).IsRequired().HasMaxLength(100);
+            entity.Property(e => e.Date).IsRequired();
+            entity.Property(e => e.Description).HasMaxLength(500);
+            entity.Property(e => e.Status).IsRequired().HasMaxLength(50);
+
+            // Configure relationship with User entity
+            entity.HasOne(e => e.User)
+                .WithMany(u => u.Appointments)
+                .HasForeignKey(e => e.UserId);
+        });
+
+
         modelBuilder.Entity<Echipe>(entity =>
         {
             entity.HasKey(e => e.IdEchipa).HasName("PK__Echipe__D4A3A318683D43A3");
@@ -147,6 +163,12 @@ public partial class AjfilfovContext : DbContext
                 .HasForeignKey(d => d.IdGrupa)
                 .HasConstraintName("FK__GrupeEchi__IdGru__2B3F6F97");
         });
+
+        modelBuilder.Entity<Invoice>()
+            .HasMany(i => i.Items)
+            .WithOne(ii => ii.Invoice)
+            .HasForeignKey(ii => ii.InvoiceId);
+
 
         modelBuilder.Entity<Localitati>(entity =>
         {

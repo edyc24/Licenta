@@ -1,0 +1,207 @@
+﻿@model AJFIlfov.BusinessLogic.Implementation.Account.Models.UserModelEdit
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Edit Profil</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="~/css/Account/Edit.css" />
+</head>
+<body>
+    <div class="container">
+        <h2 class="page-title-alt">Editare profil</h2>
+
+        <div class="edit-container">
+            <form asp-action="Edit" class="edit-form">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="FirstName" class="edit-label">Prenume</label>
+                    <input asp-for="FirstName" class="edit-input" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="LastName" class="edit-label">Nume</label>
+                    <input asp-for="LastName" class="edit-input" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="BirthDay" class="edit-label">Data nașterii</label>
+                    <input asp-for="BirthDay" class="edit-input" type="date" />
+                    <span asp-validation-for="BirthDay" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Email" class="edit-label">Email</label>
+                    <input asp-for="Email" class="edit-input" readonly />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ProfileDescription" class="edit-label">Descriere profil</label>
+                    <input asp-for="ProfileDescription" class="edit-input" />
+                    <span asp-validation-for="ProfileDescription" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="edit-button">Salvează</button>
+            </form>
+
+            <div class="links-container">
+                <a asp-action="EditAddress" asp-route-userId="@Model.Id" class="edit-link">Editează adresa</a>
+                <a asp-action="Index" class="edit-link">Înapoi la listă</a>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        body {
+            background-image: none;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .page-title-alt {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #00e0ff;
+            margin-bottom: 2rem;
+        }
+
+        .edit-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-huge);
+            max-width: 500px;
+        }
+
+        .edit-form {
+            width: 100%;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 2rem;
+        }
+
+        .edit-label {
+            font-size: 1.2rem;
+            color: #00e0ff;
+            margin-bottom: 0.6rem;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .edit-input {
+            width: 100%;
+            padding: 0.7rem;
+            font-size: 1.1rem;
+            border-radius: 0.6rem;
+            border: 1px solid #00e0ff;
+            background-color: #24243e;
+            color: #ffffff;
+        }
+
+            .edit-input[readonly] {
+                background-color: rgba(36, 36, 62, 0.5);
+                cursor: not-allowed;
+            }
+
+            .edit-input::placeholder {
+                color: #999999;
+            }
+
+        .text-danger {
+            color: #ff4081;
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+        }
+
+        .edit-button {
+            width: 100%;
+            padding: 1rem;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border: none;
+            cursor: pointer;
+            display: block;
+            margin: 1.5rem 0;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: background-color 0.3s, color 0.3s;
+            border-radius: var(--radius-big);
+        }
+
+            .edit-button:hover {
+                background-color: #ff4081;
+                color: #ffffff;
+            }
+
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .edit-link {
+            width: 100%;
+            padding: 1rem;
+            color: #00e0ff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-big);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+            .edit-link:hover {
+                background-color: #ff4081;
+                color: #ffffff;
+            }
+
+        @@media (max-width: 480px) {
+            .page-title-alt {
+                font-size: 1.8rem;
+            }
+
+            .edit-container {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+
+            .edit-input {
+                font-size: 0.9rem;
+            }
+
+            .edit-button,
+            .edit-link {
+                font-size: 1rem;
+                padding: 0.8rem;
+            }
+        }
+    </style>
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+
+</body>
+</html>

@@ -1,0 +1,224 @@
+﻿@model AJFIlfov.BusinessLogic.Implementation.Account.Models.UserModel
+
+<h2 class="page-title-alt">Profil</h2>
+
+<div class="profile-container">
+    <div class="profile-image">
+        @if (Model.ProfilePicture != null)
+        {
+            <img src="data:image;base64,@Convert.ToBase64String(Model.ProfilePicture)" id="profile-pic" onclick="document.getElementById('file-upload').click();" />
+        }
+        else
+        {
+            <img src="~/images/profile-placeholder.png" id="profile-pic" onclick="document.getElementById('file-upload').click();" />
+        }
+        <form asp-action="UploadProfilePicture" method="post" enctype="multipart/form-data">
+            <input id="file-upload" type="file" name="ProfilePicture" onchange="this.form.submit()" />
+        </form>
+    </div>
+
+    <div class="profile-details">
+        <h3 class="profile-title">Detalii Profil</h3>
+        <div class="details-table">
+            <div class="detail-row">
+                <span class="detail-label">Prenume</span>
+                <span class="detail-value">@Model.FirstName</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Nume</span>
+                <span class="detail-value">@Model.LastName</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Descriere profil</span>
+                <span class="detail-value">
+                    @if (string.IsNullOrEmpty(Model.ProfileDescription))
+                    {
+                        <span>N/A</span>
+                    }
+                    else
+                    {
+                        <span title="@Model.ProfileDescription">@Model.ProfileDescription.Substring(0, 5)</span>
+                    }
+                </span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Email</span>
+                <span class="detail-value">@Model.Email</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Data nașterii</span>
+                <span class="detail-value">@Model.BirthDay.ToString("dd/MM/yyyy")</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Data înregistrării</span>
+                <span class="detail-value">@Model.RegistrationDay.ToString("dd/MM/yyyy")</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Rol</span>
+                <span class="detail-value">@Model.Role</span>
+            </div>
+        </div>
+
+        <a asp-action="Edit" class="profile-button">Editează profil</a>
+    </div>
+</div>
+
+<style>
+    body {
+        background-image: none;
+        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .page-title-alt {
+        text-align: center;
+        font-size: 2.5rem;
+        color: #00e0ff;
+        margin-bottom: 2rem;
+    }
+
+    .profile-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+        padding: 2rem;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-huge);
+        max-width: 500px;
+    }
+
+    .profile-image {
+        text-align: center;
+        margin-bottom: 2rem;
+        position: relative;
+    }
+
+    #profile-pic {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 1rem;
+        cursor: pointer;
+        border: 2px solid #00e0ff;
+        transition: transform 0.3s;
+    }
+
+        #profile-pic:hover {
+            transform: scale(1.05);
+        }
+
+    #file-upload {
+        display: none;
+    }
+
+    .profile-details {
+        width: 100%;
+    }
+
+    .profile-title {
+        font-size: 1.8rem;
+        color: #00e0ff;
+        margin-bottom: 2rem;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .details-table {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .detail-row {
+        display: flex;
+        padding: 1rem;
+        border-bottom: 1px solid rgba(0, 224, 255, 0.2);
+    }
+
+    .detail-label {
+        width: 30%;
+        font-weight: bold;
+        color: #00e0ff;
+        font-size: 1.1rem;
+    }
+
+    .detail-value {
+        width: 70%;
+        color: #ffffff;
+        font-size: 1.1rem;
+    }
+
+    .profile-button {
+        display: block;
+        width: 100%;
+        padding: 1rem;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 1.2rem;
+        border: none;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        background-color: rgba(255, 255, 255, 0.1);
+        transition: background-color 0.3s, color 0.3s;
+        border-radius: var(--radius-big);
+    }
+
+        .profile-button:hover {
+            background-color: #ff4081;
+            color: #ffffff;
+        }
+
+    footer {
+        margin-top: auto;
+    }
+
+    @@media (max-width: 800px) {
+        .profile-container {
+            padding: 1.5rem;
+            margin: 1rem;
+        }
+
+        .detail-row {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .detail-label,
+        .detail-value {
+            width: 100%;
+        }
+    }
+
+    @@media (max-width: 480px) {
+        .page-title-alt {
+            font-size: 1.8rem;
+        }
+
+        .profile-title {
+            font-size: 1.5rem;
+        }
+
+        #profile-pic {
+            width: 120px;
+            height: 120px;
+        }
+
+        .detail-label,
+        .detail-value {
+            font-size: 1rem;
+        }
+
+        .profile-button {
+            font-size: 1rem;
+            padding: 0.8rem;
+        }
+    }
+</style>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

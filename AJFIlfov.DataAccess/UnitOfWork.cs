@@ -66,6 +66,18 @@ namespace AJFIlfov.DataAccess
 
         private IRepository<Suggestion> suggestions;
         public IRepository<Suggestion> Suggestions => suggestions ?? (suggestions = new BaseRepository<Suggestion>(Context));
+
+
+        private IRepository<Appointment> appointments;
+        public IRepository<Appointment> Appointments => appointments ?? (appointments = new BaseRepository<Appointment>(Context));
+
+
+        private IRepository<Invoice> invoices;
+        public IRepository<Invoice> Invoices => invoices ?? (invoices = new BaseRepository<Invoice>(Context));
+
+
+        private IRepository<InvoiceItem> invoiceItems;
+        public IRepository<InvoiceItem> InvoiceItems => invoiceItems ?? (invoiceItems = new BaseRepository<InvoiceItem>(Context));
         public void SaveChanges()
         {
             Context.SaveChanges();

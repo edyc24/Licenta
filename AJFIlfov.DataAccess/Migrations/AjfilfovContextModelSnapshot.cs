@@ -103,6 +103,43 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.ToTable("Anunturi");
                 });
 
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Appointment", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<TimeSpan>("Time")
+                        .HasColumnType("time");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Appointment");
+                });
+
             modelBuilder.Entity("AJFIlfov.Entities.Entities.Audit", b =>
                 {
                     b.Property<int>("Id")
@@ -265,6 +302,122 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.HasIndex(new[] { "IdGrupa" }, "IX_GrupeEchipa_IdGrupa");
 
                     b.ToTable("GrupeEchipa", (string)null);
+                });
+
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Invoice", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ClientAddress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClientBank")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClientCUI")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClientIBAN")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClientName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClientRegCom")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DueDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("InvoiceDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("InvoiceNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("PdfData")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("SupplierAddress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SupplierBank")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SupplierCUI")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SupplierCapital")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SupplierIBAN")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SupplierName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SupplierRegCom")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("TotalAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Invoices");
+                });
+
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.InvoiceItem", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("InvoiceId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Total")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("UnitOfMeasure")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Value")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InvoiceId");
+
+                    b.ToTable("InvoiceItem");
                 });
 
             modelBuilder.Entity("AJFIlfov.Entities.Entities.Localitati", b =>
@@ -718,6 +871,17 @@ namespace AJFIlfov.DataAccess.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Appointment", b =>
+                {
+                    b.HasOne("AJFIlfov.Entities.Entities.Utilizatori", "User")
+                        .WithMany("Appointments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("AJFIlfov.Entities.Entities.Disponibilitate", b =>
                 {
                     b.HasOne("AJFIlfov.Entities.Entities.Utilizatori", "IdUtilizatorNavigation")
@@ -747,6 +911,17 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.Navigation("IdEchipaNavigation");
 
                     b.Navigation("IdGrupaNavigation");
+                });
+
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.InvoiceItem", b =>
+                {
+                    b.HasOne("AJFIlfov.Entities.Entities.Invoice", "Invoice")
+                        .WithMany("Items")
+                        .HasForeignKey("InvoiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Invoice");
                 });
 
             modelBuilder.Entity("AJFIlfov.Entities.Entities.Meciuri", b =>
@@ -914,6 +1089,11 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.Navigation("MeciuriIdEchipaOaspeteNavigations");
                 });
 
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.Invoice", b =>
+                {
+                    b.Navigation("Items");
+                });
+
             modelBuilder.Entity("AJFIlfov.Entities.Entities.Localitati", b =>
                 {
                     b.Navigation("StadionLocalitates");
@@ -950,6 +1130,8 @@ namespace AJFIlfov.DataAccess.Migrations
 
             modelBuilder.Entity("AJFIlfov.Entities.Entities.Utilizatori", b =>
                 {
+                    b.Navigation("Appointments");
+
                     b.Navigation("Disponibilitates");
 
                     b.Navigation("MeciuriIdArbitruAsistent1Navigations");

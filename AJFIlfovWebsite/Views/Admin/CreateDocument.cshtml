@@ -2,25 +2,25 @@
     ViewData["Title"] = "Adăugați un Document";
 }
 
-<div class="create-document-container">
-    <h2 class="futuristic-title">Adăugați un Document</h2>
+<h2 class="page-title-alt">Adăugă un document</h2>
 
+<div class="create-document-container">
     <form method="post" enctype="multipart/form-data" class="document-form">
         <div class="form-group">
-            <label for="NumeDocument" class="futuristic-label">Nume Document:</label>
-            <input type="text" id="NumeDocument" name="NumeDocument" class="futuristic-input" placeholder="Introduceți numele documentului" required />
+            <label for="NumeDocument" class="document-label">Nume document:</label>
+            <input type="text" id="NumeDocument" name="NumeDocument" class="document-input" placeholder="Introduceți numele documentului" required />
         </div>
         <div class="form-group">
-            <label for="PdfFile" class="futuristic-label">Fișier PDF:</label>
-            <input type="file" id="PdfFile" name="PdfFile" class="futuristic-input" accept=".pdf" required />
+            <label for="PdfFile" class="document-label">Fișier PDF:</label>
+            <input type="file" id="PdfFile" name="PdfFile" class="document-input" accept=".pdf" required />
         </div>
-        <button type="submit" class="btn-futuristic">Adaugă</button>
+        <button type="submit" class="document-button">Adaugă</button>
     </form>
 </div>
 
 <style>
-    /* General styles */
     body {
+        background-image: none;
         background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
         margin: 0;
         padding: 0;
@@ -30,105 +30,87 @@
     }
 
     .create-document-container {
-        margin: 60px 80px;
-        padding: 20px;
+        padding: 2rem;
         background: rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(10px);
-        border-radius: 20px;
+        border-radius: var(--radius-huge);
     }
 
-    .futuristic-title {
-        text-align: center;
-        font-size: 2.5em;
-        color: #00e0ff;
-        margin-bottom: 20px;
-    }
-
-    /* Form styling */
     .document-form .form-group {
-        margin-bottom: 30px;
-        width: 80%;
+        margin-bottom: 2rem;
         margin-left: auto;
         margin-right: auto;
     }
 
-    .futuristic-label {
-        font-size: 1.2em;
+    .document-label {
+        font-size: 1.2rem;
         color: #00e0ff;
-        margin-bottom: 10px;
+        margin-bottom: 0.6rem;
         display: inline-block;
+        font-weight: bold;
     }
 
-    .futuristic-input {
+    .document-input {
         width: 100%;
-        padding: 12px;
-        font-size: 1.1em;
-        border-radius: 10px;
+        padding: 0.7rem;
+        font-size: 1.1rem;
+        border-radius: 0.6rem;
         border: 1px solid #00e0ff;
         background-color: #24243e;
         color: #ffffff;
     }
 
-    .futuristic-input::placeholder {
-        color: #999;
+        .document-input::placeholder {
+            color: #999999;
+        }
+
+    select.document-input {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300e0ff'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 0.7rem center;
+        background-size: 1.5rem;
+        padding-right: 2.5rem;
     }
 
-    /* Button styling */
-    .btn-futuristic {
+        select.document-input::-ms-expand {
+            display: none;
+        }
+
+    .document-button {
         width: 80%;
-        padding: 15px;
-        background-color: #00e0ff;
+        padding: 1rem;
         color: #ffffff;
-        font-weight: 600;
-        font-size: 1.2em;
+        font-weight: bold;
+        font-size: 1.2rem;
         border: none;
-        border-radius: 10px;
         cursor: pointer;
         display: block;
-        margin: 20px auto;
-        transition: background-color 0.3s;
+        margin: 1.1rem auto;
+        background-color: rgba(255, 255, 255, 0.1);
+        transition: background-color 0.3s, color 0.3s;
+        border-radius: var(--radius-big);
     }
 
-    .btn-futuristic:hover {
-        background-color: #ff4081;
-    }
-
-    /* Responsive styles */
-    @@media (max-width: 768px) {
-        .create-document-container {
-            margin: 20px;
-            padding: 10px;
+        .document-button:hover {
+            background-color: #ff4081;
+            color: #ffffff;
         }
 
-        .futuristic-title {
-            font-size: 2em;
-        }
-
-        .futuristic-input {
-            font-size: 1em;
-        }
+    footer {
+        margin-top: auto;
     }
 
     @@media (max-width: 480px) {
-        .futuristic-title {
-            font-size: 1.8em;
+        .document-input {
+            font-size: 0.9rem;
         }
 
-        .futuristic-input {
-            font-size: 0.9em;
+        .document-button {
+            font-size: 1rem;
+            padding: 0.6rem;
         }
-
-        .btn-futuristic {
-            font-size: 1em;
-            padding: 10px;
-        }
-    }
-
-    footer {
-        background-color: transparent;
-        text-align: center;
-        padding: 10px 0;
-        color: #ffffff;
-        margin-top: auto; /* Ensures the footer is pushed to the bottom */
     }
 </style>

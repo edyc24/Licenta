@@ -1,17 +1,17 @@
-﻿<h2 class="futuristic-title">Admin Dashboard</h2>
+﻿<h2 class="admin-title">Admin Dashboard</h2>
 <p class="welcome-message">Bine ai venit, @User.Identity.Name!</p>
 
 <ul class="admin-menu">
-    <li><a asp-action="Audit" class="futuristic-link">Inspectează Audit</a></li>
-    <li><a asp-action="CreateAnunt" class="futuristic-link">Creează Anunț</a></li>
-    <li><a asp-action="CreateMatch" class="futuristic-link">Creează Meci</a></li>
-    <li><a asp-action="MeciuriLive" class="futuristic-link">Lista Meciuri Live</a></li>
-    <li><a asp-action="Logout" class="futuristic-link">Logout</a></li>
+    <li><a asp-action="Audit" class="admin-link">Inspectează audit</a></li>
+    <li><a asp-action="CreateAnunt" class="admin-link">Creează anunț</a></li>
+    <li><a asp-action="CreateMatch" class="admin-link">Creează meci</a></li>
+    <li><a asp-action="MeciuriLive" class="admin-link">Listă meciuri live</a></li>
+    <li><a asp-action="Logout" class="admin-link admin-link-secondary">Logout</a></li>
 </ul>
 
 <style>
-    /* General styles */
     body {
+        background-image: none;
         background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
         margin: 0;
         padding: 0;
@@ -20,18 +20,18 @@
         min-height: 100vh;
     }
 
-    .futuristic-title {
+    .admin-title {
         text-align: center;
-        font-size: 2.5em;
+        font-size: 2.5rem;
         color: #00e0ff;
-        margin-top: 40px;
+        margin-top: 2.5rem;
     }
 
     .welcome-message {
         text-align: center;
-        font-size: 1.5em;
+        font-size: 1.5rem;
         color: #ffffff;
-        margin-bottom: 40px;
+        margin-bottom: 2.5rem;
     }
 
     .admin-menu {
@@ -40,69 +40,49 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center; /* Center the buttons horizontally */
-        gap: 30px; /* Add a 30px gap between buttons */
+        justify-content: center;
+        gap: 2rem;
     }
 
-    .futuristic-link {
+    .admin-link {
+        width: 16rem;
+        padding: 1rem;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 1.2rem;
+        border: none;
+        cursor: pointer;
         display: block;
-        width: 200px; /* Set a fixed width for all buttons */
-        text-align: center;
-        font-size: 1.2em;
-        color: #00e0ff;
-        text-decoration: none;
-        padding: 10px 20px;
-        border-radius: 10px;
         background-color: rgba(255, 255, 255, 0.1);
         transition: background-color 0.3s, color 0.3s;
+        border-radius: var(--radius-big);
+        text-align: center;
     }
 
-        .futuristic-link:hover {
+        .admin-link:hover {
             background-color: #ff4081;
             color: #ffffff;
         }
 
-        .futuristic-link:hover {
-            background-color: #ff4081;
-            color: #ffffff;
-        }
-
-    /* Responsive styles */
-    @@media (max-width: 768px) {
-        .futuristic-title {
-            font-size: 2em;
-        }
-
-        .welcome-message {
-            font-size: 1.2em;
-        }
-
-        .futuristic-link {
-            font-size: 1em;
-            padding: 8px 16px;
-        }
-    }
-
-    @@media (max-width: 480px) {
-        .futuristic-title {
-            font-size: 1.8em;
-        }
-
-        .welcome-message {
-            font-size: 1em;
-        }
-
-        .futuristic-link {
-            font-size: 0.9em;
-            padding: 6px 12px;
-        }
+    .admin-link-secondary {
+        background-color: #6c757d;
     }
 
     footer {
-        background-color: transparent;
-        text-align: center;
-        padding: 10px 0;
-        color: #ffffff;
-        margin-top: auto; /* Ensures the footer is pushed to the bottom */
+        margin-top: auto;
+    }
+
+    @@media (max-width: 480px) {
+        .admin-title {
+            font-size: 1.8rem;
+        }
+
+        .welcome-message {
+            font-size: 1rem;
+        }
+
+        .admin-link {
+            font-size: 1em;
+        }
     }
 </style>

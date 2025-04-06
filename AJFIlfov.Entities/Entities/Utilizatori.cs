@@ -57,4 +57,5 @@ public partial class Utilizatori : IEntity
     public virtual ICollection<PasswordRecovery> PasswordRecoveries { get; set; } = new List<PasswordRecovery>();
 
     public virtual UserAddress? UserAddress { get; set; }
+    public ICollection<Appointment> Appointments { get; set; }
 }

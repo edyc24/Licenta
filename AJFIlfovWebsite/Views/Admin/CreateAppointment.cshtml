@@ -1,29 +1,67 @@
 ﻿@model AJFIlfov.BusinessLogic.Implementation.Account.Models.CreateAppointmentModel
 
 <h2 class="futuristic-title">Create Appointment</h2>
-<form asp-action="CreateAppointment" method="post" class="futuristic-form">
-    <div class="form-group">
-        <label asp-for="Title" class="futuristic-label"></label>
-        <input asp-for="Title" class="form-control futuristic-input" />
+<div class="appointment-container">
+    <form asp-action="CreateAppointment" method="post" class="futuristic-form">
+        <div class="form-group">
+            <label asp-for="Title" class="futuristic-label"></label>
+            <input asp-for="Title" class="form-control futuristic-input" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Date" class="futuristic-label"></label>
+            <input asp-for="Date" type="date" class="form-control futuristic-input" min="@DateTime.Today.AddDays(1).ToString("yyyy-MM-dd")" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Time" class="futuristic-label">Time</label>
+            <select asp-for="Time" class="form-control futuristic-input">
+                @foreach (var slot in ViewBag.AvailableSlots)
+                {
+                    <option value="@slot">@slot</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" class="futuristic-label"></label>
+            <textarea asp-for="Description" class="form-control futuristic-input"></textarea>
+        </div>
+        <button type="submit" class="btn futuristic-button">Create</button>
+    </form>
+    <div class="profile-container">
+        <img src="~/images/vicepresedinte.jpeg" alt="Marius Serban" class="profile-image" />
+        <p class="profile-name">Marius Serban</p>
     </div>
-    <div class="form-group">
-        <label asp-for="Date" class="futuristic-label"></label>
-        <input asp-for="Date" type="datetime-local" class="form-control futuristic-input" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Description" class="futuristic-label"></label>
-        <textarea asp-for="Description" class="form-control futuristic-input"></textarea>
-    </div>
-    <button type="submit" class="btn futuristic-button">Create</button>
-</form>
+</div>
 
 <style>
-    .futuristic-form {
-        max-width: 600px;
+    .appointment-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        max-width: 900px;
         margin: 0 auto;
         padding: 20px;
         background-color: rgba(255, 255, 255, 0.1);
         border-radius: 10px;
+    }
+
+    .futuristic-form {
+        flex: 1;
+        margin-right: 20px;
+    }
+
+    .profile-container {
+        text-align: center;
+    }
+
+    .profile-image {
+        width: 150px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+    }
+
+    .profile-name {
+        color: #00e0ff;
+        font-size: 1.2em;
     }
 
     .futuristic-label {
@@ -51,8 +89,8 @@
         transition: background-color 0.3s, color 0.3s;
     }
 
-    .futuristic-button:hover {
-        background-color: #ff4081;
-        color: #ffffff;
-    }
+        .futuristic-button:hover {
+            background-color: #ff4081;
+            color: #ffffff;
+        }
 </style>

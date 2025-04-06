@@ -10,7 +10,9 @@ namespace AJFIlfov.BusinessLogic.Implementation.Account.Models
     {
         public string Title { get; set; }
         public DateTime Date { get; set; }
+        public TimeSpan Time { get; set; }
         public string Description { get; set; }
+        public Guid UserId { get; set; } // Assuming UserId is passed in the model
     }
 
 }

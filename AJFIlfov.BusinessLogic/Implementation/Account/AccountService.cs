@@ -265,6 +265,30 @@ namespace AJFIlfov.BusinessLogic.Implementation.Account
                 Email = userAddress.User.Mail
             };
         }
+        public List<TimeSpan> GetAvailableSlots(DateTime date)
+        {
+            var appointments = UnitOfWork.Appointments.Get()
+                .Where(a => a.Date.Date == date.Date)
+                .Select(a => a.Date.TimeOfDay)
+                .ToList();
+
+            var availableSlots = new List<TimeSpan>();
+            var startTime = new TimeSpan(10, 0, 0);
+            var endTime = new TimeSpan(16, 0, 0);
+            var breakStart = new TimeSpan(13, 0, 0);
+            var breakEnd = new TimeSpan(13, 30, 0);
+
+            for (var time = startTime; time < endTime; time = time.Add(new TimeSpan(0, 30, 0)))
+            {
+                if (time >= breakStart && time < breakEnd)
+                    continue;
+
+                if (!appointments.Contains(time))
+                    availableSlots.Add(time);
+            }
+
+            return availableSlots;
+        }
 
         public void CreateAppointment(CreateAppointmentModel model)
         {
@@ -274,11 +298,13 @@ namespace AJFIlfov.BusinessLogic.Implementation.Account
                 Title = model.Title,
                 Date = model.Date,
                 Description = model.Description,
-                Status = "Scheduled"
+                Status = "Scheduled",
+                UserId = CurrentUser.Id// Assuming UserId is passed in the model
             };
             UnitOfWork.Appointments.Insert(appointment);
             UnitOfWork.SaveChanges();
         }
+
 
         public List<AppointmentModel> GetAppointments()
         {

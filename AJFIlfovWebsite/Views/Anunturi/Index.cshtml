@@ -1,13 +1,12 @@
 ﻿@model IEnumerable<AJFIlfov.BusinessLogic.Implementation.Anunturi.Models.AnuntModel>
 
-<div class="announcements-container">
-    <h1>Comunicate</h1>
+<h2 class="page-title">Comunicate</h2>
 
-    <!-- filter and search section -->
+<div class="announcements-container">
     <form method="get" class="filter-search-form">
         <div class="filter-section">
-            <label for="sectionFilter">Filtrează după secțiune:</label>
-            <select id="sectionFilter" name="sectionFilter" class="form-control">
+            <label for="sectionFilter" class="filter-label">Filtrează după secțiune:</label>
+            <select id="sectionFilter" name="sectionFilter" class="filter-select">
                 <option value="all">Toate secțiunile</option>
                 <option value="Informatii">Informații</option>
                 <option value="Competitii">Competiții</option>
@@ -15,205 +14,210 @@
         </div>
 
         <div class="search-section">
-            <label for="searchInput">Caută:</label>
-            <input type="text" id="searchInput" name="searchText" placeholder="Introdu textul de căutare..." />
+            <label for="searchInput" class="search-label">Caută:</label>
+            <input type="text" id="searchInput" name="searchText" class="search-input" placeholder="Introdu textul de căutare..." />
         </div>
 
-        <button type="submit" class="btn btn-primary">Aplică Filtre</button>
+        <button type="submit" class="filter-button">Aplică Filtre</button>
     </form>
 
-    <!-- Announcements Grid -->
     <div class="announcements-grid">
         @foreach (var anunt in Model)
         {
             <div class="announcement-card">
-                <h3>@anunt.Titlu</h3>
-                <p class="announcement-section">@anunt.TipAnunt</p>
-                <p>@(anunt.Continut.Length > 150 ? anunt.Continut.Substring(0, 150) + "..." : anunt.Continut)</p>
+                <div class="announcement-header">
+                    <h3 class="announcement-title">@anunt.Titlu</h3>
+                    <span class="announcement-section">@anunt.TipAnunt</span>
+                </div>
+
+                <p class="announcement-content">@(anunt.Continut.Length > 150 ? anunt.Continut.Substring(0, 150) + "..." : anunt.Continut)</p>
+
                 @{
-                    // Convert byte[] to Base64 string
                     string imageBase64 = anunt.ImagineAnunt.Length > 0
                     ? "data:image/jpeg;base64," + Convert.ToBase64String(anunt.ImagineAnunt)
                     : "/images/hotarari.jpg";
                 }
 
-                <img src="@imageBase64" class="img-fluid announcement-image" alt="Imagine anunț" />
+                <img src="@imageBase64" class="announcement-image" alt="Imagine anunț" />
 
-                <span class="announcement-date">Data: @anunt.DataPublicarii.ToString("dd MMM yyyy")</span>
-                <a href="/Anunturi/Detalii/@anunt.Id" class="btn btn-primary">Citește mai mult</a>
+                <div class="announcement-footer">
+                    <span class="announcement-date">@anunt.DataPublicarii.ToString("dd MMM yyyy")</span>
+                    <a href="/Anunturi/Detalii/@anunt.Id" class="read-more-button">Citește mai mult</a>
+                </div>
             </div>
         }
     </div>
 </div>
 
 <style>
-    /* Container Styling */
     .announcements-container {
-        border-radius: 20px;
-        background: rgba(255, 255, 255, 0.1);
-        margin: 60px 80px;
-        padding: 20px;
-        background-color: #f8fafc;
+        padding: 2rem 1.2rem;
     }
 
-        .announcements-container h1 {
-            text-align: center;
-            font-size: 2em;
-            color: #007acc;
-            margin-bottom: 30px;
-            font-weight: 600;
-        }
-
-    /* filter and search form */
     .filter-search-form {
-        margin-bottom: 20px;
-        text-align: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        align-items: center;
     }
 
     .filter-section,
     .search-section {
-        display: inline-block;
-        margin: 0 10px;
-    }
-
-        .filter-section label,
-        .search-section label {
-            font-size: 1.1em;
-            font-weight: 500;
-            color: #007acc;
-            margin-right: 10px;
-        }
-
-        .filter-section select,
-        .search-section input {
-            padding: 8px;
-            font-size: 1em;
-            border-radius: 5px;
-            border: 1px solid #cccccc;
-        }
-
-    .btn-primary {
-        margin-top: 10px;
-        background-color: #007acc;
-        color: #ffffff;
-        padding: 10px 15px;
-        border-radius: 5px;
-        font-weight: 600;
-        font-size: 1em;
-        border: none;
-        cursor: pointer;
-        text-decoration: none;
-    }
-
-        .btn-primary:hover {
-            background-color: #005fa3;
-        }
-
-    .form-control {
-        margin-top: 10px;
-        background-color: #007acc;
-        color: #ffffff;
-        padding: 10px 15px;
-        border-radius: 5px;
-        font-weight: 600;
-        font-size: 1em;
-        border: none;
-        cursor: pointer;
-        text-decoration: none;
-    }
-
-    /* announcements grid */
-    .announcements-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-gap: 20px;
-    }
-
-    /* announcement card */
-    .announcement-card {
-        background-color: #ffffff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border-left: 4px solid #007acc;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        gap: 0.5rem;
+        flex: 1;
+        min-width: 200px;
     }
 
-        .announcement-card h3 {
-            color: #005fa3;
-            font-size: 1.2em;
-            font-weight: 600;
-            margin-bottom: 10px;
+    .filter-label,
+    .search-label {
+        color: var(--color-on-surface);
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+
+    .filter-select,
+    .search-input {
+        padding: 0.7rem;
+        font-size: 1.1rem;
+        border-radius: var(--radius-small);
+        border: 1px solid var(--color-on-surface);
+        background-color: var(--color-surface);
+        color: var(--color-on-surface);
+    }
+
+    .filter-button {
+        padding: 0.7rem 1.5rem;
+        background-color: var(--color-secondary);
+        color: var(--color-on-secondary);
+        border: none;
+        border-radius: var(--radius-small);
+        font-weight: bold;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        align-self: flex-end;
+    }
+
+        .filter-button:hover {
+            background-color: var(--color-secondary-hover);
         }
 
-    .announcement-section {
-        font-size: 1em;
-        color: #333;
-        font-weight: bold;
-        margin-bottom: 5px;
+    .announcements-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
     }
 
-    .announcement-card p {
-        font-size: 0.9em;
-        line-height: 1.4;
-        color: #666;
-        margin-bottom: 15px;
+    .announcement-card {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem;
+        background-color: var(--color-surface);
+        border-radius: var(--radius-big);
+    }
+
+    .announcement-header {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .announcement-title {
+        color: var(--color-on-surface);
+        font-size: 1.3rem;
+        font-weight: bold;
+        margin: 0;
+    }
+
+    .announcement-section {
+        color: var(--color-secondary);
+        font-size: 0.9rem;
+        font-weight: bold;
+    }
+
+    .announcement-content {
+        color: var(--color-on-surface);
+        font-size: 1.1rem;
+        line-height: 1.5;
+        margin: 0;
         flex-grow: 1;
     }
 
     .announcement-image {
         width: 100%;
-        height: 150px;
-        object-fit: contain;
-        border-radius: 5px;
-        margin-bottom: 15px;
-        background-color: #f0f0f0;
+        height: 200px;
+        object-fit: cover;
+        border-radius: var(--radius-small);
+        background-color: var(--color-surface-variant);
+    }
+
+    .announcement-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: auto;
     }
 
     .announcement-date {
-        font-size: 0.8em;
-        color: #999;
-        display: block;
-        margin-bottom: 10px;
+        color: var(--color-on-surface);
+        font-size: 0.9rem;
     }
 
-    .announcement-card .btn-primary {
-        width: 100%;
-        text-align: center;
+    .read-more-button {
+        padding: 0.7rem 1.5rem;
+        background-color: var(--color-secondary);
+        color: var(--color-on-secondary);
+        border: none;
+        border-radius: var(--radius-small);
+        font-weight: bold;
+        font-size: 1rem;
+        text-decoration: none;
+        transition: background-color 0.3s;
     }
 
-    /* responsive mobile design */
-    @@media (max-width: 1200px) {
-        .announcements-grid {
-            grid-template-columns: repeat(3, 1fr);
+        .read-more-button:hover {
+            background-color: var(--color-secondary-hover);
+        }
+
+    @@media (min-width: 600px) {
+        .announcements-container {
+            padding: 2rem 2.8rem;
         }
     }
 
-    @@media (max-width: 992px) {
+    @@media (min-width: 768px) {
+        .announcements-container {
+            padding: 2rem 3rem;
+        }
+
         .announcements-grid {
             grid-template-columns: repeat(2, 1fr);
         }
     }
 
-    @@media (max-width: 768px) {
+    @@media (min-width: 1068px) {
+        .announcements-container {
+            padding: 2rem 3.3rem;
+            margin-bottom: 2rem;
+        }
+
         .announcements-grid {
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @@media (min-width: 1280px) {
+        .announcements-container {
+            padding: 2rem 5rem;
+            margin-bottom: 4rem;
         }
 
-        .filter-section,
-        .search-section {
-            display: block;
-            margin: 10px 0;
-        }
-
-        .filter-search-form {
-            text-align: left;
-        }
-
-        .btn-primary {
-            width: 100%;
+        .announcements-grid {
+            grid-template-columns: repeat(3, 1fr);
         }
     }
 </style>

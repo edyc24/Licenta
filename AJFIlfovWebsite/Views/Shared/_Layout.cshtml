@@ -17,37 +17,51 @@
 </head>
 
 <body>
-    <!-- header section -->
-    <header>
-        <div class="header-content">
-            <div class="header-title">
-                <img src="~/images/logo1.png" alt="Logo AJF Ilfov">
-                <h2>Asociația Județeană de Fotbal Ilfov</h2>
-                <h3>AJF Ilfov</h3>
+    <!-- filter over hexagon background to make it blurred and cool; it needs to wrap around the whole content so that its height matches it -->
+    <div class="body-filter">
+
+        <!-- header section -->
+        <header>
+            <div class="header-content">
+                <div class="header-title">
+                    <img src="~/images/logo1.png" alt="Logo AJF Ilfov">
+                    <h2>Asociația Județeană de Fotbal Ilfov</h2>
+                    <h3>AJF Ilfov</h3>
+                </div>
+
+                <!-- menu toggle button (visible only on mobile) -->
+                <div class="header-menu-toggle" onclick="toggleMenu()"></div>
+
+                <!-- main navigation links for big screens -->
+                <nav class="big-nav">
+                    <a href="HomeWebsite">Acasă</a>
+                    <a href="DespreNoi">Despre noi</a>
+                    <a href="Anunturi">Comunicate</a>
+                    <a href="Comisii">Comisii jurisdicționale</a>
+                    <a href="Competitii">Competiții</a>
+                    <a href="MeciLive">Meciuri live</a>
+                    <a href="Documente">Documente</a>
+                    <a href="Contact">Contact</a>
+                </nav>
             </div>
+        </header>
 
-            <!-- menu toggle button (visible only on mobile) -->
-            <div class="header-menu-toggle" onclick="toggleMenu()"></div>
-
-            <!-- main navigation links for big screens -->
-            <nav class="big-nav">
-                <a href="HomeWebsite">Acasă</a>
-                <a href="DespreNoi">Despre noi</a>
-                <a href="Anunturi">Comunicate</a>
-                <a href="Comisii">Comisii jurisdicționale</a>
-                <a href="Competitii">Competiții</a>
-                <a href="MeciLive">Meciuri live</a>
-                <a href="Documente">Documente</a>
-                <a href="Contact">Contact</a>
-            </nav>
+        <!-- main content -->
+        <div class="content">
+            @RenderBody()
+            @RenderSection("Scripts", required: false)
+            @RenderSection("Styles", required: false)
         </div>
-    </header>
 
-    <!-- main content -->
-    <div class="content">
-        @RenderBody()
-        @RenderSection("Scripts", required: false)
-        @RenderSection("Styles", required: false)
+        <!-- page footer -->
+        <footer>
+            <p>&copy; 2024 Asociația Județeană de Fotbal Ilfov. Toate drepturile rezervate.</p>
+            <div class="social-icons">
+                <a class="instagram" href="#"></a>
+                <a class="facebook" href="https://www.facebook.com/AJFIlfov1997/?locale=ro_RO"></a>
+                <a class="twitter" href="#"></a>
+            </div>
+        </footer>
     </div>
 
     <!-- main navigation links for small screens -->
@@ -67,16 +81,6 @@
             <a href="Contact">Contact</a>
         </div>
     </nav>
-
-    <!-- page footer -->
-    <footer>
-        <p>&copy; 2024 Asociația Județeană de Fotbal Ilfov. Toate drepturile rezervate.</p>
-        <div class="social-icons">
-            <a class="instagram" href="#"></a>
-            <a class="facebook" href="https://www.facebook.com/AJFIlfov1997/?locale=ro_RO"></a>
-            <a class="twitter" href="#"></a>
-        </div>
-    </footer>
 
     <!-- scripts -->
     <script>

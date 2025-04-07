@@ -4,246 +4,12 @@
     var grupe = ViewBag.Grupe;
 }
 
-<style>
-        /* Stilurile tale personalizate */
-    body {
-        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
+<h2 class="page-title">@ViewData["Title"]</h2>
 
-    .container {
-        padding: 0 80px; /* Padding orizontal de 80px */
-        text-align: center; /* Aliniere pe mijloc */
-        flex: 1;
-    }
-
-    h1 {
-        font-size: 2.5em;
-        color: #ffffff;
-        margin-top: 20px;
-        margin-bottom: 30px;
-    }
-
-    /* dropdown */
-    .form-group {
-        margin-bottom: 20px; /* Spațiere între text și dropdown */
-    }
-
-        .form-group label {
-            font-size: 1.5rem; /* Text mare */
-            color: #ffffff; /* Text alb */
-        }
-
-    #grupaDropdown, #etapaDropdown {
-        background: #24243e;
-        color: #ffffff;
-        border: 1px solid #ffffff;
-        border-radius: 10px; /* Margini rotunjite */
-        padding: 8px;
-        margin: 15px 0; /* Spațiere verticală de 30px între elemente */
-        width: 100%;
-        max-width: 300px; /* Asigură o lățime constantă */
-    }
-
-        #grupaDropdown:focus, #etapaDropdown:focus {
-            outline: none;
-        }
-
-    /* tabs */
-    .nav-tabs {
-        display: flex;
-        justify-content: center; /* Aliniere pe mijloc */
-        list-style-type: none; /* Elimină bulinele */
-        padding: 0;
-        margin-bottom: 20px;
-    }
-
-        .nav-tabs .nav-item {
-            margin: 0 15px; /* Spațiere orizontală de 30px între taburi */
-        }
-
-        .nav-tabs .nav-link {
-            background: #24243e;
-            color: #ffffff;
-            border: 2px solid transparent;
-            text-transform: uppercase;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            padding: 10px 15px;
-            display: inline-block; /* Poziționare orizontală */
-            border-radius: 10px; /* Colțuri rotunjite */
-        }
-
-            .nav-tabs .nav-link.active {
-                background: #ffffff;
-                color: #000000;
-                border-color: #ffffff;
-            }
-
-            .nav-tabs .nav-link:hover {
-                color: #ffffff;
-                border-color: #ffffff;
-            }
-
-    /* tables */
-    .table-container {
-        overflow-x: auto; /* Make the table scrollable horizontally */
-        margin: 20px auto; /* Centrare și margine verticală */
-        max-width: 1000px; /* Lățime constantă */
-    }
-
-    .table {
-        background: rgba(36, 36, 62, 0.8);
-        border: 2px solid #ffffff;
-        border-radius: 10px;
-        width: 100%;
-        table-layout: auto; /* Allow columns to adjust based on content */
-    }
-
-        .table thead th {
-            color: #ffffff;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            background: #24243e;
-            border-bottom: 2px solid #ffffff;
-        }
-
-        .table tbody tr {
-            transition: all 0.3s ease;
-        }
-
-            .table tbody tr:hover {
-                background: rgba(255, 255, 255, 0.2);
-            }
-
-        .table td, .table th {
-            text-align: center;
-            color: #ffffff;
-            padding: 10px;
-            white-space: nowrap; /* Prevent text from wrapping */
-        }
-
-    /* futuristic button */
-    .btn-futuristic {
-        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-        color: #ffffff;
-        border: 2px solid #ffffff;
-        text-transform: uppercase;
-        font-weight: bold;
-        transition: all 0.3s ease;
-        padding: 10px 20px;
-        border-radius: 5px;
-        margin: 15px 0; /* Spațiere verticală de 30px între elemente */
-    }
-
-        .btn-futuristic:hover {
-            background: #ffffff;
-            color: #000000;
-        }
-
-    /* footer */
-    footer {
-        background: transparent;
-        text-align: center;
-        padding: 10px 0;
-        color: #ffffff;
-        margin-top: auto; /* Asigură poziționarea în partea de jos */
-    }
-
-    /* Responsive styles */
-    @@media (max-width: 768px) {
-        .container {
-            padding: 0 20px; /* Reduce padding pentru ecrane mici */
-        }
-
-        h2 {
-            font-size: 1.8rem;
-        }
-
-        .form-group label {
-            font-size: 1.2rem;
-        }
-
-        #grupaDropdown, #etapaDropdown {
-            font-size: 1rem;
-        }
-
-        .nav-tabs .nav-link {
-            font-size: 0.9rem;
-        }
-
-        .table th, .table td {
-            font-size: 0.8rem;
-            padding: 8px;
-        }
-
-        .table {
-            overflow-x: auto;
-        }
-    }
-
-    @@media (max-width: 576px) {
-        h2 {
-            font-size: 1.5rem;
-        }
-
-        #grupaDropdown, #etapaDropdown {
-            font-size: 0.9rem;
-        }
-
-        .nav-tabs .nav-link {
-            font-size: 0.8rem;
-        }
-
-        .table th, .table td {
-            font-size: 0.75rem;
-        }
-
-        .table {
-            border: none;
-        }
-
-        .btn-futuristic {
-            font-size: 0.9rem;
-            padding: 8px 16px;
-        }
-
-        .nav-tabs {
-            flex-wrap: wrap;
-        }
-
-            .nav-tabs .nav-item {
-                flex: 1 1 auto;
-                text-align: center;
-            }
-
-            .nav-tabs .nav-link {
-                padding: 8px 10px;
-                font-size: 0.8rem;
-            }
-    }
-
-    /* Custom tab content display */
-    .tab-content > .tab-pane {
-        display: none;
-    }
-
-    .tab-content > .active {
-        display: block;
-    }
-</style>
-
-<div class="container">
-    <h1>@ViewData["Title"]</h1>
-
-    <!-- dropdown for competitions -->
-    <div class="form-group">
-        <label for="grupaDropdown">Selectează Competiția:</label>
-        <select id="grupaDropdown" class="form-control">
+<div class="competitions-container">
+    <div class="filter-section">
+        <label for="grupaDropdown" class="filter-label">Selectează Competiția:</label>
+        <select id="grupaDropdown" class="filter-select">
             <option value="">-- Selectează Grupa --</option>
             @foreach (var grupa in grupe)
             {
@@ -252,110 +18,243 @@
         </select>
     </div>
 
-    <!-- tabs -->
-    <ul class="nav nav-tabs justify-content-center" id="competitiiTabs" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link active" id="clasament-tab" data-toggle="tab" href="#clasament" role="tab">Clasament</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="rezultate-tab" data-toggle="tab" href="#rezultate" role="tab">Rezultate</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="etapa-urmatoare-tab" data-toggle="tab" href="#etapa-urmatoare" role="tab">Etapa Următoare</a>
-        </li>
-    </ul>
-
-    <!-- tab content -->
-    <div class="tab-content mt-4" id="competitiiContent">
-        <!-- clasament -->
-        <div class="tab-pane fade show active" id="clasament" role="tabpanel">
-            <div class="table-container">
-                <table class="table" id="clasamentTable">
-                    <thead>
-                        <tr>
-                            <th>Pozitie</th>
-                            <th>Echipa</th>
-                            <th>M</th>
-                            <th>V</th>
-                            <th>E</th>
-                            <th>I</th>
-                            <th>GM</th>
-                            <th>GP</th>
-                            <th>P</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- data populated dynamically -->
-                    </tbody>
-                </table>
-            </div>
+    <div class="tabs-container">
+        <div class="tabs">
+            <button class="tab-button active" data-tab="clasament">Clasament</button>
+            <button class="tab-button" data-tab="rezultate">Rezultate</button>
+            <button class="tab-button" data-tab="etapa-urmatoare">Etapa Următoare</button>
         </div>
 
-        <!-- rezultate -->
-        <div class="tab-pane fade" id="rezultate" role="tabpanel">
-            <div class="form-group">
-                <label for="etapaDropdown">Selectează Etapa:</label>
-                <select id="etapaDropdown" class="form-control">
-                    <!-- options populated dynamically -->
-                </select>
+        <div class="tab-content">
+            <div class="tab-pane active" id="clasament">
+                <div class="table-container">
+                    <table class="competition-table" id="clasamentTable">
+                        <thead>
+                            <tr>
+                                <th>Pozitie</th>
+                                <th>Echipa</th>
+                                <th>M</th>
+                                <th>V</th>
+                                <th>E</th>
+                                <th>I</th>
+                                <th>GM</th>
+                                <th>GP</th>
+                                <th>P</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
             </div>
-            <div class="table-container">
-                <table class="table" id="rezultateTable">
-                    <thead>
-                        <tr>
-                            <th>Meci</th>
-                            <th>Data și Ora</th>
-                            <th>Locație</th>
-                            <th>Scor</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- data populated dynamically -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
 
-        <!-- etapa urmatoare -->
-        <div class="tab-pane fade" id="etapa-urmatoare" role="tabpanel">
-            <div class="table-container">
-                <table class="table" id="etapaUrmatoareTable">
-                    <thead>
-                        <tr>
-                            <th>Meci</th>
-                            <th>Data și Ora</th>
-                            <th>Locație</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- data populated dynamically -->
-                    </tbody>
-                </table>
+            <div class="tab-pane" id="rezultate">
+                <div class="filter-section">
+                    <label for="etapaDropdown" class="filter-label">Selectează Etapa:</label>
+                    <select id="etapaDropdown" class="filter-select"></select>
+                </div>
+                <div class="table-container">
+                    <table class="competition-table" id="rezultateTable">
+                        <thead>
+                            <tr>
+                                <th>Meci</th>
+                                <th>Data și Ora</th>
+                                <th>Locație</th>
+                                <th>Scor</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="tab-pane" id="etapa-urmatoare">
+                <div class="table-container">
+                    <table class="competition-table" id="etapaUrmatoareTable">
+                        <thead>
+                            <tr>
+                                <th>Meci</th>
+                                <th>Data și Ora</th>
+                                <th>Locație</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
+<style>
+    html,
+    body,
+    .body-filter {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .competitions-container {
+        padding: 2rem 1.2rem;
+    }
+
+    .filter-section {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .filter-label {
+        color: var(--color-on-surface);
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+
+    .filter-select {
+        padding: 0.7rem;
+        font-size: 1.1rem;
+        border-radius: var(--radius-small);
+        border: 1px solid var(--color-on-surface);
+        background-color: var(--color-surface);
+        color: var(--color-on-surface);
+    }
+
+    .tabs-container {
+        margin-top: 2rem;
+    }
+
+    .tabs {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .tab-button {
+        padding: 0.7rem 1.5rem;
+        background-color: var(--color-surface);
+        color: var(--color-on-surface);
+        border: 1px solid var(--color-on-surface);
+        border-radius: var(--radius-small);
+        font-weight: bold;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .tab-button.active {
+        background-color: var(--color-secondary);
+        color: var(--color-on-secondary);
+        border-color: var(--color-secondary);
+    }
+
+    .tab-button:hover:not(.active) {
+        background-color: var(--color-surface-variant);
+    }
+
+    .tab-content {
+        margin-top: 2rem;
+    }
+
+    .tab-pane {
+        display: none;
+    }
+
+    .tab-pane.active {
+        display: block;
+    }
+
+    .table-container {
+        overflow-x: auto;
+        margin: 1rem 0;
+    }
+
+    .competition-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: var(--color-surface);
+        border-radius: var(--radius-big);
+        overflow: hidden;
+    }
+
+    .competition-table thead th {
+        background-color: var(--color-secondary);
+        color: var(--color-on-secondary);
+        padding: 1rem;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    .competition-table tbody tr {
+        border-bottom: 1px solid var(--color-on-surface);
+    }
+
+    .competition-table tbody tr:last-child {
+        border-bottom: none;
+    }
+
+    .competition-table td {
+        padding: 1rem;
+        color: var(--color-on-surface);
+    }
+
+    .competition-table tbody tr:hover {
+        background-color: var(--color-surface-variant);
+    }
+
+    footer {
+        margin-top: auto;
+    }
+
+    @@media (min-width: 600px) {
+        .competitions-container {
+            padding: 2rem 2.8rem;
+        }
+    }
+
+    @@media (min-width: 768px) {
+        .competitions-container {
+            padding: 2rem 3rem;
+        }
+
+        .tabs {
+            flex-wrap: nowrap;
+        }
+
+        .competition-table {
+            font-size: 1.1rem;
+        }
+    }
+
+    @@media (min-width: 1068px) {
+        .competitions-container {
+            padding: 2rem 3.3rem;
+            margin-bottom: 2rem;
+        }
+    }
+
+    @@media (min-width: 1280px) {
+        .competitions-container {
+            padding: 2rem 5rem;
+            margin-bottom: 4rem;
+        }
+    }
+</style>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function () {
-        // Initialize the first tab as active
-        $('.tab-content > .tab-pane').first().addClass('active');
-
-        // Handle tab switching
-        $('.nav-link').click(function (e) {
-            e.preventDefault();
-            $('.nav-link').removeClass('active');
+        $('.tab-button').click(function () {
+            const tabId = $(this).data('tab');
+            $('.tab-button').removeClass('active');
             $(this).addClass('active');
-
-            const target = $(this).attr('href');
             $('.tab-pane').removeClass('active');
-            $(target).addClass('active');
+            $(`#${tabId}`).addClass('active');
         });
 
         const baseUrl = "/Competitii";
 
-        // load data for the selected competition
         $('#grupaDropdown').change(function () {
             const grupaId = $(this).val();
             if (grupaId) {
@@ -365,7 +264,6 @@
             }
         });
 
-        // load clasament data
         function loadClasament(grupaId) {
             $.get(`${baseUrl}/GetClasament`, { grupaId }, function (data) {
                 const tableBody = $('#clasamentTable tbody');
@@ -388,7 +286,6 @@
             });
         }
 
-        // load etape dropdown and rezultate data
         function loadEtape(grupaId) {
             $.get(`${baseUrl}/GetEtapeByGrupa`, { grupaId }, function (etape) {
                 const etapaDropdown = $('#etapaDropdown');
@@ -397,7 +294,6 @@
                     etapaDropdown.append(`<option value="${etapa}">Etapa ${etapa}</option>`);
                 });
 
-                // load results for the first etapa by default
                 if (etape.length > 0) {
                     loadRezultate(grupaId, etape[0]);
                 }
@@ -409,7 +305,6 @@
             });
         }
 
-        // load rezultate data
         function loadRezultate(grupaId, etapa) {
             $.get(`${baseUrl}/GetRezultate`, { grupaId, etapa }, function (data) {
                 const tableBody = $('#rezultateTable tbody');
@@ -427,7 +322,6 @@
             });
         }
 
-        // load etapa urmatoare data
         function loadEtapaUrmatoare(grupaId) {
             $.get(`${baseUrl}/GetEtapaUrmatoare`, { grupaId }, function (data) {
                 const tableBody = $('#etapaUrmatoareTable tbody');

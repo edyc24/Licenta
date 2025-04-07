@@ -16,12 +16,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">
     <!-- css styles -->
     <link rel="stylesheet" href="~/css/HomeWebsite/Index.css">
-    <link rel="stylesheet" href="~/css/Common/Common.css">
+    <link rel="stylesheet" href="~/css/Common/Common2.css">
+    <style>
+        .header-title h2 {
+            color: var(--color-on-surface-inverse);
+        }
+
+        .header-title h3 {
+            color: var(--color-on-surface-inverse);
+        }
+
+        .header-menu-toggle {
+            color: var(--color-on-surface-inverse);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960' fill='%23d1d1d1ff'%3E%3Cpath d='M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z'/%3E%3C/svg%3E");
+        }
+
+        .big-nav a {
+            color: var(--color-on-surface-inverse);
+        }
+    </style>
 </head>
 
 <body>
     <!-- filter over hexagon background to make it blurred and cool; it needs to wrap around the whole content so that its height matches it -->
-    <div style="backdrop-filter: blur(2px) grayscale(20%); position: relative;">
+    <div class="body-filter">
 
         <!-- hero section -->
         <section class="hero">
@@ -63,6 +81,7 @@
         </section>
 
         <!-- ------------------------------------------------- -->
+        
         <!-- actual page content -->
         <main class="content">
 

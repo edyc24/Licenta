@@ -1,164 +1,178 @@
 ﻿@model AJFIlfov.BusinessLogic.Implementation.Anunturi.Models.AnuntModel
 
+<h2 class="page-title">@Model.Titlu</h2>
+
 <div class="announcement-details-container">
-    <h2>@Model.Titlu</h2>
-    <p>@Model.Continut</p>
-    
+    <p class="announcement-text">@Model.Continut</p>
+
     <div class="announcement-meta">
-        <p>Publicat de: <strong>@Model.PublishedBy</strong></p>
-        <p>Vizualizări: <strong>@Model.Views</strong></p>
-        <p>Data publicării: <strong>@Model.DataPublicarii.ToString("dd MMMM yyyy")</strong></p>
+        <div class="meta-item">
+            <span class="meta-label">Publicat de:</span>
+            <span class="meta-value">@Model.PublishedBy</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Vizualizări:</span>
+            <span class="meta-value">@Model.Views</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Data publicării:</span>
+            <span class="meta-value">@Model.DataPublicarii.ToString("dd MMMM yyyy")</span>
+        </div>
     </div>
 
     @if (Model.Imagine != null && Model.Imagine.Length > 0)
     {
-        <div id="pdf-viewer" data-pdf-url="@Url.Action("GetPdf", "Anunturi", new { id = Model.Id })">
-            <!-- PDF Canvas -->
+        <div class="pdf-viewer-container" id="pdf-viewer" data-pdf-url="@Url.Action("GetPdf", "Anunturi", new { id = Model.Id })">
+            <div class="pdf-controls" id="pdf-controls" style="margin-bottom: 2rem;">
+                <button id="prev-page" class="pdf-button prev-button" aria-label="Pagina Anterioară"></button>
+                <span class="page-info" id="page-info">
+                    Pagina <span id="page-num"></span> din <span id="page-count"></span>
+                </span>
+                <button id="next-page" class="pdf-button next-button" aria-label="Pagina Următoare"></button>
+            </div>
+            
             <canvas id="pdf-canvas"></canvas>
 
-            <!-- PDF Controls with Arrows -->
-            <div id="pdf-controls">
-                <button id="prev-page" aria-label="Pagina Anterioară">
-                    <i class="fas fa-arrow-left"></i>
-                </button>
-                <span id="page-info">Pagina <span id="page-num"></span> din <span id="page-count"></span></span>
-                <button id="next-page" aria-label="Pagina Următoare">
-                    <i class="fas fa-arrow-right"></i>
-                </button>
+            <div class="pdf-controls" id="pdf-controls" style="margin-top: 2rem;">
+                <button id="prev-page" class="pdf-button prev-button" aria-label="Pagina Anterioară"></button>
+                <span class="page-info" id="page-info">
+                    Pagina <span id="page-num"></span> din <span id="page-count"></span>
+                </span>
+                <button id="next-page" class="pdf-button next-button" aria-label="Pagina Următoare"></button>
             </div>
         </div>
     }
 </div>
 
 @section Scripts {
-    <!-- Include Font Awesome for icons -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <!-- Include PDF.js library from CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
-    <!-- Include your custom PDF viewer script -->
     <script src="~/js/pdf-viewer.js"></script>
 }
 
 <style>
-    /* Announcement Details Container */
     .announcement-details-container {
-        width: 80%;
-        max-width: 1000px;
-        margin: 40px auto;
-        padding: 20px;
-        background-color: #f8fafc;
-        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2rem 1.2rem;
     }
 
-        .announcement-details-container h2 {
-            font-size: 2.5em;
-            color: #007acc;
-            margin-bottom: 20px;
-        }
-
-        .announcement-details-container p {
-            font-size: 1.2em;
-            color: #333;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
+    .announcement-text {
+        font-size: 1.2rem;
+        color: var(--color-on-surface);
+        margin-bottom: 2rem;
+    }
 
     .announcement-meta {
-        margin-top: 20px;
-        font-size: 1em;
-        color: #555;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 2rem;
     }
 
-        .announcement-meta p {
-            margin: 5px 0;
-        }
+    .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
 
-    /* PDF Viewer */
-    #pdf-viewer {
+    .meta-label {
+        color: var(--color-on-surface);
+        font-weight: bold;
+        min-width: 120px;
+    }
+
+    .meta-value {
+        color: var(--color-on-surface);
+    }
+
+    .pdf-viewer-container {
+        margin-top: 2rem;
         text-align: center;
-        margin: 20px 0;
     }
 
     #pdf-canvas {
-        border: 1px solid #ccc;
-        max-width: 100%;
+        border: 1px solid var(--color-on-surface);
+        max-width: 1000px;
         width: 100%;
         height: auto;
+        border-radius: var(--radius-big);
     }
 
-    /* PDF Controls with Arrows */
-    #pdf-controls {
-        margin-top: 15px;
+    .pdf-controls {
         display: flex;
         justify-content: center;
         align-items: center;
+        gap: 2rem;
     }
 
-        #pdf-controls button {
-            padding: 10px;
-            margin: 0 20px;
-            font-size: 1.5em;
-            background-color: transparent;
-            color: #007acc;
-            border: none;
-            cursor: pointer;
-            transition: color 0.3s;
+    .pdf-button {
+        padding: 0.8rem 1.2rem;
+        background-color: var(--color-secondary);
+        color: var(--color-on-secondary);
+        border: none;
+        border-radius: var(--radius-small);
+        cursor: pointer;
+        transition: background-color 0.3s;
+        width: 3rem;
+        height: 1.5rem;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 1.5rem;
+    }
+
+        .pdf-button:hover {
+            background-color: var(--color-secondary-hover);
         }
 
-            #pdf-controls button:hover {
-                color: #005fa3;
-            }
+    .prev-button {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fefefe'%3E%3Cpath d='M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z'/%3E%3C/svg%3E");
+    }
 
-        #pdf-controls span#page-info {
-            font-size: 1.2em;
-            color: #333;
+    .next-button {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fefefe'%3E%3Cpath d='M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z'/%3E%3C/svg%3E");
+    }
+
+    .page-info {
+        color: var(--color-on-surface);
+        font-size: 1.1rem;
+    }
+
+    @@media (min-width: 600px) {
+        .announcement-details-container {
+            padding: 2rem 2.8rem;
+        }
+    }
+
+    @@media (min-width: 768px) {
+        .announcement-text {
+            font-size: 1.3rem;
         }
 
-    /* Responsive Design */
-    @@media (max-width: 768px) {
-        .announcement-details-container
-
-    {
-        width: 95%;
-        padding: 15px;
-    }
-
-    .announcement-details-container h2 {
-        font-size: 2em;
-    }
-
-    .announcement-details-container p {
-        font-size: 1em;
-    }
-
-    #pdf-controls {
-        flex-direction: row;
-    }
-
-        #pdf-controls button {
-            margin: 0 10px;
+        .announcement-meta {
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 2rem;
         }
 
-        #pdf-controls span#page-info {
-            font-size: 1em;
+        .meta-item {
+            flex: 1;
+            min-width: 200px;
         }
-
     }
 
-    @@media (max-width: 480px) {
-        .announcement-details-container h2
-
-    {
-        font-size: 1.8em;
+    @@media (min-width: 1068px) {
+        .announcement-details-container {
+            padding: 2rem 3.3rem;
+            margin-bottom: 2rem;
+        }
     }
 
-    .announcement-details-container p {
-        font-size: 0.9em;
-    }
-
-    #pdf-controls button {
-        margin: 0 5px;
-    }
-
+    @@media (min-width: 1280px) {
+        .announcement-details-container {
+            padding: 2rem 5rem;
+            margin-bottom: 4rem;
+        }
     }
 </style>

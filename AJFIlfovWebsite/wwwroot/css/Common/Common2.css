@@ -226,7 +226,9 @@ header {
 /* footer */
 /* ------ */
 footer {
+    position: fixed;
     bottom: 0;
+    width: 100%;
     padding-top: 4rem;
     padding-right: 1.2rem;
     padding-bottom: 2rem;
@@ -234,6 +236,7 @@ footer {
     color: var(--color-on-surface);
     text-align: center;
 }
+
 
     footer p {
         margin-bottom: 0.8rem;

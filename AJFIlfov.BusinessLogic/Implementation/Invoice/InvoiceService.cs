@@ -74,29 +74,34 @@ namespace AJFIlfov.BusinessLogic.Implementation.Invoice
             gfx.DrawString("Articol", boldFont, XBrushes.Black, new XRect(40, yPoint, page.Width, page.Height), XStringFormats.TopLeft);
             gfx.DrawString("UM", boldFont, XBrushes.Black, new XRect(200, yPoint, page.Width, page.Height), XStringFormats.TopLeft);
             gfx.DrawString("Cantitate", boldFont, XBrushes.Black, new XRect(250, yPoint, page.Width, page.Height), XStringFormats.TopLeft);
-            gfx.DrawString("Preț", boldFont, XBrushes.Black, new XRect(350, yPoint, page.Width, page.Height), XStringFormats.TopLeft);
+            gfx.DrawString("Preț Unitar", boldFont, XBrushes.Black, new XRect(350, yPoint, page.Width, page.Height), XStringFormats.TopLeft);
             gfx.DrawString("Valoare", boldFont, XBrushes.Black, new XRect(450, yPoint, page.Width, page.Height), XStringFormats.TopLeft);
             gfx.DrawString("Total", boldFont, XBrushes.Black, new XRect(550, yPoint, page.Width, page.Height), XStringFormats.TopLeft);
 
             yPoint += 20;
+            decimal totalAmount = 0;
             foreach (var item in invoiceData.Items)
             {
+                decimal itemTotal = item.Quantity * item.UnitPrice;
+                totalAmount += itemTotal;
+
                 gfx.DrawString(item.Description, font, XBrushes.Black, new XRect(40, yPoint, page.Width, page.Height), XStringFormats.TopLeft);
                 gfx.DrawString(item.UnitOfMeasure, font, XBrushes.Black, new XRect(200, yPoint, page.Width, page.Height), XStringFormats.TopLeft);
                 gfx.DrawString(item.Quantity.ToString(), font, XBrushes.Black, new XRect(250, yPoint, page.Width, page.Height), XStringFormats.TopLeft);
                 gfx.DrawString(item.UnitPrice.ToString("F2"), font, XBrushes.Black, new XRect(350, yPoint, page.Width, page.Height), XStringFormats.TopLeft);
-                gfx.DrawString((item.Quantity * item.UnitPrice).ToString("F2"), font, XBrushes.Black, new XRect(450, yPoint, page.Width, page.Height), XStringFormats.TopLeft);
-                gfx.DrawString((item.Quantity * item.UnitPrice).ToString("F2"), font, XBrushes.Black, new XRect(550, yPoint, page.Width, page.Height), XStringFormats.TopLeft);
+                gfx.DrawString(itemTotal.ToString("F2"), font, XBrushes.Black, new XRect(450, yPoint, page.Width, page.Height), XStringFormats.TopLeft);
+                gfx.DrawString(itemTotal.ToString("F2"), font, XBrushes.Black, new XRect(550, yPoint, page.Width, page.Height), XStringFormats.TopLeft);
                 yPoint += 20;
             }
 
             // Total Amount
-            gfx.DrawString($"Total fără TVA: {invoiceData.TotalAmount:F2} Lei", boldFont, XBrushes.Black, new XRect(40, yPoint + 20, page.Width, page.Height), XStringFormats.TopLeft);
-            gfx.DrawString($"Total: {invoiceData.TotalAmount:F2} Lei", boldFont, XBrushes.Black, new XRect(40, yPoint + 40, page.Width, page.Height), XStringFormats.TopLeft);
+            gfx.DrawString($"Total fără TVA: {totalAmount:F2} Lei", boldFont, XBrushes.Black, new XRect(40, yPoint + 20, page.Width, page.Height), XStringFormats.TopLeft);
+            gfx.DrawString($"Total: {totalAmount:F2} Lei", boldFont, XBrushes.Black, new XRect(40, yPoint + 40, page.Width, page.Height), XStringFormats.TopLeft);
 
             document.Save(memoryStream);
             return memoryStream.ToArray();
         }
+
 
         public void SaveInvoicePdf(Guid invoiceId, byte[] pdfBytes)
         {

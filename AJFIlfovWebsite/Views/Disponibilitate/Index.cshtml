@@ -46,7 +46,7 @@
                 <tr>
                     <td>@item.Zi.ToString("dd/MM/yyyy")</td>
                     <td>@item.CreatedOn.ToString("dd/MM/yyyy")</td>
-                    <td>@item.Status ?: "Disponibil"</td>
+                    <td>@(item.Status == null ? "Disponibil" : item.Status)</td>
                     <td>@(item.Status == "Indisponibil" ? "N/A" : item.Status == "Disponibil" ? "08:00" : item.OraIncepere?.ToString("HH:mm") ?? "N/A")</td>
                     <td>@(item.Status == "Indisponibil" ? "N/A" : item.Status == "Disponibil" ? "22:00" : item.OraIncheiere?.ToString("HH:mm") ?? "N/A")</td>
                     <td>
@@ -131,7 +131,7 @@
         // Handle modal show event
         $('.modificaDisponibilitatea').click(function () {
             var idCerere = $(this).data('id');
-            var status = $(this).data('status');
+            var status = $(this).data('status') || 'Disponibil'; // Default to 'Disponibil' if status is null
             var oraIncepere = $(this).data('oraIncepere') || '08:00';
             var oraIncheiere = $(this).data('oraIncheiere') || '22:00';
             var zi = $(this).data('zi');
@@ -163,22 +163,66 @@
             var oraIncepereFlatpickr = oraIncepereInput[0]._flatpickr;
             var oraIncheiereFlatpickr = oraIncheiereInput[0]._flatpickr;
 
+            // First, destroy any existing flatpickr instances
+            if (oraIncepereFlatpickr) {
+                oraIncepereFlatpickr.destroy();
+            }
+            if (oraIncheiereFlatpickr) {
+                oraIncheiereFlatpickr.destroy();
+            }
+
             if (status === 'Disponibil') {
                 oraIncepereInput.val('08:00');
                 oraIncheiereInput.val('22:00');
                 
-                // Completely disable the inputs
-                oraIncepereFlatpickr.disable();
-                oraIncheiereFlatpickr.disable();
+                // Initialize flatpickr with disabled state
+                flatpickr(".oraIncepere", {
+                    enableTime: true,
+                    noCalendar: true,
+                    dateFormat: "H:i",
+                    time_24hr: true,
+                    disableMobile: true,
+                    clickOpens: false,
+                    disable: true
+                });
+
+                flatpickr(".oraIncheiere", {
+                    enableTime: true,
+                    noCalendar: true,
+                    dateFormat: "H:i",
+                    time_24hr: true,
+                    disableMobile: true,
+                    clickOpens: false,
+                    disable: true
+                });
+
                 oraIncepereInput.prop('readonly', true).prop('disabled', true).css('pointer-events', 'none').css('background-color', '#f8f9fa');
                 oraIncheiereInput.prop('readonly', true).prop('disabled', true).css('pointer-events', 'none').css('background-color', '#f8f9fa');
             } else if (status === 'Indisponibil') {
                 oraIncepereInput.val('');
                 oraIncheiereInput.val('');
                 
-                // Completely disable the inputs
-                oraIncepereFlatpickr.disable();
-                oraIncheiereFlatpickr.disable();
+                // Initialize flatpickr with disabled state
+                flatpickr(".oraIncepere", {
+                    enableTime: true,
+                    noCalendar: true,
+                    dateFormat: "H:i",
+                    time_24hr: true,
+                    disableMobile: true,
+                    clickOpens: false,
+                    disable: true
+                });
+
+                flatpickr(".oraIncheiere", {
+                    enableTime: true,
+                    noCalendar: true,
+                    dateFormat: "H:i",
+                    time_24hr: true,
+                    disableMobile: true,
+                    clickOpens: false,
+                    disable: true
+                });
+
                 oraIncepereInput.prop('readonly', true).prop('disabled', true).css('pointer-events', 'none').css('background-color', '#f8f9fa');
                 oraIncheiereInput.prop('readonly', true).prop('disabled', true).css('pointer-events', 'none').css('background-color', '#f8f9fa');
             } else if (status === 'DisponibilPartial') {
@@ -197,10 +241,7 @@
                     .removeAttr('readonly')
                     .removeAttr('disabled');
 
-                // Reinitialize flatpickr with clickOpens enabled
-                oraIncepereFlatpickr.destroy();
-                oraIncheiereFlatpickr.destroy();
-
+                // Initialize flatpickr with enabled state
                 flatpickr(".oraIncepere", {
                     enableTime: true,
                     noCalendar: true,

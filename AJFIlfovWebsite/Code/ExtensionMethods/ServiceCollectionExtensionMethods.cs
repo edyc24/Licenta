@@ -3,6 +3,7 @@ using AJFIlfov.BusinessLogic.Base;
 using AJFIlfov.BusinessLogic.Implementation.Account;
 using AJFIlfov.BusinessLogic.Implementation.Anunturi;
 using AJFIlfov.BusinessLogic.Implementation.Audituri;
+using AJFIlfov.BusinessLogic.Implementation.Blog;
 using AJFIlfov.BusinessLogic.Implementation.DisponibilitateAdminService;
 using AJFIlfov.BusinessLogic.Implementation.DisponibilitateService;
 using AJFIlfov.BusinessLogic.Implementation.Documente;
@@ -53,6 +54,7 @@ public static class ServiceCollectionExtensionMethods
         services.AddScoped<DocumenteService>();
         services.AddScoped<QuestionService>();
         services.AddScoped<InvoiceService>();
+        services.AddScoped<BlogService>();
         return services;
     }
 

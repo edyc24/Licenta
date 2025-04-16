@@ -1,0 +1,71 @@
+﻿@model IEnumerable<AJFIlfov.BusinessLogic.Implementation.Blog.Models.BlogPostViewModel>
+
+@{
+    ViewData["Title"] = "Blog";
+}
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .navbar {
+        background-color: #343a40;
+    }
+
+    .navbar-brand, .navbar-nav .nav-link {
+        color: #fff;
+    }
+
+        .navbar-brand:hover, .navbar-nav .nav-link:hover {
+            color: #ffc107;
+        }
+
+    .footer {
+        background-color: #343a40;
+        color: #fff;
+        padding: 20px 0;
+        text-align: center;
+    }
+
+    .card {
+        border: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-title {
+        color: #007bff;
+    }
+
+        .card-title:hover {
+            color: #0056b3;
+        }
+
+    .btn-info {
+        background-color: #007bff;
+        border: none;
+    }
+
+        .btn-info:hover {
+            background-color: #0056b3;
+        }
+</style>
+
+
+<h2 class="text-center my-4">Football Blog</h2>
+<a href="@Url.Action("Create", "Blog")" class="btn btn-primary mb-3">Create New Post</a>
+<div class="row">
+    @foreach (var post in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@post.Title</h5>
+                    <p class="card-text">@post.Content.Substring(0, Math.Min(100, post.Content.Length))...</p>
+                    <p class="card-text"><small class="text-muted">Posted on @post.CreatedAt.ToString("g")</small></p>
+                    <a href="@Url.Action("Details", "Blog", new { id = post.Id })" class="btn btn-info">Read More</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

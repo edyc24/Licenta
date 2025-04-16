@@ -15,8 +15,8 @@ namespace AJFIlfov.Entities.Entities
         public TimeSpan Time { get; set; }
         public string Description { get; set; }
         public string Status { get; set; } // e.g., Scheduled, Completed, Cancelled
-        public Guid UserId { get; set; } // Foreign key to the User entity
-        public Utilizatori User { get; set; } // Navigation property
+        public string PhoneNumber { get; set; }
+        public string Name { get; set; }
 
     }
 

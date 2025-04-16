@@ -300,7 +300,8 @@ namespace AJFIlfov.BusinessLogic.Implementation.Account
                 Time = model.Time,
                 Description = model.Description,
                 Status = "Scheduled",
-                UserId = CurrentUser.Id// Assuming UserId is passed in the model
+                PhoneNumber = model.PhoneNumber,
+                Name = model.Name
             };
             UnitOfWork.Appointments.Insert(appointment);
             UnitOfWork.SaveChanges();
@@ -318,7 +319,7 @@ namespace AJFIlfov.BusinessLogic.Implementation.Account
                     Time = a.Time,
                     Description = a.Description,
                     Status = a.Status,
-                    UserName = a.User.Nume + " " + a.User.Prenume // Populate UserName from User navigation property
+                    UserName = a.Name // Populate UserName from User navigation property
                 }).ToList();
         }
 

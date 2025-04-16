@@ -78,6 +78,9 @@ namespace AJFIlfov.DataAccess
 
         private IRepository<InvoiceItem> invoiceItems;
         public IRepository<InvoiceItem> InvoiceItems => invoiceItems ?? (invoiceItems = new BaseRepository<InvoiceItem>(Context));
+
+        private IRepository<BlogPost> blogPost;
+        public IRepository<BlogPost> BlogPosts => blogPost ?? (blogPost = new BaseRepository<BlogPost>(Context));
         public void SaveChanges()
         {
             Context.SaveChanges();

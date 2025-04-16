@@ -80,6 +80,15 @@ app.MapControllerRoute(
     name: "turnee",
     pattern: "{controller=Turnee}/{action=Index}/{id?}");
 
+app.MapControllerRoute(
+    name: "arbitrii",
+    pattern: "{controller=Arbitrii}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "blog",
+    pattern: "{controller=Blog}/{action=Index}/{id?}");
+
+
 app.Run();
 
 // Middleware class for subdomain handling
@@ -95,10 +104,26 @@ public class SubdomainMiddleware
     public async Task InvokeAsync(HttpContext context)
     {
         var host = context.Request.Host.Host;
+
+        Console.WriteLine($"Original Path: {context.Request.Path}");
+
         if (host.StartsWith("turnee.ajfilfov.ro"))
         {
             context.Request.Path = "/Turnee" + context.Request.Path;
         }
+        if (host.StartsWith("arbitrii.ajfilfov.ro"))
+        {
+            context.Request.Path = "/Arbitrii" + context.Request.Path;
+        }
+        if (host.StartsWith("blog.ajfilfov.ro"))
+        {
+            context.Request.Path = "/Blog" + context.Request.Path;
+        }
+
+
+        Console.WriteLine($"Modified Path: {context.Request.Path}");
+
+
 
         await _next(context);
     }

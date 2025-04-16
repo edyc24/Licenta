@@ -54,6 +54,7 @@ public partial class AjfilfovContext : DbContext
     public virtual DbSet<Answer> Answers { get; set; }
     public virtual DbSet<Suggestion> Suggestions { get; set; }
     public virtual DbSet<Invoice> Invoices { get; set; }
+    public virtual DbSet<BlogPost> BlogPosts { get; set; }
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -115,11 +116,6 @@ public partial class AjfilfovContext : DbContext
             entity.Property(e => e.Date).IsRequired();
             entity.Property(e => e.Description).HasMaxLength(500);
             entity.Property(e => e.Status).IsRequired().HasMaxLength(50);
-
-            // Configure relationship with User entity
-            entity.HasOne(e => e.User)
-                .WithMany(u => u.Appointments)
-                .HasForeignKey(e => e.UserId);
         });
 
 

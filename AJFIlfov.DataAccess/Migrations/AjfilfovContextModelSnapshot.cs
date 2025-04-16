@@ -117,6 +117,14 @@ namespace AJFIlfov.DataAccess.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -130,12 +138,12 @@ namespace AJFIlfov.DataAccess.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid?>("UtilizatoriIdUtilizator")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UtilizatoriIdUtilizator");
 
                     b.ToTable("Appointment");
                 });
@@ -162,6 +170,34 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Audits");
+                });
+
+            modelBuilder.Entity("AJFIlfov.Entities.Entities.BlogPost", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PublishedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BlogPosts");
                 });
 
             modelBuilder.Entity("AJFIlfov.Entities.Entities.Categorii", b =>
@@ -873,13 +909,9 @@ namespace AJFIlfov.DataAccess.Migrations
 
             modelBuilder.Entity("AJFIlfov.Entities.Entities.Appointment", b =>
                 {
-                    b.HasOne("AJFIlfov.Entities.Entities.Utilizatori", "User")
+                    b.HasOne("AJFIlfov.Entities.Entities.Utilizatori", null)
                         .WithMany("Appointments")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
+                        .HasForeignKey("UtilizatoriIdUtilizator");
                 });
 
             modelBuilder.Entity("AJFIlfov.Entities.Entities.Disponibilitate", b =>

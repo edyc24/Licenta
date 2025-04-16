@@ -1,7 +1,13 @@
-﻿<h2 class="admin-title">Admin Dashboard</h2>
+﻿@inject AJFIlfov.Common.DTOs.CurrentUserDto CurrentUser
+
+<h2 class="admin-title">Admin Dashboard</h2>
 <p class="welcome-message">Bine ai venit, @User.Identity.Name!</p>
 
 <ul class="admin-menu">
+    @if (CurrentUser.Email == "zambarescu@gmail.com")
+    {
+        <li><a asp-action="Calendar" class="admin-link">Inspectează calendar</a></li>
+    }
     <li><a asp-action="Audit" class="admin-link">Inspectează audit</a></li>
     <li><a asp-action="CreateAnunt" class="admin-link">Creează anunț</a></li>
     <li><a asp-action="CreateMatch" class="admin-link">Creează meci</a></li>

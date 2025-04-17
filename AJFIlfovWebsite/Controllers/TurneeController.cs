@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AJFIlfovWebsite.Controllers
 {
-    [Authorize]
     public class TurneeController : BaseController
     {
         private readonly TurneeService _service;
@@ -58,7 +57,7 @@ namespace AJFIlfovWebsite.Controllers
 
             return View();
         }
-
+        [Authorize]
         [HttpGet]
         public IActionResult Create()
         {
@@ -84,7 +83,7 @@ namespace AJFIlfovWebsite.Controllers
             ViewBag.Grupe = new SelectList(_service.GetGrupeForDropdown(), "IdGrupa", "Nume");
             return View(model);
         }
-
+        [Authorize]
         [HttpGet]
         public IActionResult Edit(Guid id)
         {
@@ -120,7 +119,7 @@ namespace AJFIlfovWebsite.Controllers
 
             return View(turneu);
         }
-
+        [Authorize]
         [HttpPost]
         public IActionResult Delete(Guid id)
         {

@@ -75,7 +75,7 @@ namespace AJFIlfovWebsite.Controllers
             if (ModelState.IsValid)
             {
                 _service.CreateMatch(model);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Create));
             }
 
             ViewBag.Echipe = new SelectList(_service.GetEchipeForDropdown(), "Id", "Nume");

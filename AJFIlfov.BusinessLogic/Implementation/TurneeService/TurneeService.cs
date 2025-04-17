@@ -111,24 +111,30 @@ namespace AJFIlfov.BusinessLogic.Implementation.TurneeService
                 grupa.Add(standing);
             }
 
-            standing.MatchesPlayed++;
+
             standing.GoalsScored += goalsFor ?? 0;
             standing.GoalsConceded += goalsAgainst ?? 0;
             standing.GoalDifference = standing.GoalsScored - standing.GoalsConceded;
 
-            if (goalsFor > goalsAgainst)
+
+            if (standing.GoalsConceded != 0 && standing.GoalsScored != 0)
             {
-                standing.Wins++;
-                standing.Points += 3;
-            }
-            else if (goalsFor == goalsAgainst)
-            {
-                standing.Draws++;
-                standing.Points += 1;
-            }
-            else
-            {
-                standing.Losses++;
+                standing.MatchesPlayed++;
+
+                if (goalsFor > goalsAgainst)
+                {
+                    standing.Wins++;
+                    standing.Points += 3;
+                }
+                else if (goalsFor == goalsAgainst)
+                {
+                    standing.Draws++;
+                    standing.Points += 1;
+                }
+                else
+                {
+                    standing.Losses++;
+                }
             }
         }
 

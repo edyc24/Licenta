@@ -1,16 +1,19 @@
 ﻿.group-stage {
     width: 100%;
-    padding: 2rem 5rem;
+    max-width: 80rem;
+    padding: 2rem;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
 }
 
 .group-content {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(min-content, 40rem));
+    display: flex;
+    flex-direction: column;
     gap: 3rem;
-    padding: 2rem;
     width: 100%;
-    justify-content: center;
+    margin: 0;
     align-items: stretch;
 }
 
@@ -19,7 +22,6 @@
     background-color: var(--color-surface);
     border-radius: 1rem;
     padding: 1rem 0 0 0;
-    box-shadow: 0 0.5rem 1rem var(--color-shadow);
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -88,6 +90,7 @@
 .standings-table td.team-name {
     flex: 2;
     justify-content: flex-start;
+    text-align: left;
 }
 
 .standings-table th {
@@ -126,7 +129,6 @@
 
 .group:last-child:nth-child(odd) {
     grid-column: 1 / -1;
-    max-width: 40rem;
     justify-self: center;
 }
 
@@ -134,38 +136,101 @@
     border-bottom: none;
 }
 
+.elimination-link {
+    display: inline-block;
+    background-color: #00cbbc;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    width: fit-content;
+    align-self: flex-start;
+    margin: 0;
+}
+
+.elimination-link:hover {
+    background-color: #00b3a6;
+}
+
+.upcoming-matches {
+    width: 100%;
+    margin: 0;
+}
+
+.upcoming-matches h2 {
+    font-size: 1.5rem;
+    color: var(--color-on-surface);
+    margin-bottom: 1.5rem;
+}
+
+.matches-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.match-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.match-teams {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+}
+
+.match-teams .team {
+    display: inline-block;
+}
+
+.match-details {
+    display: flex;
+    gap: 1rem;
+    color: var(--color-on-surface-variant, #666);
+    font-size: 0.9rem;
+}
+
+.vs {
+    color: var(--color-on-surface-variant, #666);
+    margin: 0 0.5rem;
+}
+
+.page-title {
+    width: 100%;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
 @media (max-width: 1200px) {
     .group-stage {
-        padding: 2rem;
+        padding: 1.5rem;
+        gap: 2.5rem;
     }
 
     .group-content {
-        grid-template-columns: 1fr;
-        padding: 2rem;
-        gap: 3rem;
+        gap: 2.5rem;
     }
 
     .group {
-        max-width: 40rem;
+        max-width: 100%;
         margin: 0 auto;
     }
 
-    .standings-table,
-    .standings-table tbody,
-    .standings-table tr,
-    .standings-table td,
-    .standings-table th {
-        display: table;
-        height: auto;
-        flex: none;
-    }
-
     .standings-table {
-        display: table;
+        overflow-x: auto;
+        display: block;
     }
 
+    .standings-table thead,
     .standings-table tbody {
-        display: table-row-group;
+        display: table;
+        width: 100%;
     }
 
     .standings-table tr {
@@ -175,21 +240,63 @@
     .standings-table td,
     .standings-table th {
         display: table-cell;
+        min-width: 3rem;
+        white-space: nowrap;
     }
 
-    .group:last-child:nth-child(odd) {
-        grid-column: auto;
-        max-width: 40rem;
+    .standings-table td.team-name,
+    .standings-table th.team-name {
+        min-width: 10rem;
+        white-space: normal;
+    }
+
+    .page-title {
+        padding: 0 1.5rem;
+        margin-bottom: 1.5rem;
     }
 }
 
 @media (max-width: 768px) {
     .group-stage {
-        padding: 1.5rem;
+        padding: 1rem;
+        gap: 2rem;
     }
 
     .group-content {
-        padding: 1.5rem;
-        gap: 2.5rem;
+        gap: 2rem;
+    }
+
+    .match-teams {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .match-teams .team {
+        width: 100%;
+        text-align: left;
+    }
+
+    .vs {
+        margin: 0.25rem 0;
+        font-size: 0.9rem;
+    }
+
+    .match-details {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .match-details .date,
+    .match-details .stadium {
+        width: auto;
+    }
+
+    .page-title {
+        padding: 0 1rem;
+        margin-bottom: 1rem;
     }
 }

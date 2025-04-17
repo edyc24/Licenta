@@ -23,6 +23,7 @@ using AJFIlfov.BusinessLogic.Implementation.Blog;
 using AJFIlfov.BusinessLogic.Implementation.Documente;
 using AJFIlfov.BusinessLogic.Implementation.Invoice;
 using AJFIlfov.BusinessLogic.Implementation.MeciLiveService;
+using AJFIlfov.BusinessLogic.Implementation.TurneeService;
 using QnA.BusinessLogic;
 
 namespace AJFIlfov.WebApp.Code.ExtensionMethods
@@ -59,6 +60,7 @@ namespace AJFIlfov.WebApp.Code.ExtensionMethods
             services.AddScoped<QuestionService>();
             services.AddScoped<InvoiceService>();
             services.AddScoped<BlogService>();
+            services.AddScoped<TurneeService>();
             return services;
         }
 

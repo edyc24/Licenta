@@ -16,8 +16,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">
     <!-- css styles -->
-    <link rel="stylesheet" href="https://ajfilfovwebsite20241218232333.azurewebsites.net/css/Turnee/Group.css">
-    <link rel="stylesheet" href="https://ajfilfovwebsite20241218232333.azurewebsites.net/css/Common/Common2.css">
+    <link rel="stylesheet" href="~/css/Common/Common2.css">
+    <link rel="stylesheet" href="~/css/Turnee/Group.css">
     <style>
         html,
         body,
@@ -62,12 +62,77 @@
 
         <!-- ------------------------------------------------- -->
         <!-- page title -->
-        <h1 class="page-title">Grupele campionatului</h1>
-        <a href="EliminationStage">Catre faza eliminatorie</a>
+        <h1 class="page-title">Grupele campionatului - @ViewBag.Categorie</h1>
 
         <!-- actual page content -->
         <main class="group-stage">
-            <section class="group-content"></section>
+            <a href="@Url.Action("EliminationStage", "Turnee", new { categorie = ViewBag.Categorie })" class="elimination-link">Către faza eliminatorie</a>
+            
+            <section class="group-content">
+                @foreach (var grupa in ViewBag.Grupe)
+                {
+                    <article class="group">
+                        <header class="group-header">
+                            <h2>@grupa.Key</h2>
+                        </header>
+                        <table class="standings-table">
+                            <thead>
+                                <tr>
+                                    <th>Pos</th>
+                                    <th class="team-name">Echipa</th>
+                                    <th>J</th>
+                                    <th>V</th>
+                                    <th>E</th>
+                                    <th>Î</th>
+                                    <th>GM</th>
+                                    <th>GP</th>
+                                    <th>P</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    var position = 1;
+                                    foreach (var team in grupa.Value)
+                                    {
+                                        <tr>
+                                            <td>@position</td>
+                                            <td class="team-name">@team.TeamName</td>
+                                            <td>@team.MatchesPlayed</td>
+                                            <td>@team.Wins</td>
+                                            <td>@team.Draws</td>
+                                            <td>@team.Losses</td>
+                                            <td>@team.GoalsScored</td>
+                                            <td>@team.GoalsConceded</td>
+                                            <td>@team.Points</td>
+                                        </tr>
+                                        position++;
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </article>
+                }
+            </section>
+
+            <section class="upcoming-matches">
+                <h2>Meciuri viitoare</h2>
+                <div class="matches-list">
+                    @foreach (var match in ViewBag.UpcomingMatches)
+                    {
+                        <div class="match-item">
+                            <div class="match-teams">
+                                <span class="team">@match.EchipaGazdaNume</span>
+                                <span class="vs">vs</span>
+                                <span class="team">@match.EchipaOaspeteNume</span>
+                            </div>
+                            <div class="match-details">
+                                <span class="date">@match.Data?.ToString("dd.MM.yyyy HH:mm")</span>
+                                <span class="stadium">@match.StadionNume</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </section>
         </main>
 
         <!-- page footer -->
@@ -108,109 +173,6 @@
             const mobileNav = document.getElementsByClassName('small-nav')[0];
             mobileNav.classList.toggle('show');
         }
-
-        /* -------------
-        group generation
-        ------------- */
-        const groupData = [
-            {
-                name: "Grupa A",
-                teams: [
-                    ["1", "FC Voluntari", "3", "3", "0", "0", "7", "2", "9"],
-                    ["2", "CS Tunari", "3", "2", "0", "1", "5", "3", "6"],
-                    ["3", "AS Buftea", "3", "1", "1", "1", "4", "4", "4"],
-                    ["4", "CS Snagov", "3", "0", "1", "2", "2", "5", "1"],
-                    ["5", "CS Snagov", "3", "0", "1", "2", "2", "5", "1"]
-                ]
-            },
-            {
-                name: "Grupa B",
-                teams: [
-                    ["1", "CS Otopeni", "3", "2", "1", "0", "6", "2", "7"],
-                    ["2", "AS Chitila", "3", "2", "0", "1", "5", "4", "6"],
-                    ["3", "FC Clinceni", "3", "1", "0", "2", "3", "5", "3"],
-                    ["4", "CS Mogoșoaia", "3", "0", "1", "2", "2", "5", "1"]
-                ]
-            },
-            {
-                name: "Grupa C",
-                teams: [
-                    ["1", "AS Brănești", "3", "3", "0", "0", "8", "1", "9"],
-                    ["2", "CS Periș", "3", "1", "1", "1", "4", "4", "4"],
-                    ["3", "AS Cornetu", "3", "1", "0", "2", "3", "6", "3"],
-                    ["4", "CS Cernica", "3", "0", "1", "2", "2", "6", "1"]
-                ]
-            },
-            {
-                name: "Grupa D",
-                teams: [
-                    ["1", "AS Berceni", "3", "2", "1", "0", "5", "2", "7"],
-                    ["2", "CS Ștefănești", "3", "2", "0", "1", "6", "3", "6"],
-                    ["3", "FC Afumați", "3", "1", "0", "2", "3", "4", "3"],
-                    ["4", "AS Glina", "3", "0", "1", "2", "1", "6", "1"]
-                ]
-            }
-        ];
-
-        function generateStandingsTable(teams) {
-            const table = document.createElement('table');
-            table.className = 'standings-table';
-
-            const thead = document.createElement('thead');
-            thead.innerHTML = `
-                <tr>
-                    <th>Pos</th>
-                    <th class="team-name">Echipa</th>
-                    <th>J</th>
-                    <th>V</th>
-                    <th>E</th>
-                    <th>Î</th>
-                    <th>GM</th>
-                    <th>GP</th>
-                    <th>P</th>
-                </tr>
-            `;
-
-            const tbody = document.createElement('tbody');
-            teams.forEach(team => {
-                const tr = document.createElement('tr');
-                team.forEach((data, index) => {
-                    const td = document.createElement('td');
-                    td.textContent = data;
-                    if (index === 1) td.className = 'team-name';
-                    tr.appendChild(td);
-                });
-                tbody.appendChild(tr);
-            });
-
-            table.appendChild(thead);
-            table.appendChild(tbody);
-            return table;
-        }
-
-        function generateGroups(data) {
-            const groupContent = document.querySelector('.group-content');
-            groupContent.innerHTML = '';
-
-            data.forEach(group => {
-                const article = document.createElement('article');
-                article.className = 'group';
-
-                const header = document.createElement('header');
-                header.className = 'group-header';
-                header.innerHTML = `<h2>${group.name}</h2>`;
-
-                const table = generateStandingsTable(group.teams);
-
-                article.appendChild(header);
-                article.appendChild(table);
-                groupContent.appendChild(article);
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            generateGroups(groupData);
-        });
     </script>
 
 </body>

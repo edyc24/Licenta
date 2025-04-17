@@ -16,6 +16,7 @@ using AJFIlfov.BusinessLogic.Implementation.MeciLiveService;
 using AJFIlfov.BusinessLogic.Implementation.MeciuriService;
 using AJFIlfov.BusinessLogic.Implementation.StadioaneService;
 using AJFIlfov.BusinessLogic.Implementation.StadionLocalitateService;
+using AJFIlfov.BusinessLogic.Implementation.TurneeService;
 using AJFIlfov.BusinessLogic.Implementation.User;
 using AJFIlfov.Code.Base;
 using AJFIlfov.Common.DTOs;
@@ -55,6 +56,7 @@ public static class ServiceCollectionExtensionMethods
         services.AddScoped<QuestionService>();
         services.AddScoped<InvoiceService>();
         services.AddScoped<BlogService>();
+        services.AddScoped<TurneeService>();
         return services;
     }
 

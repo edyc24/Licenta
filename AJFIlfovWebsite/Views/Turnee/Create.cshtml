@@ -122,21 +122,27 @@
                     <span asp-validation-for="Data" class="text-danger"></span>
                 </div>
 
+               
                 <div class="form-group">
                     <label asp-for="IdEchipaGazda">Echipa gazdă</label>
-                    <select asp-for="IdEchipaGazda" asp-items="@ViewBag.Echipe">
+                    <input type="text" class="search-input" id="searchGazda" placeholder="Caută echipa gazdă..." onkeyup="filterTeams('searchGazda', 'IdEchipaGazda')"/>
+                    <select asp-for="IdEchipaGazda" asp-items="@ViewBag.Echipe" id="IdEchipaGazda">
                         <option value="">Selectează echipa gazdă</option>
                     </select>
                     <span asp-validation-for="IdEchipaGazda" class="text-danger"></span>
                 </div>
 
+
+               
                 <div class="form-group">
                     <label asp-for="IdEchipaOaspete">Echipa oaspete</label>
-                    <select asp-for="IdEchipaOaspete" asp-items="@ViewBag.Echipe">
+                    <input type="text" class="search-input" id="searchOaspete" placeholder="Caută echipa oaspete..." onkeyup="filterTeams('searchOaspete', 'IdEchipaOaspete')"/>
+                    <select asp-for="IdEchipaOaspete" asp-items="@ViewBag.Echipe" id="IdEchipaOaspete">
                         <option value="">Selectează echipa oaspete</option>
                     </select>
                     <span asp-validation-for="IdEchipaOaspete" class="text-danger"></span>
                 </div>
+
 
                 <div class="form-group">
                     <label asp-for="IdStadion">Stadion</label>
@@ -204,6 +210,22 @@
     </nav>
 
     <script>
+        function filterTeams(searchInputId, selectId) {
+            const searchInput = document.getElementById(searchInputId);
+            const filter = searchInput.value.toLowerCase();
+            const select = document.getElementById(selectId);
+            const options = select.getElementsByTagName('option');
+
+            for (let i = 0; i < options.length; i++) {
+                const option = options[i];
+                const text = option.textContent || option.innerText;
+                if (text.toLowerCase().indexOf(filter) > -1) {
+                    option.style.display = "";
+                } else {
+                    option.style.display = "none";
+                }
+            }
+        }
         function toggleMenu() {
             const mobileNav = document.getElementsByClassName('small-nav')[0];
             mobileNav.classList.toggle('show');

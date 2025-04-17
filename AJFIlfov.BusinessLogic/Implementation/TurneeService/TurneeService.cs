@@ -1,4 +1,6 @@
 using AJFIlfov.BusinessLogic.Base;
+using AJFIlfov.BusinessLogic.Implementation.GrupeService.Models;
+using AJFIlfov.BusinessLogic.Implementation.MeciuriService;
 using AJFIlfov.BusinessLogic.Implementation.TurneeService.Models;
 using AJFIlfov.Entities.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -263,7 +265,6 @@ namespace AJFIlfov.BusinessLogic.Implementation.TurneeService
         public List<TeamModel> GetEchipeForDropdown()
         {
             return UnitOfWork.Echipe.Get()
-                .Where(e => e.IdDeleted == false || e.IdDeleted == null)
                 .Select(e => new TeamModel
                 {
                     Id = e.IdEchipa,
@@ -275,7 +276,6 @@ namespace AJFIlfov.BusinessLogic.Implementation.TurneeService
         public List<StadiumModel> GetStadioaneForDropdown()
         {
             return UnitOfWork.Stadioane.Get()
-                .Where(s => s.IdDeleted == false || s.IdDeleted == null)
                 .Select(s => new StadiumModel
                 {
                     Id = s.IdStadion,
@@ -299,7 +299,6 @@ namespace AJFIlfov.BusinessLogic.Implementation.TurneeService
         public List<GrupaModel> GetGrupeForDropdown()
         {
             return UnitOfWork.Grupe.Get()
-                .Where(g => g.IdDeleted == false || g.IdDeleted == null)
                 .Select(g => new GrupaModel
                 {
                     IdGrupa = g.IdGrupa,

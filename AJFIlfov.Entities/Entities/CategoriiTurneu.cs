@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using AJFIlfov.Common;
 
 namespace AJFIlfov.Entities.Entities
 {
-    public partial class CategoriiTurneu
+    public  class CategoriiTurneu : IEntity
     {
         public CategoriiTurneu()
         {

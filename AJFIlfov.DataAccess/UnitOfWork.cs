@@ -81,6 +81,9 @@ namespace AJFIlfov.DataAccess
 
         private IRepository<BlogPost> blogPost;
         public IRepository<BlogPost> BlogPosts => blogPost ?? (blogPost = new BaseRepository<BlogPost>(Context));
+
+        private IRepository<Turnee> turnee;
+        public IRepository<Turnee> Turnee => turnee ?? (turnee = new BaseRepository<Turnee>(Context));
         public void SaveChanges()
         {
             Context.SaveChanges();

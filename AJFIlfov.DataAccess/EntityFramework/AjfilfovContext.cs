@@ -379,6 +379,51 @@ public partial class AjfilfovContext : DbContext
                 .HasConstraintName("FK_Utilizatori_Categorii");
         });
 
+        modelBuilder.Entity<CategoriiTurneu>(entity =>
+        {
+            entity.HasKey(e => e.IdCategorie);
+
+            entity.ToTable("CategoriiTurneu");
+
+            entity.Property(e => e.IdCategorie).HasDefaultValueSql("(newid())");
+            entity.Property(e => e.Nume).HasMaxLength(50);
+            entity.Property(e => e.Descriere).HasMaxLength(500);
+        });
+
+        modelBuilder.Entity<Turnee>(entity =>
+        {
+            entity.HasKey(e => e.IdTurneu);
+
+            entity.ToTable("Turnee");
+
+            entity.Property(e => e.IdTurneu).HasDefaultValueSql("(newid())");
+
+            entity.HasOne(d => d.IdEchipaGazdaNavigation)
+                .WithMany(p => p.TurneeIdEchipaGazdaNavigation)
+                .HasForeignKey(d => d.IdEchipaGazda)
+                .HasConstraintName("FK_Turnee_Echipe_Gazda");
+
+            entity.HasOne(d => d.IdEchipaOaspeteNavigation)
+                .WithMany(p => p.TurneeIdEchipaOaspeteNavigation)
+                .HasForeignKey(d => d.IdEchipaOaspete)
+                .HasConstraintName("FK_Turnee_Echipe_Oaspete");
+
+            entity.HasOne(d => d.IdGrupaNavigation)
+                .WithMany(p => p.Turnee)
+                .HasForeignKey(d => d.IdGrupa)
+                .HasConstraintName("FK_Turnee_Grupe");
+
+            entity.HasOne(d => d.IdStadionNavigation)
+                .WithMany(p => p.Turnee)
+                .HasForeignKey(d => d.IdStadion)
+                .HasConstraintName("FK_Turnee_Stadioane");
+
+            entity.HasOne(d => d.IdCategorieNavigation)
+                .WithMany(p => p.Turnee)
+                .HasForeignKey(d => d.IdCategorie)
+                .HasConstraintName("FK_Turnee_CategoriiTurneu");
+        });
+
         OnModelCreatingPartial(modelBuilder);
     }
 

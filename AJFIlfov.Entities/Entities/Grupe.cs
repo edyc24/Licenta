@@ -11,4 +11,5 @@ public partial class Grupe : IEntity
     public string Nume { get; set; } = null!;
 
     public virtual ICollection<GrupeEchipa> GrupeEchipas { get; set; } = new List<GrupeEchipa>();
+    public virtual ICollection<Turnee> Turnee { get; set; } = new List<Turnee>();
 }

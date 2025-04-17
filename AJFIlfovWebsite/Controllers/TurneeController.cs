@@ -4,6 +4,7 @@ using AJFIlfov.Code.Base;
 using AJFIlfov.WebApp.Code.Base;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AJFIlfovWebsite.Controllers
 {
@@ -61,18 +62,26 @@ namespace AJFIlfovWebsite.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            ViewBag.Echipe = new SelectList(_service.GetEchipeForDropdown(), "Id", "Nume");
+            ViewBag.Stadioane = new SelectList(_service.GetStadioaneForDropdown(), "Id", "Nume");
+            ViewBag.Categorii = new SelectList(_service.GetCategoriiForDropdown(), "Id", "Nume");
+            ViewBag.Grupe = new SelectList(_service.GetGrupeForDropdown(), "IdGrupa", "Nume");
             return View();
         }
 
         [HttpPost]
-        public IActionResult Create(TurneuModel model)
+        public IActionResult Create(CreateTurneuModel model)
         {
             if (ModelState.IsValid)
             {
-                _service.Create(model);
-                return RedirectToAction("Index");
+                _service.CreateMatch(model);
+                return RedirectToAction(nameof(Index));
             }
 
+            ViewBag.Echipe = new SelectList(_service.GetEchipeForDropdown(), "Id", "Nume");
+            ViewBag.Stadioane = new SelectList(_service.GetStadioaneForDropdown(), "Id", "Nume");
+            ViewBag.Categorii = new SelectList(_service.GetCategoriiForDropdown(), "Id", "Nume");
+            ViewBag.Grupe = new SelectList(_service.GetGrupeForDropdown(), "IdGrupa", "Nume");
             return View(model);
         }
 

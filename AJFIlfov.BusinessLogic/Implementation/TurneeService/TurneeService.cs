@@ -259,6 +259,75 @@ namespace AJFIlfov.BusinessLogic.Implementation.TurneeService
             UnitOfWork.SaveChanges();
             return true;
         }
+
+        public List<TeamModel> GetEchipeForDropdown()
+        {
+            return UnitOfWork.Echipe.Get()
+                .Where(e => e.IdDeleted == false || e.IdDeleted == null)
+                .Select(e => new TeamModel
+                {
+                    Id = e.IdEchipa,
+                    Nume = e.Nume
+                })
+                .ToList();
+        }
+
+        public List<StadiumModel> GetStadioaneForDropdown()
+        {
+            return UnitOfWork.Stadioane.Get()
+                .Where(s => s.IdDeleted == false || s.IdDeleted == null)
+                .Select(s => new StadiumModel
+                {
+                    Id = s.IdStadion,
+                    Nume = s.Nume
+                })
+                .ToList();
+        }
+
+        public List<RefereeModel> GetCategoriiForDropdown()
+        {
+            return UnitOfWork.CategoriiTurneu.Get()
+                .Where(c => c.IdDeleted == false || c.IdDeleted == null)
+                .Select(c => new RefereeModel
+                {
+                    Id = c.IdCategorie,
+                    Nume = c.Nume
+                })
+                .ToList();
+        }
+
+        public List<GrupaModel> GetGrupeForDropdown()
+        {
+            return UnitOfWork.Grupe.Get()
+                .Where(g => g.IdDeleted == false || g.IdDeleted == null)
+                .Select(g => new GrupaModel
+                {
+                    IdGrupa = g.IdGrupa,
+                    Nume = g.Nume
+                })
+                .ToList();
+        }
+
+        public bool CreateMatch(CreateTurneuModel model)
+        {
+            var turneu = new Turnee
+            {
+                IdTurneu = Guid.NewGuid(),
+                Data = model.Data,
+                IdEchipaGazda = model.IdEchipaGazda,
+                IdEchipaOaspete = model.IdEchipaOaspete,
+                IdStadion = model.IdStadion,
+                IdCategorie = model.IdCategorie,
+                IdGrupa = model.IdGrupa,
+                ScorGazda = model.ScorGazda,
+                ScorOaspeti = model.ScorOaspeti,
+                IdDeleted = false
+            };
+
+            UnitOfWork.Turnee.Insert(turneu);
+            UnitOfWork.SaveChanges();
+            return true;
+        }
     }
 
     public class GroupStanding

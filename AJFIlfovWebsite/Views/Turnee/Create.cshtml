@@ -1,0 +1,213 @@
+@model AJFIlfov.BusinessLogic.Implementation.TurneeService.Models.CreateTurneuModel
+@{
+    ViewData["Title"] = "Adaugă meci";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewData["Title"]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">
+    <!-- css styles -->
+    <link rel="stylesheet" href="https://ajfilfovwebsite20241218232333.azurewebsites.net/css/Common/Common2.css">
+    <style>
+        html,
+        body,
+        .body-filter {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .create-match-form {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group .text-danger {
+            color: #dc3545;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        .btn-submit {
+            background-color: #007bff;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .btn-back:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="body-filter">
+        <header>
+            <div class="header-content">
+                <div class="header-title">
+                    <img src="https://ajfilfovwebsite20241218232333.azurewebsites.net/images/logo1.png" alt="Logo AJF Ilfov">
+                    <h2>Asociația Județeană de Fotbal Ilfov</h2>
+                    <h3>AJF Ilfov</h3>
+                </div>
+
+                <div class="header-menu-toggle" onclick="toggleMenu()"></div>
+
+                <nav class="big-nav">
+                    <a href="HomeWebsite">Acasă</a>
+                    <a href="DespreNoi">Despre noi</a>
+                    <a href="Anunturi">Comunicate</a>
+                    <a href="Comisii">Comisii jurisdicționale</a>
+                    <a href="Competitii">Competiții</a>
+                    <a href="MeciLive">Meciuri live</a>
+                    <a href="Documente">Documente</a>
+                    <a href="Contact">Contact</a>
+                </nav>
+            </div>
+        </header>
+
+        <h1 class="page-title">Adaugă meci nou</h1>
+
+        <div class="create-match-form">
+            <form asp-action="Create" method="post">
+                <div class="form-group">
+                    <label asp-for="Data">Data meciului</label>
+                    <input asp-for="Data" type="datetime-local" />
+                    <span asp-validation-for="Data" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="IdEchipaGazda">Echipa gazdă</label>
+                    <select asp-for="IdEchipaGazda" asp-items="@ViewBag.Echipe">
+                        <option value="">Selectează echipa gazdă</option>
+                    </select>
+                    <span asp-validation-for="IdEchipaGazda" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="IdEchipaOaspete">Echipa oaspete</label>
+                    <select asp-for="IdEchipaOaspete" asp-items="@ViewBag.Echipe">
+                        <option value="">Selectează echipa oaspete</option>
+                    </select>
+                    <span asp-validation-for="IdEchipaOaspete" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="IdStadion">Stadion</label>
+                    <select asp-for="IdStadion" asp-items="@ViewBag.Stadioane">
+                        <option value="">Selectează stadionul</option>
+                    </select>
+                    <span asp-validation-for="IdStadion" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="IdCategorie">Categorie</label>
+                    <select asp-for="IdCategorie" asp-items="@ViewBag.Categorii">
+                        <option value="">Selectează categoria</option>
+                    </select>
+                    <span asp-validation-for="IdCategorie" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="IdGrupa">Grupă (opțional)</label>
+                    <select asp-for="IdGrupa" asp-items="@ViewBag.Grupe">
+                        <option value="">Selectează grupa</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ScorGazda">Scor gazdă (opțional)</label>
+                    <input asp-for="ScorGazda" type="number" min="0" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ScorOaspeti">Scor oaspete (opțional)</label>
+                    <input asp-for="ScorOaspeti" type="number" min="0" />
+                </div>
+
+                <button type="submit" class="btn-submit">Adaugă meci</button>
+                <a href="@Url.Action("Index", "Turnee")" class="btn-back">Înapoi la lista meciurilor</a>
+            </form>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 Asociația Județeană de Fotbal Ilfov. Toate drepturile rezervate.</p>
+            <div class="social-icons">
+                <a class="instagram" href="#"></a>
+                <a class="facebook" href="https://www.facebook.com/AJFIlfov1997/?locale=ro_RO"></a>
+                <a class="twitter" href="#"></a>
+            </div>
+        </footer>
+    </div>
+
+    <nav class="small-nav">
+        <div class="header-content">
+            <div class="header-menu-toggle" onclick="toggleMenu()"></div>
+        </div>
+
+        <div class="small-nav-content">
+            <a href="HomeWebsite">Acasă</a>
+            <a href="DespreNoi">Despre noi</a>
+            <a href="Anunturi">Comunicate</a>
+            <a href="Comisii">Comisii jurisdicționale</a>
+            <a href="Competitii">Competiții</a>
+            <a href="MeciLive">Meciuri live</a>
+            <a href="Documente">Documente</a>
+            <a href="Contact">Contact</a>
+        </div>
+    </nav>
+
+    <script>
+        function toggleMenu() {
+            const mobileNav = document.getElementsByClassName('small-nav')[0];
+            mobileNav.classList.toggle('show');
+        }
+    </script>
+</body>
+</html> 

@@ -27,6 +27,33 @@
             flex-direction: column;
             position: relative;
         }
+
+        .website-button {
+            background-color: var(--color-secondary);
+            color: var(--color-on-secondary);
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-left: auto;
+            padding: 0.8rem 0.5rem;
+            white-space: nowrap;
+            line-height: 1.2;
+        }
+
+            .website-button:hover {
+                background-color: #00a89b;
+            }
+
+        @@media (min-width: 768px) {
+            .website-button {
+                padding: 0.5rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 
@@ -43,20 +70,8 @@
                     <h3>AJF Ilfov</h3>
                 </div>
 
-                <!-- menu toggle button (visible only on mobile) -->
-                <div class="header-menu-toggle" onclick="toggleMenu()"></div>
-
-                <!-- main navigation links for big screens -->
-                <nav class="big-nav">
-                    <a href="HomeWebsite">Acasă</a>
-                    <a href="DespreNoi">Despre noi</a>
-                    <a href="Anunturi">Comunicate</a>
-                    <a href="Comisii">Comisii jurisdicționale</a>
-                    <a href="Competitii">Competiții</a>
-                    <a href="MeciLive">Meciuri live</a>
-                    <a href="Documente">Documente</a>
-                    <a href="Contact">Contact</a>
-                </nav>
+                <!-- website button -->
+                <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net" class="website-button">Către site-ul principal</a>
             </div>
         </header>
 
@@ -128,33 +143,7 @@
 
     </div>
 
-    <!-- main navigation links for small screens -->
-    <nav class="small-nav">
-        <div class="header-content">
-            <div class="header-menu-toggle" onclick="toggleMenu()"></div>
-        </div>
-
-        <div class="small-nav-content">
-            <a href="HomeWebsite">Acasă</a>
-            <a href="DespreNoi">Despre noi</a>
-            <a href="Anunturi">Comunicate</a>
-            <a href="Comisii">Comisii jurisdicționale</a>
-            <a href="Competitii">Competiții</a>
-            <a href="MeciLive">Meciuri live</a>
-            <a href="Documente">Documente</a>
-            <a href="Contact">Contact</a>
-        </div>
-    </nav>
-
     <script>
-        /* --------------
-        nav menu behavior
-        -------------- */
-        function toggleMenu() {
-            const mobileNav = document.getElementsByClassName('small-nav')[0];
-            mobileNav.classList.toggle('show');
-        }
-
         /* -------------
         group tag colors
         ------------- */

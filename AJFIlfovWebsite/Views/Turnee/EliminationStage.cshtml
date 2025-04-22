@@ -35,15 +35,6 @@
             color: var(--color-on-surface);
         }
 
-        .header-menu-toggle {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960' fill='%230f0f0fff'%3E%3Cpath d='M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z'/%3E%3C/svg%3E");
-            color: var(--color-on-surface);
-        }
-
-        .big-nav a {
-            color: var(--color-on-surface);
-        }
-
         .classification-matches {
             margin: 60px auto 30px;
             padding: 0 20px;
@@ -54,13 +45,13 @@
             align-items: center;
         }
 
-        .classification-matches h2 {
-            font-size: 2rem;
-            margin-bottom: 30px;
-            text-align: center;
-            color: var(--color-on-surface);
-            width: 100%;
-        }
+            .classification-matches h2 {
+                font-size: 2rem;
+                margin-bottom: 30px;
+                text-align: center;
+                color: var(--color-on-surface);
+                width: 100%;
+            }
 
         .tournament-container {
             margin-bottom: 30px;
@@ -86,69 +77,96 @@
             list-style: none;
         }
 
-        .classification-bracket .team-item-container {
-            position: relative;
-            display: flex;
-            align-items: center;
-            margin: 0;
-        }
+            .classification-bracket .team-item-container {
+                position: relative;
+                display: flex;
+                align-items: center;
+                margin: 0;
+            }
 
-        .classification-bracket .team-item-container:after,
-        .classification-bracket .team-item-container:before {
-            display: none;
-        }
+                .classification-bracket .team-item-container:after,
+                .classification-bracket .team-item-container:before {
+                    display: none;
+                }
 
-        .classification-bracket .team-item-content {
-            min-width: 250px;
-        }
-        
+            .classification-bracket .team-item-content {
+                min-width: 250px;
+            }
+
         .bracket-third-place {
             position: relative;
             display: flex;
             justify-content: center;
             width: auto;
         }
-        
+
         .third-place-match {
             position: relative;
         }
-        
-        .third-place-match:before,
-        .third-place-match:after {
-            display: none;
-        }
-        
-        .third-place-match .team-item-content {
-            position: relative;
-            border: 2px dashed #555555;
-            min-width: 250px;
-        }
-        
-        .third-place-match .team-item-content:before {
-            content: "Finala mică";
-            position: absolute;
-            top: -30px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            font-size: 0.9rem;
-            color: var(--color-on-surface);
-            font-weight: bold;
-        }
+
+            .third-place-match:before,
+            .third-place-match:after {
+                display: none;
+            }
+
+            .third-place-match .team-item-content {
+                position: relative;
+                border: 2px dashed #555555;
+                min-width: 200px;
+            }
+
+                .third-place-match .team-item-content:before {
+                    content: "Finala mică";
+                    position: absolute;
+                    top: -3rem;
+                    left: 0;
+                    width: 100%;
+                    text-align: center;
+                    font-size: 0.9rem;
+                    color: var(--color-on-surface);
+                    font-weight: bold;
+                }
 
         .bracket:nth-last-child(2) .team-item-container:after,
         .bracket:last-child .team-item-container:after {
             display: none;
         }
-        
+
         @@media (max-width: 1280px) {
             .classification-brackets {
                 flex-direction: column;
                 align-items: center;
             }
-            
+
             .classification-bracket {
                 flex-direction: column;
+            }
+        }
+
+        .website-button {
+            background-color: var(--color-secondary);
+            color: var(--color-on-secondary);
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-left: auto;
+            padding: 0.8rem 0.5rem;
+            white-space: nowrap;
+            line-height: 1.2;
+        }
+
+            .website-button:hover {
+                background-color: #00a89b;
+            }
+
+        @@media (min-width: 768px) {
+            .website-button {
+                padding: 0.5rem 1.5rem;
+                font-size: 1rem;
             }
         }
     </style>
@@ -164,22 +182,14 @@
                     <h2>Asociația Județeană de Fotbal Ilfov</h2>
                     <h3>AJF Ilfov</h3>
                 </div>
-                <!-- menu toggle button (visible only on mobile) -->
-                <div class="header-menu-toggle" onclick="toggleMenu()"></div>
-                <!-- main navigation links for big screens -->
-                <nav class="big-nav">
-                    <a href="HomeWebsite">Acasă</a>
-                    <a href="DespreNoi">Despre noi</a>
-                    <a href="Anunturi">Comunicate</a>
-                    <a href="Comisii">Comisii jurisdicționale</a>
-                    <a href="Competitii">Competiții</a>
-                    <a href="MeciLive">Meciuri live</a>
-                    <a href="Documente">Documente</a>
-                    <a href="Contact">Contact</a>
-                </nav>
+
+                <!-- website button -->
+                <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net" class="website-button">Către site-ul principal</a>
             </div>
         </header>
+
         <!-- ------------------------------------------------- -->
+
         <!-- page title -->
         <h1 class="page-title">Etapa de eliminare</h1>
         <!-- actual page content -->
@@ -203,22 +213,7 @@
             </div>
         </footer>
     </div>
-    <!-- main navigation links for small screens -->
-    <nav class="small-nav">
-        <div class="header-content">
-            <div class="header-menu-toggle" onclick="toggleMenu()"></div>
-        </div>
-        <div class="small-nav-content">
-            <a href="HomeWebsite">Acasă</a>
-            <a href="DespreNoi">Despre noi</a>
-            <a href="Anunturi">Comunicate</a>
-            <a href="Comisii">Comisii jurisdicționale</a>
-            <a href="Competitii">Competiții</a>
-            <a href="MeciLive">Meciuri live</a>
-            <a href="Documente">Documente</a>
-            <a href="Contact">Contact</a>
-        </div>
-    </nav>
+
     <script>
         const eliminationMatches = @Html.Raw(Json.Serialize(ViewBag.EliminationMatches));
         const classificationMatches = @Html.Raw(Json.Serialize(ViewBag.ClassificationMatches));
@@ -275,7 +270,7 @@
 
                 for (let i = 0; i < currentRoundMatches.length; i += 2) {
                     const match1 = currentRoundMatches[i];
-                    
+
                     // If there's a second match in the pair
                     if (i + 1 < currentRoundMatches.length) {
                         const match2 = currentRoundMatches[i + 1];
@@ -328,15 +323,15 @@
                     } else {
                         // Handle odd number of matches by advancing the team without a match
                         nextRoundMatches.push(match1);
-                        
+
                         const matchItemContainer = document.createElement('li');
                         matchItemContainer.className = 'team-item-container';
-                        
+
                         const matchItemContent = document.createElement('div');
                         matchItemContent.className = 'team-item-content';
-                        
+
                         const winner = match1.scorGazda > match1.scorOaspeti ? match1.echipaGazdaNume : match1.echipaOaspeteNume;
-                        
+
                         matchItemContent.innerHTML = `
                             <strong class="stadium-name">${match1.stadionNume}</strong>
                             <div class="match-info-row">
@@ -348,25 +343,25 @@
                                 <span class="match-score">-</span>
                             </div>
                         `;
-                        
+
                         matchItemContainer.appendChild(matchItemContent);
                         nextRound.appendChild(matchItemContainer);
                     }
                 }
 
                 brackets.appendChild(nextRound);
-                
+
                 // Add third place playoff after semifinal round
                 if (currentRoundMatches.length === 2 && lostTeams.length === 2) {
                     const thirdPlaceRound = document.createElement('ul');
                     thirdPlaceRound.className = `bracket bracket-third-place`;
-                    
+
                     const matchItemContainer = document.createElement('li');
                     matchItemContainer.className = 'team-item-container third-place-match';
-                    
+
                     const matchItemContent = document.createElement('div');
                     matchItemContent.className = 'team-item-content';
-                    
+
                     matchItemContent.innerHTML = `
                         <strong class="stadium-name">Clinceni</strong>
                         <div class="match-info-row">
@@ -378,14 +373,14 @@
                             <span class="match-score">?-?</span>
                         </div>
                     `;
-                    
+
                     matchItemContainer.appendChild(matchItemContent);
                     thirdPlaceRound.appendChild(matchItemContainer);
-                    
+
                     // Insert the third place match before the final round
                     brackets.appendChild(thirdPlaceRound);
                 }
-                
+
                 currentRoundMatches = nextRoundMatches;
                 roundNumber++;
             }

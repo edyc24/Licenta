@@ -45,9 +45,9 @@
             align-self: flex-start;
         }
 
-        .admin-edit-button:hover {
-            background-color: #00a89b;
-        }
+            .admin-edit-button:hover {
+                background-color: #00a89b;
+            }
 
         .score-modal {
             display: none;
@@ -62,9 +62,9 @@
             z-index: 1000;
         }
 
-        .score-modal.show {
-            display: block;
-        }
+            .score-modal.show {
+                display: block;
+            }
 
         .modal-content {
             position: fixed;
@@ -86,10 +86,10 @@
             margin-bottom: 20px;
         }
 
-        .modal-header h3 {
-            margin: 0;
-            color: #333;
-        }
+            .modal-header h3 {
+                margin: 0;
+                color: #333;
+            }
 
         .close-modal {
             background: none;
@@ -126,10 +126,10 @@
             gap: 10px;
         }
 
-        .score-team-names span {
-            flex: 1;
-            text-align: center;
-        }
+            .score-team-names span {
+                flex: 1;
+                text-align: center;
+            }
 
         .save-score {
             width: 100%;
@@ -142,9 +142,9 @@
             transition: background-color 0.3s ease;
         }
 
-        .save-score:hover {
-            background-color: #00a89b;
-        }
+            .save-score:hover {
+                background-color: #00a89b;
+            }
 
         @@media (max-width: 768px) {
             .match-teams {
@@ -170,12 +170,39 @@
                 text-align: center;
             }
 
-            .score-team-names span {
-                width: 100%;
-            }
+                .score-team-names span {
+                    width: 100%;
+                }
 
             .modal-content {
                 margin: 0 15px;
+            }
+        }
+
+        .website-button {
+            background-color: var(--color-secondary);
+            color: var(--color-on-secondary);
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-left: auto;
+            padding: 0.8rem 0.5rem;
+            white-space: nowrap;
+            line-height: 1.2;
+        }
+
+            .website-button:hover {
+                background-color: #00a89b;
+            }
+
+        @@media (min-width: 768px) {
+            .website-button {
+                padding: 0.5rem 1.5rem;
+                font-size: 1rem;
             }
         }
     </style>
@@ -194,20 +221,8 @@
                     <h3>AJF Ilfov</h3>
                 </div>
 
-                <!-- menu toggle button (visible only on mobile) -->
-                <div class="header-menu-toggle" onclick="toggleMenu()"></div>
-
-                <!-- main navigation links for big screens -->
-                <nav class="big-nav">
-                    <a href="HomeWebsite">Acasă</a>
-                    <a href="DespreNoi">Despre noi</a>
-                    <a href="Anunturi">Comunicate</a>
-                    <a href="Comisii">Comisii jurisdicționale</a>
-                    <a href="Competitii">Competiții</a>
-                    <a href="MeciLive">Meciuri live</a>
-                    <a href="Documente">Documente</a>
-                    <a href="Contact">Contact</a>
-                </nav>
+                <!-- website button -->
+                <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net" class="website-button">Către site-ul principal</a>
             </div>
         </header>
 
@@ -293,26 +308,6 @@
             </section>
         </main>
 
-        <!-- Score Edit Modal -->
-        <div id="scoreModal" class="score-modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3>Editare scor</h3>
-                    <button class="close-modal" onclick="closeScoreModal()">&times;</button>
-                </div>
-                <div class="score-team-names">
-                    <span id="homeTeamName"></span>
-                    <span id="awayTeamName"></span>
-                </div>
-                <div class="score-inputs">
-                    <input type="number" id="homeScore" class="score-input" min="0" value="0">
-                    <span style="align-self: center">-</span>
-                    <input type="number" id="awayScore" class="score-input" min="0" value="0">
-                </div>
-                <button class="save-score" onclick="saveScore()">Salvează</button>
-            </div>
-        </div>
-
         <!-- page footer -->
         <footer>
             <p>&copy; 2024 Asociația Județeană de Fotbal Ilfov. Toate drepturile rezervate.</p>
@@ -325,25 +320,30 @@
 
     </div>
 
-    <!-- main navigation links for small screens -->
-    <nav class="small-nav">
-        <div class="header-content">
-            <div class="header-menu-toggle" onclick="toggleMenu()"></div>
+    <!-- score edit modal -->
+    <div id="scoreModal" class="score-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Editare scor</h3>
+                <button class="close-modal" onclick="closeScoreModal()">&times;</button>
+            </div>
+            <div class="score-team-names">
+                <span id="homeTeamName"></span>
+                <span id="awayTeamName"></span>
+            </div>
+            <div class="score-inputs">
+                <input type="number" id="homeScore" class="score-input" min="0" value="0">
+                <span style="align-self: center">-</span>
+                <input type="number" id="awayScore" class="score-input" min="0" value="0">
+            </div>
+            <button class="save-score" onclick="saveScore()">Salvează</button>
         </div>
-
-        <div class="small-nav-content">
-            <a href="HomeWebsite">Acasă</a>
-            <a href="DespreNoi">Despre noi</a>
-            <a href="Anunturi">Comunicate</a>
-            <a href="Comisii">Comisii jurisdicționale</a>
-            <a href="Competitii">Competiții</a>
-            <a href="MeciLive">Meciuri live</a>
-            <a href="Documente">Documente</a>
-            <a href="Contact">Contact</a>
-        </div>
-    </nav>
+    </div>
 
     <script>
+        /* ----------------
+        score edit behavior
+        ---------------- */
         let currentMatchId = null;
 
         function openScoreModal(matchId, homeTeam, awayTeam) {
@@ -385,14 +385,6 @@
             }
 
             closeScoreModal();
-        }
-
-        /* --------------
-        nav menu behavior
-        -------------- */
-        function toggleMenu() {
-            const mobileNav = document.getElementsByClassName('small-nav')[0];
-            mobileNav.classList.toggle('show');
         }
     </script>
 

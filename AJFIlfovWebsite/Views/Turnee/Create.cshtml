@@ -39,26 +39,26 @@
             margin-bottom: 1.5rem;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
+            .form-group label {
+                display: block;
+                margin-bottom: 0.5rem;
+                font-weight: bold;
+            }
 
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
+            .form-group input,
+            .form-group select {
+                width: 100%;
+                padding: 0.75rem;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                font-size: 1rem;
+            }
 
-        .form-group .text-danger {
-            color: #dc3545;
-            font-size: 0.875rem;
-            margin-top: 0.25rem;
-        }
+            .form-group .text-danger {
+                color: #dc3545;
+                font-size: 0.875rem;
+                margin-top: 0.25rem;
+            }
 
         .btn-submit {
             background-color: #007bff;
@@ -71,9 +71,9 @@
             transition: background-color 0.3s;
         }
 
-        .btn-submit:hover {
-            background-color: #0056b3;
-        }
+            .btn-submit:hover {
+                background-color: #0056b3;
+            }
 
         .btn-back {
             display: inline-block;
@@ -82,13 +82,41 @@
             text-decoration: none;
         }
 
-        .btn-back:hover {
-            text-decoration: underline;
+            .btn-back:hover {
+                text-decoration: underline;
+            }
+
+        .website-button {
+            background-color: var(--color-secondary);
+            color: var(--color-on-secondary);
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-left: auto;
+            padding: 0.8rem 0.5rem;
+            white-space: nowrap;
+            line-height: 1.2;
+        }
+
+            .website-button:hover {
+                background-color: #00a89b;
+            }
+
+        @@media (min-width: 768px) {
+            .website-button {
+                padding: 0.5rem 1.5rem;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="body-filter">
+        <!-- header section -->
         <header>
             <div class="header-content">
                 <div class="header-title">
@@ -97,18 +125,8 @@
                     <h3>AJF Ilfov</h3>
                 </div>
 
-                <div class="header-menu-toggle" onclick="toggleMenu()"></div>
-
-                <nav class="big-nav">
-                    <a href="HomeWebsite">Acasă</a>
-                    <a href="DespreNoi">Despre noi</a>
-                    <a href="Anunturi">Comunicate</a>
-                    <a href="Comisii">Comisii jurisdicționale</a>
-                    <a href="Competitii">Competiții</a>
-                    <a href="MeciLive">Meciuri live</a>
-                    <a href="Documente">Documente</a>
-                    <a href="Contact">Contact</a>
-                </nav>
+                <!-- website button -->
+                <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net" class="website-button">Către site-ul principal</a>
             </div>
         </header>
 
@@ -122,27 +140,23 @@
                     <span asp-validation-for="Data" class="text-danger"></span>
                 </div>
 
-               
                 <div class="form-group">
                     <label asp-for="IdEchipaGazda">Echipa gazdă</label>
-                    <input type="text" class="search-input" id="searchGazda" placeholder="Caută echipa gazdă..." onkeyup="filterTeams('searchGazda', 'IdEchipaGazda')"/>
+                    <input type="text" class="search-input" id="searchGazda" placeholder="Caută echipa gazdă..." onkeyup="filterTeams('searchGazda', 'IdEchipaGazda')" />
                     <select asp-for="IdEchipaGazda" asp-items="@ViewBag.Echipe" id="IdEchipaGazda">
                         <option value="">Selectează echipa gazdă</option>
                     </select>
                     <span asp-validation-for="IdEchipaGazda" class="text-danger"></span>
                 </div>
 
-
-               
                 <div class="form-group">
                     <label asp-for="IdEchipaOaspete">Echipa oaspete</label>
-                    <input type="text" class="search-input" id="searchOaspete" placeholder="Caută echipa oaspete..." onkeyup="filterTeams('searchOaspete', 'IdEchipaOaspete')"/>
+                    <input type="text" class="search-input" id="searchOaspete" placeholder="Caută echipa oaspete..." onkeyup="filterTeams('searchOaspete', 'IdEchipaOaspete')" />
                     <select asp-for="IdEchipaOaspete" asp-items="@ViewBag.Echipe" id="IdEchipaOaspete">
                         <option value="">Selectează echipa oaspete</option>
                     </select>
                     <span asp-validation-for="IdEchipaOaspete" class="text-danger"></span>
                 </div>
-
 
                 <div class="form-group">
                     <label asp-for="IdStadion">Stadion</label>
@@ -192,23 +206,6 @@
         </footer>
     </div>
 
-    <nav class="small-nav">
-        <div class="header-content">
-            <div class="header-menu-toggle" onclick="toggleMenu()"></div>
-        </div>
-
-        <div class="small-nav-content">
-            <a href="HomeWebsite">Acasă</a>
-            <a href="DespreNoi">Despre noi</a>
-            <a href="Anunturi">Comunicate</a>
-            <a href="Comisii">Comisii jurisdicționale</a>
-            <a href="Competitii">Competiții</a>
-            <a href="MeciLive">Meciuri live</a>
-            <a href="Documente">Documente</a>
-            <a href="Contact">Contact</a>
-        </div>
-    </nav>
-
     <script>
         function filterTeams(searchInputId, selectId) {
             const searchInput = document.getElementById(searchInputId);
@@ -225,10 +222,6 @@
                     option.style.display = "none";
                 }
             }
-        }
-        function toggleMenu() {
-            const mobileNav = document.getElementsByClassName('small-nav')[0];
-            mobileNav.classList.toggle('show');
         }
     </script>
 </body>

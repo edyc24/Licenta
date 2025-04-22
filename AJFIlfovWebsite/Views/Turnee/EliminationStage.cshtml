@@ -43,6 +43,114 @@
         .big-nav a {
             color: var(--color-on-surface);
         }
+
+        .classification-matches {
+            margin: 60px auto 30px;
+            padding: 0 20px;
+            max-width: 1400px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .classification-matches h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: var(--color-on-surface);
+            width: 100%;
+        }
+
+        .tournament-container {
+            margin-bottom: 30px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .classification-brackets {
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            gap: 30px;
+            width: auto;
+        }
+
+        .classification-bracket {
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .classification-bracket .team-item-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin: 0;
+        }
+
+        .classification-bracket .team-item-container:after,
+        .classification-bracket .team-item-container:before {
+            display: none;
+        }
+
+        .classification-bracket .team-item-content {
+            min-width: 250px;
+        }
+        
+        .bracket-third-place {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            width: auto;
+        }
+        
+        .third-place-match {
+            position: relative;
+        }
+        
+        .third-place-match:before,
+        .third-place-match:after {
+            display: none;
+        }
+        
+        .third-place-match .team-item-content {
+            position: relative;
+            border: 2px dashed #555555;
+            min-width: 250px;
+        }
+        
+        .third-place-match .team-item-content:before {
+            content: "Finala mică";
+            position: absolute;
+            top: -30px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--color-on-surface);
+            font-weight: bold;
+        }
+
+        .bracket:nth-last-child(2) .team-item-container:after,
+        .bracket:last-child .team-item-container:after {
+            display: none;
+        }
+        
+        @@media (max-width: 1280px) {
+            .classification-brackets {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .classification-bracket {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
@@ -78,6 +186,13 @@
         <div class="tournament-container" id="tournament-container">
             <div class="tournament-brackets" id="tournament-brackets"></div>
         </div>
+
+        <!-- Classification matches section -->
+        <div class="classification-matches">
+            <h2>Meciuri de clasament (locurile 3-4)</h2>
+            <div class="classification-brackets" id="classification-brackets"></div>
+        </div>
+
         <!-- Add footer here -->
         <footer>
             <p>© 2024 Asociația Județeană de Fotbal Ilfov. Toate drepturile rezervate.</p>
@@ -106,6 +221,7 @@
     </nav>
     <script>
         const eliminationMatches = @Html.Raw(Json.Serialize(ViewBag.EliminationMatches));
+        const classificationMatches = @Html.Raw(Json.Serialize(ViewBag.ClassificationMatches));
 
         function generateEliminationStage(matches) {
             const brackets = document.getElementById('tournament-brackets');
@@ -126,7 +242,7 @@
                 const team2 = match.echipaOaspeteNume;
                 const score = match.scorGazda + '-' + match.scorOaspeti;
                 const date = new Date(match.data);
-                const time = `${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`; // Extract only the hour and minutes
+                const time = `${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`;
                 const stadium = match.stadionNume;
 
                 matchItemContent.innerHTML = `
@@ -150,6 +266,7 @@
             // Generate subsequent rounds dynamically
             let currentRoundMatches = matches;
             let roundNumber = 2;
+            let lostTeams = []; // Array to track teams that lose in semifinals
 
             while (currentRoundMatches.length > 1) {
                 const nextRoundMatches = [];
@@ -158,54 +275,164 @@
 
                 for (let i = 0; i < currentRoundMatches.length; i += 2) {
                     const match1 = currentRoundMatches[i];
-                    const match2 = currentRoundMatches[i + 1];
+                    
+                    // If there's a second match in the pair
+                    if (i + 1 < currentRoundMatches.length) {
+                        const match2 = currentRoundMatches[i + 1];
 
-                    const winner1 = match1.scorGazda > match1.scorOaspeti ? match1.echipaGazdaNume : match1.echipaOaspeteNume;
-                    const winner2 = match2.scorGazda > match2.scorOaspeti ? match2.echipaGazdaNume : match2.echipaOaspeteNume;
+                        // Determine winners and losers
+                        const winner1 = match1.scorGazda > match1.scorOaspeti ? match1.echipaGazdaNume : match1.echipaOaspeteNume;
+                        const loser1 = match1.scorGazda <= match1.scorOaspeti ? match1.echipaGazdaNume : match1.echipaOaspeteNume;
+                        const winner2 = match2.scorGazda > match2.scorOaspeti ? match2.echipaGazdaNume : match2.echipaOaspeteNume;
+                        const loser2 = match2.scorGazda <= match2.scorOaspeti ? match2.echipaGazdaNume : match2.echipaOaspeteNume;
 
-                    const nextMatch = {
-                        echipaGazdaNume: winner1,
-                        echipaOaspeteNume: winner2,
-                        scorGazda: 0,
-                        scorOaspeti: 0,
-                        data: new Date().toISOString(),
-                        stadionNume: "Clinceni"
-                    };
+                        // If we're in the semifinal round (when there are only 2 matches)
+                        if (currentRoundMatches.length === 2) {
+                            lostTeams = [loser1, loser2];
+                        }
 
-                    nextRoundMatches.push(nextMatch);
+                        const nextMatch = {
+                            echipaGazdaNume: winner1,
+                            echipaOaspeteNume: winner2,
+                            scorGazda: 0,
+                            scorOaspeti: 0,
+                            data: new Date().toISOString(),
+                            stadionNume: "Clinceni"
+                        };
 
+                        nextRoundMatches.push(nextMatch);
+
+                        const matchItemContainer = document.createElement('li');
+                        matchItemContainer.className = 'team-item-container';
+
+                        const matchItemContent = document.createElement('div');
+                        matchItemContent.className = 'team-item-content';
+
+                        const nextDate = new Date(nextMatch.data);
+                        const nextTime = `${nextDate.getHours()}:${nextDate.getMinutes().toString().padStart(2, '0')}`;
+
+                        matchItemContent.innerHTML = `
+                            <strong class="stadium-name">${nextMatch.stadionNume}</strong>
+                            <div class="match-info-row">
+                                <time>${nextTime}</time>
+                                <div class="teams-column">
+                                    <span class="team-name">${nextMatch.echipaGazdaNume}</span>
+                                    <span class="team-name">${nextMatch.echipaOaspeteNume}</span>
+                                </div>
+                                <span class="match-score">?-?</span>
+                            </div>
+                        `;
+
+                        matchItemContainer.appendChild(matchItemContent);
+                        nextRound.appendChild(matchItemContainer);
+                    } else {
+                        // Handle odd number of matches by advancing the team without a match
+                        nextRoundMatches.push(match1);
+                        
+                        const matchItemContainer = document.createElement('li');
+                        matchItemContainer.className = 'team-item-container';
+                        
+                        const matchItemContent = document.createElement('div');
+                        matchItemContent.className = 'team-item-content';
+                        
+                        const winner = match1.scorGazda > match1.scorOaspeti ? match1.echipaGazdaNume : match1.echipaOaspeteNume;
+                        
+                        matchItemContent.innerHTML = `
+                            <strong class="stadium-name">${match1.stadionNume}</strong>
+                            <div class="match-info-row">
+                                <time>-</time>
+                                <div class="teams-column">
+                                    <span class="team-name">${winner}</span>
+                                    <span class="team-name">-</span>
+                                </div>
+                                <span class="match-score">-</span>
+                            </div>
+                        `;
+                        
+                        matchItemContainer.appendChild(matchItemContent);
+                        nextRound.appendChild(matchItemContainer);
+                    }
+                }
+
+                brackets.appendChild(nextRound);
+                
+                // Add third place playoff after semifinal round
+                if (currentRoundMatches.length === 2 && lostTeams.length === 2) {
+                    const thirdPlaceRound = document.createElement('ul');
+                    thirdPlaceRound.className = `bracket bracket-third-place`;
+                    
                     const matchItemContainer = document.createElement('li');
-                    matchItemContainer.className = 'team-item-container';
-
+                    matchItemContainer.className = 'team-item-container third-place-match';
+                    
                     const matchItemContent = document.createElement('div');
                     matchItemContent.className = 'team-item-content';
-
-                    const nextDate = new Date(nextMatch.Data);
-                    const nextTime = `${nextDate.getHours()}:${nextDate.getMinutes().toString().padStart(2, '0')}`;
-
+                    
                     matchItemContent.innerHTML = `
-                        <strong class="stadium-name">${nextMatch.stadionNume}</strong>
+                        <strong class="stadium-name">Clinceni</strong>
                         <div class="match-info-row">
-                            <time>${nextTime}</time>
+                            <time>-</time>
                             <div class="teams-column">
-                                <span class="team-name">${nextMatch.schipaGazdaNume}</span>
-                                <span class="team-name">${nextMatch.schipaOaspeteNume}</span>
+                                <span class="team-name">${lostTeams[0]}</span>
+                                <span class="team-name">${lostTeams[1]}</span>
                             </div>
                             <span class="match-score">?-?</span>
                         </div>
                     `;
-
+                    
                     matchItemContainer.appendChild(matchItemContent);
-                    nextRound.appendChild(matchItemContainer);
+                    thirdPlaceRound.appendChild(matchItemContainer);
+                    
+                    // Insert the third place match before the final round
+                    brackets.appendChild(thirdPlaceRound);
                 }
-
-                brackets.appendChild(nextRound);
+                
                 currentRoundMatches = nextRoundMatches;
                 roundNumber++;
             }
         }
 
+        function generateClassificationMatches(matches) {
+            const brackets = document.getElementById('classification-brackets');
+            brackets.innerHTML = '';
+
+            const classificationRound = document.createElement('ul');
+            classificationRound.className = 'bracket classification-bracket';
+
+            matches.forEach((match, index) => {
+                const matchItemContainer = document.createElement('li');
+                matchItemContainer.className = 'team-item-container';
+
+                const matchItemContent = document.createElement('div');
+                matchItemContent.className = 'team-item-content';
+
+                const team1 = match.echipaGazdaNume;
+                const team2 = match.echipaOaspeteNume;
+                const score = match.scorGazda + '-' + match.scorOaspeti;
+                const date = new Date(match.data);
+                const time = `${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`;
+                const stadium = match.stadionNume;
+
+                matchItemContent.innerHTML = `
+                    <strong class="stadium-name">${stadium}</strong>
+                    <div class="match-info-row">
+                        <time>${time}</time>
+                        <div class="teams-column">
+                            <span class="team-name">${team1}</span>
+                            <span class="team-name">${team2}</span>
+                        </div>
+                        <span class="match-score">${score}</span>
+                    </div>
+                `;
+
+                matchItemContainer.appendChild(matchItemContent);
+                classificationRound.appendChild(matchItemContainer);
+            });
+
+            brackets.appendChild(classificationRound);
+        }
+
         generateEliminationStage(eliminationMatches);
+        generateClassificationMatches(classificationMatches);
     </script>
 
 </body>

@@ -28,12 +28,15 @@ builder.Services.AddAJFIlfovCurrentUser();
 builder.Services.AddPresentation();
 builder.Services.AddAJFIlfovBusinessLogic();
 
+
 builder.Services.AddAuthentication("AJFIlfovCookies")
     .AddCookie("AJFIlfovCookies", options =>
     {
+        options.Cookie.Domain = ".ajfilfovwebsite20241218232333.azurewebsites.net"; // Set to your main domain
         options.AccessDeniedPath = new PathString("/HomeWebsite/Index");
         options.LoginPath = new PathString("/Admin/Login");
     });
+
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 

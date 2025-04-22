@@ -5,6 +5,9 @@
     Layout = null;
     var grupe = ViewBag.Grupe;
 }
+@using AJFIlfov.Common.DTOs
+@using Microsoft.AspNetCore.Authorization
+@inject CurrentUserDto CurrentUser
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,8 +31,154 @@
             flex-direction: column;
             position: relative;
         }
+
+        .admin-edit-button {
+            background-color: #00cbbc;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: background-color 0.3s ease;
+            margin-left: 10px;
+            align-self: flex-start;
+        }
+
+        .admin-edit-button:hover {
+            background-color: #00a89b;
+        }
+
+        .score-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .score-modal.show {
+            display: block;
+        }
+
+        .modal-content {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            max-width: 90%;
+            z-index: 1001;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            color: #333;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+            padding: 0;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+
+        .score-inputs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .score-input {
+            width: 60px;
+            padding: 5px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .score-team-names {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: #333;
+            gap: 10px;
+        }
+
+        .score-team-names span {
+            flex: 1;
+            text-align: center;
+        }
+
+        .save-score {
+            width: 100%;
+            padding: 10px;
+            background-color: #00cbbc;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .save-score:hover {
+            background-color: #00a89b;
+        }
+
+        @@media (max-width: 768px) {
+            .match-teams {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.25rem;
+                position: relative;
+                padding-right: 40px;
+            }
+
+            .admin-edit-button {
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                margin: 0;
+                padding: 8px;
+                font-size: 0.75rem;
+            }
+
+            .score-team-names {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .score-team-names span {
+                width: 100%;
+            }
+
+            .modal-content {
+                margin: 0 15px;
+            }
+        }
     </style>
-   
 </head>
 
 <body>
@@ -68,8 +217,9 @@
 
         <!-- actual page content -->
         <main class="group-stage">
-            <a href="https://turnee.ajfilfov.ro/EliminationStage?categorie=@ViewBag.Categorie" class="elimination-link">Către faza eliminatorie</a>
-            
+            @* <a href="https://turnee.ajfilfov.ro/EliminationStage?categorie=@ViewBag.Categorie" class="elimination-link">Către faza eliminatorie</a> *@
+            <a href="@Url.Action("EliminationStage", "Turnee", new { categorie = ViewBag.Categorie })" class="elimination-link">Către faza eliminatorie</a>
+
             <section class="group-content">
                 @foreach (var grupa in ViewBag.Grupe)
                 {
@@ -126,6 +276,12 @@
                                 <span class="team">@match.EchipaGazdaNume</span>
                                 <span class="vs">vs</span>
                                 <span class="team">@match.EchipaOaspeteNume</span>
+                                @if (CurrentUser.Role == "Administrator")
+                                {
+                                    <button class="admin-edit-button" onclick="openScoreModal('@match.IdTurneu', '@match.EchipaGazdaNume', '@match.EchipaOaspeteNume')">
+                                        Editează scor
+                                    </button>
+                                }
                             </div>
                             <div class="match-details">
                                 <span class="date">@match.Data?.ToString("dd.MM.yyyy HH:mm")</span>
@@ -136,6 +292,26 @@
                 </div>
             </section>
         </main>
+
+        <!-- Score Edit Modal -->
+        <div id="scoreModal" class="score-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Editare scor</h3>
+                    <button class="close-modal" onclick="closeScoreModal()">&times;</button>
+                </div>
+                <div class="score-team-names">
+                    <span id="homeTeamName"></span>
+                    <span id="awayTeamName"></span>
+                </div>
+                <div class="score-inputs">
+                    <input type="number" id="homeScore" class="score-input" min="0" value="0">
+                    <span style="align-self: center">-</span>
+                    <input type="number" id="awayScore" class="score-input" min="0" value="0">
+                </div>
+                <button class="save-score" onclick="saveScore()">Salvează</button>
+            </div>
+        </div>
 
         <!-- page footer -->
         <footer>
@@ -168,6 +344,49 @@
     </nav>
 
     <script>
+        let currentMatchId = null;
+
+        function openScoreModal(matchId, homeTeam, awayTeam) {
+            currentMatchId = matchId;
+            document.getElementById('homeTeamName').textContent = homeTeam;
+            document.getElementById('awayTeamName').textContent = awayTeam;
+            document.getElementById('scoreModal').classList.add('show');
+        }
+
+        function closeScoreModal() {
+            document.getElementById('scoreModal').classList.remove('show');
+        }
+
+        async function saveScore() {
+            const homeScore = document.getElementById('homeScore').value;
+            const awayScore = document.getElementById('awayScore').value;
+
+            try {
+                const response = await fetch('@Url.Action("UpdateScore", "Turnee")', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        matchId: currentMatchId,
+                        homeScore: parseInt(homeScore),
+                        awayScore: parseInt(awayScore)
+                    })
+                });
+
+                if (response.ok) {
+                    window.location.reload();
+                } else {
+                    alert('A apărut o eroare la salvarea scorului.');
+                }
+            } catch (error) {
+                alert('A apărut o eroare la salvarea scorului.');
+                console.error('Error:', error);
+            }
+
+            closeScoreModal();
+        }
+
         /* --------------
         nav menu behavior
         -------------- */

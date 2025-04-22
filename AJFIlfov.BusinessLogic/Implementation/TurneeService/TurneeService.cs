@@ -116,8 +116,7 @@ namespace AJFIlfov.BusinessLogic.Implementation.TurneeService
             standing.GoalsConceded += goalsAgainst ?? 0;
             standing.GoalDifference = standing.GoalsScored - standing.GoalsConceded;
 
-
-            if (standing.GoalsConceded != 0 && standing.GoalsScored != 0)
+            if (goalsFor != null && goalsAgainst != null)
             {
                 standing.MatchesPlayed++;
 
@@ -147,10 +146,10 @@ namespace AJFIlfov.BusinessLogic.Implementation.TurneeService
                 .Include(t => t.IdStadionNavigation)
                 .Include(t => t.IdCategorieNavigation)
                 .Include(t => t.IdGrupaNavigation)
-                .Where(t => t.IdDeleted == false && 
-                           t.IdCategorieNavigation.Nume == categorie && 
-                           t.Data > now && 
-                           t.ScorGazda == null && 
+                .Where(t => t.IdDeleted == false &&
+                           t.IdCategorieNavigation.Nume == categorie &&
+                           t.Data > now &&
+                           t.ScorGazda == null &&
                            t.ScorOaspeti == null)
                 .Select(t => new TurneuModel
                 {
@@ -333,6 +332,21 @@ namespace AJFIlfov.BusinessLogic.Implementation.TurneeService
             UnitOfWork.SaveChanges();
             return true;
         }
+
+        public bool UpdateScore(Guid matchId, int homeScore, int awayScore)
+        {
+            var turneu = UnitOfWork.Turnee.Get()
+                .FirstOrDefault(t => t.IdTurneu == matchId && (t.IdDeleted == false || t.IdDeleted == null));
+
+            if (turneu == null) return false;
+
+            turneu.ScorGazda = homeScore;
+            turneu.ScorOaspeti = awayScore;
+
+            UnitOfWork.Turnee.Update(turneu);
+            UnitOfWork.SaveChanges();
+            return true;
+        }
     }
 
     public class GroupStanding
@@ -347,4 +361,4 @@ namespace AJFIlfov.BusinessLogic.Implementation.TurneeService
         public int GoalDifference { get; set; }
         public int Points { get; set; }
     }
-} 
+}

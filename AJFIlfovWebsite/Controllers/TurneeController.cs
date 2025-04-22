@@ -32,7 +32,7 @@ namespace AJFIlfovWebsite.Controllers
             
             // Calculate group standings
             var grupe = _service.CalculateGroupStandings(meciuri);
-            
+
             // Get upcoming matches
             var upcomingMatches = _service.GetUpcomingMatches(categorie);
 
@@ -48,15 +48,213 @@ namespace AJFIlfovWebsite.Controllers
         {
             // Get all matches for the specified category
             var meciuri = _service.GetMeciuriByCategorie(categorie);
-            
-            // Get elimination stage matches
-            var eliminationMatches = _service.GetEliminationStageMatches(meciuri);
+
+            // Calculate group standings
+            var grupe = _service.CalculateGroupStandings(meciuri);
+
+            List<dynamic> eliminationMatches = new List<dynamic>();
+
+            if (grupe != null)
+            {
+                switch (categorie)
+                {
+                    case "2010":
+                        if (grupe.ContainsKey("Grupa A"))
+                        {
+                            var grupa2010Standings = grupe["Grupa A"];
+                            var topTeams = grupa2010Standings.OrderByDescending(t => t.Points).Take(4).ToList();
+
+                            eliminationMatches = new List<dynamic>
+                            {
+                                new
+                                {
+                                    EchipaGazdaNume = topTeams[0].TeamName, EchipaOaspeteNume = topTeams[1].TeamName,
+                                    ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-01-01 10:00"),
+                                    StadionNume = "Clinceni"
+                                },
+                            };
+                        }
+
+                        break;
+
+                    case "2013":
+                        if (grupe.ContainsKey("Grupa A") && grupe.ContainsKey("Grupa B"))
+                        {
+                            var grupaAStandings = grupe["Grupa A"];
+                            var grupaBStandings = grupe["Grupa B"];
+                            var topTeamsA = grupaAStandings.OrderByDescending(t => t.Points).Take(2).ToList();
+                            var topTeamsB = grupaBStandings.OrderByDescending(t => t.Points).Take(2).ToList();
+
+                            eliminationMatches = new List<dynamic>
+                            {
+                                new
+                                {
+                                    EchipaGazdaNume = topTeamsA[0].TeamName, EchipaOaspeteNume = topTeamsB[1].TeamName,
+                                    ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-02-01 13:00"),
+                                    StadionNume = "Clinceni"
+                                },
+                                new
+                                {
+                                    EchipaGazdaNume = topTeamsB[0].TeamName, EchipaOaspeteNume = topTeamsA[1].TeamName,
+                                    ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-02-01 13:50"),
+                                    StadionNume = "Clinceni"
+                                }
+                            };
+                        }
+
+                        break;
+
+
+                    case "2014":
+                        if (grupe.ContainsKey("Grupa A") && grupe.ContainsKey("Grupa B") && grupe.ContainsKey("Grupa C"))
+                        {
+                            var grupaAStandings = grupe["Grupa A"];
+                            var grupaBStandings = grupe["Grupa B"];
+                            var grupaCStandings = grupe["Grupa C"];
+                            var topTeamsA = grupaAStandings.OrderByDescending(t => t.Points).Take(1).ToList();
+                            var topTeamsB = grupaBStandings.OrderByDescending(t => t.Points).Take(1).ToList();
+                            var topTeamsC = grupaCStandings.OrderByDescending(t => t.Points).Take(1).ToList();
+                            var secondPlaces = new List<dynamic>
+ {
+ grupaAStandings.OrderByDescending(t => t.Points).Skip(1).First(),
+ grupaBStandings.OrderByDescending(t => t.Points).Skip(1).First(),
+ grupaCStandings.OrderByDescending(t => t.Points).Skip(1).First()
+ }.OrderByDescending(t => t.Points).ToList();
+                            var thirdPlaces = new List<dynamic>
+ {
+ grupaAStandings.OrderByDescending(t => t.Points).Skip(2).First(),
+ grupaBStandings.OrderByDescending(t => t.Points).Skip(2).First(),
+ grupaCStandings.OrderByDescending(t => t.Points).Skip(2).First()
+ }.OrderByDescending(t => t.Points).ToList();
+
+                            eliminationMatches = new List<dynamic>
+ {
+ new { EchipaGazdaNume = topTeamsA[0].TeamName, EchipaOaspeteNume = secondPlaces[1].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-03-01 10:00"), StadionNume = "Clinceni" },
+ new { EchipaGazdaNume = topTeamsB[0].TeamName, EchipaOaspeteNume = secondPlaces[2].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-03-01 10:50"), StadionNume = "Clinceni" },
+ new { EchipaGazdaNume = topTeamsC[0].TeamName, EchipaOaspeteNume = thirdPlaces[0].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-03-01 11:40"), StadionNume = "Clinceni" },
+ new { EchipaGazdaNume = secondPlaces[0].TeamName, EchipaOaspeteNume = thirdPlaces[1].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-03-01 12:30"), StadionNume = "Clinceni" }
+ };
+                        }
+                        break;
+
+
+                    case "2015":
+                        if (grupe.ContainsKey("Grupa A") && grupe.ContainsKey("Grupa B"))
+                        {
+                            var grupaAStandings = grupe["Grupa A"];
+                            var grupaBStandings = grupe["Grupa B"];
+                            var topTeamsA = grupaAStandings.OrderByDescending(t => t.Points).Take(2).ToList();
+                            var topTeamsB = grupaBStandings.OrderByDescending(t => t.Points).Take(2).ToList();
+
+                            eliminationMatches = new List<dynamic>
+                            {
+                                new
+                                {
+                                    EchipaGazdaNume = topTeamsA[0].TeamName, EchipaOaspeteNume = topTeamsB[1].TeamName,
+                                    ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-04-01 13:00"),
+                                    StadionNume = "Clinceni"
+                                },
+                                new
+                                {
+                                    EchipaGazdaNume = topTeamsB[0].TeamName, EchipaOaspeteNume = topTeamsA[1].TeamName,
+                                    ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-04-01 13:50"),
+                                    StadionNume = "Clinceni"
+                                }
+                            };
+                        }
+
+                        break;
+
+                    case "2016":
+                        if (grupe.ContainsKey("Grupa A") && grupe.ContainsKey("Grupa B") && grupe.ContainsKey("Grupa C") && grupe.ContainsKey("Grupa D"))
+                        {
+                            var grupaAStandings = grupe["Grupa A"];
+                            var grupaBStandings = grupe["Grupa B"];
+                            var grupaCStandings = grupe["Grupa C"];
+                            var grupaDStandings = grupe["Grupa D"];
+                            var topTeamsA = grupaAStandings.OrderByDescending(t => t.Points).Take(2).ToList();
+                            var topTeamsB = grupaBStandings.OrderByDescending(t => t.Points).Take(2).ToList();
+                            var topTeamsC = grupaCStandings.OrderByDescending(t => t.Points).Take(2).ToList();
+                            var topTeamsD = grupaDStandings.OrderByDescending(t => t.Points).Take(2).ToList();
+
+                            eliminationMatches = new List<dynamic>
+                            {
+                                new { EchipaGazdaNume = topTeamsA[0].TeamName, EchipaOaspeteNume = topTeamsB[1].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-05-01 11:00"), StadionNume = "Clinceni" },
+                                new { EchipaGazdaNume = topTeamsB[0].TeamName, EchipaOaspeteNume = topTeamsA[1].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-05-01 11:40"), StadionNume = "Clinceni" },
+                                new { EchipaGazdaNume = topTeamsC[0].TeamName, EchipaOaspeteNume = topTeamsD[1].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-05-01 12:20"), StadionNume = "Clinceni" },
+                                new { EchipaGazdaNume = topTeamsD[0].TeamName, EchipaOaspeteNume = topTeamsC[1].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-05-01 13:00"), StadionNume = "Clinceni" }
+                            };
+                        }
+                        break;
+
+
+
+                    case "2017":
+                        if (grupe.ContainsKey("Grupa A") && grupe.ContainsKey("Grupa B"))
+                        {
+                            var grupaAStandings = grupe["Grupa A"];
+                            var grupaBStandings = grupe["Grupa B"];
+                            var topTeamsA = grupaAStandings.OrderByDescending(t => t.Points).Take(2).ToList();
+                            var topTeamsB = grupaBStandings.OrderByDescending(t => t.Points).Take(2).ToList();
+
+                            eliminationMatches = new List<dynamic>
+                            {
+                                new
+                                {
+                                    EchipaGazdaNume = topTeamsA[0].TeamName, EchipaOaspeteNume = topTeamsB[1].TeamName,
+                                    ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-06-01 13:30"),
+                                    StadionNume = "Clinceni"
+                                },
+                                new
+                                {
+                                    EchipaGazdaNume = topTeamsB[0].TeamName, EchipaOaspeteNume = topTeamsA[1].TeamName,
+                                    ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-06-01 14:10"),
+                                    StadionNume = "Clinceni"
+                                }
+                            };
+                        }
+
+                        break;
+
+                    case "2018":
+                        if (grupe.ContainsKey("Grupa A") && grupe.ContainsKey("Grupa B"))
+                        {
+                            var grupaAStandings = grupe["Grupa A"];
+                            var grupaBStandings = grupe["Grupa B"];
+                            var topTeamsA = grupaAStandings.OrderByDescending(t => t.Points).Take(2).ToList();
+                            var topTeamsB = grupaBStandings.OrderByDescending(t => t.Points).Take(2).ToList();
+
+                            eliminationMatches = new List<dynamic>
+                            {
+                                new
+                                {
+                                    EchipaGazdaNume = topTeamsA[0].TeamName, EchipaOaspeteNume = topTeamsB[1].TeamName,
+                                    ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-03-01 13:30"),
+                                    StadionNume = "Clinceni"
+                                },
+                                new
+                                {
+                                    EchipaGazdaNume = topTeamsB[0].TeamName, EchipaOaspeteNume = topTeamsA[1].TeamName,
+                                    ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-03-01 14:10"),
+                                    StadionNume = "Clinceni"
+                                }
+                            };
+                        }
+
+                        break;
+                }
+            }
+
+            ViewBag.EliminationMatches = eliminationMatches;
 
             ViewBag.Categorie = categorie;
-            ViewBag.EliminationMatches = eliminationMatches;
 
             return View();
         }
+
+
+
+
         [Authorize]
         [HttpGet]
         public IActionResult Create()

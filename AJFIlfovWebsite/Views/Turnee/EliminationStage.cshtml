@@ -1,12 +1,11 @@
 ﻿@{
-    ViewData["Title"] = "Faza eliminatorie";
+    ViewData["Title"] = "Futuristic Sports";
 }
 @{
     Layout = null;
 }
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>@ViewData["Title"]</title>
@@ -27,11 +26,29 @@
             flex-direction: column;
             position: relative;
         }
+
+        .header-title h2 {
+            color: var(--color-on-surface);
+        }
+
+        .header-title h3 {
+            color: var(--color-on-surface);
+        }
+
+        .header-menu-toggle {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960' fill='%230f0f0fff'%3E%3Cpath d='M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z'/%3E%3C/svg%3E");
+            color: var(--color-on-surface);
+        }
+
+        .big-nav a {
+            color: var(--color-on-surface);
+        }
     </style>
 </head>
-
 <body>
+    <!-- filter over hexagon background to make it blurred and cool; it needs to wrap around the whole content so that its height matches it -->
     <div class="body-filter">
+        <!-- header section -->
         <header>
             <div class="header-content">
                 <div class="header-title">
@@ -39,9 +56,9 @@
                     <h2>Asociația Județeană de Fotbal Ilfov</h2>
                     <h3>AJF Ilfov</h3>
                 </div>
-
+                <!-- menu toggle button (visible only on mobile) -->
                 <div class="header-menu-toggle" onclick="toggleMenu()"></div>
-
+                <!-- main navigation links for big screens -->
                 <nav class="big-nav">
                     <a href="HomeWebsite">Acasă</a>
                     <a href="DespreNoi">Despre noi</a>
@@ -54,48 +71,16 @@
                 </nav>
             </div>
         </header>
-
-        <h1 class="page-title">Faza eliminatorie - @ViewBag.Categorie</h1>
-        <a href="@Url.Action("GroupStage", "Turnee", new { categorie = ViewBag.Categorie })" class="group-link">Catre grupe</a>
-
-        <main class="elimination-stage">
-            <section class="matches-content">
-                @foreach (var match in ViewBag.EliminationMatches)
-                {
-                    <article class="match">
-                        <div class="match-header">
-                            <h2>@match.IdGrupaNavigation?.Nume</h2>
-                        </div>
-                        <div class="match-details">
-                            <div class="teams">
-                                <div class="team home">
-                                    <span class="team-name">@match.EchipaGazdaNume</span>
-                                    @if (match.ScorGazda.HasValue)
-                                    {
-                                        <span class="score">@match.ScorGazda</span>
-                                    }
-                                </div>
-                                <div class="vs">vs</div>
-                                <div class="team away">
-                                    @if (match.ScorOaspeti.HasValue)
-                                    {
-                                        <span class="score">@match.ScorOaspeti</span>
-                                    }
-                                    <span class="team-name">@match.EchipaOaspeteNume</span>
-                                </div>
-                            </div>
-                            <div class="match-info">
-                                <span class="date">@match.Data?.ToString("dd.MM.yyyy HH:mm")</span>
-                                <span class="stadium">@match.StadionNume</span>
-                            </div>
-                        </div>
-                    </article>
-                }
-            </section>
-        </main>
-
+        <!-- ------------------------------------------------- -->
+        <!-- page title -->
+        <h1 class="page-title">Etapa de eliminare</h1>
+        <!-- actual page content -->
+        <div class="tournament-container" id="tournament-container">
+            <div class="tournament-brackets" id="tournament-brackets"></div>
+        </div>
+        <!-- Add footer here -->
         <footer>
-            <p>&copy; 2024 Asociația Județeană de Fotbal Ilfov. Toate drepturile rezervate.</p>
+            <p>© 2024 Asociația Județeană de Fotbal Ilfov. Toate drepturile rezervate.</p>
             <div class="social-icons">
                 <a class="instagram" href="#"></a>
                 <a class="facebook" href="https://www.facebook.com/AJFIlfov1997/?locale=ro_RO"></a>
@@ -103,12 +88,11 @@
             </div>
         </footer>
     </div>
-
+    <!-- main navigation links for small screens -->
     <nav class="small-nav">
         <div class="header-content">
             <div class="header-menu-toggle" onclick="toggleMenu()"></div>
         </div>
-
         <div class="small-nav-content">
             <a href="HomeWebsite">Acasă</a>
             <a href="DespreNoi">Despre noi</a>
@@ -120,12 +104,109 @@
             <a href="Contact">Contact</a>
         </div>
     </nav>
-
     <script>
-        function toggleMenu() {
-            const mobileNav = document.getElementsByClassName('small-nav')[0];
-            mobileNav.classList.toggle('show');
+        const eliminationMatches = @Html.Raw(Json.Serialize(ViewBag.EliminationMatches));
+
+        function generateEliminationStage(matches) {
+            const brackets = document.getElementById('tournament-brackets');
+            brackets.innerHTML = '';
+
+            // Generate the first round
+            const firstRound = document.createElement('ul');
+            firstRound.className = 'bracket bracket-1';
+
+            matches.forEach((match, index) => {
+                const matchItemContainer = document.createElement('li');
+                matchItemContainer.className = 'team-item-container';
+
+                const matchItemContent = document.createElement('div');
+                matchItemContent.className = 'team-item-content';
+
+                const team1 = match.echipaGazdaNume;
+                const team2 = match.echipaOaspeteNume;
+                const score = match.scorGazda + '-' + match.scorOaspeti;
+                const date = new Date(match.data);
+                const time = `${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`; // Extract only the hour and minutes
+                const stadium = match.stadionNume;
+
+                matchItemContent.innerHTML = `
+                    <strong class="stadium-name">${stadium}</strong>
+                    <div class="match-info-row">
+                        <time>${time}</time>
+                        <div class="teams-column">
+                            <span class="team-name">${team1}</span>
+                            <span class="team-name">${team2}</span>
+                        </div>
+                        <span class="match-score">${score}</span>
+                    </div>
+                `;
+
+                matchItemContainer.appendChild(matchItemContent);
+                firstRound.appendChild(matchItemContainer);
+            });
+
+            brackets.appendChild(firstRound);
+
+            // Generate subsequent rounds dynamically
+            let currentRoundMatches = matches;
+            let roundNumber = 2;
+
+            while (currentRoundMatches.length > 1) {
+                const nextRoundMatches = [];
+                const nextRound = document.createElement('ul');
+                nextRound.className = `bracket bracket-${roundNumber}`;
+
+                for (let i = 0; i < currentRoundMatches.length; i += 2) {
+                    const match1 = currentRoundMatches[i];
+                    const match2 = currentRoundMatches[i + 1];
+
+                    const winner1 = match1.scorGazda > match1.scorOaspeti ? match1.echipaGazdaNume : match1.echipaOaspeteNume;
+                    const winner2 = match2.scorGazda > match2.scorOaspeti ? match2.echipaGazdaNume : match2.echipaOaspeteNume;
+
+                    const nextMatch = {
+                        echipaGazdaNume: winner1,
+                        echipaOaspeteNume: winner2,
+                        scorGazda: 0,
+                        scorOaspeti: 0,
+                        data: new Date().toISOString(),
+                        stadionNume: "Clinceni"
+                    };
+
+                    nextRoundMatches.push(nextMatch);
+
+                    const matchItemContainer = document.createElement('li');
+                    matchItemContainer.className = 'team-item-container';
+
+                    const matchItemContent = document.createElement('div');
+                    matchItemContent.className = 'team-item-content';
+
+                    const nextDate = new Date(nextMatch.Data);
+                    const nextTime = `${nextDate.getHours()}:${nextDate.getMinutes().toString().padStart(2, '0')}`;
+
+                    matchItemContent.innerHTML = `
+                        <strong class="stadium-name">${nextMatch.stadionNume}</strong>
+                        <div class="match-info-row">
+                            <time>${nextTime}</time>
+                            <div class="teams-column">
+                                <span class="team-name">${nextMatch.schipaGazdaNume}</span>
+                                <span class="team-name">${nextMatch.schipaOaspeteNume}</span>
+                            </div>
+                            <span class="match-score">?-?</span>
+                        </div>
+                    `;
+
+                    matchItemContainer.appendChild(matchItemContent);
+                    nextRound.appendChild(matchItemContainer);
+                }
+
+                brackets.appendChild(nextRound);
+                currentRoundMatches = nextRoundMatches;
+                roundNumber++;
+            }
         }
+
+        generateEliminationStage(eliminationMatches);
     </script>
+
 </body>
 </html>

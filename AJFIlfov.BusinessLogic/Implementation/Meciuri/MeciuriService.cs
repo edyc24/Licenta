@@ -238,7 +238,7 @@ namespace AJFIlfov.BusinessLogic.Implementation.MeciuriService
                     .Where(sl => sl.IdStadionLocalitate == meci.IdStadionLocalitate)
                     .Select(sl => new
                     {
-                        StadionNume = sl.IdStadionNavigation.Nume, // Access the stadium name
+                        StadionNume = sl.IdStadionNavigation.Nume, // Access the Clinceni
                         LocalitateNume = sl.IdLocalitateNavigation.Nume // Access the locality name
                     })
                     .FirstOrDefault(); // Use FirstOrDefault to get the single result or null if not found

@@ -15,6 +15,8 @@ public partial class Turnee : IEntity
     public Guid? IdGrupa { get; set; }
     public int? ScorGazda { get; set; }
     public int? ScorOaspeti { get; set; }
+    public int? Runda { get; set; }
+    public int? Index { get; set; }
     public bool? IdDeleted { get; set; }
 
     public virtual Echipe? IdEchipaGazdaNavigation { get; set; }

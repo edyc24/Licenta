@@ -11,6 +11,8 @@ namespace AJFIlfov.BusinessLogic.Implementation.TurneeService.Models
         public Guid? IdGrupa { get; set; }
         public int? ScorGazda { get; set; }
         public int? ScorOaspeti { get; set; }
+        public int? Index { get; set; }
+        public int? Runda { get; set; }
 
         public string? EchipaGazdaNume { get; set; }
         public string? EchipaOaspeteNume { get; set; }

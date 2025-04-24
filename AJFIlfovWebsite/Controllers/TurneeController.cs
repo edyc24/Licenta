@@ -129,7 +129,9 @@ namespace AJFIlfovWebsite.Controllers
                                     IdCategorie = GetCategoryId(categorie),
                                     IdGrupa = eliminationGroupId,
                                     ScorGazda = 0,
-                                    ScorOaspeti = 0
+                                    ScorOaspeti = 0,
+                                    Runda = 1,
+                                    Index = 1
                                 };
 
                                 var eliminationMatch2 = new CreateTurneuModel
@@ -141,7 +143,9 @@ namespace AJFIlfovWebsite.Controllers
                                     IdCategorie = GetCategoryId(categorie),
                                     IdGrupa = eliminationGroupId,
                                     ScorGazda = 0,
-                                    ScorOaspeti = 0
+                                    ScorOaspeti = 0,
+                                    Runda = 1,
+                                    Index = 2
                                 };
 
                                 _service.CreateMatch(eliminationMatch1);
@@ -223,7 +227,9 @@ namespace AJFIlfovWebsite.Controllers
                                     IdCategorie = GetCategoryId(categorie),
                                     IdGrupa = eliminationGroupId,
                                     ScorGazda = 0,
-                                    ScorOaspeti = 0
+                                    ScorOaspeti = 0,
+                                    Runda = 1,
+                                    Index = 1
                                 };
 
                                 var eliminationMatch2 = new CreateTurneuModel
@@ -235,7 +241,9 @@ namespace AJFIlfovWebsite.Controllers
                                     IdCategorie = GetCategoryId(categorie),
                                     IdGrupa = eliminationGroupId,
                                     ScorGazda = 0,
-                                    ScorOaspeti = 0
+                                    ScorOaspeti = 0,
+                                    Runda = 1,
+                                    Index = 2
                                 };
 
                                 var eliminationMatch3 = new CreateTurneuModel
@@ -247,7 +255,9 @@ namespace AJFIlfovWebsite.Controllers
                                     IdCategorie = GetCategoryId(categorie),
                                     IdGrupa = eliminationGroupId,
                                     ScorGazda = 0,
-                                    ScorOaspeti = 0
+                                    ScorOaspeti = 0,
+                                    Runda = 1,
+                                    Index = 3
                                 };
 
                                 var eliminationMatch4 = new CreateTurneuModel
@@ -259,7 +269,9 @@ namespace AJFIlfovWebsite.Controllers
                                     IdCategorie = GetCategoryId(categorie),
                                     IdGrupa = eliminationGroupId,
                                     ScorGazda = 0,
-                                    ScorOaspeti = 0
+                                    ScorOaspeti = 0,
+                                    Runda = 1,
+                                    Index = 4
                                 };
 
                                 _service.CreateMatch(eliminationMatch1);
@@ -319,7 +331,9 @@ namespace AJFIlfovWebsite.Controllers
                                     IdCategorie = GetCategoryId(categorie),
                                     IdGrupa = eliminationGroupId,
                                     ScorGazda = 0,
-                                    ScorOaspeti = 0
+                                    ScorOaspeti = 0,
+                                    Runda = 1,
+                                    Index = 2
                                 };
 
                                 var eliminationMatch2 = new CreateTurneuModel
@@ -331,7 +345,9 @@ namespace AJFIlfovWebsite.Controllers
                                     IdCategorie = GetCategoryId(categorie),
                                     IdGrupa = eliminationGroupId,
                                     ScorGazda = 0,
-                                    ScorOaspeti = 0
+                                    ScorOaspeti = 0,
+                                    Runda = 1,
+                                    Index = 2
                                 };
 
                                 _service.CreateMatch(eliminationMatch1);
@@ -361,7 +377,8 @@ namespace AJFIlfovWebsite.Controllers
                                     IdCategorie = GetCategoryId(categorie),
                                     IdGrupa = classificationGroupId,
                                     ScorGazda = 0,
-                                    ScorOaspeti = 0
+                                    ScorOaspeti = 0,
+
                                 };
 
                                 _service.CreateMatch(classificationMatch1);
@@ -393,7 +410,9 @@ namespace AJFIlfovWebsite.Controllers
                                     IdCategorie = GetCategoryId(categorie),
                                     IdGrupa = eliminationGroupId,
                                     ScorGazda = 0,
-                                    ScorOaspeti = 0
+                                    ScorOaspeti = 0,
+                                    Runda = 1,
+                                    Index = 1
                                 };
 
                                 var eliminationMatch2 = new CreateTurneuModel
@@ -405,7 +424,9 @@ namespace AJFIlfovWebsite.Controllers
                                     IdCategorie = GetCategoryId(categorie),
                                     IdGrupa = eliminationGroupId,
                                     ScorGazda = 0,
-                                    ScorOaspeti = 0
+                                    ScorOaspeti = 0,
+                                    Runda = 1,
+                                    Index = 2
                                 };
 
                                 var eliminationMatch3 = new CreateTurneuModel
@@ -417,7 +438,9 @@ namespace AJFIlfovWebsite.Controllers
                                     IdCategorie = GetCategoryId(categorie),
                                     IdGrupa = eliminationGroupId,
                                     ScorGazda = 0,
-                                    ScorOaspeti = 0
+                                    ScorOaspeti = 0,
+                                    Runda = 1,
+                                    Index = 3
                                 };
 
                                 var eliminationMatch4 = new CreateTurneuModel
@@ -429,7 +452,9 @@ namespace AJFIlfovWebsite.Controllers
                                     IdCategorie = GetCategoryId(categorie),
                                     IdGrupa = eliminationGroupId,
                                     ScorGazda = 0,
-                                    ScorOaspeti = 0
+                                    ScorOaspeti = 0,
+                                    Runda = 1,
+                                    Index = 4
                                 };
 
                                 _service.CreateMatch(eliminationMatch1);
@@ -502,7 +527,9 @@ namespace AJFIlfovWebsite.Controllers
                                     IdCategorie = GetCategoryId(categorie),
                                     IdGrupa = eliminationGroupId,
                                     ScorGazda = 0,
-                                    ScorOaspeti = 0
+                                    ScorOaspeti = 0,
+                                    Runda = 1,
+                                    Index = 1
                                 };
 
                                 var eliminationMatch2 = new CreateTurneuModel
@@ -514,7 +541,9 @@ namespace AJFIlfovWebsite.Controllers
                                     IdCategorie = GetCategoryId(categorie),
                                     IdGrupa = eliminationGroupId,
                                     ScorGazda = 0,
-                                    ScorOaspeti = 0
+                                    ScorOaspeti = 0,
+                                    Runda = 1,
+                                    Index = 2
                                 };
 
                                 _service.CreateMatch(eliminationMatch1);
@@ -559,7 +588,9 @@ namespace AJFIlfovWebsite.Controllers
                                     IdCategorie = GetCategoryId(categorie),
                                     IdGrupa = eliminationGroupId,
                                     ScorGazda = 0,
-                                    ScorOaspeti = 0
+                                    ScorOaspeti = 0,
+                                    Runda = 1,
+                                    Index = 1
                                 };
 
                                 var eliminationMatch2 = new CreateTurneuModel
@@ -571,7 +602,9 @@ namespace AJFIlfovWebsite.Controllers
                                     IdCategorie = GetCategoryId(categorie),
                                     IdGrupa = eliminationGroupId,
                                     ScorGazda = 0,
-                                    ScorOaspeti = 0
+                                    ScorOaspeti = 0,
+                                    Runda = 1,
+                                    Index = 2
                                 };
 
                                 _service.CreateMatch(eliminationMatch1);

@@ -34,6 +34,8 @@ namespace AJFIlfov.BusinessLogic.Implementation.TurneeService
                     IdGrupa = t.IdGrupa,
                     ScorGazda = t.ScorGazda,
                     ScorOaspeti = t.ScorOaspeti,
+                    Runda = t.Runda,
+                    Index = t.Index,
                     EchipaGazdaNume = t.IdEchipaGazdaNavigation.Nume,
                     EchipaOaspeteNume = t.IdEchipaOaspeteNavigation.Nume,
                     StadionNume = t.IdStadionNavigation.Nume,
@@ -201,6 +203,8 @@ namespace AJFIlfov.BusinessLogic.Implementation.TurneeService
                 IdGrupa = turneu.IdGrupa,
                 ScorGazda = turneu.ScorGazda,
                 ScorOaspeti = turneu.ScorOaspeti,
+                Runda = turneu.Runda,
+                Index = turneu.Index,
                 EchipaGazdaNume = turneu.IdEchipaGazdaNavigation.Nume,
                 EchipaOaspeteNume = turneu.IdEchipaOaspeteNavigation.Nume,
                 StadionNume = turneu.IdStadionNavigation.Nume,
@@ -222,7 +226,9 @@ namespace AJFIlfov.BusinessLogic.Implementation.TurneeService
                 IdGrupa = model.IdGrupa,
                 ScorGazda = model.ScorGazda,
                 ScorOaspeti = model.ScorOaspeti,
-                IdDeleted = false
+                IdDeleted = false,
+                Runda = model.Runda,
+                Index = model.Index
             };
 
             UnitOfWork.Turnee.Insert(turneu);
@@ -322,7 +328,9 @@ namespace AJFIlfov.BusinessLogic.Implementation.TurneeService
                 IdGrupa = model.IdGrupa,
                 ScorGazda = model.ScorGazda,
                 ScorOaspeti = model.ScorOaspeti,
-                IdDeleted = false
+                IdDeleted = false,
+                Runda = model.Runda,
+                Index = model.Index
             };
 
             UnitOfWork.Turnee.Insert(turneu);
@@ -345,7 +353,9 @@ namespace AJFIlfov.BusinessLogic.Implementation.TurneeService
                 IdGrupa = Guid.Parse("d9c7cbe8-4c79-48c1-aefc-bf2047789f07"),
                 ScorGazda = model.ScorGazda,
                 ScorOaspeti = model.ScorOaspeti,
-                IdDeleted = false
+                IdDeleted = false,
+                Runda = model.Runda,
+                Index = model.Index
             };
 
             UnitOfWork.Turnee.Insert(turneu);

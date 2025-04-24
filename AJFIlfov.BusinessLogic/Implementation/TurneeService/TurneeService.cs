@@ -330,6 +330,29 @@ namespace AJFIlfov.BusinessLogic.Implementation.TurneeService
             return true;
         }
 
+        public Guid CreateMatch2(CreateTurneuModel model)
+        {
+            var x = Guid.NewGuid();
+
+            var turneu = new Turnee
+            {
+                IdTurneu = x,
+                Data = model.Data,
+                IdEchipaGazda = model.IdEchipaGazda,
+                IdEchipaOaspete = model.IdEchipaOaspete,
+                IdStadion = model.IdStadion,
+                IdCategorie = model.IdCategorie,
+                IdGrupa = Guid.Parse("d9c7cbe8-4c79-48c1-aefc-bf2047789f07"),
+                ScorGazda = model.ScorGazda,
+                ScorOaspeti = model.ScorOaspeti,
+                IdDeleted = false
+            };
+
+            UnitOfWork.Turnee.Insert(turneu);
+            UnitOfWork.SaveChanges();
+            return x;
+        }
+
         public bool UpdateScore(Guid matchId, int homeScore, int awayScore)
         {
             var turneu = UnitOfWork.Turnee.Get()

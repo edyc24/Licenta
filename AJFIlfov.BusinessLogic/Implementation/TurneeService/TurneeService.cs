@@ -147,10 +147,7 @@ namespace AJFIlfov.BusinessLogic.Implementation.TurneeService
                 .Include(t => t.IdCategorieNavigation)
                 .Include(t => t.IdGrupaNavigation)
                 .Where(t => t.IdDeleted == false &&
-                           t.IdCategorieNavigation.Nume == categorie &&
-                           t.Data > now &&
-                           t.ScorGazda == null &&
-                           t.ScorOaspeti == null)
+                           t.IdCategorieNavigation.Nume == categorie)
                 .Select(t => new TurneuModel
                 {
                     IdTurneu = t.IdTurneu,

@@ -291,6 +291,7 @@
                                 <span class="team">@match.EchipaGazdaNume</span>
                                 <span class="vs">vs</span>
                                 <span class="team">@match.EchipaOaspeteNume</span>
+                                <span class="scor">@match.ScorGazda - @match.ScorOaspeti</span>
                                 @if (CurrentUser.Role == "Administrator")
                                 {
                                     <button class="admin-edit-button" onclick="openScoreModal('@match.IdTurneu', '@match.EchipaGazdaNume', '@match.EchipaOaspeteNume')">

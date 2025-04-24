@@ -70,8 +70,8 @@ namespace AJFIlfovWebsite.Controllers
                                 new
                                 {
                                     EchipaGazdaNume = topTeams[0].TeamName, EchipaOaspeteNume = topTeams[1].TeamName,
-                                    ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-01-01 10:00"),
-                                    StadionNume = "Clinceni"
+                                    ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-01-01 11:10"),
+                                    StadionNume = "Clinceni T1"
                                 },
                             };
 
@@ -80,8 +80,8 @@ namespace AJFIlfovWebsite.Controllers
                                 new
                                 {
                                     EchipaGazdaNume = topTeams[2].TeamName, EchipaOaspeteNume = topTeams[3].TeamName,
-                                    ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-01-01 11:00"),
-                                    StadionNume = "Clinceni"
+                                    ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-01-01 10:00"),
+                                    StadionNume = "Clinceni T1"
                                 }
                             };
                         }
@@ -99,15 +99,15 @@ namespace AJFIlfovWebsite.Controllers
                             {
                                 new
                                 {
-                                    EchipaGazdaNume = topTeamsA[0].TeamName, EchipaOaspeteNume = topTeamsB[1].TeamName,
+                                    EchipaGazdaNume = topTeamsB[0].TeamName, EchipaOaspeteNume = topTeamsA[1].TeamName,
                                     ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-02-01 13:00"),
-                                    StadionNume = "Clinceni"
+                                    StadionNume = "Clinceni T1A"
                                 },
                                 new
                                 {
-                                    EchipaGazdaNume = topTeamsB[0].TeamName, EchipaOaspeteNume = topTeamsA[1].TeamName,
+                                    EchipaGazdaNume = topTeamsA[0].TeamName, EchipaOaspeteNume = topTeamsB[1].TeamName,
                                     ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-02-01 13:50"),
-                                    StadionNume = "Clinceni"
+                                    StadionNume = "Clinceni T1A"
                                 }
                             };
 
@@ -116,14 +116,14 @@ namespace AJFIlfovWebsite.Controllers
                                 new
                                 {
                                     EchipaGazdaNume = topTeamsA[2].TeamName, EchipaOaspeteNume = topTeamsB[2].TeamName,
-                                    ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-02-01 14:40"),
-                                    StadionNume = "Clinceni"
+                                    ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-02-01 14:30"),
+                                    StadionNume = "Clinceni T2B"
                                 },
                                 new
                                 {
                                     EchipaGazdaNume = topTeamsA[3].TeamName, EchipaOaspeteNume = topTeamsB[3].TeamName,
-                                    ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-02-01 14:40"),
-                                    StadionNume = "Clinceni"
+                                    ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-02-01 15:20"),
+                                    StadionNume = "Clinceni T2B"
                                 }
                             };
                         }
@@ -156,19 +156,23 @@ namespace AJFIlfovWebsite.Controllers
                                 grupaBStandings.OrderByDescending(t => t.Points).Skip(3).First(),
                                 grupaCStandings.OrderByDescending(t => t.Points).Skip(3).First()
                             }.OrderByDescending(t => t.Points).ToList();
+                            var fifthPlaces = new List<dynamic>
+                            {
+                                grupaAStandings.OrderByDescending(t => t.Points).Skip(4).First(),
+                            }.OrderByDescending(t => t.Points).ToList();
 
                             eliminationMatches = new List<dynamic>
                             {
-                                new { EchipaGazdaNume = topTeamsA[0].TeamName, EchipaOaspeteNume = secondPlaces[1].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-03-01 10:00"), StadionNume = "Clinceni" },
-                                new { EchipaGazdaNume = topTeamsB[0].TeamName, EchipaOaspeteNume = secondPlaces[2].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-03-01 10:50"), StadionNume = "Clinceni" },
-                                new { EchipaGazdaNume = topTeamsC[0].TeamName, EchipaOaspeteNume = thirdPlaces[0].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-03-01 11:40"), StadionNume = "Clinceni" },
-                                new { EchipaGazdaNume = secondPlaces[0].TeamName, EchipaOaspeteNume = thirdPlaces[1].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-03-01 12:30"), StadionNume = "Clinceni" }
+                                new { EchipaGazdaNume = topTeamsA[0].TeamName, EchipaOaspeteNume = secondPlaces[1].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-03-01 10:00"), StadionNume = "Clinceni T2A" },
+                                new { EchipaGazdaNume = topTeamsB[0].TeamName, EchipaOaspeteNume = secondPlaces[2].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-03-01 10:50"), StadionNume = "Clinceni T2A" },
+                                new { EchipaGazdaNume = topTeamsC[0].TeamName, EchipaOaspeteNume = thirdPlaces[0].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-03-01 11:40"), StadionNume = "Clinceni T2A" },
+                                new { EchipaGazdaNume = secondPlaces[0].TeamName, EchipaOaspeteNume = thirdPlaces[1].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-03-01 12:30"), StadionNume = "Clinceni T2A" }
                             };
 
                             classificationMatches = new List<dynamic>
                             {
-                                new { EchipaGazdaNume = thirdPlaces[2].TeamName, EchipaOaspeteNume = fourthPlaces[0].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-03-01 13:20"), StadionNume = "Clinceni" },
-                                new { EchipaGazdaNume = fourthPlaces[1].TeamName, EchipaOaspeteNume = fourthPlaces[2].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-03-01 13:20"), StadionNume = "Clinceni" }
+                                new { EchipaGazdaNume = thirdPlaces[2].TeamName, EchipaOaspeteNume = fifthPlaces[0].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-03-01 09:00"), StadionNume = "Clinceni T2A" },
+                                new { EchipaGazdaNume = fourthPlaces[1].TeamName, EchipaOaspeteNume = fourthPlaces[2].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-03-01 17:00"), StadionNume = "Clinceni T2A" }
                             };
                         }
                         break;
@@ -187,13 +191,13 @@ namespace AJFIlfovWebsite.Controllers
                                 {
                                     EchipaGazdaNume = topTeamsA[0].TeamName, EchipaOaspeteNume = topTeamsB[1].TeamName,
                                     ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-04-01 13:00"),
-                                    StadionNume = "Clinceni"
+                                    StadionNume = "Clinceni T2B"
                                 },
                                 new
                                 {
                                     EchipaGazdaNume = topTeamsB[0].TeamName, EchipaOaspeteNume = topTeamsA[1].TeamName,
                                     ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-04-01 13:50"),
-                                    StadionNume = "Clinceni"
+                                    StadionNume = "Clinceni T2B"
                                 }
                             };
 
@@ -202,14 +206,14 @@ namespace AJFIlfovWebsite.Controllers
                                 new
                                 {
                                     EchipaGazdaNume = topTeamsA[2].TeamName, EchipaOaspeteNume = topTeamsB[2].TeamName,
-                                    ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-04-01 14:40"),
-                                    StadionNume = "Clinceni"
+                                    ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-04-01 11:20"),
+                                    StadionNume = "Clinceni T2B"
                                 },
                                 new
                                 {
                                     EchipaGazdaNume = topTeamsA[3].TeamName, EchipaOaspeteNume = topTeamsB[3].TeamName,
-                                    ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-04-01 14:40"),
-                                    StadionNume = "Clinceni"
+                                    ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-04-01 12:10"),
+                                    StadionNume = "Clinceni T2B"
                                 }
                             };
                         }
@@ -229,18 +233,17 @@ namespace AJFIlfovWebsite.Controllers
 
                             eliminationMatches = new List<dynamic>
                             {
-                                new { EchipaGazdaNume = topTeamsA[0].TeamName, EchipaOaspeteNume = topTeamsB[1].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-05-01 11:00"), StadionNume = "Clinceni" },
-                                new { EchipaGazdaNume = topTeamsB[0].TeamName, EchipaOaspeteNume = topTeamsA[1].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-05-01 11:40"), StadionNume = "Clinceni" },
-                                new { EchipaGazdaNume = topTeamsC[0].TeamName, EchipaOaspeteNume = topTeamsD[1].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-05-01 12:20"), StadionNume = "Clinceni" },
-                                new { EchipaGazdaNume = topTeamsD[0].TeamName, EchipaOaspeteNume = topTeamsC[1].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-05-01 13:00"), StadionNume = "Clinceni" },
+                                new { EchipaGazdaNume = topTeamsA[0].TeamName, EchipaOaspeteNume = topTeamsB[1].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-05-01 11:00"), StadionNume = "Clinceni T2C" },
+                                new { EchipaGazdaNume = topTeamsB[0].TeamName, EchipaOaspeteNume = topTeamsA[1].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-05-01 11:40"), StadionNume = "Clinceni T2C" },
+                                new { EchipaGazdaNume = topTeamsC[0].TeamName, EchipaOaspeteNume = topTeamsD[1].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-05-01 12:20"), StadionNume = "Clinceni T2C" },
+                                new { EchipaGazdaNume = topTeamsD[0].TeamName, EchipaOaspeteNume = topTeamsC[1].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-05-01 13:00"), StadionNume = "Clinceni T2C" },
                             };
 
                             classificationMatches = new List<dynamic>
                             {
-                                new { EchipaGazdaNume = topTeamsA[2].TeamName, EchipaOaspeteNume = topTeamsB[2].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-05-01 13:40"), StadionNume = "Clinceni" },
-                                new { EchipaGazdaNume = topTeamsC[2].TeamName, EchipaOaspeteNume = topTeamsD[2].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-05-01 14:20"), StadionNume = "Clinceni" },
-                                new { EchipaGazdaNume = topTeamsA[3].TeamName, EchipaOaspeteNume = topTeamsB[3].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-05-01 13:40"), StadionNume = "Clinceni" },
-                                new { EchipaGazdaNume = topTeamsC[3].TeamName, EchipaOaspeteNume = topTeamsD[3].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-05-01 14:20"), StadionNume = "Clinceni" },
+                                new { EchipaGazdaNume = topTeamsA[2].TeamName, EchipaOaspeteNume = topTeamsB[2].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-05-01 10:00"), StadionNume = "Clinceni T2B" },
+                                new { EchipaGazdaNume = topTeamsC[2].TeamName, EchipaOaspeteNume = topTeamsD[2].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-05-01 10:40"), StadionNume = "Clinceni T2B" },
+                                new { EchipaGazdaNume = topTeamsB[3].TeamName, EchipaOaspeteNume = topTeamsC[3].TeamName, ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-05-01 10:20"), StadionNume = "Clinceni T2C" }
                             };
                         }
                         break;
@@ -257,15 +260,15 @@ namespace AJFIlfovWebsite.Controllers
                             {
                                 new
                                 {
-                                    EchipaGazdaNume = topTeamsA[0].TeamName, EchipaOaspeteNume = topTeamsB[1].TeamName,
+                                    EchipaGazdaNume = topTeamsB[0].TeamName, EchipaOaspeteNume = topTeamsA[1].TeamName,
                                     ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-06-01 13:30"),
-                                    StadionNume = "Clinceni"
+                                    StadionNume = "Clinceni T3A"
                                 },
                                 new
                                 {
-                                    EchipaGazdaNume = topTeamsB[0].TeamName, EchipaOaspeteNume = topTeamsA[1].TeamName,
+                                    EchipaGazdaNume = topTeamsA[0].TeamName, EchipaOaspeteNume = topTeamsB[1].TeamName,
                                     ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-06-01 14:10"),
-                                    StadionNume = "Clinceni"
+                                    StadionNume = "Clinceni T3A"
                                 }
                             };
 
@@ -274,14 +277,14 @@ namespace AJFIlfovWebsite.Controllers
                                 new
                                 {
                                     EchipaGazdaNume = topTeamsA[2].TeamName, EchipaOaspeteNume = topTeamsB[2].TeamName,
-                                    ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-06-01 14:50"),
-                                    StadionNume = "Clinceni"
+                                    ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-06-01 12:00"),
+                                    StadionNume = "Clinceni T3A"
                                 },
                                 new
                                 {
                                     EchipaGazdaNume = topTeamsA[3].TeamName, EchipaOaspeteNume = topTeamsB[3].TeamName,
-                                    ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-06-01 14:50"),
-                                    StadionNume = "Clinceni"
+                                    ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-06-01 12:40"),
+                                    StadionNume = "Clinceni T3A"
                                 }
                             };
                         }
@@ -299,15 +302,15 @@ namespace AJFIlfovWebsite.Controllers
                             {
                                 new
                                 {
-                                    EchipaGazdaNume = topTeamsA[0].TeamName, EchipaOaspeteNume = topTeamsB[1].TeamName,
-                                    ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-03-01 13:30"),
-                                    StadionNume = "Clinceni"
+                                    EchipaGazdaNume = topTeamsB[0].TeamName, EchipaOaspeteNume = topTeamsA[1].TeamName,
+                                    ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-03-01 12:40"),
+                                    StadionNume = "Clinceni T3B"
                                 },
                                 new
                                 {
-                                    EchipaGazdaNume = topTeamsB[0].TeamName, EchipaOaspeteNume = topTeamsA[1].TeamName,
+                                    EchipaGazdaNume = topTeamsA[0].TeamName, EchipaOaspeteNume = topTeamsB[1].TeamName,
                                     ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-03-01 14:10"),
-                                    StadionNume = "Clinceni"
+                                    StadionNume = "Clinceni T3B"
                                 }
                             };
 
@@ -315,15 +318,9 @@ namespace AJFIlfovWebsite.Controllers
                             {
                                 new
                                 {
-                                    EchipaGazdaNume = topTeamsA[2].TeamName, EchipaOaspeteNume = topTeamsB[2].TeamName,
-                                    ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-03-01 14:50"),
-                                    StadionNume = "Clinceni"
-                                },
-                                new
-                                {
-                                    EchipaGazdaNume = topTeamsA[3].TeamName, EchipaOaspeteNume = topTeamsB[3].TeamName,
-                                    ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-03-01 14:50"),
-                                    StadionNume = "Clinceni"
+                                    EchipaGazdaNume = topTeamsA[3].TeamName, EchipaOaspeteNume = topTeamsB[2].TeamName,
+                                    ScorGazda = 0, ScorOaspeti = 0, Data = DateTime.Parse("2025-03-01 12:00"),
+                                    StadionNume = "Clinceni T3B"
                                 }
                             };
                         }

@@ -338,6 +338,12 @@
             let secondRoundLastTime = null;
             let lastStadium = "Clinceni"; // Default stadium
 
+            // Add round number and match index to each match
+            matches.forEach((match, index) => {
+                match.roundNumber = 1;
+                match.matchIndex = index + 1;
+            });
+
             matches.forEach((match, index) => {
                 const matchItemContainer = document.createElement('li');
                 matchItemContainer.className = 'team-item-container';
@@ -360,7 +366,7 @@
                     scoreContent = `
                         <div class="score-edit-container">
                             <span class="match-score">${score}</span>
-                            <button class="edit-score-btn" onclick="openScoreEditModal('${match.idTurneu}', '${team1}', '${team2}', ${match.scorGazda}, ${match.scorOaspeti})">
+                            <button class="edit-score-btn" onclick="openScoreEditModal('${match.idTurneu}', '${team1}', '${team2}', ${match.scorGazda}, ${match.scorOaspeti}, ${match.roundNumber}, ${match.matchIndex})">
                                 Editare
                             </button>
                         </div>
@@ -377,6 +383,10 @@
                         </div>
                         ${scoreContent}
                     </div>
+                    <div class="match-metadata" style="display: none;">
+                        <span class="round-number">${match.roundNumber}</span>
+                        <span class="match-index">${match.matchIndex}</span>
+                    </div>
                 `;
 
                 matchItemContainer.appendChild(matchItemContent);
@@ -387,16 +397,12 @@
                     firstMatchTime = new Date(date);
                 } else if (index === 1) {
                     secondMatchTime = new Date(date);
-                    // Calculate the time interval between the first two matches in minutes
                     timeInterval = Math.round((secondMatchTime - firstMatchTime) / (1000 * 60));
-                    
-                    // If the interval is too large (more than 50 minutes), set it to 40 minutes
                     if (timeInterval > 50) {
                         timeInterval = 40;
                     }
                 }
 
-                // Store the last match time from the first round
                 if (index === matches.length - 1) {
                     lastMatchTime = new Date(date);
                 }
@@ -406,14 +412,15 @@
 
             // Generate subsequent rounds dynamically
             let currentRoundMatches = matches;
-            let roundNumber = 2;
+            let roundNumber = 1; // Start with round 1
             let lostTeams = [];
-            let semifinalStadium = ""; // Track semifinal stadium
+            let semifinalStadium = "";
+            let processedMatches = new Set();
 
             while (currentRoundMatches.length > 1) {
                 const nextRoundMatches = [];
                 const nextRound = document.createElement('ul');
-                nextRound.className = `bracket bracket-${roundNumber}`;
+                nextRound.className = `bracket bracket-${roundNumber + 1}`; // Display next round number
                 let roundStadium = lastStadium;
 
                 for (let i = 0; i < currentRoundMatches.length; i += 2) {
@@ -432,19 +439,16 @@
                             semifinalStadium = roundStadium;
                         }
 
-                        // Calculate next match time using the calculated interval
                         lastMatchTime.setMinutes(lastMatchTime.getMinutes() + timeInterval);
                         const nextTime = `${lastMatchTime.getHours()}:${lastMatchTime.getMinutes().toString().padStart(2, '0')}`;
 
-                        // Save the time of the last match in the second round
-                        if (roundNumber === 2 && i === currentRoundMatches.length - 2) {
+                        if (roundNumber === 1 && i === currentRoundMatches.length - 2) {
                             secondRoundLastTime = new Date(lastMatchTime);
                         }
 
                         let matchTime = nextTime;
                         let matchDate = new Date(lastMatchTime);
 
-                        // If we're creating the final match (last round with only one match)
                         if (currentRoundMatches.length === 2 && nextRoundMatches.length === 0) {
                             matchDate = new Date(secondRoundLastTime);
                             if (matches.length === 2) {
@@ -467,9 +471,18 @@
                             stadionNume: roundStadium
                         };
 
-                        // If this is the second round and both previous matches have scores, create the match in the database
-                        if (roundNumber === 2 && (match1.scorGazda !== 0 || match1.scorOaspeti !== 0) && 
-                            (match2.scorGazda !== 0 || match2.scorOaspeti !== 0)) {
+                        // Check if this is a consecutive pair (1-2 or 3-4) from the same round
+                        const isConsecutivePair = (match1.matchIndex % 2 === 1 && match2.matchIndex === match1.matchIndex + 1);
+                        const isSameRound = match1.roundNumber === match2.roundNumber;
+                        const hasScores = (match1.scorGazda !== 0 || match1.scorOaspeti !== 0) && 
+                                        (match2.scorGazda !== 0 || match2.scorOaspeti !== 0);
+                        const notProcessed = !processedMatches.has(match1.idTurneu) && !processedMatches.has(match2.idTurneu);
+
+                        if (isConsecutivePair && isSameRound && hasScores && notProcessed) {
+                            // Mark these matches as processed
+                            processedMatches.add(match1.idTurneu);
+                            processedMatches.add(match2.idTurneu);
+
                             // Create the match in the database
                             const params = new URLSearchParams({
                                 homeTeam: winner1,
@@ -487,10 +500,9 @@
                             .then(data => {
                                 if (data.success) {
                                     nextMatch.idTurneu = data.matchId;
-                                    // Update the edit button with the new match ID
                                     const editButton = matchItemContent.querySelector('.edit-score-btn');
                                     if (editButton) {
-                                        editButton.setAttribute('onclick', `openScoreEditModal('${data.matchId}', '${winner1}', '${winner2}', 0, 0)`);
+                                        editButton.setAttribute('onclick', `openScoreEditModal('${data.matchId}', '${winner1}', '${winner2}', 0, 0, ${roundNumber + 1}, ${Math.floor(i / 2) + 1})`);
                                     }
                                 }
                             })
@@ -512,7 +524,7 @@
                             scoreContent = `
                                 <div class="score-edit-container">
                                     <span class="match-score">?-?</span>
-                                    <button class="edit-score-btn" onclick="openScoreEditModal('${nextMatch.idTurneu || ''}', '${winner1}', '${winner2}', 0, 0)">
+                                    <button class="edit-score-btn" onclick="openScoreEditModal('${nextMatch.idTurneu || ''}', '${winner1}', '${winner2}', 0, 0, ${roundNumber + 1}, ${Math.floor(i / 2) + 1})">
                                         Editare
                                     </button>
                                 </div>
@@ -529,6 +541,10 @@
                                 </div>
                                 ${scoreContent}
                             </div>
+                            <div class="match-metadata" style="display: none;">
+                                <span class="round-number">${roundNumber + 1}</span>
+                                <span class="match-index">${Math.floor(i / 2) + 1}</span>
+                            </div>
                         `;
 
                         matchItemContainer.appendChild(matchItemContent);
@@ -538,7 +554,6 @@
                         lastMatchTime.setMinutes(lastMatchTime.getMinutes() + timeInterval);
                         const nextTime = `${lastMatchTime.getHours()}:${lastMatchTime.getMinutes().toString().padStart(2, '0')}`;
 
-                        // Update the stadium name for the next match
                         match1.stadionNume = roundStadium;
 
                         nextRoundMatches.push(match1);
@@ -561,6 +576,10 @@
                                 </div>
                                 <span class="match-score">-</span>
                             </div>
+                            <div class="match-metadata" style="display: none;">
+                                <span class="round-number">${roundNumber + 1}</span>
+                                <span class="match-index">${Math.floor(i / 2) + 1}</span>
+                            </div>
                         `;
 
                         matchItemContainer.appendChild(matchItemContent);
@@ -572,19 +591,14 @@
 
                 // Add third place playoff after semifinal round
                 if (currentRoundMatches.length === 2 && lostTeams.length === 2) {
-                    // Calculate the final time
                     const finalMatchDate = new Date(secondRoundLastTime);
 
-                    // If we started with only 2 matches (special case)
                     if (matches.length === 2) {
-                        // Just add one interval
                         finalMatchDate.setMinutes(finalMatchDate.getMinutes() + timeInterval);
                     } else {
-                        // Normal case with more matches
                         finalMatchDate.setMinutes(finalMatchDate.getMinutes() + (timeInterval * 2));
                     }
 
-                    // Set third place match time (timeInterval minutes before the final)
                     const thirdPlaceDate = new Date(finalMatchDate);
                     thirdPlaceDate.setMinutes(thirdPlaceDate.getMinutes() - timeInterval);
                     const thirdPlaceHours = thirdPlaceDate.getHours();
@@ -610,6 +624,10 @@
                             </div>
                             <span class="match-score">?-?</span>
                         </div>
+                        <div class="match-metadata" style="display: none;">
+                            <span class="round-number">${roundNumber + 1}</span>
+                            <span class="match-index">0</span>
+                        </div>
                     `;
 
                     matchItemContainer.appendChild(matchItemContent);
@@ -618,13 +636,12 @@
                     brackets.appendChild(thirdPlaceRound);
                 }
 
-                // Save the stadium from the last match of this round for the next round
                 if (nextRoundMatches.length > 0) {
                     lastStadium = nextRoundMatches[nextRoundMatches.length - 1].stadionNume;
                 }
 
                 currentRoundMatches = nextRoundMatches;
-                roundNumber++;
+                roundNumber++; // Increment the round number for the next iteration
             }
         }
 
@@ -681,7 +698,7 @@
         }
 
         // Score edit modal functionality
-        function openScoreEditModal(matchId, team1, team2, score1, score2) {
+        function openScoreEditModal(matchId, team1, team2, score1, score2, roundNumber, matchIndex) {
             const modal = document.createElement('div');
             modal.className = 'score-edit-modal';
             modal.innerHTML = `
@@ -698,7 +715,7 @@
                         </div>
                     </div>
                     <div class="modal-buttons">
-                        <button onclick="saveScore('${matchId}')">Salvează</button>
+                        <button onclick="saveScore('${matchId}', ${roundNumber}, ${matchIndex})">Salvează</button>
                         <button onclick="closeModal()">Anulează</button>
                     </div>
                 </div>
@@ -713,7 +730,7 @@
             }
         }
 
-        function saveScore(matchId) {
+        function saveScore(matchId, roundNumber, matchIndex) {
             const homeScore = parseInt(document.getElementById('homeScore').value);
             const awayScore = parseInt(document.getElementById('awayScore').value);
 

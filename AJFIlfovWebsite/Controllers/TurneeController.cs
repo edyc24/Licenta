@@ -806,7 +806,9 @@ namespace AJFIlfovWebsite.Controllers
             string date,
             string stadium,
             string category,
-            Guid groupId)
+            Guid groupId,
+            int runda,
+            int index)
         {
             try
             {
@@ -827,7 +829,7 @@ namespace AJFIlfovWebsite.Controllers
 
                 // Check if match already exists
                 var existingMatches = _service.GetMeciuriByCategorie(category)
-                    .Where(m => m.IdGrupa == groupId)
+                    .Where(m => m.IdGrupa == Guid.Parse("d9c7cbe8-4c79-48c1-aefc-bf2047789f07"))
                     .ToList();
 
                 var matchExists = existingMatches.Any(m => 
@@ -847,9 +849,11 @@ namespace AJFIlfovWebsite.Controllers
                     IdEchipaOaspete = awayTeamId,
                     IdStadion = stadiumId,
                     IdCategorie = categoryId,
-                    IdGrupa = groupId,
+                    IdGrupa = Guid.Parse("d9c7cbe8-4c79-48c1-aefc-bf2047789f07"),
                     ScorGazda = 0,
-                    ScorOaspeti = 0
+                    ScorOaspeti = 0,
+                    Index = index,
+                    Runda = runda
                 };
 
                 var matchId = _service.CreateMatch2(createModel);

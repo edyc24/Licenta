@@ -31,7 +31,7 @@ namespace AJFIlfovWebsite.Controllers
             var meciuri = _service.GetMeciuriByCategorie(categorie);
             
             // Calculate group standings
-            var grupe = _service.CalculateGroupStandings(meciuri);
+            var grupe = _service.CalculateGroupStandings(meciuri.Where(d => d.IdGrupa != Guid.Parse("d9c7cbe8-4c79-48c1-aefc-bf2047789f07") && d.IdGrupa != Guid.Parse("dddb5f22-7ef4-4061-9b16-23994269bbb5")).ToList());
 
             // Get upcoming matches
             var upcomingMatches = _service.GetUpcomingMatches(categorie);
@@ -535,20 +535,7 @@ namespace AJFIlfovWebsite.Controllers
                                     ScorOaspeti = 0
                                 };
 
-                                var classificationMatch2 = new CreateTurneuModel
-                                {
-                                    Data = DateTime.Parse("2025-06-01 12:40"),
-                                    IdEchipaGazda = GetTeamId(topTeamsA[3].TeamName),
-                                    IdEchipaOaspete = GetTeamId(topTeamsB[3].TeamName),
-                                    IdStadion = GetStadiumId("Clinceni T3A"),
-                                    IdCategorie = GetCategoryId(categorie),
-                                    IdGrupa = classificationGroupId,
-                                    ScorGazda = 0,
-                                    ScorOaspeti = 0
-                                };
-
                                 _service.CreateMatch(classificationMatch1);
-                                _service.CreateMatch(classificationMatch2);
                             }
                         }
                         break;
@@ -614,12 +601,12 @@ namespace AJFIlfovWebsite.Controllers
 
             // Get matches from database for display
             var eliminationStageMatches = _service.GetMeciuriByCategorie(categorie)
-                .Where(m => m.Data >= DateTime.Now && m.IdGrupa == eliminationGroupId)
+                .Where(m =>m.IdGrupa == eliminationGroupId)
                 .OrderBy(m => m.Data)
                 .ToList();
 
             var classificationStageMatches = _service.GetMeciuriByCategorie(categorie)
-                .Where(m => m.Data >= DateTime.Now && m.IdGrupa == classificationGroupId)
+                .Where(m =>m.IdGrupa == classificationGroupId)
                 .OrderBy(m => m.Data)
                 .ToList();
 

@@ -226,6 +226,13 @@
             const firstRound = document.createElement('ul');
             firstRound.className = 'bracket bracket-1';
 
+            // Keep track of match times and calculate interval
+            let firstMatchTime = null;
+            let secondMatchTime = null;
+            let timeInterval = 40; // Default interval in minutes
+            let lastMatchTime = null;
+            let secondRoundLastTime = null;
+
             matches.forEach((match, index) => {
                 const matchItemContainer = document.createElement('li');
                 matchItemContainer.className = 'team-item-container';
@@ -254,6 +261,20 @@
 
                 matchItemContainer.appendChild(matchItemContent);
                 firstRound.appendChild(matchItemContainer);
+                
+                // Store match times to calculate interval
+                if (index === 0) {
+                    firstMatchTime = new Date(date);
+                } else if (index === 1) {
+                    secondMatchTime = new Date(date);
+                    // Calculate the time interval between the first two matches in minutes
+                    timeInterval = Math.round((secondMatchTime - firstMatchTime) / (1000 * 60));
+                }
+                
+                // Store the last match time from the first round
+                if (index === matches.length - 1) {
+                    lastMatchTime = new Date(date);
+                }
             });
 
             brackets.appendChild(firstRound);
@@ -261,7 +282,7 @@
             // Generate subsequent rounds dynamically
             let currentRoundMatches = matches;
             let roundNumber = 2;
-            let lostTeams = []; // Array to track teams that lose in semifinals
+            let lostTeams = [];
 
             while (currentRoundMatches.length > 1) {
                 const nextRoundMatches = [];
@@ -271,19 +292,47 @@
                 for (let i = 0; i < currentRoundMatches.length; i += 2) {
                     const match1 = currentRoundMatches[i];
 
-                    // If there's a second match in the pair
                     if (i + 1 < currentRoundMatches.length) {
                         const match2 = currentRoundMatches[i + 1];
 
-                        // Determine winners and losers
                         const winner1 = match1.scorGazda > match1.scorOaspeti ? match1.echipaGazdaNume : match1.echipaOaspeteNume;
                         const loser1 = match1.scorGazda <= match1.scorOaspeti ? match1.echipaGazdaNume : match1.echipaOaspeteNume;
                         const winner2 = match2.scorGazda > match2.scorOaspeti ? match2.echipaGazdaNume : match2.echipaOaspeteNume;
                         const loser2 = match2.scorGazda <= match2.scorOaspeti ? match2.echipaGazdaNume : match2.echipaOaspeteNume;
 
-                        // If we're in the semifinal round (when there are only 2 matches)
                         if (currentRoundMatches.length === 2) {
                             lostTeams = [loser1, loser2];
+                        }
+
+                        // Calculate next match time using the calculated interval
+                        lastMatchTime.setMinutes(lastMatchTime.getMinutes() + timeInterval);
+                        const nextTime = `${lastMatchTime.getHours()}:${lastMatchTime.getMinutes().toString().padStart(2, '0')}`;
+                        
+                        // Save the time of the last match in the second round
+                        if (roundNumber === 2 && i === currentRoundMatches.length - 2) {
+                            secondRoundLastTime = new Date(lastMatchTime);
+                        }
+
+                        let matchTime = nextTime;
+                        let matchDate = new Date(lastMatchTime);
+                        
+                        // If we're creating the final match (last round with only one match)
+                        if (currentRoundMatches.length === 2 && nextRoundMatches.length === 0) {
+                            // Set time for the final match based on number of initial matches
+                            matchDate = new Date(secondRoundLastTime);
+                            
+                            // If we started with only 2 matches (special case)
+                            if (matches.length === 2) {
+                                // Just add one interval instead of doubling
+                                matchDate.setMinutes(matchDate.getMinutes() + timeInterval);
+                            } else {
+                                // Normal case with more matches, add double interval
+                                matchDate.setMinutes(matchDate.getMinutes() + (timeInterval * 2));
+                            }
+                            
+                            const hours = matchDate.getHours();
+                            const minutes = matchDate.getMinutes();
+                            matchTime = `${hours}:${minutes.toString().padStart(2, '0')}`;
                         }
 
                         const nextMatch = {
@@ -291,7 +340,7 @@
                             echipaOaspeteNume: winner2,
                             scorGazda: 0,
                             scorOaspeti: 0,
-                            data: new Date().toISOString(),
+                            data: matchDate.toISOString(),
                             stadionNume: "Clinceni"
                         };
 
@@ -303,13 +352,10 @@
                         const matchItemContent = document.createElement('div');
                         matchItemContent.className = 'team-item-content';
 
-                        const nextDate = new Date(nextMatch.data);
-                        const nextTime = `${nextDate.getHours()}:${nextDate.getMinutes().toString().padStart(2, '0')}`;
-
                         matchItemContent.innerHTML = `
                             <strong class="stadium-name">${nextMatch.stadionNume}</strong>
                             <div class="match-info-row">
-                                <time>${nextTime}</time>
+                                <time>${matchTime}</time>
                                 <div class="teams-column">
                                     <span class="team-name">${nextMatch.echipaGazdaNume}</span>
                                     <span class="team-name">${nextMatch.echipaOaspeteNume}</span>
@@ -321,7 +367,10 @@
                         matchItemContainer.appendChild(matchItemContent);
                         nextRound.appendChild(matchItemContainer);
                     } else {
-                        // Handle odd number of matches by advancing the team without a match
+                        // Handle odd number of matches
+                        lastMatchTime.setMinutes(lastMatchTime.getMinutes() + timeInterval);
+                        const nextTime = `${lastMatchTime.getHours()}:${lastMatchTime.getMinutes().toString().padStart(2, '0')}`;
+
                         nextRoundMatches.push(match1);
 
                         const matchItemContainer = document.createElement('li');
@@ -335,7 +384,7 @@
                         matchItemContent.innerHTML = `
                             <strong class="stadium-name">${match1.stadionNume}</strong>
                             <div class="match-info-row">
-                                <time>-</time>
+                                <time>${nextTime}</time>
                                 <div class="teams-column">
                                     <span class="team-name">${winner}</span>
                                     <span class="team-name">-</span>
@@ -353,6 +402,25 @@
 
                 // Add third place playoff after semifinal round
                 if (currentRoundMatches.length === 2 && lostTeams.length === 2) {
+                    // Calculate the final time
+                    const finalMatchDate = new Date(secondRoundLastTime);
+                    
+                    // If we started with only 2 matches (special case)
+                    if (matches.length === 2) {
+                        // Just add one interval
+                        finalMatchDate.setMinutes(finalMatchDate.getMinutes() + timeInterval);
+                    } else {
+                        // Normal case with more matches
+                        finalMatchDate.setMinutes(finalMatchDate.getMinutes() + (timeInterval * 2));
+                    }
+                    
+                    // Set third place match time (timeInterval minutes before the final)
+                    const thirdPlaceDate = new Date(finalMatchDate);
+                    thirdPlaceDate.setMinutes(thirdPlaceDate.getMinutes() - timeInterval);
+                    const thirdPlaceHours = thirdPlaceDate.getHours();
+                    const thirdPlaceMinutes = thirdPlaceDate.getMinutes();
+                    const thirdPlaceTime = `${thirdPlaceHours}:${thirdPlaceMinutes.toString().padStart(2, '0')}`;
+
                     const thirdPlaceRound = document.createElement('ul');
                     thirdPlaceRound.className = `bracket bracket-third-place`;
 
@@ -365,7 +433,7 @@
                     matchItemContent.innerHTML = `
                         <strong class="stadium-name">Clinceni</strong>
                         <div class="match-info-row">
-                            <time>-</time>
+                            <time>${thirdPlaceTime}</time>
                             <div class="teams-column">
                                 <span class="team-name">${lostTeams[0]}</span>
                                 <span class="team-name">${lostTeams[1]}</span>
@@ -377,7 +445,6 @@
                     matchItemContainer.appendChild(matchItemContent);
                     thirdPlaceRound.appendChild(matchItemContainer);
 
-                    // Insert the third place match before the final round
                     brackets.appendChild(thirdPlaceRound);
                 }
 

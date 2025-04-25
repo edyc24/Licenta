@@ -855,7 +855,8 @@ namespace AJFIlfovWebsite.Controllers
                     Index = index,
                     Runda = runda
                 };
-
+                _service.Update2(homeTeamId);
+                _service.Update2(awayTeamId);
                 var matchId = _service.CreateMatch2(createModel);
 
                 return Json(new { success = true, matchId = matchId });

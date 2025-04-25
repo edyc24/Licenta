@@ -321,15 +321,15 @@
         const eliminationMatches = @Html.Raw(Json.Serialize(ViewBag.EliminationMatches));
         const classificationMatches = @Html.Raw(Json.Serialize(ViewBag.ClassificationMatches));
         const isAdmin = @Html.Raw(Json.Serialize(CurrentUser.Role == "Administrator"));
+        var x = 1;
 
+        let processedMatches = new Set();
         function generateEliminationStage(matches) {
             const brackets = document.getElementById('tournament-brackets');
             brackets.innerHTML = '';
-
             // Generate the first round
             const firstRound = document.createElement('ul');
             firstRound.className = 'bracket bracket-1';
-
             // Keep track of match times and calculate interval
             let firstMatchTime = null;
             let secondMatchTime = null;
@@ -337,7 +337,6 @@
             let lastMatchTime = null;
             let secondRoundLastTime = null;
             let lastStadium = "Clinceni"; // Default stadium
-
             // Add round number and match index to each match
             matches.forEach((match, index) => {
                 match.roundNumber = 1;
@@ -348,19 +347,15 @@
             matches.forEach((match, index) => {
                 const matchItemContainer = document.createElement('li');
                 matchItemContainer.className = 'team-item-container';
-
                 const matchItemContent = document.createElement('div');
                 matchItemContent.className = 'team-item-content';
-
                 const team1 = match.echipaGazdaNume;
                 const team2 = match.echipaOaspeteNume;
                 const score = match.scorGazda + '-' + match.scorOaspeti;
                 const date = new Date(match.data);
                 const time = `${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`;
                 const stadium = match.stadionNume;
-
                 lastStadium = stadium;
-
                 let scoreContent = `<span class="match-score">${score}</span>`;
                 if (isAdmin) {
                     scoreContent = `
@@ -372,7 +367,6 @@
                         </div>
                     `;
                 }
-
                 matchItemContent.innerHTML = `
                     <strong class="stadium-name">${stadium}</strong>
                     <div class="match-info-row">
@@ -388,9 +382,10 @@
                         <span class="match-index">${match.matchIndex}</span>
                     </div>
                 `;
-
-                matchItemContainer.appendChild(matchItemContent);
+                if(match.runda == 1){
+                                    matchItemContainer.appendChild(matchItemContent);
                 firstRound.appendChild(matchItemContainer);
+                }
 
                 // Calculate time interval
                 if (index === 0) {
@@ -400,58 +395,46 @@
                     timeInterval = Math.round((secondMatchTime - firstMatchTime) / (1000 * 60));
                     if (timeInterval > 50) timeInterval = 40;
                 }
-
                 if (index === matches.length - 1) {
                     lastMatchTime = new Date(date);
                 }
             });
-
             brackets.appendChild(firstRound);
-
             // Generate subsequent rounds
             let currentRoundMatches = matches;
             let roundNumber = 1;
             let lostTeams = [];
             let semifinalStadium = "";
-            let processedMatches = new Set();
-
             while (currentRoundMatches.length > 1) {
                 const nextRound = document.createElement('ul');
                 nextRound.className = `bracket bracket-${roundNumber + 1}`;
                 let roundStadium = lastStadium;
-
                 for (let i = 0; i < currentRoundMatches.length; i += 2) {
                     const match1 = currentRoundMatches[i];
-
+                    x ++;
                     if (i + 1 < currentRoundMatches.length) {
                         const match2 = currentRoundMatches[i + 1];
-
+                        if (match1.processed || match2.processed) continue;
                         const winner1 = match1.scorGazda > match1.scorOaspeti ? match1.echipaGazdaNume : match1.echipaOaspeteNume;
                         const loser1 = match1.scorGazda <= match1.scorOaspeti ? match1.echipaGazdaNume : match1.echipaOaspeteNume;
                         const winner2 = match2.scorGazda > match2.scorOaspeti ? match2.echipaGazdaNume : match2.echipaOaspeteNume;
                         const loser2 = match2.scorGazda <= match2.scorOaspeti ? match2.echipaGazdaNume : match2.echipaOaspeteNume;
-
                         if (currentRoundMatches.length === 2) {
                             lostTeams = [loser1, loser2];
                             semifinalStadium = roundStadium;
                         }
-
                         lastMatchTime.setMinutes(lastMatchTime.getMinutes() + timeInterval);
                         const nextTime = `${lastMatchTime.getHours()}:${lastMatchTime.getMinutes().toString().padStart(2, '0')}`;
-
                         if (roundNumber === 1 && i === currentRoundMatches.length - 2) {
                             secondRoundLastTime = new Date(lastMatchTime);
                         }
-
                         let matchTime = nextTime;
                         let matchDate = new Date(lastMatchTime);
-
                         if (currentRoundMatches.length === 2 && nextRound.children.length === 0) {
                             matchDate = new Date(secondRoundLastTime);
                             matchDate.setMinutes(matchDate.getMinutes() + (matches.length === 2 ? timeInterval : timeInterval * 2));
                             matchTime = `${matchDate.getHours()}:${matchDate.getMinutes().toString().padStart(2, '0')}`;
                         }
-
                         const nextMatch = {
                             echipaGazdaNume: winner1,
                             echipaOaspeteNume: winner2,
@@ -462,17 +445,18 @@
                             roundNumber: match1.roundNumber + 1,
                             matchIndex: Math.floor(match1.matchIndex / 2) + 1
                         };
-
                         const isConsecutivePair = (match1.matchIndex % 2 === 1 && match2.matchIndex === match1.matchIndex + 1);
                         const isSameRound = match1.roundNumber === match2.roundNumber;
-                        const hasScores = (match1.scorGazda !== 0 || match1.scorOaspeti !== 0) && 
-                                        (match2.scorGazda !== 0 || match2.scorOaspeti !== 0);
-                        const notProcessed = !processedMatches.has(match1.idTurneu) && !processedMatches.has(match2.idTurneu);
+                        const hasScores = (match1.scorGazda !== 0 || match1.scorOaspeti !== 0) && (match2.scorGazda !== 0 || match2.scorOaspeti !== 0);
+                        const notProcessed = !match1.processed && !match2.processed;
+                        debugger
+                        if (isConsecutivePair && isSameRound && hasScores && notProcessed ){
 
-                        if (isConsecutivePair && isSameRound && hasScores && notProcessed) {
-                            processedMatches.add(match1.idTurneu);
-                            processedMatches.add(match2.idTurneu);
 
+                    match1.processed = true;
+                    match2.processed = true;
+
+                            debugger
                             const params = new URLSearchParams({
                                 homeTeam: winner1,
                                 awayTeam: winner2,
@@ -483,7 +467,6 @@
                                 runda: nextMatch.roundNumber,
                                 index: nextMatch.matchIndex
                             });
-
                             fetch(`/Turnee/CreateNextRoundMatch?${params}`, {
                                 method: 'POST'
                             })
@@ -504,13 +487,10 @@
                                 console.error('Error creating next round match:', error);
                             });
                         }
-
                         const matchItemContainer = document.createElement('li');
                         matchItemContainer.className = 'team-item-container';
-
                         const matchItemContent = document.createElement('div');
                         matchItemContent.className = 'team-item-content';
-
                         let scoreContent = `<span class="match-score">?-?</span>`;
                         if (isAdmin) {
                             scoreContent = `
@@ -523,7 +503,7 @@
                             `;
                         }
 
-                        matchItemContent.innerHTML = `
+        matchItemContent.innerHTML = `
                             <strong class="stadium-name">${nextMatch.stadionNume}</strong>
                             <div class="match-info-row">
                                 <time>${matchTime}</time>
@@ -538,65 +518,27 @@
                                 <span class="match-index">${nextMatch.matchIndex}</span>
                             </div>
                         `;
-
+                                                            const existingMatchElement = document.querySelector(`.bracket-${nextMatch.roundNumber} .team-item-container:nth-child(${nextMatch.matchIndex})`);
+                                    if (existingMatchElement == null) {
                         matchItemContainer.appendChild(matchItemContent);
                         nextRound.appendChild(matchItemContainer);
-                    } else {
-                        // Handle odd number of matches
-                        lastMatchTime.setMinutes(lastMatchTime.getMinutes() + timeInterval);
-                        const nextTime = `${lastMatchTime.getHours()}:${lastMatchTime.getMinutes().toString().padStart(2, '0')}`;
-
-                        match1.stadionNume = roundStadium;
-
-                        const matchItemContainer = document.createElement('li');
-                        matchItemContainer.className = 'team-item-container';
-
-                        const matchItemContent = document.createElement('div');
-                        matchItemContent.className = 'team-item-content';
-
-                        const winner = match1.scorGazda > match1.scorOaspeti ? match1.echipaGazdaNume : match1.echipaOaspeteNume;
-
-                        matchItemContent.innerHTML = `
-                            <strong class="stadium-name">${match1.stadionNume}</strong>
-                            <div class="match-info-row">
-                                <time>${nextTime}</time>
-                                <div class="teams-column">
-                                    <span class="team-name">${winner}</span>
-                                    <span class="team-name">-</span>
-                                </div>
-                                <span class="match-score">-</span>
-                            </div>
-                            <div class="match-metadata" style="display: none;">
-                                <span class="round-number">${match1.roundNumber + 1}</span>
-                                <span class="match-index">${Math.floor(i / 2) + 1}</span>
-                            </div>
-                        `;
-
-                        matchItemContainer.appendChild(matchItemContent);
-                        nextRound.appendChild(matchItemContainer);
-                    }
+                                    }
+                    } 
                 }
-
                 brackets.appendChild(nextRound);
-
                 // Add third place playoff after semifinal round
                 if (currentRoundMatches.length === 2 && lostTeams.length === 2) {
                     const finalMatchDate = new Date(secondRoundLastTime);
                     finalMatchDate.setMinutes(finalMatchDate.getMinutes() + (matches.length === 2 ? timeInterval : timeInterval * 2));
-
                     const thirdPlaceDate = new Date(finalMatchDate);
                     thirdPlaceDate.setMinutes(thirdPlaceDate.getMinutes() - timeInterval);
                     const thirdPlaceTime = `${thirdPlaceDate.getHours()}:${thirdPlaceDate.getMinutes().toString().padStart(2, '0')}`;
-
                     const thirdPlaceRound = document.createElement('ul');
                     thirdPlaceRound.className = `bracket bracket-third-place`;
-
                     const matchItemContainer = document.createElement('li');
                     matchItemContainer.className = 'team-item-container third-place-match';
-
                     const matchItemContent = document.createElement('div');
                     matchItemContent.className = 'team-item-content';
-
                     matchItemContent.innerHTML = `
                         <strong class="stadium-name">${semifinalStadium}</strong>
                         <div class="match-info-row">
@@ -612,17 +554,13 @@
                             <span class="match-index">0</span>
                         </div>
                     `;
-
                     matchItemContainer.appendChild(matchItemContent);
                     thirdPlaceRound.appendChild(matchItemContainer);
-
                     brackets.appendChild(thirdPlaceRound);
                 }
-
                 if (nextRound.children.length > 0) {
                     lastStadium = nextRound.children[nextRound.children.length - 1].querySelector('.stadium-name').textContent;
                 }
-
                 currentRoundMatches = Array.from(nextRound.children).map(child => ({
                     echipaGazdaNume: child.querySelector('.team-name:nth-child(1)').textContent,
                     echipaOaspeteNume: child.querySelector('.team-name:nth-child(2)').textContent,
@@ -631,10 +569,10 @@
                     roundNumber: parseInt(child.querySelector('.round-number').textContent),
                     matchIndex: parseInt(child.querySelector('.match-index').textContent)
                 }));
-
                 roundNumber++;
             }
         }
+
 
         function generateClassificationMatches(matches) {
             const brackets = document.getElementById('classification-brackets');

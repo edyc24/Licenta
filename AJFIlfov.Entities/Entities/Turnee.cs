@@ -18,6 +18,8 @@ public partial class Turnee : IEntity
     public int? Runda { get; set; }
     public int? Index { get; set; }
     public bool? IdDeleted { get; set; }
+    public bool? Processed { get; set; }
+    public int? ProcessedValue { get; set; }
 
     public virtual Echipe? IdEchipaGazdaNavigation { get; set; }
     public virtual Echipe? IdEchipaOaspeteNavigation { get; set; }

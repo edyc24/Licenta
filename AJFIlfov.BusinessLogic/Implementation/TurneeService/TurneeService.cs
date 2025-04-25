@@ -36,6 +36,8 @@ namespace AJFIlfov.BusinessLogic.Implementation.TurneeService
                     ScorOaspeti = t.ScorOaspeti,
                     Runda = t.Runda,
                     Index = t.Index,
+                    Processed = t.Processed,
+                    ProcessedValue = t.ProcessedValue,
                     EchipaGazdaNume = t.IdEchipaGazdaNavigation.Nume,
                     EchipaOaspeteNume = t.IdEchipaOaspeteNavigation.Nume,
                     StadionNume = t.IdStadionNavigation.Nume,
@@ -65,6 +67,9 @@ namespace AJFIlfov.BusinessLogic.Implementation.TurneeService
                     IdGrupa = t.IdGrupa,
                     ScorGazda = t.ScorGazda,
                     ScorOaspeti = t.ScorOaspeti,
+                    Runda = t.Runda,
+                    Index = t.Index,
+                    ProcessedValue = t.ProcessedValue,
                     EchipaGazdaNume = t.IdEchipaGazdaNavigation.Nume,
                     EchipaOaspeteNume = t.IdEchipaOaspeteNavigation.Nume,
                     StadionNume = t.IdStadionNavigation.Nume,
@@ -205,6 +210,7 @@ namespace AJFIlfov.BusinessLogic.Implementation.TurneeService
                 ScorOaspeti = turneu.ScorOaspeti,
                 Runda = turneu.Runda,
                 Index = turneu.Index,
+                Processed = turneu.Processed,
                 EchipaGazdaNume = turneu.IdEchipaGazdaNavigation.Nume,
                 EchipaOaspeteNume = turneu.IdEchipaOaspeteNavigation.Nume,
                 StadionNume = turneu.IdStadionNavigation.Nume,
@@ -228,7 +234,8 @@ namespace AJFIlfov.BusinessLogic.Implementation.TurneeService
                 ScorOaspeti = model.ScorOaspeti,
                 IdDeleted = false,
                 Runda = model.Runda,
-                Index = model.Index
+                Index = model.Index,
+                ProcessedValue = 0
             };
 
             UnitOfWork.Turnee.Insert(turneu);
@@ -251,6 +258,21 @@ namespace AJFIlfov.BusinessLogic.Implementation.TurneeService
             turneu.IdGrupa = model.IdGrupa;
             turneu.ScorGazda = model.ScorGazda;
             turneu.ScorOaspeti = model.ScorOaspeti;
+
+            UnitOfWork.Turnee.Update(turneu);
+            UnitOfWork.SaveChanges();
+            return true;
+        }
+
+        public bool Update2(Guid Id)
+        {
+            var turneu = UnitOfWork.Turnee.Get()
+                .FirstOrDefault(t => t.IdEchipaGazda == Id || t.IdEchipaOaspete == Id);
+
+            if (turneu == null) return false;
+
+
+            turneu.ProcessedValue = 1;
 
             UnitOfWork.Turnee.Update(turneu);
             UnitOfWork.SaveChanges();
@@ -330,7 +352,8 @@ namespace AJFIlfov.BusinessLogic.Implementation.TurneeService
                 ScorOaspeti = model.ScorOaspeti,
                 IdDeleted = false,
                 Runda = model.Runda,
-                Index = model.Index
+                Index = model.Index,
+                ProcessedValue = 0
             };
 
             UnitOfWork.Turnee.Insert(turneu);
@@ -355,7 +378,7 @@ namespace AJFIlfov.BusinessLogic.Implementation.TurneeService
                 ScorOaspeti = model.ScorOaspeti,
                 IdDeleted = false,
                 Runda = model.Runda,
-                Index = model.Index
+                Index = model.Index,
             };
 
             UnitOfWork.Turnee.Insert(turneu);

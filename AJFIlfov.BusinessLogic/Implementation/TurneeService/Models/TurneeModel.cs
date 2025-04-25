@@ -13,6 +13,10 @@ namespace AJFIlfov.BusinessLogic.Implementation.TurneeService.Models
         public int? ScorOaspeti { get; set; }
         public int? Index { get; set; }
         public int? Runda { get; set; }
+        public bool? Processed { get; set; }
+        public int? ProcessedValue { get; set; }
+
+
 
         public string? EchipaGazdaNume { get; set; }
         public string? EchipaOaspeteNume { get; set; }

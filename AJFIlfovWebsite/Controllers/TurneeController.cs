@@ -338,7 +338,7 @@ namespace AJFIlfovWebsite.Controllers
                                 {
                                     Data = DateTime.Parse("2025-03-01 15:50"),
                                     IdEchipaGazda = GetTeamId(topTeamsA[0].TeamName),
-                                    IdEchipaOaspete = GetTeamId(topTeamsA[0].TeamName),
+                                    IdEchipaOaspete = GetTeamId(topTeamsC[0].TeamName),
                                     IdStadion = GetStadiumId("Clinceni T2A"),
                                     IdCategorie = GetCategoryId(categorie),
                                     IdGrupa = eliminationGroupId,

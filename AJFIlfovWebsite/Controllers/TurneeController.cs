@@ -103,7 +103,9 @@ namespace AJFIlfovWebsite.Controllers
                                     IdCategorie = GetCategoryId(categorie),
                                     IdGrupa = classificationGroupId,
                                     ScorGazda = 0,
-                                    ScorOaspeti = 0
+                                    ScorOaspeti = 0,
+                                    Runda = 1,
+                                    Index = 1
                                 };
                                 _service.CreateMatch(classificationMatch);
                             }
@@ -148,8 +150,38 @@ namespace AJFIlfovWebsite.Controllers
                                     Index = 2
                                 };
 
+                                var eliminationMatch3 = new CreateTurneuModel
+                                {
+                                    Data = DateTime.Parse("2025-02-01 15:30"),
+                                    IdEchipaGazda = GetTeamId(topTeamsA[0].TeamName),
+                                    IdEchipaOaspete = GetTeamId(topTeamsB[0].TeamName),
+                                    IdStadion = GetStadiumId("Clinceni T1A"),
+                                    IdCategorie = GetCategoryId(categorie),
+                                    IdGrupa = eliminationGroupId,
+                                    ScorGazda = 0,
+                                    ScorOaspeti = 0,
+                                    Runda = 2,
+                                    Index = 1
+                                };
+
+                                var eliminationMatch4 = new CreateTurneuModel
+                                {
+                                    Data = DateTime.Parse("2025-02-01 14:40"),
+                                    IdEchipaGazda = GetTeamId(topTeamsA[1].TeamName),
+                                    IdEchipaOaspete = GetTeamId(topTeamsB[1].TeamName),
+                                    IdStadion = GetStadiumId("Clinceni T1A"),
+                                    IdCategorie = GetCategoryId(categorie),
+                                    IdGrupa = eliminationGroupId,
+                                    ScorGazda = 0,
+                                    ScorOaspeti = 0,
+                                    Runda = 2,
+                                    Index = 2
+                                };
+
                                 _service.CreateMatch(eliminationMatch1);
                                 _service.CreateMatch(eliminationMatch2);
+                                _service.CreateMatch(eliminationMatch3);
+                                _service.CreateMatch(eliminationMatch4);
                             }
 
                             if (existingClassificationMatches.Count == 0)
@@ -274,10 +306,70 @@ namespace AJFIlfovWebsite.Controllers
                                     Index = 4
                                 };
 
+                                var eliminationMatch5 = new CreateTurneuModel
+                                {
+                                    Data = DateTime.Parse("2025-03-01 13:20"),
+                                    IdEchipaGazda = GetTeamId(topTeamsA[0].TeamName),
+                                    IdEchipaOaspete = GetTeamId(topTeamsB[0].TeamName),
+                                    IdStadion = GetStadiumId("Clinceni T2A"),
+                                    IdCategorie = GetCategoryId(categorie),
+                                    IdGrupa = eliminationGroupId,
+                                    ScorGazda = 0,
+                                    ScorOaspeti = 0,
+                                    Runda = 2,
+                                    Index = 1
+                                };
+
+                                var eliminationMatch6 = new CreateTurneuModel
+                                {
+                                    Data = DateTime.Parse("2025-03-01 14:10"),
+                                    IdEchipaGazda = GetTeamId(topTeamsC[0].TeamName),
+                                    IdEchipaOaspete = GetTeamId(secondPlaces[0].TeamName),
+                                    IdStadion = GetStadiumId("Clinceni T2A"),
+                                    IdCategorie = GetCategoryId(categorie),
+                                    IdGrupa = eliminationGroupId,
+                                    ScorGazda = 0,
+                                    ScorOaspeti = 0,
+                                    Runda = 2,
+                                    Index = 2
+                                };
+
+                                var eliminationMatch7 = new CreateTurneuModel
+                                {
+                                    Data = DateTime.Parse("2025-03-01 15:50"),
+                                    IdEchipaGazda = GetTeamId(topTeamsA[0].TeamName),
+                                    IdEchipaOaspete = GetTeamId(topTeamsA[0].TeamName),
+                                    IdStadion = GetStadiumId("Clinceni T2A"),
+                                    IdCategorie = GetCategoryId(categorie),
+                                    IdGrupa = eliminationGroupId,
+                                    ScorGazda = 0,
+                                    ScorOaspeti = 0,
+                                    Runda = 3,
+                                    Index = 1
+                                };
+
+                                var eliminationMatch8 = new CreateTurneuModel
+                                {
+                                    Data = DateTime.Parse("2025-03-01 15:00"),
+                                    IdEchipaGazda = GetTeamId(secondPlaces[0].TeamName),
+                                    IdEchipaOaspete = GetTeamId(topTeamsB[0].TeamName),
+                                    IdStadion = GetStadiumId("Clinceni T2A"),
+                                    IdCategorie = GetCategoryId(categorie),
+                                    IdGrupa = eliminationGroupId,
+                                    ScorGazda = 0,
+                                    ScorOaspeti = 0,
+                                    Runda = 3,
+                                    Index = 2
+                                };
+
                                 _service.CreateMatch(eliminationMatch1);
                                 _service.CreateMatch(eliminationMatch2);
                                 _service.CreateMatch(eliminationMatch3);
                                 _service.CreateMatch(eliminationMatch4);
+                                _service.CreateMatch(eliminationMatch5);
+                                _service.CreateMatch(eliminationMatch6);
+                                _service.CreateMatch(eliminationMatch7);
+                                _service.CreateMatch(eliminationMatch8);
                             }
 
                             if (existingClassificationMatches.Count == 0)
@@ -333,7 +425,7 @@ namespace AJFIlfovWebsite.Controllers
                                     ScorGazda = 0,
                                     ScorOaspeti = 0,
                                     Runda = 1,
-                                    Index = 2
+                                    Index = 1
                                 };
 
                                 var eliminationMatch2 = new CreateTurneuModel
@@ -350,8 +442,38 @@ namespace AJFIlfovWebsite.Controllers
                                     Index = 2
                                 };
 
+                                var eliminationMatch3 = new CreateTurneuModel
+                                {
+                                    Data = DateTime.Parse("2025-04-01 15:30"),
+                                    IdEchipaGazda = GetTeamId(topTeamsA[0].TeamName),
+                                    IdEchipaOaspete = GetTeamId(topTeamsB[0].TeamName),
+                                    IdStadion = GetStadiumId("Clinceni T2B"),
+                                    IdCategorie = GetCategoryId(categorie),
+                                    IdGrupa = eliminationGroupId,
+                                    ScorGazda = 0,
+                                    ScorOaspeti = 0,
+                                    Runda = 2,
+                                    Index = 1
+                                };
+
+                                var eliminationMatch4 = new CreateTurneuModel
+                                {
+                                    Data = DateTime.Parse("2025-04-01 14:40"),
+                                    IdEchipaGazda = GetTeamId(topTeamsB[1].TeamName),
+                                    IdEchipaOaspete = GetTeamId(topTeamsA[1].TeamName),
+                                    IdStadion = GetStadiumId("Clinceni T2B"),
+                                    IdCategorie = GetCategoryId(categorie),
+                                    IdGrupa = eliminationGroupId,
+                                    ScorGazda = 0,
+                                    ScorOaspeti = 0,
+                                    Runda = 2,
+                                    Index = 2
+                                };
+
                                 _service.CreateMatch(eliminationMatch1);
                                 _service.CreateMatch(eliminationMatch2);
+                                _service.CreateMatch(eliminationMatch3);
+                                _service.CreateMatch(eliminationMatch4);
                             }
 
                             if (existingClassificationMatches.Count == 0)
@@ -457,10 +579,70 @@ namespace AJFIlfovWebsite.Controllers
                                     Index = 4
                                 };
 
+                                var eliminationMatch5 = new CreateTurneuModel
+                                {
+                                    Data = DateTime.Parse("2025-05-01 13:40"),
+                                    IdEchipaGazda = GetTeamId(topTeamsA[0].TeamName),
+                                    IdEchipaOaspete = GetTeamId(topTeamsB[0].TeamName),
+                                    IdStadion = GetStadiumId("Clinceni T2C"),
+                                    IdCategorie = GetCategoryId(categorie),
+                                    IdGrupa = eliminationGroupId,
+                                    ScorGazda = 0,
+                                    ScorOaspeti = 0,
+                                    Runda = 2,
+                                    Index = 1
+                                };
+
+                                var eliminationMatch6 = new CreateTurneuModel
+                                {
+                                    Data = DateTime.Parse("2025-05-01 14:20"),
+                                    IdEchipaGazda = GetTeamId(topTeamsC[0].TeamName),
+                                    IdEchipaOaspete = GetTeamId(topTeamsD[0].TeamName),
+                                    IdStadion = GetStadiumId("Clinceni T2C"),
+                                    IdCategorie = GetCategoryId(categorie),
+                                    IdGrupa = eliminationGroupId,
+                                    ScorGazda = 0,
+                                    ScorOaspeti = 0,
+                                    Runda = 2,
+                                    Index = 2
+                                };
+
+                                var eliminationMatch7 = new CreateTurneuModel
+                                {
+                                    Data = DateTime.Parse("2025-05-01 15:40"),
+                                    IdEchipaGazda = GetTeamId(topTeamsA[0].TeamName),
+                                    IdEchipaOaspete = GetTeamId(topTeamsC[0].TeamName),
+                                    IdStadion = GetStadiumId("Clinceni T2C"),
+                                    IdCategorie = GetCategoryId(categorie),
+                                    IdGrupa = eliminationGroupId,
+                                    ScorGazda = 0,
+                                    ScorOaspeti = 0,
+                                    Runda = 3,
+                                    Index = 1
+                                };
+
+                                var eliminationMatch8 = new CreateTurneuModel
+                                {
+                                    Data = DateTime.Parse("2025-05-01 15:00"),
+                                    IdEchipaGazda = GetTeamId(topTeamsB[0].TeamName),
+                                    IdEchipaOaspete = GetTeamId(topTeamsD[0].TeamName),
+                                    IdStadion = GetStadiumId("Clinceni T2C"),
+                                    IdCategorie = GetCategoryId(categorie),
+                                    IdGrupa = eliminationGroupId,
+                                    ScorGazda = 0,
+                                    ScorOaspeti = 0,
+                                    Runda = 3,
+                                    Index = 2
+                                };
+
                                 _service.CreateMatch(eliminationMatch1);
                                 _service.CreateMatch(eliminationMatch2);
                                 _service.CreateMatch(eliminationMatch3);
                                 _service.CreateMatch(eliminationMatch4);
+                                _service.CreateMatch(eliminationMatch5);
+                                _service.CreateMatch(eliminationMatch6);
+                                _service.CreateMatch(eliminationMatch7);
+                                _service.CreateMatch(eliminationMatch8);
                             }
 
                             if (existingClassificationMatches.Count == 0)
@@ -546,8 +728,38 @@ namespace AJFIlfovWebsite.Controllers
                                     Index = 2
                                 };
 
+                                var eliminationMatch3 = new CreateTurneuModel
+                                {
+                                    Data = DateTime.Parse("2025-06-01 15:30"),
+                                    IdEchipaGazda = GetTeamId(topTeamsB[0].TeamName),
+                                    IdEchipaOaspete = GetTeamId(topTeamsA[0].TeamName),
+                                    IdStadion = GetStadiumId("Clinceni T3A"),
+                                    IdCategorie = GetCategoryId(categorie),
+                                    IdGrupa = eliminationGroupId,
+                                    ScorGazda = 0,
+                                    ScorOaspeti = 0,
+                                    Runda = 2,
+                                    Index = 1
+                                };
+
+                                var eliminationMatch4 = new CreateTurneuModel
+                                {
+                                    Data = DateTime.Parse("2025-06-01 14:50"),
+                                    IdEchipaGazda = GetTeamId(topTeamsA[1].TeamName),
+                                    IdEchipaOaspete = GetTeamId(topTeamsB[1].TeamName),
+                                    IdStadion = GetStadiumId("Clinceni T3A"),
+                                    IdCategorie = GetCategoryId(categorie),
+                                    IdGrupa = eliminationGroupId,
+                                    ScorGazda = 0,
+                                    ScorOaspeti = 0,
+                                    Runda = 2,
+                                    Index = 2
+                                };
+
                                 _service.CreateMatch(eliminationMatch1);
                                 _service.CreateMatch(eliminationMatch2);
+                                _service.CreateMatch(eliminationMatch3);
+                                _service.CreateMatch(eliminationMatch4);
                             }
 
                             if (existingClassificationMatches.Count == 0)
@@ -607,8 +819,38 @@ namespace AJFIlfovWebsite.Controllers
                                     Index = 2
                                 };
 
+                                var eliminationMatch3 = new CreateTurneuModel
+                                {
+                                    Data = DateTime.Parse("2025-03-01 15:30"),
+                                    IdEchipaGazda = GetTeamId(topTeamsB[0].TeamName),
+                                    IdEchipaOaspete = GetTeamId(topTeamsA[0].TeamName),
+                                    IdStadion = GetStadiumId("Clinceni T3B"),
+                                    IdCategorie = GetCategoryId(categorie),
+                                    IdGrupa = eliminationGroupId,
+                                    ScorGazda = 0,
+                                    ScorOaspeti = 0,
+                                    Runda = 2,
+                                    Index = 1
+                                };
+
+                                var eliminationMatch4 = new CreateTurneuModel
+                                {
+                                    Data = DateTime.Parse("2025-03-01 14:50"),
+                                    IdEchipaGazda = GetTeamId(topTeamsA[1].TeamName),
+                                    IdEchipaOaspete = GetTeamId(topTeamsB[1].TeamName),
+                                    IdStadion = GetStadiumId("Clinceni T3B"),
+                                    IdCategorie = GetCategoryId(categorie),
+                                    IdGrupa = eliminationGroupId,
+                                    ScorGazda = 0,
+                                    ScorOaspeti = 0,
+                                    Runda = 2,
+                                    Index = 2
+                                };
+
                                 _service.CreateMatch(eliminationMatch1);
                                 _service.CreateMatch(eliminationMatch2);
+                                _service.CreateMatch(eliminationMatch3);
+                                _service.CreateMatch(eliminationMatch4);
                             }
 
                             if (existingClassificationMatches.Count == 0)

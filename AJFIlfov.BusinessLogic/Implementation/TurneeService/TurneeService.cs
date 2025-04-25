@@ -391,12 +391,42 @@ namespace AJFIlfov.BusinessLogic.Implementation.TurneeService
             var turneu = UnitOfWork.Turnee.Get()
                 .FirstOrDefault(t => t.IdTurneu == matchId && (t.IdDeleted == false || t.IdDeleted == null));
 
+            var IndexBun = 1; 
+            if (turneu.Index == 3 || turneu.Index == 4)
+            {
+                IndexBun = 2;
+            }
+
+            var turneu2 = UnitOfWork.Turnee.Get()
+                .FirstOrDefault(t => t.Runda == turneu.Runda + 1 && t.Index == IndexBun && (t.IdDeleted == false || t.IdDeleted == null));
+
             if (turneu == null) return false;
 
             turneu.ScorGazda = homeScore;
             turneu.ScorOaspeti = awayScore;
+            
+            if(homeScore>awayScore)
+                if (turneu.Index == 1 || turneu.Index == 3)
+                {
+                    turneu2.IdEchipaGazda = turneu.IdEchipaGazda;
 
+                }
+                else
+                {
+                    turneu2.IdEchipaOaspete = turneu.IdEchipaGazda;
+                }
+            else
+                if (turneu.Index == 1 || turneu.Index == 3)
+                {
+                    turneu2.IdEchipaGazda = turneu.IdEchipaOaspete;
+
+                }
+                else
+                {
+                    turneu2.IdEchipaOaspete = turneu.IdEchipaOaspete;
+                }
             UnitOfWork.Turnee.Update(turneu);
+            UnitOfWork.Turnee.Update(turneu2);
             UnitOfWork.SaveChanges();
             return true;
         }

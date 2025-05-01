@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/Grupe/Edit.css"/>
+    <link rel="stylesheet" href="~/css/Common/Common.css" />
 </head>
 <style>
     html,
@@ -20,13 +21,9 @@
 </style>
 <body>
 
-<div class="container">
-    <div class="header">
-        <h2>@ViewData["Title"]</h2>
-    </div>
+<h2 class="page-title">@ViewData["Title"]</h2>
 
-    <hr/>
-
+<div class="grupe-edit-container">
     <form asp-action="Edit" method="post">
         @Html.AntiForgeryToken()
 
@@ -38,7 +35,7 @@
 
         <input type="hidden" asp-for="IdGrupa"/>
 
-        <div class="form-group">
+        <div class="form-actions">
             <input type="submit" value="Salvează" class="btn btn-primary"/>
             <a asp-action="Index" class="btn btn-secondary">Anulare</a>
         </div>

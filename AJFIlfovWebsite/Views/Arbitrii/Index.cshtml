@@ -1,20 +1,23 @@
 ﻿@inject AJFIlfov.Common.DTOs.CurrentUserDto CurrentUser
+@using System.Linq
+@using AJFIlfov.BusinessLogic.Implementation.MeciuriService.Models
+@using AJFIlfov.Entities.Entities
 @{
     ViewData["Title"] = "Acasă";
 }
 
 <div class="container mt-5">
     <div class="jumbotron text-center">
-        <h1 class="display-4">Bine ai venit la CJA Ilfov!</h1>
+        <h1 class="display-4">Bine ai revenit in aplicatia de arbitrii, @CurrentUser.FirstName @CurrentUser.LastName!</h1>
 
         @if (User.Identity.IsAuthenticated)
         {
             @if (User.Identity.IsAuthenticated && CurrentUser.Role != "Administrator")
             {
-                <p class="lead">Meciurile tale:</p>
-                <hr class="my-4">
-                if (ViewBag.Meciuri != null)
+                if (ViewBag.Meciuri != null && ((IEnumerable<MeciModel>)ViewBag.Meciuri).Any())
                 {
+                    <p class="lead">Meciurile tale:</p>
+                    <hr class="my-4">
                     <ul class="list-group">
                         @foreach (var meci in ViewBag.Meciuri)
                         {
@@ -32,7 +35,9 @@
         }
         else
         {
-            <a class="btn btn-primary btn-lg" href="https://ajfilfovwebsite20241218232333.azurewebsites.net/Account/Login">Loghează-te pentru a vedea meciurile tale</a>
+            @* <a class="btn btn-primary btn-lg" href="https://ajfilfovwebsite20241218232333.azurewebsites.net/Account/Login">Loghează-te pentru a vedea meciurile tale</a> *@
+            <a class="btn btn-primary btn-lg" href="/Account/Login">Loghează-te pentru a vedea meciurile tale</a>
+
         }
     </div>
 </div>

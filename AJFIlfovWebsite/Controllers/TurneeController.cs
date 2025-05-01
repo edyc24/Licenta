@@ -187,11 +187,11 @@ namespace AJFIlfovWebsite.Controllers
                             if (existingClassificationMatches.Count == 0)
                             {
                                 var classificationMatch1 = new CreateTurneuModel
-                                {
+                                {   
                                     Data = DateTime.Parse("2025-02-01 14:30"),
                                     IdEchipaGazda = GetTeamId(topTeamsA[2].TeamName),
                                     IdEchipaOaspete = GetTeamId(topTeamsB[2].TeamName),
-                                    IdStadion = GetStadiumId("Clinceni T2B"),
+                                    IdStadion = GetStadiumId("Clinceni T1B"),
                                     IdCategorie = GetCategoryId(categorie),
                                     IdGrupa = classificationGroupId,
                                     ScorGazda = 0,
@@ -203,7 +203,7 @@ namespace AJFIlfovWebsite.Controllers
                                     Data = DateTime.Parse("2025-02-01 15:20"),
                                     IdEchipaGazda = GetTeamId(topTeamsA[3].TeamName),
                                     IdEchipaOaspete = GetTeamId(topTeamsB[3].TeamName),
-                                    IdStadion = GetStadiumId("Clinceni T2B"),
+                                    IdStadion = GetStadiumId("Clinceni T1B"),
                                     IdCategorie = GetCategoryId(categorie),
                                     IdGrupa = classificationGroupId,
                                     ScorGazda = 0,
@@ -560,7 +560,7 @@ namespace AJFIlfovWebsite.Controllers
                                     IdCategorie = GetCategoryId(categorie),
                                     IdGrupa = eliminationGroupId,
                                     ScorGazda = 0,
-                                    ScorOaspeti = 0,
+                                    ScorOaspeti = 3,
                                     Runda = 1,
                                     Index = 3
                                 };
@@ -597,7 +597,7 @@ namespace AJFIlfovWebsite.Controllers
                                 {
                                     Data = DateTime.Parse("2025-05-01 14:20"),
                                     IdEchipaGazda = GetTeamId(topTeamsC[0].TeamName),
-                                    IdEchipaOaspete = GetTeamId(topTeamsD[0].TeamName),
+                                    IdEchipaOaspete = GetTeamId(topTeamsD[1].TeamName),
                                     IdStadion = GetStadiumId("Clinceni T2C"),
                                     IdCategorie = GetCategoryId(categorie),
                                     IdGrupa = eliminationGroupId,

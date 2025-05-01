@@ -34,6 +34,8 @@ public partial class Utilizatori : IEntity
     public bool? IsDeleted { get; set; }
 
     public bool? IsSuspended { get; set; }
+    public bool? IsLiga4 { get; set; }
+    public string? Calificativ { get; set; }
 
     public virtual ICollection<Disponibilitate> Disponibilitates { get; set; } = new List<Disponibilitate>();
 

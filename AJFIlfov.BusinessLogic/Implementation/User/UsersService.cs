@@ -91,6 +91,8 @@ namespace AJFIlfov.BusinessLogic.Implementation.User
             user.DataNastere = model.BirthDay;
             user.IdRol = userRoles.FirstOrDefault(role => role.Value == model.Role).Key;
             user.IdCategorie = userCategories.FirstOrDefault(role => role.Value == model.Category).Key;
+            user.IsLiga4 = model.IsLiga4;
+            user.Calificativ = model.Calificativ;
             UnitOfWork.Users.Update(user);
             UnitOfWork.SaveChanges();
         }

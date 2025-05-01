@@ -397,25 +397,28 @@ namespace AJFIlfov.BusinessLogic.Implementation.TurneeService
                 IndexBun = 2;
             }
 
-            var turneu2 = UnitOfWork.Turnee.Get()
-                .FirstOrDefault(t => t.Runda == turneu.Runda + 1 && t.Index == IndexBun && (t.IdDeleted == false || t.IdDeleted == null));
+            UnitOfWork.Turnee.Update(turneu);
+            if (turneu.IdGrupa == Guid.Parse("d9c7cbe8-4c79-48c1-aefc-bf2047789f07"))
+            {
+                var turneu2 = UnitOfWork.Turnee.Get()
+                    .FirstOrDefault(t => t.Runda == turneu.Runda + 1 && t.Index == IndexBun && (t.IdDeleted == false || t.IdDeleted == null));
 
-            if (turneu == null) return false;
+                if (turneu == null) return false;
 
-            turneu.ScorGazda = homeScore;
-            turneu.ScorOaspeti = awayScore;
-            
-            if(homeScore>awayScore)
-                if (turneu.Index == 1 || turneu.Index == 3)
-                {
-                    turneu2.IdEchipaGazda = turneu.IdEchipaGazda;
+                turneu.ScorGazda = homeScore;
+                turneu.ScorOaspeti = awayScore;
 
-                }
+                if (homeScore > awayScore)
+                    if (turneu.Index == 1 || turneu.Index == 3)
+                    {
+                        turneu2.IdEchipaGazda = turneu.IdEchipaGazda;
+
+                    }
+                    else
+                    {
+                        turneu2.IdEchipaOaspete = turneu.IdEchipaGazda;
+                    }
                 else
-                {
-                    turneu2.IdEchipaOaspete = turneu.IdEchipaGazda;
-                }
-            else
                 if (turneu.Index == 1 || turneu.Index == 3)
                 {
                     turneu2.IdEchipaGazda = turneu.IdEchipaOaspete;
@@ -425,8 +428,9 @@ namespace AJFIlfov.BusinessLogic.Implementation.TurneeService
                 {
                     turneu2.IdEchipaOaspete = turneu.IdEchipaOaspete;
                 }
-            UnitOfWork.Turnee.Update(turneu);
-            UnitOfWork.Turnee.Update(turneu2);
+
+                UnitOfWork.Turnee.Update(turneu2);
+            }
             UnitOfWork.SaveChanges();
             return true;
         }

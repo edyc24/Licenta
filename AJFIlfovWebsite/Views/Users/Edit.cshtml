@@ -90,6 +90,23 @@
                     <textarea asp-for="ProfileDescription" class="form-control" rows="3"></textarea>
                     <span asp-validation-for="ProfileDescription" class="text-danger"></span>
                 </div>
+                
+
+                <div class="form-group">
+                    <label asp-for="IsLiga4" class="control-label">Apartine Lot Liga 4/5?</label>
+                    <select asp-for="IsLiga4" class="form-control">
+                        <option value="true">Da</option>
+                        <option value="false">Nu</option>
+                    </select>
+                    <span asp-validation-for="IsLiga4" class="text-danger"></span>
+                </div>
+
+                
+                <div class="form-group">
+                    <label asp-for="Calificativ" class="control-label">Calificativ</label>
+                        <textarea asp-for="Calificativ" class="form-control" rows="3"></textarea>
+                        <span asp-validation-for="Calificativ" class="text-danger"></span>
+                </div>
 
                 <div class="form-group text-center">
                     <input type="submit" value="Salvează" class="btn btn-primary" />

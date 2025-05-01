@@ -23,6 +23,8 @@ namespace AJFIlfov.BusinessLogic.Implementation.User.Models
         [Required(ErrorMessage = "Please enter the Role.")]
         public string Role { get; set; }
         public string Category { get; set; }
+        public string Calificativ { get; set; }
+        public bool IsLiga4 { get; set; }
         public Dictionary<int, string> Roles { get; set; }
         public Dictionary<int, string> Categorii { get; set; }
     }

@@ -27,17 +27,21 @@ namespace AJFIlfov.BusinessLogic.Implementation.User.Mappings
                 .ForMember(a => a.Role, a => a.MapFrom(s => userRoles[s.IdRol]))
                 .ForMember(a => a.Category, a => a.MapFrom(s => userCategories[s.IdCategorie]))
                 .ForMember(a => a.FirstName, a => a.MapFrom(s => s.Nume))
-                .ForMember(a => a.LastName, a => a.MapFrom(s => s.Prenume));
+                .ForMember(a => a.LastName, a => a.MapFrom(s => s.Prenume))
+                .ForMember(a => a.Calificativ, a => a.MapFrom(s => s.Calificativ));
 
             CreateMap<UserManagmentModel, Utilizatori>()
-               .ForMember(a => a.DataNastere, a => a.MapFrom(s => s.BirthDay))
-               .ForMember(a => a.IdUtilizator, a => a.Ignore())
-               .ForMember(a => a.DataIncepere, a => a.Ignore())
-               .ForMember(a => a.Mail, a => a.Ignore())
-               .ForMember(a => a.IdRol, a => a.MapFrom(s => userRoles.FirstOrDefault(role => role.Value == s.Role).Key))
-               .ForMember(a => a.IdCategorie, a => a.MapFrom(s => userCategories.FirstOrDefault(role => role.Value == s.Role).Key))
-               .ForMember(a => a.Nume, a => a.MapFrom(s => s.FirstName))
-               .ForMember(a => a.Prenume, a => a.MapFrom(s => s.LastName));
+                .ForMember(a => a.DataNastere, a => a.MapFrom(s => s.BirthDay))
+                .ForMember(a => a.IdUtilizator, a => a.Ignore())
+                .ForMember(a => a.DataIncepere, a => a.Ignore())
+                .ForMember(a => a.Mail, a => a.Ignore())
+                .ForMember(a => a.IdRol,
+                    a => a.MapFrom(s => userRoles.FirstOrDefault(role => role.Value == s.Role).Key))
+                .ForMember(a => a.IdCategorie,
+                    a => a.MapFrom(s => userCategories.FirstOrDefault(role => role.Value == s.Role).Key))
+                .ForMember(a => a.Nume, a => a.MapFrom(s => s.FirstName))
+                .ForMember(a => a.Prenume, a => a.MapFrom(s => s.LastName))
+                .ForMember(a => a.Calificativ, a => a.MapFrom(s => s.Calificativ));
         }
     }
 }

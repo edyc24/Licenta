@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<AJFIlfov.BusinessLogic.Implementation.User.Models.UserManagmentModel>
 
 @{
-    ViewData["Title"] = "User Management";
+    ViewData["Title"] = "Management Utilizatori";
 }
 
 <!DOCTYPE html>
@@ -27,7 +27,7 @@
         <h1 class="mb-4">@ViewData["Title"]</h1>
 
         <p>
-            <a class="btn btn-primary" asp-controller="Account" asp-action="Register">Create New</a>
+            <a class="btn btn-primary" asp-controller="Account" asp-action="Register">Creează Nou</a>
         </p>
 
         <div class="table-responsive">
@@ -41,6 +41,8 @@
                         <th>Data Înregistrării</th>
                         <th>Rol</th>
                         <th>Categorie</th>
+                        <th>Liga 4/5</th>
+                        <th>Calificativ</th>
                         <th>Acțiuni</th>
                     </tr>
                 </thead>
@@ -55,6 +57,17 @@
                             <td>@item.RegistrationDay.ToString("dd/MM/yyyy")</td>
                             <td>@item.Role</td>
                             <td>@item.Category</td>
+                            <td>
+                                @if (item.IsLiga4)
+                                {
+                                    <span>Da</span>
+                                }
+                                else
+                                {
+                                    <span>Nu</span>
+                                }
+                            </td>
+                            <td>@item.Calificativ</td>
                             <td>
                                 <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Detalii</a>
                             </td>

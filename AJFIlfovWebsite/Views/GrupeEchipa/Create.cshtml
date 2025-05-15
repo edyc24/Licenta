@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/GrupeEchipa/Create.css"/>
-    <link rel="stylesheet" href="~/css/Common/Common.css" />
 </head>
 <style>
     html,
@@ -21,9 +20,13 @@
 </style>
 <body>
 
-<h2 class="page-title">@ViewData["Title"]</h2>
+<div class="container">
+    <div class="header">
+        <h2>@ViewData["Title"]</h2>
+    </div>
 
-<div class="grupe-echipa-create-container">
+    <hr/>
+
     <form asp-action="Create" method="post">
         @Html.AntiForgeryToken()
 
@@ -43,7 +46,7 @@
             <span asp-validation-for="IdEchipa" class="text-danger"></span>
         </div>
 
-        <div class="form-actions">
+        <div class="form-group">
             <input type="submit" value="Create" class="btn btn-primary"/>
             <a asp-action="Index" class="btn btn-secondary">Cancel</a>
         </div>

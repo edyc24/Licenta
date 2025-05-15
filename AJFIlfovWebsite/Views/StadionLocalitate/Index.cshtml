@@ -10,8 +10,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/StadionLocalitate/Index.css" />
+    <link rel="stylesheet" href="~/css/Common/Common.css" />
 </head>
 <style>
     html,
@@ -23,88 +25,91 @@
 </style>
 <body>
 
-    <div class="container">
-        <h2>@ViewData["Title"]</h2>
+<h2 class="page-title">@ViewData["Title"]</h2>
 
-        <p>
-            <a asp-action="Create" class="btn btn-primary">Create New</a>
-        </p>
-
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>@Html.DisplayNameFor(model => model.First().StadionNume)</th>
-                        <th>@Html.DisplayNameFor(model => model.First().LocalitateNume)</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => item.StadionNume)</td>
-                            <td>@Html.DisplayFor(modelItem => item.LocalitateNume)</td>
-                            <td>
-                                <a asp-action="Edit" asp-route-id="@item.IdStadionLocalitate" class="btn btn-warning">Edit</a>
-                                <button type="button" class="btn btn-danger delete-button" data-id="@item.IdStadionLocalitate" data-toggle="modal" data-target="#confirmDeleteModal">Delete</button>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
+<div class="localitati-container">
+    <div class="action-buttons">
+        <a asp-action="Create" class="btn btn-primary">Create New</a>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="confirmDeleteLabel">Confirmare ștergere</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Ești sigur că vrei să ștergi acest element?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Anulează</button>
-                    <button type="button" class="btn btn-danger" id="confirmDeleteButton">Șterge</button>
-                </div>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.First().StadionNume)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().LocalitateNume)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.StadionNume)</td>
+                        <td>@Html.DisplayFor(modelItem => item.LocalitateNume)</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.IdStadionLocalitate" class="btn btn-primary">Edit</a>
+                            <button type="button" class="btn btn-danger delete-button" data-id="@item.IdStadionLocalitate" data-toggle="modal" data-target="#confirmDeleteModal" data-name="@($"{item.StadionNume} - {item.LocalitateNume}")">Delete</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeleteLabel">Confirm Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete <strong id="stadionLocalitateInfo"></strong>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="confirmDeleteButton">Delete</button>
             </div>
         </div>
     </div>
+</div>
 
-    @section Scripts {
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                let deleteId;
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
-                $('.delete-button').on('click', function () {
-                    deleteId = $(this).data('id');
-                });
+<script>
+    $(document).ready(function () {
+        let deleteId;
 
-                $('#confirmDeleteButton').on('click', function () {
-                    $.ajax({
-                        type: 'POST',
-                        url: '/StadionLocalitate/Delete/' + deleteId,
-                        success: function () {
-                            $('#confirmDeleteModal').modal('hide');
-                            $('button[data-id="' + deleteId + '"]').closest('tr').remove();
-                        },
-                        error: function () {
-                            alert('A apărut o eroare la ștergerea elementului.');
-                        }
-                    });
-                });
+        $('.delete-button').on('click', function () {
+            deleteId = $(this).data('id');
+            var name = $(this).data('name');
+            $('#stadionLocalitateInfo').text(name);
+        });
+
+        $('#confirmDeleteButton').on('click', function () {
+            $.ajax({
+                type: 'POST',
+                url: '/StadionLocalitate/Delete/' + deleteId,
+                success: function () {
+                    toastr.success('Item deleted successfully!', 'Success');
+                    setTimeout(function() {
+                        location.reload();
+                    }, 1000);
+                },
+                error: function () {
+                    toastr.error('Error deleting item!', 'Error');
+                }
             });
-        </script>
-    }
-
+        });
+    });
+</script>
 </body>
 </html>

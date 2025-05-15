@@ -1,96 +1,57 @@
 ﻿@model IEnumerable<QnA.Models.QuestionModel>
 
-<div class="announcement-details-container">
-    <h2>Questions</h2>
-    <form method="get" asp-action="Index">
-        <input type="text" name="searchText" placeholder="Search questions..." value="@ViewData["searchText"]" />
-        <button type="submit">Search</button>
-    </form>
-    <ul>
-        @foreach (var question in Model)
-        {
-            <li>
-                <a asp-action="Details" asp-route-id="@question.Id">@question.Title</a>
-                <p>@question.Content</p>
-            </li>
-        }
-    </ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/Common/Common.css" />
+    <link rel="stylesheet" href="~/css/QnA/Index.css" />
+</head>
+<body>
+    <h2 class="page-title">Întrebări și Răspunsuri</h2>
 
-    <h2>Ask a Question</h2>
-    <form method="post" asp-action="AddQuestion">
-        <input type="text" name="title" placeholder="Question title" required />
-        <textarea name="content" placeholder="Question content" required></textarea>
-        <button type="submit">Submit Question</button>
-    </form>
-</div>
+    <div class="qna-container">
+        <form method="get" asp-action="Index" class="search-form">
+            <input type="text" name="searchText" class="search-input" placeholder="Caută întrebări..." value="@ViewData["searchText"]" />
+            <button type="submit" class="search-button">Caută</button>
+        </form>
 
-<style>
-    .announcement-details-container {
-        width: 80%;
-        max-width: 1000px;
-        margin: 40px auto;
-        padding: 20px;
-        background-color: #f8fafc;
-        border-radius: 8px;
-    }
+        <ul class="questions-list">
+            @foreach (var question in Model)
+            {
+                <li class="question-item">
+                    <div class="question-meta">
+                        <span><label>Întrebat de:</label> <strong>@question.UserName</strong></span>
+                        <span><label>Data:</label> <strong>@question.CreatedAt.ToString("dd MMMM yyyy")</strong></span>
+                        <span><label>Răspunsuri:</label> <strong>@question.Answers.Count</strong></span>
+                    </div>
+                    <a asp-action="Details" asp-route-id="@question.Id" class="question-link">@question.Title</a>
+                    <p class="question-content">@question.Content</p>
+                </li>
+            }
+        </ul>
 
-        .announcement-details-container h2 {
-            font-size: 2.5em;
-            color: #007acc;
-            margin-bottom: 20px;
-        }
+        <div class="question-form">
+            <h2>Răspunsul tău</h2>
+            <form method="post" asp-action="AddQuestion">
+                <div class="form-group">
+                    <label class="form-label">Titlu</label>
+                    <input type="text" name="title" class="form-input" placeholder="Titlul întrebării" required />
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Conținut</label>
+                    <textarea name="content" class="form-input" placeholder="Conținutul întrebării" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Trimite întrebarea</button>
+            </form>
+        </div>
+    </div>
 
-        .announcement-details-container form {
-            margin-bottom: 20px;
-        }
-
-        .announcement-details-container input[type="text"] {
-            width: calc(100% - 120px);
-            padding: 10px;
-            margin-right: 10px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-        }
-
-        .announcement-details-container button {
-            padding: 10px 20px;
-            border-radius: 4px;
-            background-color: #007acc;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        .announcement-details-container ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        .announcement-details-container li {
-            margin-bottom: 20px;
-        }
-
-        .announcement-details-container a {
-            font-size: 1.5em;
-            color: #007acc;
-            text-decoration: none;
-        }
-
-        .announcement-details-container p {
-            font-size: 1.2em;
-            color: #333;
-        }
-
-    textarea {
-        width: 100%;
-        height: 100px;
-        padding: 10px;
-        border-radius: 4px;
-        border: 1px solid #ccc;
-        margin-bottom: 10px;
-    }
-
-    button:hover {
-        background-color: #005fa3;
-    }
-</style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

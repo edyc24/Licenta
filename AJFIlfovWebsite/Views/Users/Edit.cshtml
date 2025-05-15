@@ -1,7 +1,7 @@
 ﻿@model AJFIlfov.BusinessLogic.Implementation.User.Models.UserManagmentModel
 
 @{
-    ViewData["Title"] = "Edit User";
+    ViewData["Title"] = "Editează Utilizator";
 }
 
 <!DOCTYPE html>
@@ -10,10 +10,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/Users/Edit.css" />
-    <link rel="stylesheet" href="~/css/Common/Common.css" />
 </head>
 <style>
     html,
@@ -25,100 +23,105 @@
 </style>
 <body>
 
-<h2 class="page-title">@ViewData["Title"]</h2>
-
 <div class="container">
-    <div class="localitati-edit-container">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
+    <h1>@ViewData["Title"]</h1>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
 
-            <div class="form-group">
-                <label asp-for="Role">Rol</label>
-                <select asp-for="Role" class="form-control">
-                    <option value="">Selectează Rol</option>
-                    @foreach (var role in Model.Roles)
-                    {
-                        <option value="@role.Value">@role.Value</option>
-                    }
-                </select>
-                <span asp-validation-for="Role" class="text-danger"></span>
-            </div>
+                <div class="form-group">
+                    <label asp-for="Role" class="control-label">Rol</label>
+                    <select asp-for="Role" class="form-control">
+                        <option value="">Selectează Rol</option>
+                            @foreach (var role in Model.Roles)
+                            {
+                                <option value="@role.Value">@role.Value</option>
+                            }
+                    </select>
+                    <span asp-validation-for="Role" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="Category">Categorie</label>
-                <select asp-for="Category" class="form-control">
-                    <option value="">Selectează Categorie</option>
-                    @foreach (var role in Model.Categorii)
-                    {
-                        <option value="@role.Value">@role.Value</option>
-                    }
-                </select>
-                <span asp-validation-for="Category" class="text-danger"></span>
-            </div>
+                    <div class="form-group">
+                        <label asp-for="Category" class="control-label">Rol</label>
+                        <select asp-for="Category" class="form-control">
+                            <option value="">Selectează Categorie</option>
+                            @foreach (var role in Model.Categorii)
+                            {
+                                <option value="@role.Value">@role.Value</option>
+                            }
+                        </select>
+                        <span asp-validation-for="Category" class="text-danger"></span>
+                    </div>
 
-            <div class="form-group">
-                <label asp-for="FirstName">Prenume</label>
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
-            </div>
+                <div class="form-group">
+                    <label asp-for="FirstName" class="control-label">Prenume</label>
+                    <input asp-for="FirstName" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="LastName">Nume</label>
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
-            </div>
+                <div class="form-group">
+                    <label asp-for="LastName" class="control-label">Nume</label>
+                    <input asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="BirthDay">Data Nașterii</label>
-                <input asp-for="BirthDay" class="form-control" type="date" />
-                <span asp-validation-for="BirthDay" class="text-danger"></span>
-            </div>
+                <div class="form-group">
+                    <label asp-for="BirthDay" class="control-label">Data Nașterii</label>
+                    <input asp-for="BirthDay" class="form-control" type="date" />
+                    <span asp-validation-for="BirthDay" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="Email">Email</label>
-                <input asp-for="Email" class="form-control" readonly />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label">Email</label>
+                    <input asp-for="Email" class="form-control" readonly />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="RegistrationDay">Data Înregistrării</label>
-                <input asp-for="RegistrationDay" class="form-control" type="date" />
-                <span asp-validation-for="RegistrationDay" class="text-danger"></span>
-            </div>
+                <div class="form-group">
+                    <label asp-for="RegistrationDay" class="control-label">Data Înregistrării</label>
+                    <input asp-for="RegistrationDay" class="form-control" type="date" />
+                    <span asp-validation-for="RegistrationDay" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="ProfileDescription">Descriere Profil</label>
-                <textarea asp-for="ProfileDescription" class="form-control" rows="3"></textarea>
-                <span asp-validation-for="ProfileDescription" class="text-danger"></span>
-            </div>
+                <div class="form-group">
+                    <label asp-for="ProfileDescription" class="control-label">Descriere Profil</label>
+                    <textarea asp-for="ProfileDescription" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="ProfileDescription" class="text-danger"></span>
+                </div>
+                
 
-            <div class="form-group">
-                <label asp-for="IsLiga4">Apartine Lot Liga 4/5?</label>
-                <select asp-for="IsLiga4" class="form-control">
-                    <option value="true">Da</option>
-                    <option value="false">Nu</option>
-                </select>
-                <span asp-validation-for="IsLiga4" class="text-danger"></span>
-            </div>
+                <div class="form-group">
+                    <label asp-for="IsLiga4" class="control-label">Apartine Lot Liga 4/5?</label>
+                    <select asp-for="IsLiga4" class="form-control">
+                        <option value="true">Da</option>
+                        <option value="false">Nu</option>
+                    </select>
+                    <span asp-validation-for="IsLiga4" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="Calificativ">Calificativ</label>
-                <textarea asp-for="Calificativ" class="form-control" rows="3"></textarea>
-                <span asp-validation-for="Calificativ" class="text-danger"></span>
-            </div>
+                
+                <div class="form-group">
+                    <label asp-for="Calificativ" class="control-label">Calificativ</label>
+                        <textarea asp-for="Calificativ" class="form-control" rows="3"></textarea>
+                        <span asp-validation-for="Calificativ" class="text-danger"></span>
+                </div>
 
-            <div class="form-actions">
-                <a asp-action="Index" class="btn btn-secondary">Anulează</a>
-                <button type="submit" class="btn btn-primary">Salvează</button>
-            </div>
-        </form>
+                <div class="form-group text-center">
+                    <input type="submit" value="Salvează" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-secondary">Anulează</a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
 
 </body>
 </html>

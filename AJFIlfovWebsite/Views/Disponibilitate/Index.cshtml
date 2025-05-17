@@ -1,25 +1,21 @@
 ﻿@model IEnumerable<AJFIlfov.BusinessLogic.Implementation.DisponibilitateService.Models.CerereModel>
+@{
+    ViewData["Title"] = "Cererile Mele";
+    Layout = "_LayoutArbitrii";
+}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cererile mele</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="~/css/Common/Common2.css"/>
+    <link rel="stylesheet" href="~/css/Common/Common.css"/>
     <link rel="stylesheet" href="~/css/Disponibilitate/Index.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
-<style>
-    html,
-    body {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-    } 
-</style>
 <body>
 
 <div class="container">

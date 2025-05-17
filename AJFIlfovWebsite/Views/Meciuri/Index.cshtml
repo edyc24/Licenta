@@ -3,12 +3,12 @@
 @inject CurrentUserDto CurrentUser
 @{
     ViewData["Title"] = "Meciuri";
+    Layout = "_LayoutArbitrii";
     var groupedByDate = Model.GroupBy(m => m.DataJoc?.ToString("dd MMM yyyy")).OrderBy(g => g.Key);
     var grupe = new List<SelectListItem>
     {
         new() { Value = "e2d0e2f0-ff68-4108-9811-0ab4d4285155", Text = "Liga V" },
         new() { Value = "ef4a0a69-5781-4acd-85e8-3381dc6975a9", Text = "Liga IV" }
-        // Add more groups as needed
     };
 }
 

@@ -1,0 +1,108 @@
+﻿@inject AJFIlfov.Common.DTOs.CurrentUserDto CurrentUser
+@using AJFIlfov.Entities.Entities
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewData["Title"] - Asociația Județeană de Fotbal Ilfov</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">
+    <!-- css style -->
+    <link rel="stylesheet" href="~/css/Common/Common.css">
+</head>
+
+<body>
+    <!-- filter over hexagon background to make it blurred and cool; it needs to wrap around the whole content so that its height matches it -->
+    <div class="body-filter">
+
+        <!-- header section -->
+        <header>
+            <div class="header-content">
+                <div class="header-title">
+                    <img src="https://ajfilfovwebsite20241218232333.azurewebsites.net/images/logo1.png" alt="Logo AJF Ilfov">
+                    <h2>Asociația Județeană de Fotbal Ilfov</h2>
+                    <h3>AJF Ilfov</h3>
+                </div>
+
+                <!-- menu toggle button (visible only on mobile) -->
+                <div class="header-menu-toggle" onclick="toggleMenu()"></div>
+
+                <!-- main navigation links for big screens -->
+                <nav class="big-nav">
+                    <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net">Site Principal</a>
+                    <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net/Disponibilitate">Disponibilitate</a>
+                    @if (User.Identity.IsAuthenticated && CurrentUser.Role == "Administrator")
+                    {
+                        <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net/DisponibilitateAdmin">Disponibilitate Admin</a>
+                    }
+                    <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net/Meciuri">Meciuri</a>
+                    <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net/Invoice">Invoice</a>
+                    <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net/Users/UserMap">User Map</a>
+                    @if (User.Identity.IsAuthenticated && CurrentUser.Role == "Administrator")
+                    {
+                        <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net/Users">Users</a>
+                    }
+                </nav>
+            </div>
+        </header>
+
+        <!-- main content -->
+        <div class="content">
+            @RenderBody()
+            @RenderSection("Scripts", required: false)
+            @RenderSection("Styles", required: false)
+        </div>
+
+        <!-- page footer -->
+        <footer>
+            <p>&copy; 2024 Asociația Județeană de Fotbal Ilfov. Toate drepturile rezervate.</p>
+            <div class="social-icons">
+                <a class="instagram" href="#"></a>
+                <a class="facebook" href="https://www.facebook.com/AJFIlfov1997/?locale=ro_RO"></a>
+                <a class="twitter" href="#"></a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- main navigation links for small screens -->
+    <nav class="small-nav">
+        <div class="header-content">
+            <div class="header-menu-toggle" onclick="toggleMenu()"></div>
+        </div>
+
+        <div class="small-nav-content">
+            <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net">Site Principal</a>
+            <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net/Disponibilitate">Disponibilitate</a>
+            @if (User.Identity.IsAuthenticated && CurrentUser.Role == "Administrator")
+            {
+                <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net/DisponibilitateAdmin" class="admin-only">Disponibilitate Admin</a>
+            }
+            <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net/Meciuri">Meciuri</a>
+            <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net/Invoice">Invoice</a>
+            <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net/Users/UserMap">User Map</a>
+            @if (User.Identity.IsAuthenticated && CurrentUser.Role == "Administrator")
+            {
+                <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net/Users" class="admin-only">Users</a>
+            }
+        </div>
+    </nav>
+
+    <!-- js functionalities -->
+    <script>
+        /* --------------
+        nav menu behavior
+        -------------- */
+        function toggleMenu() {
+            const mobileNav = document.getElementsByClassName('small-nav')[0];
+            mobileNav.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

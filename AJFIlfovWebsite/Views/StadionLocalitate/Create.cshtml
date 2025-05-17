@@ -10,10 +10,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/css/StadionLocalitate/Create.css" />
-    <link rel="stylesheet" href="~/css/Common/Common.css" />
+    
 </head>
 <style>
     html,
@@ -25,36 +23,36 @@
 </style>
 <body>
 
-<h2 class="page-title">@ViewData["Title"]</h2>
+    <div class="container">
+        <h2>@ViewData["Title"]</h2>
 
-<div class="localitati-edit-container">
-    <form asp-action="Create" method="post">
-        @Html.AntiForgeryToken()
+        <form asp-action="Create" method="post">
+            <div class="form-group">
+                <label asp-for="IdStadion" class="control-label">Stadion</label>
+                <select asp-for="IdStadion" class="form-control" asp-items="@(new SelectList(ViewBag.Stadioane, "IdStadion", "Nume"))">
+                    <option value="">-- Selectează Stadion --</option>
+                </select>
+                <span asp-validation-for="IdStadion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdLocalitate" class="control-label">Localitate</label>
+                <select asp-for="IdLocalitate" class="form-control" asp-items="@(new SelectList(ViewBag.Localitati, "IdLocalitate", "Nume"))">
+                    <option value="">-- Selectează Localitate --</option>
+                </select>
+                <span asp-validation-for="IdLocalitate" class="text-danger"></span>
+            </div>
+            <div class="form-group text-center">
+                <input type="submit" value="Creare" class="btn btn-primary btn-lg mx-2" />
+                <a asp-action="Index" class="btn btn-secondary btn-lg mx-2">Anulează</a>
+            </div>
+        </form>
+    </div>
 
-        <div class="form-group">
-            <label asp-for="IdStadion" class="control-label">Stadion</label>
-            <select asp-for="IdStadion" class="form-control" asp-items="@(new SelectList(ViewBag.Stadioane, "IdStadion", "Nume"))">
-                <option value="">-- Select Stadium --</option>
-            </select>
-            <span asp-validation-for="IdStadion" class="text-danger"></span>
-        </div>
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
 
-        <div class="form-group">
-            <label asp-for="IdLocalitate" class="control-label">Localitate</label>
-            <select asp-for="IdLocalitate" class="form-control" asp-items="@(new SelectList(ViewBag.Localitati, "IdLocalitate", "Nume"))">
-                <option value="">-- Select Location --</option>
-            </select>
-            <span asp-validation-for="IdLocalitate" class="text-danger"></span>
-        </div>
-
-        <div class="form-actions">
-            <input type="submit" value="Create" class="btn btn-primary"/>
-            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
-        </div>
-    </form>
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -415,24 +415,8 @@ Raportul JaCoCo este generat automat în `ajfilfov_java/target/site/jacoco/index
 
 Metoda `validate` conține următorul flux de control:
 
-```
-START
-  │
-  ▼
-[D1] goalsHome < 0 || goalsAway < 0 ──True──▶ return "INVALID"
-  │ False
-  ▼
-[D2] minutes < 1 || minutes > 120 ──True──▶ return "INVALID"
-  │ False
-  ▼
-[D3] goalsHome > goalsAway ──True──▶ return "VICTORIE_GAZDE"
-  │ False
-  ▼
-[D4] goalsAway > goalsHome ──True──▶ return "VICTORIE_OASPETI"
-  │ False
-  ▼
-return "EGAL"
-```
+<img width="1772" height="654" alt="image" src="https://github.com/user-attachments/assets/736da883-3e0e-45eb-8607-103ff25e5666" />
+
 
 Nodurile decizionale sunt D1, D2, D3, D4. Fiecare are ramuri True/False.
 

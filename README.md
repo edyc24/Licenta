@@ -146,7 +146,7 @@
 # TSS - Proiect Laborator
 
 - Student: Cristea Eduard
-- Grupa: BDTS
+- Grupa: 505 BDTS
 
 ## Metoda testată: `MatchValidator.validate(int goalsHome, int goalsAway, int minutes)`
 

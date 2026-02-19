@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AJFIlfov.BusinessLogic.Implementation.StadionLocalitateService.Models.StadionLocalitateModel>
+@model IEnumerable<AJFIlfov.BusinessLogic.Implementation.StadionLocalitateService.Models.StadionLocalitateModel>
 
 @{
     ViewData["Title"] = "Stadion Localitate";
@@ -10,8 +10,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://ajfilfovwebsite20241218232333.azurewebsites.net/css/StadionLocalitate/Index.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/StadionLocalitate/Index.css" />
 </head>
 <style>
     html,
@@ -78,9 +78,8 @@
     </div>
 
     @section Scripts {
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script>
             $(document).ready(function () {
                 let deleteId;

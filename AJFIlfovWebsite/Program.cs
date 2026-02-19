@@ -11,7 +11,17 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-var connectionString = builder.Configuration["ConnectionString"];
+// Support both "ConnectionString" and standard "ConnectionStrings:DefaultConnection" (Azure Connection strings blade)
+var connectionString = builder.Configuration["ConnectionString"]
+    ?? builder.Configuration.GetConnectionString("DefaultConnection");
+if (string.IsNullOrEmpty(connectionString))
+{
+    if (builder.Environment.IsDevelopment())
+        connectionString = "Server=(localdb)\\mssqllocaldb;Database=AJFIlfov;Trusted_Connection=True;MultipleActiveResultSets=true";
+    else
+        throw new InvalidOperationException(
+            "No connection string configured. Set 'ConnectionString' or 'ConnectionStrings__DefaultConnection' in Azure App Service → Configuration → Application settings (or Connection strings).");
+}
 builder.Services.AddDbContext<AjfilfovContext>(options =>
     options.UseSqlServer(connectionString));
 
@@ -49,12 +59,13 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 builder.Services.AddControllersWithViews(options => { options.Filters.Add(typeof(GlobalExceptionFilterAttribute)); });
 
-var twilioSettings = builder.Configuration.GetSection("Twilio");
-var accountSid = twilioSettings["AccountSid"];
-var authToken = twilioSettings["AuthToken"];
-var fromPhoneNumber = twilioSettings["FromPhoneNumber"];
-
-builder.Services.AddSingleton(new SmsService(accountSid, authToken, fromPhoneNumber));
+// Twilio commented out for now (keys may have expired)
+// var twilioSettings = builder.Configuration.GetSection("Twilio");
+// var accountSid = twilioSettings["AccountSid"] ?? "";
+// var authToken = twilioSettings["AuthToken"] ?? "";
+// var fromPhoneNumber = twilioSettings["FromPhoneNumber"] ?? "";
+// builder.Services.AddSingleton(new SmsService(accountSid, authToken, fromPhoneNumber));
+builder.Services.AddSingleton(new SmsService("", "", "")); // No-op until Twilio keys are renewed
 
 builder.Services.AddAutoMapper(options => { options.AddMaps(typeof(Program), typeof(BaseService)); });
 builder.Services.AddScoped<UnitOfWork>();

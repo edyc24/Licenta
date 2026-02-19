@@ -1,9 +1,11 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <!-- Avoid conflicting static web assets: use only this project's wwwroot, not the referenced AJFIlfov project's -->
+    <ResolveStaticWebAssetsFromProjectReferences>false</ResolveStaticWebAssetsFromProjectReferences>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,5 +23,12 @@
     <ProjectReference Include="..\AJFIlfov\AJFIlfov.csproj" />
     <ProjectReference Include="..\Common\AJFIlfov.Common.csproj" />
   </ItemGroup>
+
+  <!-- Exclude AJFIlfov's wwwroot from static web assets to avoid path conflicts with this project's wwwroot -->
+  <Target Name="ExcludeAJFIlfovStaticWebAssets" AfterTargets="ResolveReferencedProjectsStaticWebAssetsConfiguration" BeforeTargets="ResolveReferencedProjectsStaticWebAssets">
+    <ItemGroup>
+      <StaticWebAssetProjectConfiguration Remove="@(StaticWebAssetProjectConfiguration)" Condition="'%(Source)' == 'AJFIlfov'" />
+    </ItemGroup>
+  </Target>
 
 </Project>

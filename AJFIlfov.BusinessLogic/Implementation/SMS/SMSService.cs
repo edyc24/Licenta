@@ -1,4 +1,4 @@
-﻿using Twilio;
+using Twilio;
 using Twilio.Rest.Api.V2010.Account;
 using Twilio.Types;
 using System;
@@ -18,11 +18,13 @@ namespace AJFIlfov.Services
             _fromPhoneNumber = fromPhoneNumber;
 
             // Initialize Twilio client
-            TwilioClient.Init(_accountSid, _authToken);
+            //TwilioClient.Init(_accountSid, _authToken);
         }
 
         public void SendSms(string toPhoneNumber, string message)
         {
+            if (string.IsNullOrEmpty(_accountSid) || string.IsNullOrEmpty(_authToken))
+                return; // Twilio disabled or not configured
             try
             {
                 var messageOptions = new CreateMessageOptions(new PhoneNumber(toPhoneNumber))

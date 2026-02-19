@@ -1,4 +1,4 @@
-﻿@inject AJFIlfov.Common.DTOs.CurrentUserDto CurrentUser
+@inject AJFIlfov.Common.DTOs.CurrentUserDto CurrentUser
 @using AJFIlfov.Entities.Entities
 @{
     Layout = null;
@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">
     <!-- css style -->
-    <link rel="stylesheet" href="https://ajfilfovwebsite20241218232333.azurewebsites.net/css/Common/Common.css">
+    <link rel="stylesheet" href="~/css/Common/Common.css">
 </head>
 
 <body>
@@ -26,7 +26,7 @@
         <header>
             <div class="header-content">
                 <div class="header-title">
-                    <img src="https://ajfilfovwebsite20241218232333.azurewebsites.net/images/logo1.png" alt="Logo AJF Ilfov">
+                    <img src="~/images/logo1.png" alt="Logo AJF Ilfov">
                     <h2>Asociația Județeană de Fotbal Ilfov</h2>
                     <h3>AJF Ilfov</h3>
                 </div>
@@ -36,18 +36,18 @@
 
                 <!-- main navigation links for big screens -->
                 <nav class="big-nav">
-                    <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net">Site Principal</a>
-                    <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net/Disponibilitate">Disponibilitate</a>
+                    <a href="/">Site Principal</a>
+                    <a href="/Disponibilitate">Disponibilitate</a>
                     @if (User.Identity.IsAuthenticated && CurrentUser.Role == "Administrator")
                     {
-                        <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net/DisponibilitateAdmin">Disponibilitate Admin</a>
+                        <a href="/DisponibilitateAdmin">Disponibilitate Admin</a>
                     }
-                    <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net/Meciuri">Meciuri</a>
-                    <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net/Invoice/Create">Factură</a>
-                    <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net/Users/UserMap">User Map</a>
+                    <a href="/Meciuri">Meciuri</a>
+                    <a href="/Invoice/Create">Factură</a>
+                    <a href="/Users/UserMap">User Map</a>
                     @if (User.Identity.IsAuthenticated && CurrentUser.Role == "Administrator")
                     {
-                        <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net/Users">Users</a>
+                        <a href="/Users">Users</a>
                     }
                 </nav>
             </div>
@@ -78,18 +78,18 @@
         </div>
 
         <div class="small-nav-content">
-            <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net">Site Principal</a>
-            <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net/Disponibilitate">Disponibilitate</a>
+            <a href="/">Site Principal</a>
+            <a href="/Disponibilitate">Disponibilitate</a>
             @if (User.Identity.IsAuthenticated && CurrentUser.Role == "Administrator")
             {
-                <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net/DisponibilitateAdmin" class="admin-only">Disponibilitate Admin</a>
+                <a href="/DisponibilitateAdmin" class="admin-only">Disponibilitate Admin</a>
             }
-            <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net/Meciuri">Meciuri</a>
-            <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net/Invoice/Create">Factură</a>
-            <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net/Users/UserMap">User Map</a>
+            <a href="/Meciuri">Meciuri</a>
+            <a href="/Invoice/Create">Factură</a>
+            <a href="/Users/UserMap">User Map</a>
             @if (User.Identity.IsAuthenticated && CurrentUser.Role == "Administrator")
             {
-                <a href="https://ajfilfovwebsite20241218232333.azurewebsites.net/Users" class="admin-only">Users</a>
+                <a href="/Users" class="admin-only">Users</a>
             }
         </div>
     </nav>

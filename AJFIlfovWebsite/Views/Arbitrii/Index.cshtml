@@ -1,43 +1,68 @@
-﻿@inject AJFIlfov.Common.DTOs.CurrentUserDto CurrentUser
+@inject AJFIlfov.Common.DTOs.CurrentUserDto CurrentUser
 @using System.Linq
 @using AJFIlfov.BusinessLogic.Implementation.MeciuriService.Models
 @using AJFIlfov.Entities.Entities
 @{
     ViewData["Title"] = "Acasă";
+    Layout = "_LayoutArbitrii";
 }
 
-<div class="container mt-5">
-    <div class="jumbotron text-center">
-        <h1 class="display-4">Bine ai revenit in aplicatia de arbitrii, @CurrentUser.FirstName @CurrentUser.LastName!</h1>
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AJF Ilfov</title>
+    <link rel="stylesheet" href="~/css/Common/Common.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="jumbotron text-center">
+            <h1 class="display-4">Bine ai revenit în aplicația de arbitrii, @CurrentUser.FirstName @CurrentUser.LastName!</h1>
 
-        @if (User.Identity.IsAuthenticated)
-        {
-            @if (User.Identity.IsAuthenticated && CurrentUser.Role != "Administrator")
+            @if (User.Identity.IsAuthenticated)
             {
-                if (ViewBag.Meciuri != null && ((IEnumerable<MeciModel>)ViewBag.Meciuri).Any())
+                @if (User.Identity.IsAuthenticated && CurrentUser.Role != "Administrator")
                 {
-                    <p class="lead">Meciurile tale:</p>
-                    <hr class="my-4">
-                    <ul class="list-group">
-                        @foreach (var meci in ViewBag.Meciuri)
-                        {
-                            <li class="list-group-item">
-                                @meci.EchipaGazdaNume vs @meci.EchipaOaspeteNume - @meci.DataJoc.ToString("dd/MM/yyyy hh:mm") <a href="/Meciuri/Edit/@meci.IdMeci" class="btn btn-sm btn-warning float-right">Editează</a>
-                            </li>
-                        }
-                    </ul>
-                }
-                else
-                {
-                    <p>Nu ai meciuri programate.</p>
+                    if (ViewBag.Meciuri != null && ((IEnumerable<MeciModel>)ViewBag.Meciuri).Any())
+                    {
+                        <p class="lead">Meciurile tale:</p>
+                        <hr class="my-4">
+                        <div class="list-group">
+                            @foreach (var meci in ViewBag.Meciuri)
+                            {
+                                <div class="list-group-item">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <strong>@meci.EchipaGazdaNume</strong> vs <strong>@meci.EchipaOaspeteNume</strong>
+                                            <br>
+                                            <small class="text-muted">@meci.DataJoc.ToString("dd/MM/yyyy HH:mm")</small>
+                                        </div>
+                                        <a href="/Meciuri/Edit/@meci.IdMeci" class="btn btn-warning">Editează</a>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info mt-4">
+                            <p class="mb-0">Nu ai meciuri programate.</p>
+                        </div>
+                    }
                 }
             }
-        }
-        else
-        {
-            @* <a class="btn btn-primary btn-lg" href="https://ajfilfovwebsite20241218232333.azurewebsites.net/Account/Login">Loghează-te pentru a vedea meciurile tale</a> *@
-            <a class="btn btn-primary btn-lg" href="/Account/Login">Loghează-te pentru a vedea meciurile tale</a>
-
-        }
+            else
+            {
+                <div class="mt-4">
+                    <a class="btn btn-primary btn-lg" href="/Account/Login">Loghează-te pentru a vedea meciurile tale</a>
+                </div>
+            }
+        </div>
     </div>
-</div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

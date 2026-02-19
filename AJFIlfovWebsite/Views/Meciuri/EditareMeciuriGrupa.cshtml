@@ -1,7 +1,8 @@
-﻿@model IEnumerable<AJFIlfov.BusinessLogic.Implementation.MeciuriService.Models.MeciAdminModel>
+@model IEnumerable<AJFIlfov.BusinessLogic.Implementation.MeciuriService.Models.MeciAdminModel>
 
 @{
-    ViewData["Title"] = "Editează Meciuri - Grupa";
+    ViewData["Title"] = "Editează Meciuri Grupa";
+    Layout = "_LayoutArbitrii";
     var meciuriList = Model.ToList();
     var arbitriSelectList = new SelectList(ViewBag.Arbitri, "Id", "Nume", meciuriList[0].IdArbitru);
     var initialDate = meciuriList.FirstOrDefault()?.DataJoc;
@@ -13,7 +14,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/Meciuri/EditareMeciAdmin.css"/>
 </head>
 <body>

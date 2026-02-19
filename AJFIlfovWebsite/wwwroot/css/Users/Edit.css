@@ -1,133 +1,54 @@
 ﻿.container {
-    margin: 2rem auto;
+    margin-top: 50px;
 }
 
-.page-title {
+h1 {
     text-align: center;
-    color: #000000;
-    margin-bottom: 2rem;
-    font-weight: bold;
+    color: #343a40;
+    margin-bottom: 30px;
 }
 
-.localitati-edit-container {
-    padding: 2rem 1.2rem;
-    background-color: var(--color-surface);
-    border-radius: var(--radius-big);
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
+.card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
 }
 
 .form-group label {
-    display: inline-block;
-    min-width: 100px;
-    color: #000000;
     font-weight: bold;
-    margin-bottom: 0.5rem;
+    color: #003366;
 }
 
 .form-control {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #e0e0e0;
-    border-radius: var(--radius-small);
-    transition: border-color 0.3s;
-}
-
-.form-control:focus {
-    border-color: #00cbbc;
-    outline: none;
-    box-shadow: none;
-}
-
-select.form-control {
-    height: 40px;
-}
-
-textarea.form-control {
-    min-height: 100px;
-    resize: vertical;
-}
-
-.text-danger {
-    color: #dc3545;
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
-    display: block;
-}
-
-.form-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
-.btn {
-    padding: 0.7rem 1.5rem;
-    border: none;
-    border-radius: var(--radius-small);
-    font-weight: bold;
-    transition: background-color 0.3s;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 .btn-primary {
-    background-color: #00cbbc;
-    color: #000000;
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
 }
 
-.btn-primary:hover {
-    background-color: #00b3a6;
-    color: #000000;
-}
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
 
 .btn-secondary {
-    background-color: var(--color-secondary);
-    color: var(--color-on-secondary);
+    background-color: #6c757d;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
 }
 
-.btn-secondary:hover {
-    background-color: var(--color-secondary-hover);
-    color: var(--color-on-secondary);
-}
+    .btn-secondary:hover {
+        background-color: #5a6268;
+    }
 
-@media (max-width: 768px) {
-    .localitati-edit-container {
-        padding: 1.5rem 1rem;
-    }
-    
-    .form-actions {
-        flex-direction: column;
-    }
-    
-    .btn {
-        width: 100%;
-    }
-}
-
-@media (min-width: 600px) {
-    .localitati-edit-container {
-        padding: 2rem 2.8rem;
-    }
-}
-
-@media (min-width: 768px) {
-    .localitati-edit-container {
-        padding: 2rem 3rem;
-    }
-}
-
-@media (min-width: 1068px) {
-    .localitati-edit-container {
-        padding: 2rem 3.3rem;
-    }
-}
-
-@media (min-width: 1280px) {
-    .localitati-edit-container {
-        padding: 2rem 5rem;
-    }
+.text-danger {
+    color: #dc3545;
 }

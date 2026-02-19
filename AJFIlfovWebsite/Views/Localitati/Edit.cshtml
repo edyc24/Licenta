@@ -1,4 +1,4 @@
-﻿@model AJFIlfov.BusinessLogic.Implementation.LocalitatiService.Models.LocalitateModel
+@model AJFIlfov.BusinessLogic.Implementation.LocalitatiService.Models.LocalitateModel
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,9 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/Localitati/Edit.css"/>
-    <link rel="stylesheet" href="~/css/Common/Common.css" />
 </head>
 <style>
     html,
@@ -21,9 +20,10 @@
 </style>
 <body>
 
-<h2 class="page-title">@ViewData["Title"]</h2>
+<div class="container">
+    <h2>@ViewData["Title"]</h2>
+    <hr/>
 
-<div class="localitati-edit-container">
     <form asp-action="Edit" method="post">
         @Html.AntiForgeryToken()
 
@@ -34,14 +34,14 @@
         </div>
         <input type="hidden" asp-for="IdLocalitate"/>
 
-        <div class="form-actions">
+        <div class="form-group text-center">
             <input type="submit" value="Save" class="btn btn-primary"/>
             <a asp-action="Index" class="btn btn-secondary">Cancel</a>
         </div>
     </form>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

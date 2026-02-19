@@ -566,12 +566,6 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.Property<DateTime?>("DataJoc")
                         .HasColumnType("datetime");
 
-                    b.Property<Guid?>("EchipeIdEchipa")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("EchipeIdEchipa1")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int?>("Etapa")
                         .HasColumnType("int");
 
@@ -625,10 +619,6 @@ namespace AJFIlfov.DataAccess.Migrations
 
                     b.HasKey("IdMeci")
                         .HasName("PK__Meciuri__4D7C0B75D32C1A8D");
-
-                    b.HasIndex("EchipeIdEchipa");
-
-                    b.HasIndex("EchipeIdEchipa1");
 
                     b.HasIndex("Etapa");
 
@@ -839,6 +829,18 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.Property<Guid?>("IdStadion")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int?>("Index")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("Processed")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("ProcessedValue")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Runda")
+                        .HasColumnType("int");
+
                     b.Property<int?>("ScorGazda")
                         .HasColumnType("int");
 
@@ -906,6 +908,9 @@ namespace AJFIlfov.DataAccess.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
+                    b.Property<string>("Calificativ")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("DataIncepere")
                         .HasColumnType("date");
 
@@ -927,6 +932,9 @@ namespace AJFIlfov.DataAccess.Migrations
                     b.Property<bool?>("IsDeleted")
                         .HasColumnType("bit")
                         .HasColumnName("isDeleted");
+
+                    b.Property<bool?>("IsLiga4")
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("IsSuspended")
                         .HasColumnType("bit")
@@ -1030,14 +1038,6 @@ namespace AJFIlfov.DataAccess.Migrations
 
             modelBuilder.Entity("AJFIlfov.Entities.Entities.Meciuri", b =>
                 {
-                    b.HasOne("AJFIlfov.Entities.Entities.Echipe", null)
-                        .WithMany("MeciuriIdEchipaGazdaNavigations")
-                        .HasForeignKey("EchipeIdEchipa");
-
-                    b.HasOne("AJFIlfov.Entities.Entities.Echipe", null)
-                        .WithMany("MeciuriIdEchipaOaspeteNavigations")
-                        .HasForeignKey("EchipeIdEchipa1");
-
                     b.HasOne("AJFIlfov.Entities.Entities.Utilizatori", "IdArbitruNavigation")
                         .WithMany("MeciuriIdArbitruNavigations")
                         .HasForeignKey("IdArbitru")
@@ -1230,10 +1230,6 @@ namespace AJFIlfov.DataAccess.Migrations
             modelBuilder.Entity("AJFIlfov.Entities.Entities.Echipe", b =>
                 {
                     b.Navigation("GrupeEchipas");
-
-                    b.Navigation("MeciuriIdEchipaGazdaNavigations");
-
-                    b.Navigation("MeciuriIdEchipaOaspeteNavigations");
 
                     b.Navigation("TurneeIdEchipaGazdaNavigation");
 

@@ -1,7 +1,8 @@
-﻿@model AJFIlfov.BusinessLogic.Implementation.MeciuriService.Models.MeciAdminModel
+@model AJFIlfov.BusinessLogic.Implementation.MeciuriService.Models.MeciAdminModel
 
 @{
     ViewData["Title"] = "Creează Meci Futuristic";
+    Layout = "_LayoutArbitrii";
     var grupe = ViewBag.Grupe;
     var echipe = ViewBag.Echipe;
 }
@@ -12,7 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
     <style>
         /* Futuristic Styling */
         body {
@@ -151,8 +152,8 @@
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 <script src="~/js/Meciuri/CreareMeci.js"></script>
 </body>

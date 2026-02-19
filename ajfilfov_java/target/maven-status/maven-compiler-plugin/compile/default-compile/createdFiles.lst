@@ -1,0 +1,17 @@
+com\example\ajfilfov\repository\InvoiceRepository.class
+com\example\ajfilfov\service\UsersService.class
+com\example\ajfilfov\controller\MeciuriController.class
+com\example\ajfilfov\repository\UserAddressRepository.class
+com\example\ajfilfov\AjfilfovApplication.class
+com\example\ajfilfov\controller\InvoiceController.class
+com\example\ajfilfov\entity\InvoiceData.class
+com\example\ajfilfov\entity\Meciuri.class
+com\example\ajfilfov\entity\Invoice.class
+com\example\ajfilfov\entity\User.class
+com\example\ajfilfov\repository\UserRepository.class
+com\example\ajfilfov\entity\UserAddress.class
+com\example\ajfilfov\controller\UsersController.class
+com\example\ajfilfov\service\InvoiceService.class
+com\example\ajfilfov\entity\InvoiceData$Item.class
+com\example\ajfilfov\repository\MeciuriRepository.class
+com\example\ajfilfov\service\MeciuriService.class

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AJFIlfov.BusinessLogic.Implementation.StadioaneService.Models.StadionModel>
+@model IEnumerable<AJFIlfov.BusinessLogic.Implementation.StadioaneService.Models.StadionModel>
 
 @{
     ViewData["Title"] = "Stadioane";
@@ -10,9 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/css/Common/Common.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/Stadioane/Index.css" />
 </head>
 <style>
@@ -24,93 +22,92 @@
     }
 </style>
 <body>
-    <h2 class="page-title">@ViewData["Title"]</h2>
 
-    <div class="localitati-container">
-        <div class="action-buttons">
-            <a asp-action="Create" class="btn btn-primary">Create New</a>
-        </div>
+<div class="container">
+    <h2>@ViewData["Title"]</h2>
 
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>@Html.DisplayNameFor(model => model.First().Nume)</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => item.Nume)</td>
-                            <td>
-                                <a asp-action="Edit" asp-route-id="@item.IdStadion" class="btn btn-primary">Edit</a>
-                                <button type="button" class="btn btn-danger delete-button" data-id="@item.IdStadion" data-name="@item.Nume">Delete</button>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-    </div>
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Creează Nou</a>
+    </p>
 
-    <!-- Delete Confirmation Modal -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Are you sure you want to delete <strong id="stadionName"></strong>?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="confirmDelete">Delete</button>
-                </div>
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.First().Nume)</th>
+                <th>Acțiuni</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Nume)</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.IdStadion" class="btn btn-warning">Editează</a>
+                        <button type="button" class="btn btn-danger delete-button" data-id="@item.IdStadion" data-name="@item.Nume">Șterge</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirmare Ștergere</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Închide">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Ești sigur că vrei să ștergi acest stadion: <strong id="stadionName"></strong>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Anulează</button>
+                <button type="button" class="btn btn-danger" id="confirmDelete">Șterge</button>
             </div>
         </div>
     </div>
+</div>
 
-    @section Scripts {
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
-        <script>
-            $(document).ready(function () {
-                var stadiumIdToDelete;
+    <script>
+        $(document).ready(function () {
+            var stadiumIdToDelete;
 
-                $('.delete-button').on('click', function () {
-                    stadiumIdToDelete = $(this).data('id');
-                    var stadiumName = $(this).data('name');
-                    $('#stadionName').text(stadiumName);
-                    $('#deleteModal').modal('show');
-                });
+            $('.delete-button').on('click', function () {
+                stadiumIdToDelete = $(this).data('id');
+                var stadiumName = $(this).data('name');
+                $('#stadionName').text(stadiumName);
+                $('#deleteModal').modal('show');
+            });
 
-                $('#confirmDelete').on('click', function () {
-                    $.ajax({
-                        type: 'POST',
-                        url: '/Stadioane/Delete/' + stadiumIdToDelete,
-                        success: function () {
-                            toastr.success('Stadionul a fost șters cu succes!', 'Succes');
-                            setTimeout(function () {
-                                location.reload();
-                            }, 1000);
-                        },
-                        error: function () {
-                            toastr.error('Eroare la ștergerea stadionului!', 'Eroare');
-                        }
-                    });
+            $('#confirmDelete').on('click', function () {
+                $.ajax({
+                    type: 'POST',
+                    url: '/Stadioane/Delete/' + stadiumIdToDelete,
+                    success: function () {
+                        toastr.success('Stadionul a fost șters cu succes!', 'Succes');
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1000);
+                    },
+                    error: function () {
+                        toastr.error('Eroare la ștergerea stadionului!', 'Eroare');
+                    }
                 });
             });
-        </script>
-    }
+        });
+    </script>
+}
+
 </body>
 </html>
